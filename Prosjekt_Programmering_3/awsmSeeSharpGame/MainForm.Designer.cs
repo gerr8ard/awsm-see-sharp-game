@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.lblPoeng = new System.Windows.Forms.Label();
             this.lblTid = new System.Windows.Forms.Label();
+            this.lblPoeng = new System.Windows.Forms.Label();
+            this.lblTidTekst = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
             this.pbxGamingArea = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
@@ -40,8 +41,9 @@
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlInfo.Controls.Add(this.lblPoeng);
             this.pnlInfo.Controls.Add(this.lblTid);
+            this.pnlInfo.Controls.Add(this.lblPoeng);
+            this.pnlInfo.Controls.Add(this.lblTidTekst);
             this.pnlInfo.Controls.Add(this.lblLevel);
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInfo.Location = new System.Drawing.Point(0, 0);
@@ -49,6 +51,17 @@
             this.pnlInfo.Size = new System.Drawing.Size(824, 43);
             this.pnlInfo.TabIndex = 0;
             this.pnlInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlInfo_Paint);
+            // 
+            // lblTid
+            // 
+            this.lblTid.AutoSize = true;
+            this.lblTid.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTid.ForeColor = System.Drawing.Color.Snow;
+            this.lblTid.Location = new System.Drawing.Point(363, 9);
+            this.lblTid.Name = "lblTid";
+            this.lblTid.Size = new System.Drawing.Size(86, 23);
+            this.lblTid.TabIndex = 3;
+            this.lblTid.Text = "00:00:00";
             // 
             // lblPoeng
             // 
@@ -62,17 +75,17 @@
             this.lblPoeng.TabIndex = 2;
             this.lblPoeng.Text = "Poeng: ";
             // 
-            // lblTid
+            // lblTidTekst
             // 
-            this.lblTid.AutoSize = true;
-            this.lblTid.BackColor = System.Drawing.Color.Transparent;
-            this.lblTid.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTid.ForeColor = System.Drawing.Color.Snow;
-            this.lblTid.Location = new System.Drawing.Point(275, 9);
-            this.lblTid.Name = "lblTid";
-            this.lblTid.Size = new System.Drawing.Size(91, 23);
-            this.lblTid.TabIndex = 1;
-            this.lblTid.Text = "Tid igjen:";
+            this.lblTidTekst.AutoSize = true;
+            this.lblTidTekst.BackColor = System.Drawing.Color.Transparent;
+            this.lblTidTekst.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTidTekst.ForeColor = System.Drawing.Color.Snow;
+            this.lblTidTekst.Location = new System.Drawing.Point(275, 9);
+            this.lblTidTekst.Name = "lblTidTekst";
+            this.lblTidTekst.Size = new System.Drawing.Size(91, 23);
+            this.lblTidTekst.TabIndex = 1;
+            this.lblTidTekst.Text = "Tid igjen:";
             // 
             // lblLevel
             // 
@@ -104,6 +117,7 @@
             this.Controls.Add(this.pnlInfo);
             this.Name = "MainForm";
             this.Text = "AwsmSeeSharpGame";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxGamingArea)).EndInit();
@@ -115,9 +129,10 @@
 
         private System.Windows.Forms.Panel pnlInfo;
         private System.Windows.Forms.Label lblLevel;
-        private System.Windows.Forms.Label lblTid;
+        private System.Windows.Forms.Label lblTidTekst;
         private System.Windows.Forms.Label lblPoeng;
         private System.Windows.Forms.PictureBox pbxGamingArea;
+        private System.Windows.Forms.Label lblTid;
     }
 }
 
