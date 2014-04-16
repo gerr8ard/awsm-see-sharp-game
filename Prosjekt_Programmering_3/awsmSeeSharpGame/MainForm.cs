@@ -15,6 +15,12 @@ namespace awsmSeeSharpGame
         public MainForm()
         {
             InitializeComponent();
+            pnlInfo.BackColor = Color.FromArgb(85, 0, 0, 0);
+        }
+
+        private void pnlInfo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
