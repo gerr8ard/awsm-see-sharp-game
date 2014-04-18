@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awsmSeeSharpGame", "awsmSeeSharpGame\awsmSeeSharpGame.csproj", "{E5FF0C95-5288-4F51-A868-16136E728D1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awsmSeeSharpGameUnitTest", "UnitTestProject1\awsmSeeSharpGameUnitTest.csproj", "{FD835BAE-CCC8-4A04-AAE0-3A8E406B1AB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{E5FF0C95-5288-4F51-A868-16136E728D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5FF0C95-5288-4F51-A868-16136E728D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5FF0C95-5288-4F51-A868-16136E728D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD835BAE-CCC8-4A04-AAE0-3A8E406B1AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD835BAE-CCC8-4A04-AAE0-3A8E406B1AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD835BAE-CCC8-4A04-AAE0-3A8E406B1AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD835BAE-CCC8-4A04-AAE0-3A8E406B1AB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
