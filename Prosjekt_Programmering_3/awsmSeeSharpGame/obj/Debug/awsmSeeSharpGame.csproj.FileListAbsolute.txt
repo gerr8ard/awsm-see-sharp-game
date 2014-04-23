@@ -7,3 +7,12 @@ J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\
 J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csproj.GenerateResource.Cache
 J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.exe
 J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.exe.config
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.exe
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.pdb
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csprojResolveAssemblyReference.cache
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.MainForm.resources
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.Properties.Resources.resources
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csproj.GenerateResource.Cache
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.exe
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
