@@ -18,6 +18,7 @@ namespace awsmSeeSharpGame
         Boolean isGameRunning;
         ThreadStart threadStartInfoPanel;
         Thread threadInfoPanel;
+        PictureBox gamePanel;
 
         /// <summary>
         /// Konstruktør
@@ -40,9 +41,13 @@ namespace awsmSeeSharpGame
         /// </summary>
         private void startSpill()
         {
+            gamePanel = new GamePanel();
+            Controls.Add(gamePanel);
+
             TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
+
         }
 
         /// <summary>

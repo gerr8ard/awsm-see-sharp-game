@@ -14,7 +14,7 @@ namespace awsmSeeSharpGame.Classes
     /// Kollisjon med bullet avslutter spillet
     /// Kollisjon med obsticles gir minuspoeng
     /// </summary>
-    class Rocket : MovableShape
+    public class Rocket : MovableShape
     {
         //Farten
         private float dxPosisjon = 0f;

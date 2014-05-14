@@ -11,7 +11,7 @@ namespace awsmSeeSharpGame.Classes
     /// Shape har retning, posisjon og fart
     /// 
     /// </summary>
-    class Shape : IShape
+    public class Shape : IShape
     {
         //Posisjonene
         public static float xPosisjon;
