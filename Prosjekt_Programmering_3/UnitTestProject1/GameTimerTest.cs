@@ -3,8 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using awsmSeeSharpGame;
 using System.Threading;
 using Moq;
+using awsmSeeSharpGame.Classes;
 
-namespace awsmSeeSharpGameUnitTest
+namespace awsmSeeSharpGameUnitTest.Classes
 {
     [TestClass]
     public class GameTimerTest

@@ -47,23 +47,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Figur.cs" />
-    <Compile Include="GameTimer.cs" />
     <Compile Include="interfaces\IGameTimer.cs" />
     <Compile Include="interfaces\ITimer.cs" />
+    <Compile Include="Classes\Bullet.cs" />
+    <Compile Include="Classes\DrawShapes.cs" />
+    <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\Gravity.cs" />
+    <Compile Include="Classes\Hashing.cs" />
+    <Compile Include="Classes\MovableShape.cs" />
+    <Compile Include="Classes\Obstacle.cs" />
+    <Compile Include="Classes\Shape.cs" />
+    <Compile Include="Classes\GameTimer.cs" />
+    <Compile Include="Models\Highscore.cs" />
+    <Compile Include="Models\Privilege.cs" />
+    <Compile Include="Models\Score.cs" />
+    <Compile Include="Classes\Target.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\Program.cs" />
+    <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemTimer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\Rocket.cs" />
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

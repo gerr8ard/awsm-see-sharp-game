@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace awsmSeeSharpGame
+namespace awsmSeeSharpGame.Classes
 {
     public class GameTimer : IGameTimer
     {
