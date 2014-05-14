@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace awsmSeeSharpGame
+namespace awsmSeeSharpGame.interfaces
 {
-    class Figur
+    public interface IShape
     {
+
     }
 }
