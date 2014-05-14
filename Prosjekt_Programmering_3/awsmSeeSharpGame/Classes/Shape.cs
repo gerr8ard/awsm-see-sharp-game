@@ -1,4 +1,5 @@
-﻿using System;
+﻿using awsmSeeSharpGame.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace awsmSeeSharpGame.Classes
     /// Shape har retning, posisjon og fart
     /// 
     /// </summary>
-    class Shape
+    class Shape : IShape
     {
         //Posisjonene
         public static float xPosisjon;
