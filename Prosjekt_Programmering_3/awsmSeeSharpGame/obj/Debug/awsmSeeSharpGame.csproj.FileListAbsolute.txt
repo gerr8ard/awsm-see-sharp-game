@@ -9,3 +9,4 @@ D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharp
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csproj.GenerateResource.Cache
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.exe
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
+D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csprojResolveAssemblyReference.cache
