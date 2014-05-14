@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
@@ -23,5 +25,31 @@ namespace awsmSeeSharpGame.Classes
             rocket = _rocket;
         }
 
+        public void update()
+        {
+            foreach (Bullet bullet in bulletList) {
+                bullet.Move();
+            }
+
+            rocket.Move();
+        }
+
+        public void CollisonCheck()
+        {
+            foreach (Bullet bullet in bulletList)
+            {
+                bullet.Collision();
+            }
+
+            rocket.Collision();
+        }
+
+        public void OnPaint(Graphics g, PaintEventArgs e)
+        {
+            foreach (Obstacle obstacle in obstacleList)
+            {
+                obstacle.OnPaint(g, e);
+            }
+        }
     }
 }

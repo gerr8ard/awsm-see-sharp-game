@@ -33,9 +33,7 @@
             this.lblPoeng = new System.Windows.Forms.Label();
             this.lblTidTekst = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
-            this.pbxGamingArea = new System.Windows.Forms.PictureBox();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxGamingArea)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -99,28 +97,17 @@
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Nivå:";
             // 
-            // pbxGamingArea
-            // 
-            this.pbxGamingArea.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbxGamingArea.Location = new System.Drawing.Point(0, 35);
-            this.pbxGamingArea.Name = "pbxGamingArea";
-            this.pbxGamingArea.Size = new System.Drawing.Size(824, 357);
-            this.pbxGamingArea.TabIndex = 1;
-            this.pbxGamingArea.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 392);
-            this.Controls.Add(this.pbxGamingArea);
             this.Controls.Add(this.pnlInfo);
             this.Name = "MainForm";
             this.Text = "AwsmSeeSharpGame";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxGamingArea)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -131,7 +118,6 @@
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label lblTidTekst;
         private System.Windows.Forms.Label lblPoeng;
-        private System.Windows.Forms.PictureBox pbxGamingArea;
         private System.Windows.Forms.Label lblTid;
     }
 }
