@@ -12,7 +12,7 @@ namespace awsmSeeSharpGame.Classes
     /// Retning er samme som Enemy
     /// Kuler forsvinner ved kollisjon
     /// </summary>
-    class Bullet : MovableShape
+    public class Bullet : MovableShape
     {
 
     }

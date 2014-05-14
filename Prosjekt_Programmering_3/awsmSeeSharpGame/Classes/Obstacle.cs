@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace awsmSeeSharpGame.Classes
 {
-    class Obstacle : Shape
+    public class Obstacle : Shape
     {
     }
 }

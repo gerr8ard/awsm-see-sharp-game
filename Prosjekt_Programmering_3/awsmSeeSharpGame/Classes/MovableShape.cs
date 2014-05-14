@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace awsmSeeSharpGame.Classes
 {
-    class MovableShape : Shape, IMoveableShape
+    public class MovableShape : Shape, IMoveableShape
     {
         public void Move()
         {
