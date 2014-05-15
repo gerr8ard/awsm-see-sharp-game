@@ -1,4 +1,5 @@
-﻿using System;
+﻿using awsmSeeSharpGame.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace awsmSeeSharpGame
         Boolean isGameRunning;
         ThreadStart threadStartInfoPanel;
         Thread threadInfoPanel;
+        GamePanel gamePanel;
 
         /// <summary>
         /// Konstruktør
@@ -39,9 +41,15 @@ namespace awsmSeeSharpGame
         /// </summary>
         private void startSpill()
         {
+            gamePanel = new GamePanel();
+            Controls.Add(gamePanel);
+            
+
             TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
+            Invalidate();
+
         }
 
         /// <summary>
@@ -85,6 +93,16 @@ namespace awsmSeeSharpGame
         {
             stoppSpill();
             threadInfoPanel.Abort();
+        }
+
+        private void MenuItemAvslutt_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
         }
     }
 }

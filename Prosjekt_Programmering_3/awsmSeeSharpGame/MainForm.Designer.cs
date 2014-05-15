@@ -28,14 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlInfo = new System.Windows.Forms.Panel();
             this.lblTid = new System.Windows.Forms.Label();
             this.lblPoeng = new System.Windows.Forms.Label();
             this.lblTidTekst = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
-            this.pbxGamingArea = new System.Windows.Forms.PictureBox();
+            this.msMenyStripe = new System.Windows.Forms.MenuStrip();
+            this.MenuItemMeny = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemLoggInn = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemHighscore = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemLoggUt = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemSkilleMeny = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItemAvslutt = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemInnstillinger = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemHjelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.hvordanSpilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxGamingArea)).BeginInit();
+            this.msMenyStripe.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -45,10 +56,11 @@
             this.pnlInfo.Controls.Add(this.lblPoeng);
             this.pnlInfo.Controls.Add(this.lblTidTekst);
             this.pnlInfo.Controls.Add(this.lblLevel);
+            this.pnlInfo.Controls.Add(this.msMenyStripe);
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(824, 43);
+            this.pnlInfo.Size = new System.Drawing.Size(1184, 68);
             this.pnlInfo.TabIndex = 0;
             this.pnlInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlInfo_Paint);
             // 
@@ -57,7 +69,7 @@
             this.lblTid.AutoSize = true;
             this.lblTid.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTid.ForeColor = System.Drawing.Color.Snow;
-            this.lblTid.Location = new System.Drawing.Point(363, 9);
+            this.lblTid.Location = new System.Drawing.Point(623, 33);
             this.lblTid.Name = "lblTid";
             this.lblTid.Size = new System.Drawing.Size(86, 23);
             this.lblTid.TabIndex = 3;
@@ -69,7 +81,7 @@
             this.lblPoeng.BackColor = System.Drawing.Color.Transparent;
             this.lblPoeng.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPoeng.ForeColor = System.Drawing.Color.Snow;
-            this.lblPoeng.Location = new System.Drawing.Point(603, 9);
+            this.lblPoeng.Location = new System.Drawing.Point(997, 33);
             this.lblPoeng.Name = "lblPoeng";
             this.lblPoeng.Size = new System.Drawing.Size(76, 23);
             this.lblPoeng.TabIndex = 2;
@@ -81,7 +93,7 @@
             this.lblTidTekst.BackColor = System.Drawing.Color.Transparent;
             this.lblTidTekst.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTidTekst.ForeColor = System.Drawing.Color.Snow;
-            this.lblTidTekst.Location = new System.Drawing.Point(275, 9);
+            this.lblTidTekst.Location = new System.Drawing.Point(526, 33);
             this.lblTidTekst.Name = "lblTidTekst";
             this.lblTidTekst.Size = new System.Drawing.Size(91, 23);
             this.lblTidTekst.TabIndex = 1;
@@ -93,34 +105,109 @@
             this.lblLevel.BackColor = System.Drawing.Color.Transparent;
             this.lblLevel.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLevel.ForeColor = System.Drawing.Color.Snow;
-            this.lblLevel.Location = new System.Drawing.Point(12, 9);
+            this.lblLevel.Location = new System.Drawing.Point(3, 33);
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(54, 23);
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Nivå:";
             // 
-            // pbxGamingArea
+            // msMenyStripe
             // 
-            this.pbxGamingArea.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pbxGamingArea.Location = new System.Drawing.Point(0, 35);
-            this.pbxGamingArea.Name = "pbxGamingArea";
-            this.pbxGamingArea.Size = new System.Drawing.Size(824, 357);
-            this.pbxGamingArea.TabIndex = 1;
-            this.pbxGamingArea.TabStop = false;
+            this.msMenyStripe.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemMeny,
+            this.MenuItemInnstillinger,
+            this.MenuItemHjelp});
+            this.msMenyStripe.Location = new System.Drawing.Point(0, 0);
+            this.msMenyStripe.Name = "msMenyStripe";
+            this.msMenyStripe.Size = new System.Drawing.Size(1184, 24);
+            this.msMenyStripe.TabIndex = 4;
+            this.msMenyStripe.Text = "menuStrip1";
+            // 
+            // MenuItemMeny
+            // 
+            this.MenuItemMeny.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemLoggInn,
+            this.MenuItemHighscore,
+            this.MenuItemLoggUt,
+            this.MenuItemSkilleMeny,
+            this.MenuItemAvslutt});
+            this.MenuItemMeny.Name = "MenuItemMeny";
+            this.MenuItemMeny.Size = new System.Drawing.Size(49, 20);
+            this.MenuItemMeny.Text = "Meny";
+            // 
+            // MenuItemLoggInn
+            // 
+            this.MenuItemLoggInn.Name = "MenuItemLoggInn";
+            this.MenuItemLoggInn.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemLoggInn.Text = "Logg inn";
+            // 
+            // MenuItemHighscore
+            // 
+            this.MenuItemHighscore.Name = "MenuItemHighscore";
+            this.MenuItemHighscore.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemHighscore.Text = "Highscore";
+            // 
+            // MenuItemLoggUt
+            // 
+            this.MenuItemLoggUt.Name = "MenuItemLoggUt";
+            this.MenuItemLoggUt.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemLoggUt.Text = "Logg ut";
+            // 
+            // MenuItemSkilleMeny
+            // 
+            this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
+            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(149, 6);
+            // 
+            // MenuItemAvslutt
+            // 
+            this.MenuItemAvslutt.Name = "MenuItemAvslutt";
+            this.MenuItemAvslutt.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemAvslutt.Text = "&Avslutt";
+            this.MenuItemAvslutt.Click += new System.EventHandler(this.MenuItemAvslutt_Click);
+            // 
+            // MenuItemInnstillinger
+            // 
+            this.MenuItemInnstillinger.Name = "MenuItemInnstillinger";
+            this.MenuItemInnstillinger.Size = new System.Drawing.Size(81, 20);
+            this.MenuItemInnstillinger.Text = "Innstillinger";
+            // 
+            // MenuItemHjelp
+            // 
+            this.MenuItemHjelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hvordanSpilleToolStripMenuItem,
+            this.omToolStripMenuItem});
+            this.MenuItemHjelp.Name = "MenuItemHjelp";
+            this.MenuItemHjelp.Size = new System.Drawing.Size(47, 20);
+            this.MenuItemHjelp.Text = "Hjelp";
+            // 
+            // hvordanSpilleToolStripMenuItem
+            // 
+            this.hvordanSpilleToolStripMenuItem.Name = "hvordanSpilleToolStripMenuItem";
+            this.hvordanSpilleToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.hvordanSpilleToolStripMenuItem.Text = "Hvordan spille";
+            // 
+            // omToolStripMenuItem
+            // 
+            this.omToolStripMenuItem.Name = "omToolStripMenuItem";
+            this.omToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.omToolStripMenuItem.Text = "Om";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 392);
-            this.Controls.Add(this.pbxGamingArea);
+            this.ClientSize = new System.Drawing.Size(1184, 662);
             this.Controls.Add(this.pnlInfo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1200, 700);
+            this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
-            this.Text = "AwsmSeeSharpGame";
+            this.Text = "Maximum Combat Havoc - Mystery Robot Strikes Back";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxGamingArea)).EndInit();
+            this.msMenyStripe.ResumeLayout(false);
+            this.msMenyStripe.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -131,8 +218,18 @@
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label lblTidTekst;
         private System.Windows.Forms.Label lblPoeng;
-        private System.Windows.Forms.PictureBox pbxGamingArea;
         private System.Windows.Forms.Label lblTid;
+        private System.Windows.Forms.MenuStrip msMenyStripe;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemMeny;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemLoggInn;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemHighscore;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemLoggUt;
+        private System.Windows.Forms.ToolStripSeparator MenuItemSkilleMeny;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemAvslutt;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemInnstillinger;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemHjelp;
+        private System.Windows.Forms.ToolStripMenuItem hvordanSpilleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem omToolStripMenuItem;
     }
 }
 

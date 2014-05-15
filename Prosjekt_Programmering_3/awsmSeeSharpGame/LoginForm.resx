@@ -117,32 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="msMenyStripe.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAA
-        AAAAAO4SAADuHAAA7gkAAO4AAADuAAICeQAEBAQABgYGAAUFBQAGBgYABwcHAAcHBwAHBwcABwcHAAcH
-        BwAHBwcAAADuHAAv7kcAGO5mAADuVgAA7hUCAnkABAQEAAcHBz4GBgaJBwcHZwcHBwAHBwcABwcHAAcH
-        BwAHBwcABwcHAAAA7gkAGO5mALvuhgB17qMAGO66AwNkbwQEBIowNTCnprem/woKCogKCgoACgoKAAoK
-        CgAKCgoACgoKAAoKCgAAAO4AAADuVQB27qMAu+67AmyJoAQEBIqyw7Lxd3d3/6SxpP8PDw+GDw8PAA8P
-        DwAPDw8ADw8PAA8PDwAPDw8AAADuAAAA7hUAGO67AW+NmQQEBIamuKb/prim/7LDsvF3d3f/EBAQhR4e
-        HgAeHh4AHh4eAB4eHgAeHh4AHh4eAAAAdwAAAHcAAABmYQEBAW29wb3/l6OX/5Wnlf+muKb/ssOy8QQE
-        BIonJyc5KCgoACgoKAAoKCgAKCgoACgoKAAVFRUAFBQUAAEBAWbV1dX/tra2/6+wr/+Xo5f/laeV/5am
-        lv/l19fwHx8fgScnJzkoKCgAKCgoACgoKAAoKCgAKSkpACkpKThAQECXmpqa/9XV1f+2trb/r7Cv/4iT
-        iP/Yxsb/49HR/+XX1/AfHx+BJycnOSgoKAAoKCgAKCgoAC8vLwAvLy93w8PD/62trf+ampr/1dXV/6Sk
-        pP/c2tr/yri1/7eMfv+5joD/1MC98B8fH4EnJyc5KCgoACgoKAAzMzMANDQ0WDU1NXU1NTV1KSkpcQEB
-        AWb7+vr/4eHh/4lrYv/MmYj/zJmI/4pqYf/l19fwHx8fgScnJzkoKCgAMzMzADU1NQA3NzcANzc3ADc3
-        NwAAAAAvAAAAZvv6+v9cS0X/mWZV/5lmVf9ZR0H/49HR/+XX1/AfHx+BJycnOTMzMwA1NTUANzc3ADc3
-        NwA3NzcAAAAAAAAAAC8AAABmzs3M/ykmJf//3cz/oJaW/9jGxv/NvLz/5dfX8AEBz7QzMzMANTU1ADc3
-        NwA3NzcANzc3AAAAAAAAAAAAAAAALwAAAGb7+vr/v7+//8vKyv/AtbX/7Nvb/ysrv/8BAbu8MzMzADU1
-        NQA3NzcANzc3ADc3NwAAAAAAAAAAAAAAAAAAAAAvAAAAZvv6+v/Kysr/7ufn/xYWrf9KSuD/AACoxDMz
-        MwA1NTUANzc3ADc3NwArKysAAAAAAAAAAAAAAAAAAAAAAAAAAC8AAABm+/r6/1FR2f96eu7/WVno/wAA
-        mcoaGhoAFBQUAA0NDQANDQ0ACgoKAAUFBQACAgIAAAAAAAAAAAAAAAAAAAAALwEB3bMAAMjFAAC/zAAA
-        tMwAAJpmH/8AAAY/AAAAPwAAgD8AAIA/AADAHwAAwA8AAIAHAACAAwAAgAEAAPgAAAD8AAAA/gAAAP8A
-        AAD/gAAA/8AAAA==
-</value>
-  </data>
 </root>

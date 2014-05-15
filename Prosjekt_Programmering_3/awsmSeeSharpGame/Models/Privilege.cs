@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace awsmSeeSharpGame
+namespace awsmSeeSharpGame.Models
 {
-    class Figur
+    class Privilege
     {
     }
 }
