@@ -25,12 +25,11 @@ namespace awsmSeeSharpGame.Classes
             rocket = _rocket;
         }
 
-        public void update()
+        public void Update()
         {
             foreach (Bullet bullet in bulletList) {
                 bullet.Move();
             }
-
             rocket.Move();
         }
 
@@ -40,16 +39,33 @@ namespace awsmSeeSharpGame.Classes
             {
                 bullet.Collision();
             }
-
             rocket.Collision();
         }
 
         public void Draw(PaintEventArgs e)
         {
+            Update(); //Flytter objektene som skal flyttes
+            CollisonCheck(); // Sjekker for kollisjon
+
+            //Tegner opp objektene
+            foreach (Enemy enemy in enemyList)
+            {
+                enemy.Draw(e);
+            }
+            foreach (Bullet bullet in bulletList)
+            {
+                bullet.Draw(e);
+            }
             foreach (Obstacle obstacle in obstacleList)
             {
                 obstacle.Draw(e);
             }
+            foreach (Target target in targetList)
+            {
+                target.Draw(e);
+            }
+            rocket.Draw(e);
+
         }
     }
 }
