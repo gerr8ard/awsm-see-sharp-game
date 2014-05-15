@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
@@ -14,6 +15,9 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Bullet : MovableShape
     {
+        public override void Draw(PaintEventArgs e)
+        {
 
+        }
     }
 }

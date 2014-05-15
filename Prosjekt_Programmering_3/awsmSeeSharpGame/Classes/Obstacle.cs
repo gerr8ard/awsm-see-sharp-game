@@ -22,7 +22,7 @@ namespace awsmSeeSharpGame.Classes
             pen = new Pen(color, 5);
         }
 
-        public void Draw(PaintEventArgs e) {
+        public override void Draw(PaintEventArgs e) {
             e.Graphics.DrawRectangle(pen, XPosition, YPosition, width, height);
 
         }

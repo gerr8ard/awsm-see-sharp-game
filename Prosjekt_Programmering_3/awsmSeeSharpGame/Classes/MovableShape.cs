@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
-    public class MovableShape : Shape, IMoveableShape
+    public abstract class MovableShape : Shape, IMoveableShape
     {
         public void Move()
         {
@@ -18,5 +19,7 @@ namespace awsmSeeSharpGame.Classes
         {
             return true;
         }
+
+        public override abstract void Draw(PaintEventArgs e);
     }
 }

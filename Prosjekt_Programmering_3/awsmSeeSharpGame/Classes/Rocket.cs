@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace awsmSeeSharpGame.Classes
@@ -22,8 +23,8 @@ namespace awsmSeeSharpGame.Classes
 
         public void Flytt()
         {
-            Shape.XPosition += dxPosisjon;
-            Shape.YPosition += dyPosisjon;
+            XPosition += dxPosisjon;
+            YPosition += dyPosisjon;
         }
 
 /*        public void EndreFartsRetning(bool venstre, bool høyre, bool opp)
@@ -35,5 +36,10 @@ namespace awsmSeeSharpGame.Classes
             if (opp)
                 dyPosisjon -= 1.8f;
         } */
+
+        public override void Draw(PaintEventArgs e)
+        {
+
+        }
     }
 }
