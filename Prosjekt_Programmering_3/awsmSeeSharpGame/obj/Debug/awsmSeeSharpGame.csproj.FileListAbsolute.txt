@@ -10,3 +10,4 @@ D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\a
 D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.dll
 D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.xml
 D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.LoginForm.resources
+D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.AboutBox.resources

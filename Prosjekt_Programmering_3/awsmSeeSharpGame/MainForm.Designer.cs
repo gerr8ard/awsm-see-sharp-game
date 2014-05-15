@@ -183,20 +183,21 @@
             // hvordanSpilleToolStripMenuItem
             // 
             this.hvordanSpilleToolStripMenuItem.Name = "hvordanSpilleToolStripMenuItem";
-            this.hvordanSpilleToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.hvordanSpilleToolStripMenuItem.Text = "Hvordan spille";
+            this.hvordanSpilleToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.hvordanSpilleToolStripMenuItem.Text = "Hvordan spille...";
             // 
             // omToolStripMenuItem
             // 
             this.omToolStripMenuItem.Name = "omToolStripMenuItem";
-            this.omToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.omToolStripMenuItem.Text = "Om";
+            this.omToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.omToolStripMenuItem.Text = "Om...";
+            this.omToolStripMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 662);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1200, 700);

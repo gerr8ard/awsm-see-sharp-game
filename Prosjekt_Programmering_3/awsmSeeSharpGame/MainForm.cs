@@ -104,5 +104,11 @@ namespace awsmSeeSharpGame
         {
             base.OnPaint(e);
         }
+
+        private void omToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox about = new AboutBox();
+            about.ShowDialog(this);
+        }
     }
 }
