@@ -71,6 +71,7 @@
     <Compile Include="Classes\GamePanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Classes\Hash.cs" />
     <Compile Include="interfaces\IMoveableShape.cs" />
     <Compile Include="interfaces\IShape.cs" />
     <Compile Include="interfaces\IGameTimer.cs" />
