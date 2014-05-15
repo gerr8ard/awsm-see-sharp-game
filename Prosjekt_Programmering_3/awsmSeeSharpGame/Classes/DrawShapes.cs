@@ -44,11 +44,11 @@ namespace awsmSeeSharpGame.Classes
             rocket.Collision();
         }
 
-        public void OnPaint(Graphics g, PaintEventArgs e)
+        public void Draw(PaintEventArgs e)
         {
             foreach (Obstacle obstacle in obstacleList)
             {
-                obstacle.OnPaint(g, e);
+                obstacle.Draw(e);
             }
         }
     }
