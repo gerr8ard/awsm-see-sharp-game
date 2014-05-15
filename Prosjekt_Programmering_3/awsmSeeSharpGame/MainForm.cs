@@ -47,8 +47,6 @@ namespace awsmSeeSharpGame
             TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
-            //Invalidate();
-
         }
 
         /// <summary>

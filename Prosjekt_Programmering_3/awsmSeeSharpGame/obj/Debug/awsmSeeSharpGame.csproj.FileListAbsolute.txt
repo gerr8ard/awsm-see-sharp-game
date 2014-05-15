@@ -10,3 +10,16 @@ D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\a
 D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csproj.GenerateResource.Cache
 D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.exe
 D:\Skole\Programmering 3\Prosjekt\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.exe.config
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.exe
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.exe
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.pdb
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.dll
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.xml
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csprojResolveAssemblyReference.cache
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.AboutBox.resources
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.LoginForm.resources
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.MainForm.resources
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.Properties.Resources.resources
+J:\programmering3\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csproj.GenerateResource.Cache
