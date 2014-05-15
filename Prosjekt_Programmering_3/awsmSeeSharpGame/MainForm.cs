@@ -92,5 +92,10 @@ namespace awsmSeeSharpGame
             stoppSpill();
             threadInfoPanel.Abort();
         }
+
+        private void MenuItemAvslutt_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
