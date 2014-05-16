@@ -39,12 +39,12 @@ namespace awsmSeeSharpGame.Classes
             YPosition = _YPosition;
             Rotation = _Rotation;
 
-            Point point1 = new Point(100 + XPosition, 0 + YPosition);
-            Point point2 = new Point(150 + XPosition, 50 + YPosition);
-            Point point3 = new Point(250 + XPosition, 50 + YPosition);
-            Point point4 = new Point(150 + XPosition, 100 + YPosition);
-            Point point5 = new Point(50 + XPosition, 100 + YPosition);
-            Point point6 = new Point(0 + XPosition, 50 + YPosition);
+            point1 = new Point(100 + XPosition, 0 + YPosition);
+            point2 = new Point(150 + XPosition, 50 + YPosition);
+            point3 = new Point(250 + XPosition, 50 + YPosition);
+            point4 = new Point(150 + XPosition, 100 + YPosition);
+            point5 = new Point(50 + XPosition, 100 + YPosition);
+            point6 = new Point(0 + XPosition, 50 + YPosition);
             bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.fire);
             textureBrush = new TextureBrush(bitmap);
 
@@ -52,22 +52,24 @@ namespace awsmSeeSharpGame.Classes
 
         }
 
-        public void Flytt()
+        public override void Move()
         {
             XPosition += dxPosisjon;
             YPosition += dyPosisjon;
+            updateCurvePoint();
         }
 
-        /*        public void EndreFartsRetning(bool venstre, bool høyre, bool opp)
-                {
-                    if (venstre)
-                        dxPosisjon -= 1.0f;
-                    if (høyre)
-                        dxPosisjon += 1.0f;
-                    if (opp)
-                        dyPosisjon -= 1.8f;
-                } */
 
+
+        private void updateCurvePoint()
+        {
+            for (int i = 0; i < curvePoints.Length; i++)
+            {
+                curvePoints[i].X += dxPosisjon;
+                curvePoints[i].Y += dyPosisjon;
+            }
+
+        } 
         public override void Draw(PaintEventArgs e)
         {
             e.Graphics.FillPolygon(textureBrush, curvePoints);

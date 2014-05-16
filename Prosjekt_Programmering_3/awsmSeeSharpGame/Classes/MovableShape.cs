@@ -10,10 +10,8 @@ namespace awsmSeeSharpGame.Classes
 {
     public abstract class MovableShape : Shape, IMoveableShape
     {
-        public void Move()
-        {
+        abstract public void Move();
 
-        }
 
         public bool Collision()
         {
