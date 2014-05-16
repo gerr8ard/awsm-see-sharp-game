@@ -15,6 +15,7 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Bullet : MovableShape
     {
+        int testGit;
         public override void Draw(PaintEventArgs e)
         {
 
