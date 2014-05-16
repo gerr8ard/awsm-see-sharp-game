@@ -32,14 +32,17 @@ namespace awsmSeeSharpGame.Classes
         Point[] curvePoints;
         TextureBrush textureBrush;
         Bitmap bitmap;
+        Gravity gravityForRocket = new Gravity();
 
         public Rocket(int _XPosition, int _YPosition, int _Rotation)
         {
             XPosition = _XPosition;
             YPosition = _YPosition;
+            calcXPosition = XPosition;
+            calcYPosition = YPosition;
             Rotation = _Rotation;
-            DxPosisjon = 1;
-            DyPosisjon = 0;
+            DxPosition = 1;
+            DyPosition = 0;
 
             point1 = new Point(100 + XPosition, 0 + YPosition);
             point2 = new Point(150 + XPosition, 50 + YPosition);
@@ -56,19 +59,26 @@ namespace awsmSeeSharpGame.Classes
 
         public override void Move()
         {
-            XPosition += DxPosisjon;
-            YPosition += DyPosisjon;
+            calcXPosition += DxPosition;
+            calcYPosition += DyPosition;
+            XPosition = (int)calcXPosition;
+            YPosition = (int)calcYPosition;
             updateCurvePoint();
         }
 
-
+        public void Accelerate()
+        {
+            YAccelleration = gravityForRocket.gravitationalAcceleration;
+            DxPosition += XAccelleration;
+            DyPosition += YAccelleration;
+        }
 
         private void updateCurvePoint()
         {
             for (int i = 0; i < curvePoints.Length; i++)
             {
-                curvePoints[i].X += DxPosisjon;
-                curvePoints[i].Y += DyPosisjon;
+                curvePoints[i].X += (int)DxPosition;
+                curvePoints[i].Y += (int)DyPosition;
             }
 
         } 

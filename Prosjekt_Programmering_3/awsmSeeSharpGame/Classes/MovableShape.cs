@@ -13,9 +13,14 @@ namespace awsmSeeSharpGame.Classes
     {
 
         abstract public void Move();
-        public int DxPosisjon { get; set; }
-        public int DyPosisjon { get; set; }
+        public float DxPosition { get; set; }
+        public float DyPosition { get; set; }
 
+        public float XAccelleration { get; set; }
+        public float YAccelleration { get; set; }
+
+        public float calcXPosition { get; set; }
+        public float calcYPosition { get; set; }
 
         public bool Collision()
         {
