@@ -8,5 +8,6 @@ namespace awsmSeeSharpGame.Classes
 {
     class Gravity
     {
+
     }
 }
