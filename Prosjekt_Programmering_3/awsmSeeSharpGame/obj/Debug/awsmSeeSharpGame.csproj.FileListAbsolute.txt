@@ -36,3 +36,8 @@ D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharp
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.dll
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.xml
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
+D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\EntityFramework.dll
+D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\EntityFramework.SqlServer.dll
+D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\EntityFramework.xml
+D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\EntityFramework.SqlServer.xml
+D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.Migrations.First.resources
