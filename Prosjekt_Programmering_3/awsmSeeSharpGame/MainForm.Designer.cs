@@ -110,6 +110,7 @@
             this.lblLevel.Size = new System.Drawing.Size(54, 23);
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Nivå:";
+           
             // 
             // msMenyStripe
             // 
@@ -197,6 +198,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1184, 662);
+            this.ClientSize = new System.Drawing.Size(824, 392);
             this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
