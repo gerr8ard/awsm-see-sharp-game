@@ -19,8 +19,8 @@ namespace awsmSeeSharpGame.Classes
     public class Rocket : MovableShape
     {
         //Farten
-        private int dxPosisjon = 0;
-        private int dyPosisjon = 1;
+//        private int dxPosisjon = 0;
+//        private int dyPosisjon = 1;
         Point point1;
         Point point2;
         Point point3;
@@ -38,6 +38,8 @@ namespace awsmSeeSharpGame.Classes
             XPosition = _XPosition;
             YPosition = _YPosition;
             Rotation = _Rotation;
+            DxPosisjon = 1;
+            DyPosisjon = 0;
 
             point1 = new Point(100 + XPosition, 0 + YPosition);
             point2 = new Point(150 + XPosition, 50 + YPosition);
@@ -54,8 +56,8 @@ namespace awsmSeeSharpGame.Classes
 
         public override void Move()
         {
-            XPosition += dxPosisjon;
-            YPosition += dyPosisjon;
+            XPosition += DxPosisjon;
+            YPosition += DyPosisjon;
             updateCurvePoint();
         }
 
@@ -65,8 +67,8 @@ namespace awsmSeeSharpGame.Classes
         {
             for (int i = 0; i < curvePoints.Length; i++)
             {
-                curvePoints[i].X += dxPosisjon;
-                curvePoints[i].Y += dyPosisjon;
+                curvePoints[i].X += DxPosisjon;
+                curvePoints[i].Y += DyPosisjon;
             }
 
         } 
