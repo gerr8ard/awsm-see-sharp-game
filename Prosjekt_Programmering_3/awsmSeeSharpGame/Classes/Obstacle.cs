@@ -10,16 +10,21 @@ namespace awsmSeeSharpGame.Classes
 {
     public class Obstacle : Shape
     {
-        Rectangle rect;
-        Pen pen;
-        public Obstacle(int width, int height, Color color)
+        private int width;
+        private int height;
+
+        public Obstacle(int _XPosition, int _YPosition, int _width, int _height, Color color)
         {
-            rect = new Rectangle();
+            XPosition = _XPosition;
+            YPosition = _YPosition;
+            width = _width;
+            height = _height;
             pen = new Pen(color, 5);
         }
 
-        public void OnPaint(Graphics g, PaintEventArgs e) {
-            g.DrawRectangle(pen, rect);
+        public override void Draw(PaintEventArgs e) {
+            e.Graphics.DrawRectangle(pen, XPosition, YPosition, width, height);
+
         }
     }
 }

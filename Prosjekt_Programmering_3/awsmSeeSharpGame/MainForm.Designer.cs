@@ -34,22 +34,19 @@
             this.lblPoeng = new System.Windows.Forms.Label();
             this.lblTidTekst = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
-            this.pbxGamingArea = new System.Windows.Forms.PictureBox();
             this.msMenyStripe = new System.Windows.Forms.MenuStrip();
             this.MenuItemMeny = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemLoggInn = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemHighscore = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemLoggUt = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemSkilleMeny = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItemAvslutt = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemInnstillinger = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemHjelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemLoggInn = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemLoggUt = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemAvslutt = new System.Windows.Forms.ToolStripMenuItem();
             this.hvordanSpilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemHighscore = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemSkilleMeny = new System.Windows.Forms.ToolStripSeparator();
             this.pnlInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxGamingArea)).BeginInit();
             this.msMenyStripe.SuspendLayout();
-            this.pnlInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlInfo
@@ -147,6 +144,36 @@
             this.MenuItemMeny.Size = new System.Drawing.Size(49, 20);
             this.MenuItemMeny.Text = "Meny";
             // 
+            // MenuItemLoggInn
+            // 
+            this.MenuItemLoggInn.Name = "MenuItemLoggInn";
+            this.MenuItemLoggInn.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemLoggInn.Text = "Logg inn";
+            // 
+            // MenuItemHighscore
+            // 
+            this.MenuItemHighscore.Name = "MenuItemHighscore";
+            this.MenuItemHighscore.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemHighscore.Text = "Highscore";
+            // 
+            // MenuItemLoggUt
+            // 
+            this.MenuItemLoggUt.Name = "MenuItemLoggUt";
+            this.MenuItemLoggUt.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemLoggUt.Text = "Logg ut";
+            // 
+            // MenuItemSkilleMeny
+            // 
+            this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
+            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(149, 6);
+            // 
+            // MenuItemAvslutt
+            // 
+            this.MenuItemAvslutt.Name = "MenuItemAvslutt";
+            this.MenuItemAvslutt.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemAvslutt.Text = "&Avslutt";
+            this.MenuItemAvslutt.Click += new System.EventHandler(this.MenuItemAvslutt_Click);
+            // 
             // MenuItemInnstillinger
             // 
             this.MenuItemInnstillinger.Name = "MenuItemInnstillinger";
@@ -162,47 +189,18 @@
             this.MenuItemHjelp.Size = new System.Drawing.Size(47, 20);
             this.MenuItemHjelp.Text = "Hjelp";
             // 
-            // MenuItemLoggInn
-            // 
-            this.MenuItemLoggInn.Name = "MenuItemLoggInn";
-            this.MenuItemLoggInn.Size = new System.Drawing.Size(152, 22);
-            this.MenuItemLoggInn.Text = "Logg inn";
-            // 
-            // MenuItemLoggUt
-            // 
-            this.MenuItemLoggUt.Name = "MenuItemLoggUt";
-            this.MenuItemLoggUt.Size = new System.Drawing.Size(152, 22);
-            this.MenuItemLoggUt.Text = "Logg ut";
-            // 
-            // MenuItemAvslutt
-            // 
-            this.MenuItemAvslutt.Name = "MenuItemAvslutt";
-            this.MenuItemAvslutt.Size = new System.Drawing.Size(152, 22);
-            this.MenuItemAvslutt.Text = "Avslutt";
-            this.MenuItemAvslutt.Click += new System.EventHandler(this.MenuItemAvslutt_Click);
-            // 
             // hvordanSpilleToolStripMenuItem
             // 
             this.hvordanSpilleToolStripMenuItem.Name = "hvordanSpilleToolStripMenuItem";
-            this.hvordanSpilleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.hvordanSpilleToolStripMenuItem.Text = "Hvordan spille";
+            this.hvordanSpilleToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.hvordanSpilleToolStripMenuItem.Text = "Hvordan spille...";
             // 
             // omToolStripMenuItem
             // 
             this.omToolStripMenuItem.Name = "omToolStripMenuItem";
-            this.omToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.omToolStripMenuItem.Text = "Om";
-            // 
-            // MenuItemHighscore
-            // 
-            this.MenuItemHighscore.Name = "MenuItemHighscore";
-            this.MenuItemHighscore.Size = new System.Drawing.Size(152, 22);
-            this.MenuItemHighscore.Text = "Highscore";
-            // 
-            // MenuItemSkilleMeny
-            // 
-            this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
-            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(149, 6);
+            this.omToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.omToolStripMenuItem.Text = "Om...";
+            this.omToolStripMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -211,6 +209,7 @@
             this.ClientSize = new System.Drawing.Size(1184, 662);
             this.Controls.Add(this.pbxGamingArea);
             this.ClientSize = new System.Drawing.Size(824, 392);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1200, 700);

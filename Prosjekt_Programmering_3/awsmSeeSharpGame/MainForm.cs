@@ -18,7 +18,7 @@ namespace awsmSeeSharpGame
         Boolean isGameRunning;
         ThreadStart threadStartInfoPanel;
         Thread threadInfoPanel;
-        PictureBox gamePanel;
+        GamePanel gamePanel;
 
         /// <summary>
         /// Konstruktør
@@ -33,7 +33,6 @@ namespace awsmSeeSharpGame
             threadInfoPanel = new Thread(threadStartInfoPanel);
             threadInfoPanel.IsBackground = true;
             threadInfoPanel.Start();
-
         }
 
         /// <summary>
@@ -43,11 +42,11 @@ namespace awsmSeeSharpGame
         {
             gamePanel = new GamePanel();
             Controls.Add(gamePanel);
+            
 
             TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
-
         }
 
         /// <summary>
@@ -96,6 +95,17 @@ namespace awsmSeeSharpGame
         private void MenuItemAvslutt_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
+
+        private void omToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox about = new AboutBox();
+            about.ShowDialog(this);
         }
     }
 }
