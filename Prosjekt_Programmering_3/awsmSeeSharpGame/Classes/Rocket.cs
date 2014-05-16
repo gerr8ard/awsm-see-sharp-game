@@ -19,8 +19,8 @@ namespace awsmSeeSharpGame.Classes
     public class Rocket : MovableShape
     {
         //Farten
-        private int dxPosisjon = 0;
-        private int dyPosisjon = 1;
+//        private int dxPosisjon = 0;
+//        private int dyPosisjon = 1;
         Point point1;
         Point point2;
         Point point3;
@@ -54,8 +54,7 @@ namespace awsmSeeSharpGame.Classes
 
         public void Flytt()
         {
-            XPosition += dxPosisjon;
-            YPosition += dyPosisjon;
+            this.Move();
         }
 
         /*        public void EndreFartsRetning(bool venstre, bool høyre, bool opp)
