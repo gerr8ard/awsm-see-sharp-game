@@ -45,6 +45,7 @@
             this.MenuItemHjelp = new System.Windows.Forms.ToolStripMenuItem();
             this.hvordanSpilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlInfo.SuspendLayout();
             this.msMenyStripe.SuspendLayout();
             this.SuspendLayout();
@@ -110,7 +111,6 @@
             this.lblLevel.Size = new System.Drawing.Size(54, 23);
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Nivå:";
-           
             // 
             // msMenyStripe
             // 
@@ -141,6 +141,7 @@
             this.MenuItemLoggInn.Name = "MenuItemLoggInn";
             this.MenuItemLoggInn.Size = new System.Drawing.Size(152, 22);
             this.MenuItemLoggInn.Text = "Logg inn";
+            this.MenuItemLoggInn.Click += new System.EventHandler(this.MenuItemLoggInn_Click);
             // 
             // MenuItemHighscore
             // 
@@ -194,13 +195,20 @@
             this.omToolStripMenuItem.Text = "Om...";
             this.omToolStripMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 68);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1184, 594);
+            this.panel1.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 662);
-            this.ClientSize = new System.Drawing.Size(824, 392);
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1200, 700);
@@ -234,6 +242,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItemHjelp;
         private System.Windows.Forms.ToolStripMenuItem hvordanSpilleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem omToolStripMenuItem;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

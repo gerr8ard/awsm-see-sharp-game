@@ -30,10 +30,22 @@ namespace awsmSeeSharpGame
             isGameRunning = false;
             startSpill();
 
+            /*
+            LoginForm login = new LoginForm();
+            login.TopLevel = false;
+            panel1.Controls.Add(login);
+            login.Show();
+            */
+            panel1.Visible = false;
+
             threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
             threadInfoPanel = new Thread(threadStartInfoPanel);
             threadInfoPanel.IsBackground = true;
             threadInfoPanel.Start();
+            
+            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+            timer = new GameTimer(spillTid); //starter en ny timer
+            isGameRunning = true;
         }
 
         /// <summary>
@@ -45,9 +57,7 @@ namespace awsmSeeSharpGame
             Controls.Add(gamePanel);
             
 
-            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
-            timer = new GameTimer(spillTid); //starter en ny timer
-            isGameRunning = true;
+            
         }
 
         /// <summary>
@@ -107,6 +117,12 @@ namespace awsmSeeSharpGame
         {
             AboutBox about = new AboutBox();
             about.ShowDialog(this);
+        }
+
+        private void MenuItemLoggInn_Click(object sender, EventArgs e)
+        {
+            LoginForm login = new LoginForm();
+            login.ShowDialog(this);
         }
     }
 }
