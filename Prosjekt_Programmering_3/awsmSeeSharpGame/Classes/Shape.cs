@@ -19,6 +19,7 @@ namespace awsmSeeSharpGame.Classes
         public Pen pen {get; set;}
         public int XPosition {get; set;}
         public int YPosition {get; set;}
+        public int Rotation { get; set; }
         public abstract void Draw(PaintEventArgs e);
     }
 }
