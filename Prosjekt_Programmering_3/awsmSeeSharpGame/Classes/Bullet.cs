@@ -15,6 +15,16 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Bullet : MovableShape
     {
+        public Bullet(int _XPosition, int _YPosition, int _Rotation)
+        {
+            XPosition = _XPosition;
+            YPosition = _YPosition;
+            calcXPosition = XPosition;
+            calcYPosition = YPosition;
+            Rotation = _Rotation;
+            DxPosition = 0;
+            DyPosition = 0;
+        }
 
         public override void Move()
         {

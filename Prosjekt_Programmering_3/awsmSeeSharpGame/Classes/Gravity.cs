@@ -8,11 +8,16 @@ namespace awsmSeeSharpGame.Classes
 {
     class Gravity
     {
-        public float gravitationalAcceleration;
+        public float gravitationalAcceleration { get; set; }
 
         public Gravity()
         {
-            this.gravitationalAcceleration = 0.01635f; //635f;
+            gravitationalAcceleration = 0.01635f; //635f;
+        }
+
+        public Gravity(float _gravity)
+        {
+            gravitationalAcceleration = _gravity;
         }
     }
 }
