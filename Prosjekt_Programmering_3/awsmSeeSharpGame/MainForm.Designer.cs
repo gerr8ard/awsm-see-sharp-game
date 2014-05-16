@@ -114,7 +114,6 @@
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Nivå:";
             // 
-<<<<<<< HEAD
             // pbxGamingArea
             // 
             this.pbxGamingArea.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -205,18 +204,13 @@
             this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
             this.MenuItemSkilleMeny.Size = new System.Drawing.Size(149, 6);
             // 
-=======
->>>>>>> b7435332a9a4bafe1637cb85c2f6443f37047efc
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
             this.ClientSize = new System.Drawing.Size(1184, 662);
             this.Controls.Add(this.pbxGamingArea);
-=======
             this.ClientSize = new System.Drawing.Size(824, 392);
->>>>>>> b7435332a9a4bafe1637cb85c2f6443f37047efc
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1200, 700);
@@ -226,12 +220,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
-<<<<<<< HEAD
             ((System.ComponentModel.ISupportInitialize)(this.pbxGamingArea)).EndInit();
             this.msMenyStripe.ResumeLayout(false);
             this.msMenyStripe.PerformLayout();
-=======
->>>>>>> b7435332a9a4bafe1637cb85c2f6443f37047efc
             this.ResumeLayout(false);
 
         }
