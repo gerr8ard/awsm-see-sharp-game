@@ -15,9 +15,16 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Bullet : MovableShape
     {
+
+        public override void Move()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void Draw(PaintEventArgs e)
         {
 
         }
+
     }
 }
