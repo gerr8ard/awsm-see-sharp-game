@@ -37,3 +37,15 @@ D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharp
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.xml
 D:\Skole\Programmering\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
 C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.exe.config
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.exe
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\awsmSeeSharpGame.pdb
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.dll
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\bin\Debug\Moq.xml
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csprojResolveAssemblyReference.cache
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.AboutBox.resources
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.LoginForm.resources
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.MainForm.resources
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.Properties.Resources.resources
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.csproj.GenerateResource.Cache
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.exe
+C:\Users\sitha\Documents\GitHub\awsm-see-sharp-game\Prosjekt_Programmering_3\awsmSeeSharpGame\obj\Debug\awsmSeeSharpGame.pdb
