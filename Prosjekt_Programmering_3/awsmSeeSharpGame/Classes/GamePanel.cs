@@ -42,7 +42,10 @@ namespace awsmSeeSharpGame.Classes
             bulletList = new List<Bullet>();
             obstacleList = new List<Obstacle>();
             targetList = new List<Target>();
-            rocket = new Rocket(300,150,0);
+
+            Point[] rocketMap = ShapeMaps.RocketDesign1();
+
+            rocket = new Rocket(300,150,0, rocketMap);
 
             // Setter opp labelen som viser FPS
             lblFps = new Label();
