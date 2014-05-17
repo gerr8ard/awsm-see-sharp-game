@@ -1,11 +1,14 @@
 ﻿using awsmSeeSharpGame.Classes;
 using awsmSeeSharpGame.Models;
+using awsmSeeSharpGame.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +23,8 @@ namespace awsmSeeSharpGame
         ThreadStart threadStartInfoPanel;
         Thread threadInfoPanel;
         GamePanel gamePanel;
+        LoginControl2 login = new LoginControl2();
+        SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);
 
         /// <summary>
         /// Konstruktør
@@ -28,15 +33,14 @@ namespace awsmSeeSharpGame
         {
             InitializeComponent();
             isGameRunning = false;
-            startSpill();
+            //startSpill();
 
-            /*
-            LoginForm login = new LoginForm();
-            login.TopLevel = false;
-            panel1.Controls.Add(login);
+            pnlMainForm.Controls.Add(login);
+            login.Dock = DockStyle.Bottom;
             login.Show();
-            */
-            panel1.Visible = false;
+
+
+            introMusic.Play();
 
             threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
             threadInfoPanel = new Thread(threadStartInfoPanel);
@@ -55,7 +59,7 @@ namespace awsmSeeSharpGame
         {
             gamePanel = new GamePanel();
             Controls.Add(gamePanel);
-            
+            pnlMainForm.Visible = false;
 
             
         }
@@ -119,10 +123,5 @@ namespace awsmSeeSharpGame
             about.ShowDialog(this);
         }
 
-        private void MenuItemLoggInn_Click(object sender, EventArgs e)
-        {
-            LoginForm login = new LoginForm();
-            login.ShowDialog(this);
-        }
     }
 }
