@@ -14,12 +14,12 @@ namespace awsmSeeSharpGame
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = String.Format("Om Maximum Combat Havoc");
-            this.labelProductName.Text = "Maximum Combat Havoc - Mystery Robot Strikes Back";
-            this.labelVersion.Text = String.Format("Versjon {0}", AssemblyVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = "SDP inc";
-            this.textBoxDescription.Text = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+            this.Text = "Om Maximum Combat Havoc";//Overskrift
+            this.labelProductName.Text = "Maximum Combat Havoc - Mystery Robot Strikes Back";//Produktnavn
+            this.labelVersion.Text = String.Format("Versjon {0}", AssemblyVersion);//Versjonsnummer
+            this.labelCopyright.Text = AssemblyCopyright;//Copyright
+            this.labelCompanyName.Text = AssemblyCompany;//Navn på selskap
+            this.textBoxDescription.Text = AssemblyDescription;//Beskrivelse av oss.
         }
 
         #region Assembly Attribute Accessors

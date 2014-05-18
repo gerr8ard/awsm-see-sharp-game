@@ -1,11 +1,13 @@
 ﻿using awsmSeeSharpGame.Classes;
-using awsmSeeSharpGame.Models;
+using awsmSeeSharpGame.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace awsmSeeSharpGame
         ThreadStart threadStartInfoPanel;
         Thread threadInfoPanel;
         GamePanel gamePanel;
+        LoginControl2 login = new LoginControl2();
+        SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);
 
         /// <summary>
         /// Konstruktør
@@ -28,12 +32,23 @@ namespace awsmSeeSharpGame
         {
             InitializeComponent();
             isGameRunning = false;
-            startSpill();
+            //startSpill();
+
+            pnlMainForm.Controls.Add(login);
+            login.Dock = DockStyle.Bottom;
+            login.Show();
+
+
+            introMusic.Play();
 
             threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
             threadInfoPanel = new Thread(threadStartInfoPanel);
             threadInfoPanel.IsBackground = true;
             threadInfoPanel.Start();
+            
+            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+            timer = new GameTimer(spillTid); //starter en ny timer
+            isGameRunning = true;
         }
 
         /// <summary>
@@ -43,11 +58,9 @@ namespace awsmSeeSharpGame
         {
             gamePanel = new GamePanel();
             Controls.Add(gamePanel);
-            
+            pnlMainForm.Visible = false;
 
-            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
-            timer = new GameTimer(spillTid); //starter en ny timer
-            isGameRunning = true;
+            
         }
 
         /// <summary>
@@ -108,5 +121,6 @@ namespace awsmSeeSharpGame
             AboutBox about = new AboutBox();
             about.ShowDialog(this);
         }
+
     }
 }

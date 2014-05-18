@@ -36,15 +36,14 @@
             this.lblLevel = new System.Windows.Forms.Label();
             this.msMenyStripe = new System.Windows.Forms.MenuStrip();
             this.MenuItemMeny = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemLoggInn = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemHighscore = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemLoggUt = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemHovedmeny = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemSkilleMeny = new System.Windows.Forms.ToolStripSeparator();
             this.MenuItemAvslutt = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemInnstillinger = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemHjelp = new System.Windows.Forms.ToolStripMenuItem();
             this.hvordanSpilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlMainForm = new System.Windows.Forms.Panel();
             this.pnlInfo.SuspendLayout();
             this.msMenyStripe.SuspendLayout();
             this.SuspendLayout();
@@ -110,7 +109,6 @@
             this.lblLevel.Size = new System.Drawing.Size(54, 23);
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Nivå:";
-           
             // 
             // msMenyStripe
             // 
@@ -127,42 +125,28 @@
             // MenuItemMeny
             // 
             this.MenuItemMeny.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemLoggInn,
-            this.MenuItemHighscore,
-            this.MenuItemLoggUt,
+            this.MenuItemHovedmeny,
             this.MenuItemSkilleMeny,
             this.MenuItemAvslutt});
             this.MenuItemMeny.Name = "MenuItemMeny";
             this.MenuItemMeny.Size = new System.Drawing.Size(49, 20);
             this.MenuItemMeny.Text = "Meny";
             // 
-            // MenuItemLoggInn
+            // MenuItemHovedmeny
             // 
-            this.MenuItemLoggInn.Name = "MenuItemLoggInn";
-            this.MenuItemLoggInn.Size = new System.Drawing.Size(152, 22);
-            this.MenuItemLoggInn.Text = "Logg inn";
-            // 
-            // MenuItemHighscore
-            // 
-            this.MenuItemHighscore.Name = "MenuItemHighscore";
-            this.MenuItemHighscore.Size = new System.Drawing.Size(152, 22);
-            this.MenuItemHighscore.Text = "Highscore";
-            // 
-            // MenuItemLoggUt
-            // 
-            this.MenuItemLoggUt.Name = "MenuItemLoggUt";
-            this.MenuItemLoggUt.Size = new System.Drawing.Size(152, 22);
-            this.MenuItemLoggUt.Text = "Logg ut";
+            this.MenuItemHovedmeny.Name = "MenuItemHovedmeny";
+            this.MenuItemHovedmeny.Size = new System.Drawing.Size(139, 22);
+            this.MenuItemHovedmeny.Text = "Hovedmeny";
             // 
             // MenuItemSkilleMeny
             // 
             this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
-            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(149, 6);
+            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(136, 6);
             // 
             // MenuItemAvslutt
             // 
             this.MenuItemAvslutt.Name = "MenuItemAvslutt";
-            this.MenuItemAvslutt.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemAvslutt.Size = new System.Drawing.Size(139, 22);
             this.MenuItemAvslutt.Text = "&Avslutt";
             this.MenuItemAvslutt.Click += new System.EventHandler(this.MenuItemAvslutt_Click);
             // 
@@ -194,13 +178,22 @@
             this.omToolStripMenuItem.Text = "Om...";
             this.omToolStripMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
+            // pnlMainForm
+            // 
+            this.pnlMainForm.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.space_background;
+            this.pnlMainForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlMainForm.Location = new System.Drawing.Point(0, 68);
+            this.pnlMainForm.Name = "pnlMainForm";
+            this.pnlMainForm.Size = new System.Drawing.Size(1184, 594);
+            this.pnlMainForm.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 662);
-            this.ClientSize = new System.Drawing.Size(824, 392);
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.pnlMainForm);
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(1200, 700);
@@ -225,15 +218,14 @@
         private System.Windows.Forms.Label lblTid;
         private System.Windows.Forms.MenuStrip msMenyStripe;
         private System.Windows.Forms.ToolStripMenuItem MenuItemMeny;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemLoggInn;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemHighscore;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemLoggUt;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemHovedmeny;
         private System.Windows.Forms.ToolStripSeparator MenuItemSkilleMeny;
         private System.Windows.Forms.ToolStripMenuItem MenuItemAvslutt;
         private System.Windows.Forms.ToolStripMenuItem MenuItemInnstillinger;
         private System.Windows.Forms.ToolStripMenuItem MenuItemHjelp;
         private System.Windows.Forms.ToolStripMenuItem hvordanSpilleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem omToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlMainForm;
     }
 }
 
