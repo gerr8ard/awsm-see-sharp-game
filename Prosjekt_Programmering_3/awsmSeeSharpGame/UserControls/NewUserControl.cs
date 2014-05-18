@@ -16,14 +16,5 @@ namespace awsmSeeSharpGame.UserControls
         {
             InitializeComponent();
         }
-
-        private void btnCancelNewUserControl_Click(object sender, EventArgs e)
-        {
-            tbFirstNameNewUserControl.Clear();
-            tbPasswordNewUserControl.Clear();
-            tbRetypePasswordNewUserControl.Clear();
-            tbSureNameNewUserControl.Clear();
-            tbUserNameNewUserControl.Clear();
-        }
     }
 }

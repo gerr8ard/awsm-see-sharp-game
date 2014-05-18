@@ -118,12 +118,6 @@
     <Compile Include="UserControls\LoginControl.Designer.cs">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\LoginControl2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\LoginControl2.Designer.cs">
-      <DependentUpon>LoginControl2.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\NewUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,9 +146,6 @@
     </Compile>
     <EmbeddedResource Include="UserControls\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\LoginControl2.resx">
-      <DependentUpon>LoginControl2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NewUserControl.resx">
       <DependentUpon>NewUserControl.cs</DependentUpon>
@@ -207,6 +198,7 @@
     <None Include="Resources\darkgalactica.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\fireTexture.bmp" />
     <Folder Include="obj\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
