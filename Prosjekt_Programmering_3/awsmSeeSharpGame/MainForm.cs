@@ -23,8 +23,9 @@ namespace awsmSeeSharpGame
         ThreadStart threadStartInfoPanel;
         Thread threadInfoPanel;
         GamePanel gamePanel;
-        LoginControl2 login = new LoginControl2();
-        SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);
+        LoginControl login = new LoginControl();//UserControl med logginn muligheter
+        NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
+        SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);//Legger til sang fra recources.
 
         /// <summary>
         /// Konstruktør
@@ -33,14 +34,14 @@ namespace awsmSeeSharpGame
         {
             InitializeComponent();
             isGameRunning = false;
-            //startSpill();
+            startSpill();
 
-            pnlMainForm.Controls.Add(login);
-            login.Dock = DockStyle.Bottom;
-            login.Show();
+            
+            //pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+            //login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+            //login.Show();//viser LoginControl form
 
-
-            introMusic.Play();
+            //introMusic.Play();//Spiller av introMusic
 
             threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
             threadInfoPanel = new Thread(threadStartInfoPanel);
