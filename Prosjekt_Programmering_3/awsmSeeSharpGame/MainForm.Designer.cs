@@ -180,7 +180,7 @@
             // 
             // pnlMainForm
             // 
-            this.pnlMainForm.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.space_background;
+            this.pnlMainForm.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.pnlMainForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainForm.Location = new System.Drawing.Point(0, 68);
