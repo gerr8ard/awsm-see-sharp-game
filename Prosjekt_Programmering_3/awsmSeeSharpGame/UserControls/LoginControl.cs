@@ -12,7 +12,8 @@ namespace awsmSeeSharpGame.UserControls
 {
     public partial class LoginControl : UserControl
     {
-
+        public delegate void newUserDelegate(object sender, EventArgs e);
+        public event newUserDelegate newUserEvent;
        
         public LoginControl()
         {
@@ -25,12 +26,11 @@ namespace awsmSeeSharpGame.UserControls
             
             
         }
-
+        
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)
         {
-            NewUserControl n = new NewUserControl();
-            
-            n.Show();
+
+            newUserEvent(sender, e);
             
         }
     }

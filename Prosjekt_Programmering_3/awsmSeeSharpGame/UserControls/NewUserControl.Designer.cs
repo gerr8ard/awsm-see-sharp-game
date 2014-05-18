@@ -158,6 +158,7 @@
             this.btnCancelNewUserControl.TabIndex = 6;
             this.btnCancelNewUserControl.Text = "&Avbryt";
             this.btnCancelNewUserControl.UseVisualStyleBackColor = true;
+            this.btnCancelNewUserControl.Click += new System.EventHandler(this.btnCancelNewUserControl_Click);
             // 
             // btnRegisterNewUserNewUserControl
             // 
@@ -168,6 +169,7 @@
             this.btnRegisterNewUserNewUserControl.TabIndex = 7;
             this.btnRegisterNewUserNewUserControl.Text = "Registrer ny bruker";
             this.btnRegisterNewUserNewUserControl.UseVisualStyleBackColor = true;
+            this.btnRegisterNewUserNewUserControl.Click += new System.EventHandler(this.btnRegisterNewUserNewUserControl_Click);
             // 
             // tbUserNameNewUserControl
             // 
@@ -211,13 +213,13 @@
             this.tbRetypePasswordNewUserControl.TabIndex = 12;
             this.tbRetypePasswordNewUserControl.UseSystemPasswordChar = true;
             // 
-            // NewUserControl2
+            // NewUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tlpNewUserControl);
-            this.Name = "NewUserControl2";
+            this.Name = "NewUserControl";
             this.Size = new System.Drawing.Size(1184, 100);
             this.tlpNewUserControl.ResumeLayout(false);
             this.tlpNewUserControl.PerformLayout();
