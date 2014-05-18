@@ -17,6 +17,7 @@ namespace awsmSeeSharpGame
 {
     public partial class MainForm : Form
     {
+        #region Fields
         GameTimer timer; //Timeren som holder styr på hvor lenge det er igjen av spillrunden.
         Boolean isGameRunning;
         ThreadStart threadStartInfoPanel;
@@ -25,6 +26,7 @@ namespace awsmSeeSharpGame
         LoginControl login = new LoginControl();//UserControl med logginn muligheter
         NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
         SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);//Legger til sang fra recources.
+        #endregion
 
         /// <summary>
         /// Konstruktør
@@ -33,11 +35,14 @@ namespace awsmSeeSharpGame
         {
             InitializeComponent();
             isGameRunning = false;
-            startSpill();
+            //startSpill();
+
+            login.newUserEvent += new LoginControl.newUserDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
+            newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
            
-            //pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-            //login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-            //login.Show();//viser LoginControl form
+            pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+            login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+            login.Show();//viser LoginControl form
 
             introMusic.Play();//Spiller av introMusic
 
@@ -50,7 +55,7 @@ namespace awsmSeeSharpGame
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
         }
-
+        #region Spillrelaterte metoder
         /// <summary>
         /// Starter et nytt spill
         /// </summary>
@@ -110,14 +115,16 @@ namespace awsmSeeSharpGame
             threadInfoPanel.Abort();
         }
 
-        private void MenuItemAvslutt_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+        }
+        #endregion
+
+        #region MenuItem Metoder
+        private void MenuItemAvslutt_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void omToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,6 +132,37 @@ namespace awsmSeeSharpGame
             AboutBox about = new AboutBox();
             about.ShowDialog(this);
         }
+        #endregion
 
+
+       
+
+        #region Button click events
+        /// <summary>
+        /// Metode som blir kjørt når "Registrer ny bruker" knapp trykkes.
+        /// Fjerner LoginControl og legger til NewUserControl til pnlMainForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNewUserLoginControl_Click(object sender, EventArgs e)
+        {
+
+            pnlMainForm.Controls.Remove(login);
+            pnlMainForm.Controls.Add(newUser);
+            newUser.Dock = DockStyle.Bottom;
+        }
+
+        /// <summary>
+        /// Metode som blir kjørt når "avbryt" knapp på NewUserControl blir trykket.
+        /// Fjerner NewUserControl og legger til LoginControl i pnlMainForm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancelNewUserControl_Click(object sender, EventArgs e)
+        {
+            pnlMainForm.Controls.Remove(newUser);
+            pnlMainForm.Controls.Add(login);
+        }
+        #endregion
     }
 }
