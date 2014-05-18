@@ -32,14 +32,14 @@ namespace awsmSeeSharpGame
         {
             InitializeComponent();
             isGameRunning = false;
-            //startSpill();
+            startSpill();
 
-            pnlMainForm.Controls.Add(login);
-            login.Dock = DockStyle.Bottom;
-            login.Show();
+           // pnlMainForm.Controls.Add(login);
+           // login.Dock = DockStyle.Bottom;
+           // login.Show();
 
 
-            introMusic.Play();
+            //introMusic.Play();
 
             threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
             threadInfoPanel = new Thread(threadStartInfoPanel);
@@ -57,8 +57,12 @@ namespace awsmSeeSharpGame
         private void startSpill()
         {
             gamePanel = new GamePanel();
-            Controls.Add(gamePanel);
-            pnlMainForm.Visible = false;
+            //Controls.Remove(pnlMainForm);
+            //Controls.Add(gamePanel);
+            pnlMainForm.Controls.Add(gamePanel);
+            //gamePanel.Show();
+
+            //pnlMainForm.Visible = false;
 
             
         }

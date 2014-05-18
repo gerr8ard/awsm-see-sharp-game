@@ -84,13 +84,13 @@ namespace awsmSeeSharpGame.Classes
         public override void Draw(PaintEventArgs e)
         {
 //            e.Graphics.FillPolygon(textureBrush, rocketMapPosition);
-            e.Graphics.DrawRectangle(pen, new Rectangle(150, 150, 600, 500));
+       //     e.Graphics.DrawRectangle(pen, new Rectangle(150, 150, 600, 500));
             //e.Graphics.FillRectangle(textureBrush, new Rectangle(200, 200, 600, 500));
             //e.Graphics.From = Graphics.FromImage(bitmap);
-            graphic.RotateTransform(20.0f);
-            //e.Graphics.DrawImageUnscaled(bitmap, new Point(583, 508));
+        //    graphic.RotateTransform(20.0f);
+            e.Graphics.DrawImageUnscaled(bitmap, new Point(583, 508));
             e.Graphics.DrawPolygon(pen, rocketMapPosition);
-            graphic.DrawImage(bitmap, new Point(583, 508));
+        //    graphic.DrawImage(bitmap, new Point(583, 508));
 
         }
 

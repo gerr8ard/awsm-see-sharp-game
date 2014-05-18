@@ -24,7 +24,7 @@ namespace awsmSeeSharpGame.Classes
         private Rocket rocket;
 
         public Label lblFps; // Label for FPS
-        Point lblFpsLocation = new Point(10, 75); //Setter posisjonen til FPS labelen!
+        Point lblFpsLocation = new Point(10, 10); //Setter posisjonen til FPS labelen!
         
         ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
         Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
@@ -51,6 +51,7 @@ namespace awsmSeeSharpGame.Classes
             lblFps = new Label();
             lblFps.Location = lblFpsLocation;
             lblFps.ForeColor = Color.White;
+            lblFps.BackColor = Color.Transparent;
             lblFps.Text = string.Empty;
             this.Controls.Add(lblFps);
 
