@@ -1,5 +1,4 @@
 ﻿using awsmSeeSharpGame.Classes;
-using awsmSeeSharpGame.Models;
 using awsmSeeSharpGame.UserControls;
 using System;
 using System.Collections.Generic;

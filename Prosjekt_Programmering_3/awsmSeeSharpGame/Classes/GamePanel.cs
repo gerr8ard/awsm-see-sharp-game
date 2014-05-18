@@ -43,7 +43,7 @@ namespace awsmSeeSharpGame.Classes
             obstacleList = new List<Obstacle>();
             targetList = new List<Target>();
 
-            Point[] rocketMap = ShapeMaps.RocketDesign1();
+            Point[] rocketMap = ShapeMaps.RocketDesign2();
 
             rocket = new Rocket(300,150,0, rocketMap);
 
