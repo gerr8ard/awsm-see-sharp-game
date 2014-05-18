@@ -27,6 +27,7 @@ namespace awsmSeeSharpGame.Classes
         TextureBrush textureBrush;
         Bitmap bitmap;
         Gravity gravityForRocket = new Gravity();
+        Graphics graphic;
 
         public Rocket(int _XPosition, int _YPosition, int _Rotation, Point [] _rocketMap)
         {
@@ -44,10 +45,15 @@ namespace awsmSeeSharpGame.Classes
 
             XAccelleration = 0;
             YAccelleration = 0;
+            Rectangle myRectangle = new Rectangle(200, 200, 100, 100);
 
-            bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.fire);
-            textureBrush = new TextureBrush(bitmap);
+            //bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.Rocket2);
+            bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.alienblaster);
+  //          graphic = Graphics.FromImage(bitmap);
+  //          graphic.RotateTransform(20.0f);
 
+            //textureBrush = new TextureBrush(bitmap, System.Drawing.Drawing2D.WrapMode.Clamp, myRectangle);
+            textureBrush = new TextureBrush(bitmap, System.Drawing.Drawing2D.WrapMode.Clamp);
         }
 
         public override void Move()
@@ -77,8 +83,15 @@ namespace awsmSeeSharpGame.Classes
         } 
         public override void Draw(PaintEventArgs e)
         {
-            e.Graphics.FillPolygon(textureBrush, rocketMapPosition);
+//            e.Graphics.FillPolygon(textureBrush, rocketMapPosition);
+            e.Graphics.DrawRectangle(pen, new Rectangle(150, 150, 600, 500));
+            //e.Graphics.FillRectangle(textureBrush, new Rectangle(200, 200, 600, 500));
+            //e.Graphics.From = Graphics.FromImage(bitmap);
+            graphic.RotateTransform(20.0f);
+            //e.Graphics.DrawImageUnscaled(bitmap, new Point(583, 508));
             e.Graphics.DrawPolygon(pen, rocketMapPosition);
+            graphic.DrawImage(bitmap, new Point(583, 508));
+
         }
 
 

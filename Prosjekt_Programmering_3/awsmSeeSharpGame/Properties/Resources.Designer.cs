@@ -63,9 +63,29 @@ namespace awsmSeeSharpGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap alienblaster {
+            get {
+                object obj = ResourceManager.GetObject("alienblaster", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap fire {
             get {
                 object obj = ResourceManager.GetObject("fire", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Rocket2 {
+            get {
+                object obj = ResourceManager.GetObject("Rocket2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
