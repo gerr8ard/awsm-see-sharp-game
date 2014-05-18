@@ -39,7 +39,7 @@ namespace awsmSeeSharpGame
             //login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
             //login.Show();//viser LoginControl form
 
-            //introMusic.Play();//Spiller av introMusic
+            introMusic.Play();//Spiller av introMusic
 
             threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
             threadInfoPanel = new Thread(threadStartInfoPanel);
