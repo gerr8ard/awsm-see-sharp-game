@@ -58,7 +58,11 @@ namespace awsmSeeSharpGame.Classes
 
             //Lager et test objekt og legger det til i obstacle lista
             Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.BlueViolet);
+            Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.BlueViolet);
+
             obstacleList.Add(obstackle1);
+            obstacleList.Add(obstackle2);
+
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, rocket);
@@ -85,6 +89,7 @@ namespace awsmSeeSharpGame.Classes
         // OnPaint metoden for GamePanel
         protected override void OnPaint(PaintEventArgs e)
         {
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             base.OnPaint(e);
             drawShapes.Draw(e); //Kaller Draw metoden som tegner opp alle objektene i Gamepanelet
         }        

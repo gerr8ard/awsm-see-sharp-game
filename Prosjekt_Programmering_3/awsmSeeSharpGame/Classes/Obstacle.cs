@@ -10,8 +10,10 @@ namespace awsmSeeSharpGame.Classes
 {
     public class Obstacle : Shape
     {
+        private TextureBrush textureBrush;
         private int width;
         private int height;
+        private Bitmap bitmap;
 
         public Obstacle(int _XPosition, int _YPosition, int _width, int _height, Color color)
         {
@@ -20,10 +22,15 @@ namespace awsmSeeSharpGame.Classes
             width = _width;
             height = _height;
             pen = new Pen(color, 5);
+            bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.PlanetTexture);
+
+            textureBrush = new TextureBrush(bitmap);
         }
 
         public override void Draw(PaintEventArgs e) {
-            e.Graphics.DrawRectangle(pen, XPosition, YPosition, width, height);
+            //e.Graphics.DrawRectangle(pen, XPosition, YPosition, width, height);
+            //e.Graphics.DrawEllipse(pen, XPosition, YPosition, width, height);
+            e.Graphics.FillEllipse(textureBrush, XPosition, YPosition, width, height);
 
         }
     }
