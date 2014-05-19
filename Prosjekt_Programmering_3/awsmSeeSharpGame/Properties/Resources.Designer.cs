@@ -71,16 +71,6 @@ namespace awsmSeeSharpGame.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap animated_gifs_of_fighting_game_backgrounds_15 {
-            get {
-                object obj = ResourceManager.GetObject("animated-gifs-of-fighting-game-backgrounds-15", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream darkgalactica {
@@ -122,9 +112,9 @@ namespace awsmSeeSharpGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap space_background {
+        public static System.Drawing.Bitmap spaceBackground {
             get {
-                object obj = ResourceManager.GetObject("space-background", resourceCulture);
+                object obj = ResourceManager.GetObject("spaceBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
