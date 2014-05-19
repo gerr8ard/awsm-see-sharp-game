@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using awsmSeeSharpGame.Models;
+using awsmSeeSharpGame.Classes;
 
 namespace awsmSeeSharpGame.UserControls
 {
@@ -23,7 +25,24 @@ namespace awsmSeeSharpGame.UserControls
 
         private void btnLoginLoginControl_Click(object sender, EventArgs e)
         {
-            
+            string givenUsername = tbUserNameLoginControl.Text;
+            string givenPassword = tbPasswordLoginControl.Text;
+
+            if (givenUsername != string.Empty && givenPassword != string.Empty)
+            {
+                awsm_Users user = Queries.GetUserByUserName(givenUsername);
+
+                if (user != null)
+                {
+                    string salt = user.Salt;
+                    string hash = user.Password;
+
+                    if (Hash.CheckPassord(givenPassword, hash, salt))
+                    {
+                        MainForm.isLoggedIn = true;
+                    }
+                }
+            }
             
         }
         

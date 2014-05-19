@@ -6,7 +6,7 @@
     using System.Text;
     using System.Collections;
 
-namespace SysUt14Gr03.Classes
+namespace awsmSeeSharpGame.Classes
 {
     /// <summary>
     /// Dette er en Hashing klasse som tar seg av generering av Salt og kryptering av passord.

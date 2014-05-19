@@ -26,6 +26,7 @@ namespace awsmSeeSharpGame
         LoginControl login = new LoginControl();//UserControl med logginn muligheter
         NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
         SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);//Legger til sang fra recources.
+        public static bool isLoggedIn = false;
         #endregion
 
         /// <summary>
@@ -35,6 +36,7 @@ namespace awsmSeeSharpGame
         {
             InitializeComponent();
             isGameRunning = false;
+            
             //startSpill();
 
             login.newUserEvent += new LoginControl.newUserDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
