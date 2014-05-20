@@ -93,6 +93,7 @@
             this.tbPasswordLoginControl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbPasswordLoginControl.Location = new System.Drawing.Point(353, 36);
             this.tbPasswordLoginControl.Name = "tbPasswordLoginControl";
+            this.tbPasswordLoginControl.PasswordChar = '*';
             this.tbPasswordLoginControl.Size = new System.Drawing.Size(144, 20);
             this.tbPasswordLoginControl.TabIndex = 3;
             // 
