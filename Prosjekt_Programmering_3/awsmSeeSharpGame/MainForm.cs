@@ -43,9 +43,9 @@ namespace awsmSeeSharpGame
             login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
             login.loginEvent += new LoginControl.loginControlDelegate(btnLoginLoginControl_Click);//Abonnerer på loginEvent i LoginControl
-            startPage.startPageClickEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startPageClickEvent i StartPageControl
-            startPage.startPageClickEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på startPageClickEvent i StartPageControl
-            startPage.startPageClickEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på startPageClickEvent i StartPageControl
+            startPage.startgameEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
+            startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
+            startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
 
             pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
             login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform

@@ -13,7 +13,9 @@ namespace awsmSeeSharpGame.UserControls
     public partial class StartPageControl : UserControl
     {
         public delegate void startPageDelegate(object sender, EventArgs e);
-        public event startPageDelegate startPageClickEvent;
+        public event startPageDelegate startgameEvent;
+        public event startPageDelegate logOutEvent;
+        public event startPageDelegate terminateEvent;
 
         public StartPageControl()
         {
@@ -23,17 +25,17 @@ namespace awsmSeeSharpGame.UserControls
 
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
-            startPageClickEvent(sender, e);
+            startgameEvent(sender, e);
         }
 
         private void btn_logOut_Click(object sender, EventArgs e)
         {
-            startPageClickEvent(sender, e);
+            logOutEvent(sender, e);
         }
 
         private void btn_Terminate_Click(object sender, EventArgs e)
         {
-            startPageClickEvent(sender, e);
+            terminateEvent(sender, e);
         }
     }
 }
