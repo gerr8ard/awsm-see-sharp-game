@@ -57,7 +57,7 @@ namespace awsmSeeSharpGame.Classes
                 bullet.Move();
             }
             rocket.Accelerate();
-            rocket.Move();
+            //rocket.Move();
         }
 
         /// <summary>

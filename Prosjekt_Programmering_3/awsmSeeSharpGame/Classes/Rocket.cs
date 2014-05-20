@@ -19,15 +19,14 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Rocket : MovableShape
     {
-        Pen pen = new Pen(Color.White);
-        SolidBrush brush = new SolidBrush(Color.White);
-        Point[] rocketMap;
-        Point[] rocketMapPosition;
+        private Pen pen = new Pen(Color.White);
+        private SolidBrush brush = new SolidBrush(Color.White);
+        private Point[] rocketMap;
+        private Point[] rocketMapPosition;
 
-        TextureBrush textureBrush;
-        Bitmap bitmap;
-        Gravity gravityForRocket = new Gravity();
-        Graphics graphic;
+        private TextureBrush textureBrush;
+        private Bitmap bitmap;
+        private Gravity gravityForRocket = new Gravity();
 
         public Rocket(int _XPosition, int _YPosition, int _Rotation, Point [] _rocketMap)
         {
@@ -88,7 +87,7 @@ namespace awsmSeeSharpGame.Classes
             //e.Graphics.FillRectangle(textureBrush, new Rectangle(200, 200, 600, 500));
             //e.Graphics.From = Graphics.FromImage(bitmap);
         //    graphic.RotateTransform(20.0f);
-            e.Graphics.DrawImageUnscaled(bitmap, new Point(583, 508));
+            e.Graphics.DrawImageUnscaled(bitmap, new Point(0,0));// new Point(583, 508));
             e.Graphics.DrawPolygon(pen, rocketMapPosition);
         //    graphic.DrawImage(bitmap, new Point(583, 508));
 

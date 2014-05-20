@@ -37,14 +37,14 @@ namespace awsmSeeSharpGame
             InitializeComponent();
             isGameRunning = false;
             
-            //startSpill();
+            startSpill();
 
             login.newUserEvent += new LoginControl.newUserDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
            
-            pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-            login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-            login.Show();//viser LoginControl form
+            //pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+            //login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+            //login.Show();//viser LoginControl form
 
             //introMusic.Play();//Spiller av introMusic
 
