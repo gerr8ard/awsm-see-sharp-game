@@ -27,7 +27,7 @@ namespace awsmSeeSharpGame.Classes
         private TextureBrush textureBrush;
         private Bitmap bitmap;
         private Gravity gravityForRocket = new Gravity();
-        public int Thrust;
+        public int Thrust = 0;
 
 
 
@@ -60,10 +60,13 @@ namespace awsmSeeSharpGame.Classes
         //    calcYPosition += DyPosition;
         //    XPosition = (int)calcXPosition;
         //    YPosition = (int)calcYPosition;
-        //    updateRocketPosition();
+            YPosition -= Thrust;
+            if (Thrust > 0) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
+            {
+                Thrust--;
+            }
+            updateRocketPosition();
         }
-
-
 
         private void updateRocketPosition()
         {
