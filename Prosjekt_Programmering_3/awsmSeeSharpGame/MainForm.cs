@@ -29,6 +29,9 @@ namespace awsmSeeSharpGame
         StartPageControl startPage = new StartPageControl();//UserControl med hovedmeny
         GameInfoControl gameInfo = new GameInfoControl();//GameInfoControll med informasjon om gjeldende spill
         SoundPlayer introMusic = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);//Legger til sang fra recources.
+        
+        
+
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
         public static GameInfo currentGameInfo = new GameInfo();
@@ -68,7 +71,6 @@ namespace awsmSeeSharpGame
 
             //pål song.Start();
 
-            
 
             login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
@@ -80,7 +82,7 @@ namespace awsmSeeSharpGame
             pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
             login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
             login.Show();//viser LoginControl form
-           
+
             //introMusic.Play();//Spiller av introMusic
             
         }
@@ -101,10 +103,7 @@ namespace awsmSeeSharpGame
             threadInfoPanel = new Thread(threadStartInfoPanel);
             threadInfoPanel.IsBackground = true;
             threadInfoPanel.Start();  */
-            if (currentUser != null)
-            {
-                currentGameInfo = new GameInfo(currentUser);
-            }
+            
         }
 
         /// <summary>
@@ -212,6 +211,12 @@ namespace awsmSeeSharpGame
 
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
+            if (currentUser != null)
+            {
+                currentGameInfo = new GameInfo(currentUser);
+
+            }
+            gameInfo = new GameInfoControl();
             pnlMainForm.Controls.Remove(startPage);
             pnlMainForm.Controls.Add(gameInfo);
             startSpill();

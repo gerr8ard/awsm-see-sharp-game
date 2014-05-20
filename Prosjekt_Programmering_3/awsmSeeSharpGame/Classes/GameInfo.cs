@@ -16,6 +16,7 @@ namespace awsmSeeSharpGame.Classes
         public int score;
         public GameTimer timer;
         public int personalHighScore;
+        bool isGameRunning = false;
 
         public GameInfo()
         {
@@ -30,7 +31,9 @@ namespace awsmSeeSharpGame.Classes
             score = 0;
             personalHighScore = 0;
 
-            timer = new GameTimer(new TimeSpan(0, 5, 0));
+            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+            timer = new GameTimer(spillTid); //starter en ny timer
+            isGameRunning = true;
         }
 
     }
