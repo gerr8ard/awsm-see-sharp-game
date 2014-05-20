@@ -84,7 +84,7 @@ namespace awsmSeeSharpGame.Classes
 
         private void previewKeyEventHandler(object sender, PreviewKeyDownEventArgs e)
         {
-
+           
             if (e.KeyCode == Keys.Left)
             {
                 rocket.Rotation -= 3;

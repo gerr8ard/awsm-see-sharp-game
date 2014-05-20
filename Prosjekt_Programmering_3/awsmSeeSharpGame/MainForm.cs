@@ -66,12 +66,8 @@ namespace awsmSeeSharpGame
         private void startSpill()
         {
             gamePanel = new GamePanel();
-            //Controls.Remove(pnlMainForm);
-            //Controls.Add(gamePanel);
             pnlMainForm.Controls.Add(gamePanel);
-            //gamePanel.Show();
 
-            //pnlMainForm.Visible = false;
             TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
@@ -80,8 +76,10 @@ namespace awsmSeeSharpGame
             threadInfoPanel = new Thread(threadStartInfoPanel);
             threadInfoPanel.IsBackground = true;
             threadInfoPanel.Start();  */
-            currentGameInfo = new GameInfo(currentUser);
-
+            if (currentUser != null)
+            {
+                currentGameInfo = new GameInfo(currentUser);
+            }
         }
 
         /// <summary>
