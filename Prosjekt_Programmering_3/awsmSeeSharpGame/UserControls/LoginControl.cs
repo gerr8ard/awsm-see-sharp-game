@@ -28,6 +28,7 @@ namespace awsmSeeSharpGame.UserControls
         {
             string givenUsername = tbUserNameLoginControl.Text;
             string givenPassword = tbPasswordLoginControl.Text;
+            MainForm.currentUser = Queries.GetUserByUserName(tbUserNameLoginControl.Text);
 
             if (givenUsername != string.Empty && givenPassword != string.Empty)
             {

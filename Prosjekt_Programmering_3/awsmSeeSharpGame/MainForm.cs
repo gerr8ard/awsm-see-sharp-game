@@ -1,5 +1,6 @@
 ﻿using awsmSeeSharpGame.Classes;
 using awsmSeeSharpGame.UserControls;
+using awsmSeeSharpGame.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,8 +27,11 @@ namespace awsmSeeSharpGame
         LoginControl login = new LoginControl();//UserControl med logginn muligheter
         NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
         StartPageControl startPage = new StartPageControl();//UserControl med hovedmeny
+        GameInfoControl gameInfo = new GameInfoControl();//GameInfoControll med informasjon om gjeldende spill
         SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);//Legger til sang fra recources.
         public static bool isLoggedIn = false;
+        public static awsm_Users currentUser;
+        public static GameInfo currentGameInfo = new GameInfo();
         #endregion
 
         /// <summary>
@@ -52,11 +56,6 @@ namespace awsmSeeSharpGame
             login.Show();//viser LoginControl form
 
             //introMusic.Play();//Spiller av introMusic
-
-            threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
-            threadInfoPanel = new Thread(threadStartInfoPanel);
-            threadInfoPanel.IsBackground = true;
-            threadInfoPanel.Start();
             
         }
         #region Spillrelaterte metoder
@@ -75,7 +74,12 @@ namespace awsmSeeSharpGame
             TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
-            
+
+   /*         threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
+            threadInfoPanel = new Thread(threadStartInfoPanel);
+            threadInfoPanel.IsBackground = true;
+            threadInfoPanel.Start();  */
+            currentGameInfo = new GameInfo(currentUser);
         }
 
         /// <summary>
@@ -97,18 +101,18 @@ namespace awsmSeeSharpGame
                 pnlInfo.Invalidate();
                 Thread.Sleep(17); 
             }
-        }
+        } 
 
         /// <summary>
         /// Paint metode for Info panelet
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pnlInfo_Paint(object sender, PaintEventArgs e)
+   /*     private void pnlInfo_Paint(object sender, PaintEventArgs e)
         {
             lblTid.Text = timer.GetTid().ToString(); // Oppdater tidslabelen.
 
-        }
+        }  */
 
         /// <summary>
         /// Metode som blir kjørt når programmet lukkes. Stopper kjørende spill og tråder
@@ -118,7 +122,7 @@ namespace awsmSeeSharpGame
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             stoppSpill();
-            threadInfoPanel.Abort();
+         //   threadInfoPanel.Abort();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -165,7 +169,7 @@ namespace awsmSeeSharpGame
                 pnlMainForm.Controls.Remove(login);
                 startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
                 startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
-                pnlMainForm.Controls.Add(startPage);                
+                pnlMainForm.Controls.Add(startPage);
             }
         }
 
@@ -184,6 +188,7 @@ namespace awsmSeeSharpGame
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
             pnlMainForm.Controls.Remove(startPage);
+            pnlMainForm.Controls.Add(gameInfo);
             startSpill();
         }
 

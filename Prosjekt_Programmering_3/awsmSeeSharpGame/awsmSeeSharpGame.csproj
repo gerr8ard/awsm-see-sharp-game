@@ -75,6 +75,7 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\GameInfo.cs" />
     <Compile Include="Classes\GamePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -117,6 +118,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Rocket.cs" />
+    <Compile Include="UserControls\GameInfoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\GameInfoControl.Designer.cs">
+      <DependentUpon>GameInfoControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,6 +162,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControls\GameInfoControl.resx">
+      <DependentUpon>GameInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </EmbeddedResource>
