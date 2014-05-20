@@ -11,6 +11,7 @@ namespace awsmSeeSharpGame.interfaces
     {
         int XPosition { get; set; }
         int YPosition { get; set; }
+        float Rotation { get; set; }
         void Draw(PaintEventArgs e);
     }
 }

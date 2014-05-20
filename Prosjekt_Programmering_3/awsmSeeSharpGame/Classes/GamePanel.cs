@@ -34,7 +34,8 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public GamePanel()
         {
-            this.BackColor = Color.Black;
+            //this.BackColor = ColorBlack;
+            this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
 
             //Setter opp alle objekt listene
@@ -45,7 +46,7 @@ namespace awsmSeeSharpGame.Classes
 
             Point[] rocketMap = ShapeMaps.RocketDesign2();
 
-            rocket = new Rocket(0,0,0, rocketMap);
+            rocket = new Rocket(200,300,0, rocketMap);
 
             // Setter opp labelen som viser FPS
             lblFps = new Label();
@@ -57,8 +58,8 @@ namespace awsmSeeSharpGame.Classes
 
 
             //Lager et test objekt og legger det til i obstacle lista
-            Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.BlueViolet);
-            Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.BlueViolet);
+            Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.White);
+            Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.White);
 
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
