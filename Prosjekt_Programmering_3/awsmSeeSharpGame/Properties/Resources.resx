@@ -136,4 +136,52 @@
   <data name="PlanetTexture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlanetTexture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="back_2_work_y" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_2_work_y.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="come_get_some_x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\come_get_some_x.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Explosion01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Explosion01.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Explosion02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Explosion02.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Explosion03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Explosion03.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Explosion04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Explosion04.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Explosion05" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Explosion05.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game_over" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game over.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game_over_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game over 2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Lost_life" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lost life.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Metallica_Orion_8_bit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Metallica-Orion 8 bit.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="out_of_gum_x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\out_of_gum_x.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ready_4_action" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ready_4_action.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Shot_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Shot.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Shot_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Shot 02.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Shot_03" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Shot 03.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

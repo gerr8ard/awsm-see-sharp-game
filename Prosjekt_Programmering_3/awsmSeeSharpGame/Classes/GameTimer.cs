@@ -41,7 +41,10 @@ namespace awsmSeeSharpGame.Classes
         private void TimerEvent(object source, ElapsedEventArgs e)
         {
             if (tid > zeroTime)
+            {
                 tid = tid - oneSecond;
+                sekundOppdatering(source, e);
+            }
             else
             {
                 isRunning = false;
