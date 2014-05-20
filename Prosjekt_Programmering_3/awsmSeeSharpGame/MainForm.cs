@@ -28,10 +28,32 @@ namespace awsmSeeSharpGame
         NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
         StartPageControl startPage = new StartPageControl();//UserControl med hovedmeny
         GameInfoControl gameInfo = new GameInfoControl();//GameInfoControll med informasjon om gjeldende spill
-        SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);//Legger til sang fra recources.
+        SoundPlayer introMusic = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);//Legger til sang fra recources.
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
         public static GameInfo currentGameInfo = new GameInfo();
+
+        /* pål sin
+        Thread song = new Thread(myFun1);
+        Thread song2 = new Thread(myFun2);
+
+        static void myFun1()
+        {
+             new System.Threading.Thread(() => {
+                var c = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);
+                    c.Play();
+                }).Start();
+        }
+
+        static void myFun2()
+        {
+            new System.Threading.Thread(() =>
+            {
+                var c = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);
+                c.Play();
+            }).Start();
+         * 
+        }*/
         #endregion
 
         /// <summary>
@@ -42,8 +64,11 @@ namespace awsmSeeSharpGame
         {
             InitializeComponent();
             isGameRunning = false;
+           // startSpill();
+
+            //pål song.Start();
+
             
-            startSpill();
 
             login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
@@ -52,10 +77,10 @@ namespace awsmSeeSharpGame
             startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
             startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
 
-           // pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-           // login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-           // login.Show();//viser LoginControl form
-
+            pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+            login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+            login.Show();//viser LoginControl form
+           
             //introMusic.Play();//Spiller av introMusic
             
         }
@@ -156,7 +181,7 @@ namespace awsmSeeSharpGame
         /// <param name="e"></param>
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)
         {
-
+            //pål song2.Start();
             pnlMainForm.Controls.Remove(login);
             pnlMainForm.Controls.Add(newUser);
             newUser.Dock = DockStyle.Bottom;
