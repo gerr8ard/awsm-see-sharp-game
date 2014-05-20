@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,7 +64,7 @@ namespace awsmSeeSharpGame.Classes
         //    rectangle.Y = (int)calcYPosition;
 
             rectangle.Y -= Thrust;
-            if (Thrust > 0) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
+            if (Thrust > 1) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
             {
                 Thrust--;
             }
@@ -77,6 +78,8 @@ namespace awsmSeeSharpGame.Classes
                 rocketMapPosition[i].X = rectangle.X + rocketMap[i].X;
                 rocketMapPosition[i].Y = rectangle.Y + rocketMap[i].Y;
             }
+            GraphicsPath graphicPath = ShapeMaps.MakeGraphicsPath(rocketMapPosition);
+            region = new Region(graphicPath);
         }
 
         public void Accelerate()

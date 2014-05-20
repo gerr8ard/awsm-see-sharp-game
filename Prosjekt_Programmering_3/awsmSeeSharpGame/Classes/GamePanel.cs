@@ -52,7 +52,7 @@ namespace awsmSeeSharpGame.Classes
 
             Point[] rocketMap = ShapeMaps.RocketDesign2();
 
-            rocket = new Rocket(200,300,0, rocketMap);
+            rocket = new Rocket(200,500,0, rocketMap);
 
             // Setter opp labelen som viser FPS
             lblFps = new Label();

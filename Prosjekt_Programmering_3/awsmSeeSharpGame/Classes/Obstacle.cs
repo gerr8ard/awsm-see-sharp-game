@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace awsmSeeSharpGame.Classes
         private int height;
         private Bitmap bitmap;
         private Pen pen;
+        private GraphicsPath path;
 
         public Obstacle(int _XPosition, int _YPosition, int _width, int _height, Color color)
         {
@@ -25,6 +27,9 @@ namespace awsmSeeSharpGame.Classes
             rectangle.Height = _height;
             pen = new Pen(color, 1);
             bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.PlanetTexture);
+
+            path = ShapeMaps.MakeElipseGraphicsPath(rectangle);
+            region = new Region(path);
 
             textureBrush = new TextureBrush(bitmap);
         }
