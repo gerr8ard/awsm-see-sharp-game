@@ -27,9 +27,14 @@ namespace awsmSeeSharpGame.Classes
         private TextureBrush textureBrush;
         private Bitmap bitmap;
         private Gravity gravityForRocket = new Gravity();
+        public int Thrust;
 
-        public Rocket(int _XPosition, int _YPosition, int _Rotation, Point [] _rocketMap)
+
+
+        public Rocket(int _XPosition, int _YPosition, float _Rotation, Point [] _rocketMap)
         {
+            bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.alienblaster);
+
             XPosition = _XPosition;
             YPosition = _YPosition;
             calcXPosition = XPosition;
@@ -44,24 +49,29 @@ namespace awsmSeeSharpGame.Classes
 
             XAccelleration = 0;
             YAccelleration = 0;
-            Rectangle myRectangle = new Rectangle(200, 200, 100, 100);
 
-            //bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.Rocket2);
-            bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.alienblaster);
-  //          graphic = Graphics.FromImage(bitmap);
-  //          graphic.RotateTransform(20.0f);
-
-            //textureBrush = new TextureBrush(bitmap, System.Drawing.Drawing2D.WrapMode.Clamp, myRectangle);
-            textureBrush = new TextureBrush(bitmap, System.Drawing.Drawing2D.WrapMode.Clamp);
         }
 
         public override void Move()
         {
-            calcXPosition += DxPosition;
-            calcYPosition += DyPosition;
-            XPosition = (int)calcXPosition;
-            YPosition = (int)calcYPosition;
-            updateRocketPosition();
+         //   Accelerate();
+         //   Rotation += 1;
+        //    calcXPosition += DxPosition;
+        //    calcYPosition += DyPosition;
+        //    XPosition = (int)calcXPosition;
+        //    YPosition = (int)calcYPosition;
+        //    updateRocketPosition();
+        }
+
+
+
+        private void updateRocketPosition()
+        {
+            for (int i = 0; i < rocketMap.Length; i++)
+            {
+                rocketMapPosition[i].X = XPosition + rocketMap[i].X;
+                rocketMapPosition[i].Y = YPosition + rocketMap[i].Y;
+            }
         }
 
         public void Accelerate()
@@ -71,26 +81,14 @@ namespace awsmSeeSharpGame.Classes
             DyPosition += YAccelleration;
         }
 
-        private void updateRocketPosition()
-        {
-            for (int i = 0; i < rocketMap.Length; i++)
-            {
-                rocketMapPosition[i].X = XPosition + rocketMap[i].X;
-                rocketMapPosition[i].Y = YPosition + rocketMap[i].Y;
-            }
-
-        } 
         public override void Draw(PaintEventArgs e)
         {
-//            e.Graphics.FillPolygon(textureBrush, rocketMapPosition);
-       //     e.Graphics.DrawRectangle(pen, new Rectangle(150, 150, 600, 500));
-            //e.Graphics.FillRectangle(textureBrush, new Rectangle(200, 200, 600, 500));
-            //e.Graphics.From = Graphics.FromImage(bitmap);
-        //    graphic.RotateTransform(20.0f);
-            e.Graphics.DrawImageUnscaled(bitmap, new Point(0,0));// new Point(583, 508));
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            e.Graphics.TranslateTransform((float)(XPosition + bitmap.Width / 2), (float)(YPosition) + bitmap.Height / 2);
+            e.Graphics.RotateTransform(Rotation);
+            e.Graphics.TranslateTransform(-(float)(XPosition + bitmap.Width / 2), -(float)(YPosition + bitmap.Height / 2));
+            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition,YPosition));
             e.Graphics.DrawPolygon(pen, rocketMapPosition);
-        //    graphic.DrawImage(bitmap, new Point(583, 508));
-
         }
 
 
