@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,10 +18,11 @@ namespace awsmSeeSharpGame.Classes
     {
         public Bullet(int _XPosition, int _YPosition, int _Rotation)
         {
-            XPosition = _XPosition;
-            YPosition = _YPosition;
-            calcXPosition = XPosition;
-            calcYPosition = YPosition;
+            rectangle = new Rectangle();
+            rectangle.X = _XPosition;
+            rectangle.Y = _YPosition;
+            calcXPosition = rectangle.X;
+            calcYPosition = rectangle.Y;
             Rotation = _Rotation;
             DxPosition = 0;
             DyPosition = 0;

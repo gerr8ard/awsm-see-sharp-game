@@ -68,9 +68,38 @@ namespace awsmSeeSharpGame.Classes
             {
                 bullet.Collision();
             }
+            foreach (Obstacle obstacle in obstacleList)
+            {
+                if (obstacle.rectangle.IntersectsWith(rocket.rectangle))
+                {
+                    rocket.pen.Color = Color.Red;
+                }
+                else
+                {
+                    rocket.pen.Color = Color.Cyan;
+                }
+            }
             rocket.Collision();
         }
-
+/*
+        public void Collision()
+        {
+            {
+                foreach (Firkant firkant in firkanter)
+                {
+                    foreach (Ball ball in balls)
+                    {
+                        if (ball.rectangle.IntersectsWith(firkant.rectangle))
+                        {
+                            ball.running = false;
+                            Debug.WriteLine(string.Format("{0} terminert ved kollisjon", ball.getNameOfThread()));
+                        }
+                    }
+                }
+                balls.RemoveAll(ball => ball.running == false);
+            }
+        }
+ * */
         /// <summary>
         /// Går igjennom alle objektene og kaller opp Draw metodene deres for å tegne de opp
         /// </summary>
