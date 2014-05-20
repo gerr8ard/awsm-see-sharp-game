@@ -18,6 +18,7 @@ namespace awsmSeeSharpGame.Classes
         private double timeSinceLastUpdate = 0.0;
         private double fps = 0.0;
         private DateTime lastTime = DateTime.Now;
+        private bool collision;
 
         // Lister som inneholder objektene som skal tegnes opp
         List<Enemy> enemyList;
@@ -45,6 +46,7 @@ namespace awsmSeeSharpGame.Classes
             obstacleList = _obstacleList;
             targetList = _targetList;
             rocket = _rocket;
+            collision = false;
         }
 
         /// <summary>
@@ -72,14 +74,18 @@ namespace awsmSeeSharpGame.Classes
             {
                 if (obstacle.rectangle.IntersectsWith(rocket.rectangle))
                 {
-                    rocket.pen.Color = Color.Red;
-                }
-                else
-                {
-                    rocket.pen.Color = Color.Cyan;
+                    collision = true;
                 }
             }
-            rocket.Collision();
+            if (collision)
+            {
+                rocket.pen.Color = Color.Red;
+                collision = false; //Resetter collisions testen
+            }
+            else
+            {
+                rocket.pen.Color = Color.Cyan;
+            }
         }
 /*
         public void Collision()
