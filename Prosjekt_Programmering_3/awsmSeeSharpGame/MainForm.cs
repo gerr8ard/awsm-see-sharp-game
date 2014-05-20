@@ -33,6 +33,7 @@ namespace awsmSeeSharpGame
         /// <summary>
         /// Konstruktør
         /// </summary>
+   
         public MainForm()
         {
             InitializeComponent();

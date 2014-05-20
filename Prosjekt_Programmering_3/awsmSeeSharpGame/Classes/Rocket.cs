@@ -27,6 +27,7 @@ namespace awsmSeeSharpGame.Classes
         private TextureBrush textureBrush;
         private Bitmap bitmap;
         private Gravity gravityForRocket = new Gravity();
+        public int Thrust;
 
 
 
@@ -83,21 +84,11 @@ namespace awsmSeeSharpGame.Classes
         public override void Draw(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-
-//            e.Graphics.FillPolygon(textureBrush, rocketMapPosition);
-       //     e.Graphics.DrawRectangle(pen, new Rectangle(150, 150, 600, 500));
-            //e.Graphics.FillRectangle(textureBrush, new Rectangle(200, 200, 600, 500));
-            //e.Graphics.From = Graphics.FromImage(bitmap);
-        //    graphic.RotateTransform(20.0f);
-
             e.Graphics.TranslateTransform((float)(XPosition + bitmap.Width / 2), (float)(YPosition) + bitmap.Height / 2);
             e.Graphics.RotateTransform(Rotation);
             e.Graphics.TranslateTransform(-(float)(XPosition + bitmap.Width / 2), -(float)(YPosition + bitmap.Height / 2));
-            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition,YPosition));// new Point(583, 508));
+            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition,YPosition));
             e.Graphics.DrawPolygon(pen, rocketMapPosition);
-
-        //    graphic.DrawImage(bitmap, new Point(583, 508));
-
         }
 
 

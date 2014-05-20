@@ -29,8 +29,6 @@ namespace awsmSeeSharpGame.Classes
         }
 
         public override void Draw(PaintEventArgs e) {
-            //e.Graphics.DrawRectangle(pen, XPosition, YPosition, width, height);
-            //e.Graphics.DrawEllipse(pen, XPosition, YPosition, width, height);
             e.Graphics.FillEllipse(textureBrush, XPosition, YPosition, width, height);
             e.Graphics.DrawEllipse(pen, XPosition, YPosition, width, height );
 

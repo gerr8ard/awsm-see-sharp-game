@@ -94,6 +94,14 @@ namespace awsmSeeSharpGame.Classes
             {
                 rocket.Rotation += 3;
             }
+            else if (e.KeyCode == Keys.Down)
+            {
+                rocket.Thrust += 1;
+            }
+            else if (e.KeyCode == Keys.Space)
+            {
+                   // Skyte pang! pang!
+            }
         }
 
 
