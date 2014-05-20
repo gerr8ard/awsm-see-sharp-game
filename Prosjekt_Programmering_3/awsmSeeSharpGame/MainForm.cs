@@ -25,6 +25,7 @@ namespace awsmSeeSharpGame
         GamePanel gamePanel;
         LoginControl login = new LoginControl();//UserControl med logginn muligheter
         NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
+        StartPageControl startPage = new StartPageControl();//UserControl med hovedmeny
         SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);//Legger til sang fra recources.
         public static bool isLoggedIn = false;
         #endregion
@@ -37,14 +38,18 @@ namespace awsmSeeSharpGame
             InitializeComponent();
             isGameRunning = false;
             
-            startSpill();
+            //startSpill();
 
-            login.newUserEvent += new LoginControl.newUserDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
+            login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
-           
-            //pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-            //login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-            //login.Show();//viser LoginControl form
+            login.loginEvent += new LoginControl.loginControlDelegate(btnLoginLoginControl_Click);//Abonnerer på loginEvent i LoginControl
+            startPage.startgameEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
+            startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
+            startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
+
+            pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+            login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+            login.Show();//viser LoginControl form
 
             //introMusic.Play();//Spiller av introMusic
 
@@ -53,9 +58,6 @@ namespace awsmSeeSharpGame
             threadInfoPanel.IsBackground = true;
             threadInfoPanel.Start();
             
-            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
-            timer = new GameTimer(spillTid); //starter en ny timer
-            isGameRunning = true;
         }
         #region Spillrelaterte metoder
         /// <summary>
@@ -70,7 +72,9 @@ namespace awsmSeeSharpGame
             //gamePanel.Show();
 
             //pnlMainForm.Visible = false;
-
+            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+            timer = new GameTimer(spillTid); //starter en ny timer
+            isGameRunning = true;
             
         }
 
@@ -154,6 +158,17 @@ namespace awsmSeeSharpGame
             newUser.Dock = DockStyle.Bottom;
         }
 
+        private void btnLoginLoginControl_Click(object sender, EventArgs e)
+        {
+            if (isLoggedIn == true)
+            {
+                pnlMainForm.Controls.Remove(login);
+                startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
+                startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
+                pnlMainForm.Controls.Add(startPage);                
+            }
+        }
+
         /// <summary>
         /// Metode som blir kjørt når "avbryt" knapp på NewUserControl blir trykket.
         /// Fjerner NewUserControl og legger til LoginControl i pnlMainForm
@@ -165,6 +180,25 @@ namespace awsmSeeSharpGame
             pnlMainForm.Controls.Remove(newUser);
             pnlMainForm.Controls.Add(login);
         }
+
+        private void btn_StartGame_Click(object sender, EventArgs e)
+        {
+            pnlMainForm.Controls.Remove(startPage);
+            startSpill();
+        }
+
+        private void btn_logOut_Click(object sender, EventArgs e)
+        {
+            pnlMainForm.Controls.Remove(startPage);
+            pnlMainForm.Controls.Add(login);
+            isLoggedIn = false;
+        }
+
+        private void btn_Terminate_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         #endregion
     }
 }

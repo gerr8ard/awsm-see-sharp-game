@@ -129,6 +129,12 @@
     <Compile Include="UserControls\NewUserControl.Designer.cs">
       <DependentUpon>NewUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\StartPageControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\StartPageControl.Designer.cs">
+      <DependentUpon>StartPageControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NewUserControl.resx">
       <DependentUpon>NewUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\StartPageControl.resx">
+      <DependentUpon>StartPageControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
