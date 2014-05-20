@@ -34,7 +34,13 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public GamePanel()
         {
-            //this.BackColor = ColorBlack;
+            this.SetStyle(ControlStyles.Selectable, true);
+            this.TabStop = true;
+
+
+            this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);
+
+            //this.BackColor = Color.Black;
             this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
 
@@ -75,6 +81,21 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel.Start();
 
         }
+
+        private void previewKeyEventHandler(object sender, PreviewKeyDownEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Left)
+            {
+                rocket.Rotation -= 3;
+            }
+
+            else if (e.KeyCode == Keys.Right)
+            {
+                rocket.Rotation += 3;
+            }
+        }
+
 
         /// <summary>
         /// Kaller On Paint metoden ca 60 ganger i sekundet

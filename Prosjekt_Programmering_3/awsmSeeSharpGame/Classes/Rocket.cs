@@ -28,6 +28,8 @@ namespace awsmSeeSharpGame.Classes
         private Bitmap bitmap;
         private Gravity gravityForRocket = new Gravity();
 
+
+
         public Rocket(int _XPosition, int _YPosition, float _Rotation, Point [] _rocketMap)
         {
             bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.alienblaster);
@@ -52,7 +54,7 @@ namespace awsmSeeSharpGame.Classes
         public override void Move()
         {
          //   Accelerate();
-            Rotation += 1;
+         //   Rotation += 1;
         //    calcXPosition += DxPosition;
         //    calcYPosition += DyPosition;
         //    XPosition = (int)calcXPosition;

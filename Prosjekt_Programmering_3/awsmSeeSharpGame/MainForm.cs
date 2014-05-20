@@ -38,7 +38,7 @@ namespace awsmSeeSharpGame
             InitializeComponent();
             isGameRunning = false;
             
-            //startSpill();
+            startSpill();
 
             login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
@@ -47,9 +47,9 @@ namespace awsmSeeSharpGame
             startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
             startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
 
-            pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-            login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-            login.Show();//viser LoginControl form
+           // pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+           // login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+           // login.Show();//viser LoginControl form
 
             //introMusic.Play();//Spiller av introMusic
 
@@ -75,6 +75,8 @@ namespace awsmSeeSharpGame
             TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
             isGameRunning = true;
+
+
             
         }
 
@@ -198,6 +200,8 @@ namespace awsmSeeSharpGame
         {
             this.Close();
         }
+
+
 
         #endregion
     }
