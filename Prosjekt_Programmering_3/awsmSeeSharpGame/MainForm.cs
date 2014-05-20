@@ -27,7 +27,7 @@ namespace awsmSeeSharpGame
         LoginControl login = new LoginControl();//UserControl med logginn muligheter
         NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
         StartPageControl startPage = new StartPageControl();//UserControl med hovedmeny
-        GameInfoControl gameInfo = new GameInfoControl();//GameInfoControll med informasjon om gjeldende spill
+        GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
         SoundPlayer introMusic = new SoundPlayer(Properties.Resources.darkgalactica);//Legger til sang fra recources.
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
@@ -43,7 +43,7 @@ namespace awsmSeeSharpGame
             InitializeComponent();
             isGameRunning = false;
             
-            startSpill();
+            //startSpill();
 
             login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
@@ -52,9 +52,9 @@ namespace awsmSeeSharpGame
             startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
             startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
 
-           // pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-           // login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-           // login.Show();//viser LoginControl form
+            pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+            login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+            login.Show();//viser LoginControl form
 
             //introMusic.Play();//Spiller av introMusic
             
@@ -76,10 +76,7 @@ namespace awsmSeeSharpGame
             threadInfoPanel = new Thread(threadStartInfoPanel);
             threadInfoPanel.IsBackground = true;
             threadInfoPanel.Start();  */
-            if (currentUser != null)
-            {
-                currentGameInfo = new GameInfo(currentUser);
-            }
+            
         }
 
         /// <summary>
@@ -187,6 +184,12 @@ namespace awsmSeeSharpGame
 
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
+            if (currentUser != null)
+            {
+                currentGameInfo = new GameInfo(currentUser);
+
+            }
+            gameInfo = new GameInfoControl();
             pnlMainForm.Controls.Remove(startPage);
             pnlMainForm.Controls.Add(gameInfo);
             startSpill();
