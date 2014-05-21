@@ -62,7 +62,9 @@ namespace awsmSeeSharpGame.UserControls
         /// <param name="e"></param>
         private void GameInfoControl_Paint()
         {
+
             //lbl_remainingTime.Text = MainForm.currentGameInfo.timer.GetTid().ToString(); // Oppdater tidslabelen.
+
 
         }  
     }

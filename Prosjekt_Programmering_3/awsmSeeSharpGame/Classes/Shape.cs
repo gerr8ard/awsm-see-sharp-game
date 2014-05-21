@@ -18,6 +18,7 @@ namespace awsmSeeSharpGame.Classes
         //Posisjonene
         public Pen pen {get; set;}
         public Rectangle rectangle;
+        public Region region;
         public float Rotation { get; set; }
         public abstract void Draw(PaintEventArgs e);
     }

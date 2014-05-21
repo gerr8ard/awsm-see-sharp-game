@@ -22,11 +22,6 @@ namespace awsmSeeSharpGame.Classes
         public float calcXPosition { get; set; }
         public float calcYPosition { get; set; }
 
-        public bool Collision()
-        {
-            return true;
-        }
-
         public override abstract void Draw(PaintEventArgs e);
     }
 }

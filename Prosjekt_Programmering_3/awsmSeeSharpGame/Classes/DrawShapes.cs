@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace awsmSeeSharpGame.Classes
         List<Obstacle> obstacleList;
         List<Target> targetList;
         Rocket rocket;
+        Region collisionRegion;
 
         GamePanel parentGamePanel; // lenke til Gamepanelet, så vi kan akkssere FPS labelen
 
@@ -64,18 +66,23 @@ namespace awsmSeeSharpGame.Classes
         /// <summary>
         /// Sjekker for kollisjoner ved å gå igjennom alle flyttbare objekter og sjekke kollisjonsmetodene deres
         /// </summary>
-        public void CollisonCheck()
+        public void CollisonCheck(PaintEventArgs e)
         {
+
             foreach (Bullet bullet in bulletList)
             {
-                bullet.Collision();
             }
             foreach (Obstacle obstacle in obstacleList)
             {
-                if (obstacle.rectangle.IntersectsWith(rocket.rectangle))
+                RegionData regionData = obstacle.region.GetRegionData();
+
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
                 {
                     collision = true;
                 }
+                collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
             if (collision)
             {
@@ -84,8 +91,9 @@ namespace awsmSeeSharpGame.Classes
             }
             else
             {
-                rocket.pen.Color = Color.Cyan;
+                rocket.pen.Color = Color.White;
             }
+            rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
         }
 /*
         public void Collision()
@@ -113,7 +121,7 @@ namespace awsmSeeSharpGame.Classes
         public void Draw(PaintEventArgs e)
         {
             Update(); //Flytter objektene som skal flyttes
-            CollisonCheck(); // Sjekker for kollisjon
+            CollisonCheck(e); // Sjekker for kollisjon
 
             BeregnFPS(); //Beregner og viser Frames Per Second (FPS)
 
