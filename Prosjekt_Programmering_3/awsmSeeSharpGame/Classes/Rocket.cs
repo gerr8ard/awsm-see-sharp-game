@@ -93,10 +93,13 @@ namespace awsmSeeSharpGame.Classes
             else if (DxPosition < -0.03)
                 DxPosition += 0.03f;
 
-            if (DyPosition > 0.03)
-                DyPosition -= 0.03f;
+            if (DyPosition > 0.005)
+            {
+              //  DyPosition -= 0.005f;
+            }
             else if (DyPosition < -0.03)
-                DyPosition += 0.03f;
+               DyPosition += 0.03f; 
+
         }
 
         public override void Draw(PaintEventArgs e)
