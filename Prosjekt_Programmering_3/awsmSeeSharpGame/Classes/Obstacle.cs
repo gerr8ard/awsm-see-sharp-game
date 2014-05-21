@@ -32,7 +32,7 @@ namespace awsmSeeSharpGame.Classes
 
         public override void Draw(PaintEventArgs e) {
             e.Graphics.FillEllipse(textureBrush, XPosition,YPosition, Width, Height);
-            e.Graphics.DrawEllipse(pen, rectangle);
+            e.Graphics.DrawEllipse(pen, XPosition, YPosition, Width, Height);
         }
     }
 }
