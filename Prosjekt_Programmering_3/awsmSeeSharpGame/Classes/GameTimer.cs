@@ -9,8 +9,9 @@ namespace awsmSeeSharpGame.Classes
 {
     public class GameTimer : IGameTimer
     {
-        public event sekundOppdateringHandler sekundOppdatering; //Ikke brukt ennå
         public delegate void sekundOppdateringHandler(object source, ElapsedEventArgs e); //ikke brukt ennå
+        public event sekundOppdateringHandler sekundOppdatering; //Ikke brukt ennå
+
 
         private TimeSpan tid; //Timespan objekt som holder på tiden som er igjen
         private TimeSpan zeroTime = new TimeSpan(0); //Timespan objekt med verdien 0, som brukes for sammenligningsgrunnlag

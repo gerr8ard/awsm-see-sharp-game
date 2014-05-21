@@ -11,6 +11,7 @@ using awsmSeeSharpGame;
 using System.Threading;
 using awsmSeeSharpGame.Classes;
 using awsmSeeSharpGame.Models;
+using System.Timers;
 
 namespace awsmSeeSharpGame.UserControls
 {
@@ -18,6 +19,10 @@ namespace awsmSeeSharpGame.UserControls
     {
         ThreadStart threadStartInfoControl;
         Thread threadInfoControl;
+
+        public static GameInfo currentGameInfo;
+
+        private StartPageControl startPage;
 
  //       public delegate void GameInfoControlDelegate(object sender, EventArgs e);
   //      public event GameInfoControlDelegate GameInfoControlLoad;
@@ -29,20 +34,27 @@ namespace awsmSeeSharpGame.UserControls
             threadStartInfoControl = new ThreadStart(InfoPanelDraw);
             threadInfoControl = new Thread(threadStartInfoControl);
             threadInfoControl.IsBackground = true;
-            threadInfoControl.Start(); 
+            threadInfoControl.Start();
 
-            GameInfoControl_Load();
+            startPage = new StartPageControl();
+            startPage.startgameEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
 
         }
 
-        public void GameInfoControl_Load()
+
+        public void GameInfoControl_Update()
         {
-            lbl_name.Text = MainForm.currentGameInfo.userName;
-            lbl_levelValue.Text = MainForm.currentGameInfo.level.ToString();
-            lbl_livesValue.Text = MainForm.currentGameInfo.lives.ToString();
-            lbl_PointsValue.Text = MainForm.currentGameInfo.score.ToString();
-            lbl_personalHighScore.Text = MainForm.currentGameInfo.personalHighScore.ToString();
+
+
+     //       currentGameInfo.timer.sekundOppdatering += new GameTimer.sekundOppdateringHandler();
+
+            lbl_name.Text = currentGameInfo.userName;
+            lbl_levelValue.Text = currentGameInfo.level.ToString();
+            lbl_livesValue.Text = currentGameInfo.lives.ToString();
+            lbl_PointsValue.Text = currentGameInfo.score.ToString();
+            lbl_personalHighScore.Text = currentGameInfo.personalHighScore.ToString();
           //  lbl_remainingTime.Text = 
+            
 
         }
     
@@ -50,9 +62,16 @@ namespace awsmSeeSharpGame.UserControls
         {
             while (true)
             {
-                GameInfoControl_Paint();
+               // GameInfoControl_Paint();
                 Thread.Sleep(17); 
             }
+        }
+
+        private void btn_StartGame_Click(object sender, EventArgs e)
+        {
+            currentGameInfo = new GameInfo(MainForm.currentUser);
+            GameInfoControl_Update();
+            currentGameInfo.timer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(GameInfoControl_Paint);
         }
 
         /// <summary>
@@ -60,9 +79,9 @@ namespace awsmSeeSharpGame.UserControls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GameInfoControl_Paint()
+        private void GameInfoControl_Paint(object source, ElapsedEventArgs e)
         {
-          //  lbl_remainingTime.Text = MainForm.currentGameInfo.timer.GetTid().ToString(); // Oppdater tidslabelen.
+            lbl_remainingTime.Text = currentGameInfo.timer.GetTid().ToString(); // Oppdater tidslabelen.
 
         }  
     }

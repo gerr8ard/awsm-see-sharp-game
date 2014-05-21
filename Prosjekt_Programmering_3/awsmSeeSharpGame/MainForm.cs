@@ -31,7 +31,7 @@ namespace awsmSeeSharpGame
 
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
-        public static GameInfo currentGameInfo = new GameInfo();
+   //     public static GameInfo currentGameInfo = new GameInfo();
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
 
         #endregion
@@ -79,9 +79,9 @@ namespace awsmSeeSharpGame
             gamePanel = new GamePanel();
             pnlMainForm.Controls.Add(gamePanel);
 
-            TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+      /*      TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
             timer = new GameTimer(spillTid); //starter en ny timer
-            isGameRunning = true;
+            isGameRunning = true; */
 
    /*         threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
             threadInfoPanel = new Thread(threadStartInfoPanel);
@@ -110,6 +110,8 @@ namespace awsmSeeSharpGame
                 Thread.Sleep(17); 
             }
         } 
+
+
 
         /// <summary>
         /// Paint metode for Info panelet
@@ -194,11 +196,12 @@ namespace awsmSeeSharpGame
 
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
-            if (currentUser != null)
+          /*  if (currentUser != null)
             {
                 currentGameInfo = new GameInfo(currentUser);
+                currentGameInfo.timer.sekundOppdatering += new GameTimer.sekundOppdateringHandler()
 
-            }
+            } */
             gameInfo = new GameInfoControl();
             pnlMainForm.Controls.Remove(startPage);
             pnlMainForm.Controls.Add(gameInfo);
