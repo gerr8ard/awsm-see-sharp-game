@@ -29,6 +29,8 @@ namespace awsmSeeSharpGame.UserControls
             string givenUsername = tbUserNameLoginControl.Text;
             string givenPassword = tbPasswordLoginControl.Text;
             MainForm.currentUser = Queries.GetUserByUserName(givenUsername);
+            
+
 
             if (givenUsername != string.Empty && givenPassword != string.Empty)
             {
@@ -49,7 +51,9 @@ namespace awsmSeeSharpGame.UserControls
                 else WarningMessages.wrongUserName();
             }
             else WarningMessages.generalWarningMessage();
+            
         }
+        
         
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)
         {

@@ -79,19 +79,19 @@
             // MenuItemHovedmeny
             // 
             this.MenuItemHovedmeny.Name = "MenuItemHovedmeny";
-            this.MenuItemHovedmeny.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemHovedmeny.Size = new System.Drawing.Size(139, 22);
             this.MenuItemHovedmeny.Text = "Hovedmeny";
             this.MenuItemHovedmeny.Click += new System.EventHandler(this.MenuItemHovedmeny_Click);
             // 
             // MenuItemSkilleMeny
             // 
             this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
-            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(149, 6);
+            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(136, 6);
             // 
             // MenuItemAvslutt
             // 
             this.MenuItemAvslutt.Name = "MenuItemAvslutt";
-            this.MenuItemAvslutt.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemAvslutt.Size = new System.Drawing.Size(139, 22);
             this.MenuItemAvslutt.Text = "&Avslutt";
             this.MenuItemAvslutt.Click += new System.EventHandler(this.MenuItemAvslutt_Click);
             // 
@@ -141,6 +141,7 @@
             this.Controls.Add(this.pnlMainForm);
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
