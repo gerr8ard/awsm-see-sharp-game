@@ -27,8 +27,7 @@ namespace awsmSeeSharpGame.UserControls
        
         public LoginControl()
         {
-            InitializeComponent();
-           
+            InitializeComponent();           
         }
 
         private void btnLoginLoginControl_Click(object sender, EventArgs e)
