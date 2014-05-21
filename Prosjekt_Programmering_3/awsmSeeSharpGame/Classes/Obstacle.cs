@@ -12,19 +12,15 @@ namespace awsmSeeSharpGame.Classes
     public class Obstacle : Shape
     {
         private TextureBrush textureBrush;
-        private int width;
-        private int height;
-        private Bitmap bitmap;
-        private Pen pen;
         private GraphicsPath path;
 
         public Obstacle(int _XPosition, int _YPosition, int _width, int _height, Color color)
         {
             rectangle = new Rectangle();
-            rectangle.X = _XPosition;
-            rectangle.Y = _YPosition;
-            rectangle.Width = _width;
-            rectangle.Height = _height;
+            XPosition = _XPosition;
+            YPosition = _YPosition;
+            Width = _width;
+            Height = _height;
             pen = new Pen(color, 1);
             bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.PlanetTexture);
 
@@ -35,7 +31,7 @@ namespace awsmSeeSharpGame.Classes
         }
 
         public override void Draw(PaintEventArgs e) {
-            e.Graphics.FillEllipse(textureBrush, rectangle);
+            e.Graphics.FillEllipse(textureBrush, XPosition,YPosition, Width, Height);
             e.Graphics.DrawEllipse(pen, rectangle);
         }
     }

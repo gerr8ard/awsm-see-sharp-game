@@ -19,8 +19,6 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Rocket : MovableShape
     {
-        private Point[] rocketMap;
-        private Point[] rocketMapPosition;
         private Bitmap bitmap;
         private Acceleration gravityForRocket = new Acceleration();
         public int Thrust;
@@ -29,22 +27,24 @@ namespace awsmSeeSharpGame.Classes
         {
             bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.alienblaster);
 
-            rocketMap = _rocketMap;
-            rocketMapPosition = new Point[rocketMap.Length];
-            Array.Copy(rocketMap, rocketMapPosition, rocketMap.Length);
+            shapeMap = _rocketMap;
+            shapeMapPosition = new Point[shapeMap.Length];
+            Array.Copy(shapeMap, shapeMapPosition, shapeMap.Length);
 
-            //rectangle objekt som tar vare på posisjon og størrelse på raketten
-            rectangle = new Rectangle(_XPosition, _YPosition, bitmap.Width, bitmap.Height);
+            XPosition = _XPosition;
+            YPosition = _YPosition;
+            Width = bitmap.Width;
+            Height = bitmap.Height;
 
-            calcXPosition = rectangle.X;
-            calcYPosition = rectangle.Y;
+            calcXPosition = XPosition;
+            calcYPosition = YPosition;
             Rotation = _Rotation;
             DxPosition = 0;
             DyPosition = 0;
             Thrust = 0;
             pen = new Pen(Color.White);
 
-            updateRocketPosition();
+            updateShapePosition();
 
             XAccelleration = 0;
             YAccelleration = 0;
@@ -56,8 +56,8 @@ namespace awsmSeeSharpGame.Classes
          //   Rotation += 1;
             calcXPosition += DxPosition;
             calcYPosition += DyPosition;
-        //    rectangle.X = (int)calcXPosition;
-        //    rectangle.Y = (int)calcYPosition;
+        //    XPosition = (int)calcXPosition;
+        //    YPostition = (int)calcYPosition;
 
        /*     rectangle.Y -= Thrust;
             if (Thrust > 1) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
@@ -65,19 +65,8 @@ namespace awsmSeeSharpGame.Classes
                 Thrust--;
             }*/
   //          Accelerate();
-            updateRocketPosition();
-        }
-
-        private void updateRocketPosition()
-        {
-            for (int i = 0; i < rocketMap.Length; i++)
-            {
-                rocketMapPosition[i].X = rectangle.X + rocketMap[i].X;
-                rocketMapPosition[i].Y = rectangle.Y + rocketMap[i].Y;
-            }
-            GraphicsPath graphicPath = ShapeMaps.MakeGraphicsPath(rocketMapPosition);
-            region = new Region(graphicPath);
-        }
+            updateShapePosition();
+        }       
 
         public void Accelerate()
         {
@@ -92,11 +81,11 @@ namespace awsmSeeSharpGame.Classes
         public override void Draw(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            e.Graphics.TranslateTransform((float)(rectangle.X + bitmap.Width / 2), (float)(rectangle.Y) + bitmap.Height / 2);
+            e.Graphics.TranslateTransform((float)(XPosition + bitmap.Width / 2), (float)(YPosition) + bitmap.Height / 2);
             e.Graphics.RotateTransform(Rotation);
-            e.Graphics.TranslateTransform(-(float)(rectangle.X + bitmap.Width / 2), -(float)(rectangle.Y + bitmap.Height / 2));
-            e.Graphics.DrawImageUnscaled(bitmap, new Point(rectangle.X,rectangle.Y));
-            e.Graphics.DrawPolygon(pen, rocketMapPosition);
+            e.Graphics.TranslateTransform(-(float)(XPosition + bitmap.Width / 2), -(float)(YPosition + bitmap.Height / 2));
+            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition,YPosition));
+            e.Graphics.DrawPolygon(pen, shapeMapPosition);
         }
 
 
