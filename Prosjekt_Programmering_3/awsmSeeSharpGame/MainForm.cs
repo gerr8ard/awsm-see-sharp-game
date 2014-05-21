@@ -13,12 +13,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAudio;
+using NAudio.Wave;
 
 namespace awsmSeeSharpGame
 {
     public partial class MainForm : Form
     {
         #region Fields
+
         private GameTimer timer; //Timeren som holder styr på hvor lenge det er igjen av spillrunden.
         private Boolean isGameRunning;
         private ThreadStart threadStartInfoPanel;
@@ -28,6 +31,7 @@ namespace awsmSeeSharpGame
         private NewUserControl newUser;//UserControl for å registrere ny bruker
         private StartPageControl startPage;//UserControl med hovedmeny
         private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
+
 
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
@@ -65,8 +69,11 @@ namespace awsmSeeSharpGame
             login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
             login.Show();//viser LoginControl form
 
-            var player = new WMPLib.WindowsMediaPlayer();
-            player.URL = resourceUrl + "back_2_work_y.wav";           
+
+
+            awsm_SoundPlayer introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+            
+
         }
 
 
@@ -166,6 +173,7 @@ namespace awsmSeeSharpGame
         /// <param name="e"></param>
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)
         {
+            awsm_SoundPlayer btnRegisterNewUserClick = new awsm_SoundPlayer("come_get_some_x.wav");
             pnlMainForm.Controls.Remove(login);
             pnlMainForm.Controls.Add(newUser);
             newUser.Dock = DockStyle.Bottom;

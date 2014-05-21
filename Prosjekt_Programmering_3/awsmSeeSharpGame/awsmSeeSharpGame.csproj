@@ -60,6 +60,12 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio">
+      <HintPath>C:\Users\Gerr8ard\Google Drive\Programmering3\Dll\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WindowsMediaFormat">
+      <HintPath>C:\Users\Gerr8ard\Google Drive\Programmering3\Dll\NAudio.WindowsMediaFormat.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -86,6 +92,7 @@
     <Compile Include="Classes\Hash.cs" />
     <Compile Include="Classes\Queries.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
+    <Compile Include="Classes\awsm_SoundPlayer.cs" />
     <Compile Include="interfaces\IMoveableShape.cs" />
     <Compile Include="interfaces\IShape.cs" />
     <Compile Include="interfaces\IGameTimer.cs" />
@@ -223,9 +230,25 @@
     <None Include="Resources\space-background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\darkgalactica.wav" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\ready_4_action.wav" />
+    <None Include="Resources\out_of_gum_x.wav" />
+    <None Include="Resources\Shot.wav" />
+    <None Include="Resources\Shot 03.wav" />
+    <None Include="Resources\Shot 02.wav" />
+    <None Include="Resources\Lost life.wav" />
+    <None Include="Resources\Game over.wav" />
+    <None Include="Resources\Game over 2.wav" />
+    <None Include="Resources\Explosion01.wav" />
+    <None Include="Resources\Explosion02.wav" />
+    <None Include="Resources\Explosion03.wav" />
+    <None Include="Resources\Explosion04.wav" />
+    <None Include="Resources\Explosion05.wav" />
+    <None Include="Resources\back_2_work_y.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\come_get_some_x.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\ready_4_action.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -271,8 +294,6 @@
     <None Include="Resources\come_get_some_x.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="Resources\fireTexture.bmp" />
-    <None Include="Resources\Metallica-Orion 8 bit.wav" />
     <None Include="Resources\PlanetTexture.png" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +309,21 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameMusic.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntroMusicMetallica.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntroMusicMuse.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

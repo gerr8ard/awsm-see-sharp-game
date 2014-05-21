@@ -83,6 +83,10 @@ namespace awsmSeeSharpGame.UserControls
         {
             lbl_remainingTime.Text = currentGameInfo.timer.GetTid().ToString(); // Oppdater tidslabelen.
 
+
+            //lbl_remainingTime.Text = MainForm.currentGameInfo.timer.GetTid().ToString(); // Oppdater tidslabelen.
+
+
         }  
     }
 }
