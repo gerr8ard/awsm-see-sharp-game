@@ -22,11 +22,6 @@ namespace awsmSeeSharpGame
     {
         #region Fields
 
-        
-        IWavePlayer waveOutDevice, waveOutDevice2;
-        AudioFileReader audioFileReader, audioFileReader2; 
-        
-
         private GameTimer timer; //Timeren som holder styr på hvor lenge det er igjen av spillrunden.
         private Boolean isGameRunning;
         private ThreadStart threadStartInfoPanel;
@@ -75,19 +70,9 @@ namespace awsmSeeSharpGame
             login.Show();//viser LoginControl form
 
 
-            //introMusic.Play();//Spiller av introMusic
-            waveOutDevice = new WaveOut();
-            waveOutDevice2 = new WaveOut();
-            audioFileReader = new AudioFileReader(@"Resources\back_2_work_y.wav");
-            audioFileReader2 = new AudioFileReader(@"C:\Users\Gerr8ard\Google Drive\Programmering3\Music\Music\Metallica-Orion 8 bit.wav");
-            waveOutDevice.Init(audioFileReader);
-            waveOutDevice2.Init(audioFileReader2);
-            waveOutDevice.Play();
-            waveOutDevice2.Play();
-            
 
-            var player = new WMPLib.WindowsMediaPlayer();
-            player.URL = resourceUrl + "back_2_work_y.wav";           
+            awsm_SoundPlayer introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+            
 
         }
 
@@ -186,6 +171,7 @@ namespace awsmSeeSharpGame
         /// <param name="e"></param>
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)
         {
+            awsm_SoundPlayer btnRegisterNewUserClick = new awsm_SoundPlayer("come_get_some_x.wav");
             pnlMainForm.Controls.Remove(login);
             pnlMainForm.Controls.Add(newUser);
             newUser.Dock = DockStyle.Bottom;

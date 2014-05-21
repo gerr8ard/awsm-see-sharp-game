@@ -92,6 +92,7 @@
     <Compile Include="Classes\Hash.cs" />
     <Compile Include="Classes\Queries.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
+    <Compile Include="Classes\awsm_SoundPlayer.cs" />
     <Compile Include="interfaces\IMoveableShape.cs" />
     <Compile Include="interfaces\IShape.cs" />
     <Compile Include="interfaces\IGameTimer.cs" />
@@ -229,9 +230,6 @@
     <None Include="Resources\space-background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\darkgalactica.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ready_4_action.wav" />
     <None Include="Resources\out_of_gum_x.wav" />
     <None Include="Resources\Shot.wav" />
@@ -296,11 +294,7 @@
     <None Include="Resources\come_get_some_x.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    
-    <None Include="Resources\Metallica-Orion 8 bit.wav" />
     <None Include="Resources\PlanetTexture.png" />
-
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />
@@ -315,6 +309,21 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GameMusic.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntroMusicMetallica.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IntroMusicMuse.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
