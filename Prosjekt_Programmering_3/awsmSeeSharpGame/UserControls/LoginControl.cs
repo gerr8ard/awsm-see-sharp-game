@@ -12,6 +12,13 @@ using awsmSeeSharpGame.Classes;
 
 namespace awsmSeeSharpGame.UserControls
 {
+    /// <summary>
+    /// User control som tar seg av logg inn delen,
+    /// og bruker delegater og eventer for å bli vist i panelet pnlMainForm i MainForm.
+    /// Har en metode som sjekker brukernavn og passord, og logger inn bruker dersom alt er riktig.
+    /// Har en metode som videresender kontrollen til newUserControl for å registrer ny bruker.
+    /// Har to metoder som logger inn bruker dersom enter knapp trykkes.
+    /// </summary>
     public partial class LoginControl : UserControl
     {
         public delegate void loginControlDelegate(object sender, EventArgs e);
@@ -51,7 +58,8 @@ namespace awsmSeeSharpGame.UserControls
                 else WarningMessages.wrongUserName();
             }
             else WarningMessages.generalWarningMessage();
-            
+            tbPasswordLoginControl.Clear();
+            tbUserNameLoginControl.Clear();
         }
         
         
@@ -60,6 +68,23 @@ namespace awsmSeeSharpGame.UserControls
 
             newUserEvent(sender, e);
             
+        }
+
+        private void tbPasswordLoginControl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLoginLoginControl.PerformClick();
+            }
+        }
+
+        private void tbUserNameLoginControl_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnLoginLoginControl.PerformClick();
+            }
         }
     }
 }

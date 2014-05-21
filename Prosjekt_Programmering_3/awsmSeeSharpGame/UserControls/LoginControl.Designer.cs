@@ -96,6 +96,7 @@
             this.tbPasswordLoginControl.PasswordChar = '*';
             this.tbPasswordLoginControl.Size = new System.Drawing.Size(144, 20);
             this.tbPasswordLoginControl.TabIndex = 2;
+            this.tbPasswordLoginControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPasswordLoginControl_KeyPress);
             // 
             // tbUserNameLoginControl
             // 
@@ -104,6 +105,7 @@
             this.tbUserNameLoginControl.Name = "tbUserNameLoginControl";
             this.tbUserNameLoginControl.Size = new System.Drawing.Size(144, 20);
             this.tbUserNameLoginControl.TabIndex = 1;
+            this.tbUserNameLoginControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUserNameLoginControl_KeyPress);
             // 
             // btnLoginLoginControl
             // 

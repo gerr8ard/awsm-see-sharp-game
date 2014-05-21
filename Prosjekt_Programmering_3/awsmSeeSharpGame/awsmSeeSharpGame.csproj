@@ -137,6 +137,12 @@
     <Compile Include="UserControls\GameInfoControl.Designer.cs">
       <DependentUpon>GameInfoControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HighScoreControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\HighScoreControl.Designer.cs">
+      <DependentUpon>HighScoreControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\GameInfoControl.resx">
       <DependentUpon>GameInfoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HighScoreControl.resx">
+      <DependentUpon>HighScoreControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>

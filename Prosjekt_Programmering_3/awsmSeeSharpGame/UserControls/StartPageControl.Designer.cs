@@ -53,6 +53,7 @@
             this.btn_Highscores.TabIndex = 1;
             this.btn_Highscores.Text = "Rekorder";
             this.btn_Highscores.UseVisualStyleBackColor = true;
+            this.btn_Highscores.Click += new System.EventHandler(this.btn_Highscores_Click);
             // 
             // btn_PersonalRecords
             // 

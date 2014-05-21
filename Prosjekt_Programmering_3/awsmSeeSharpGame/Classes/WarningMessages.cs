@@ -30,5 +30,10 @@ namespace awsmSeeSharpGame.Classes
             MessageBox.Show("Du må logge inn for tilgang til hovedmeny.", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        public static void passwordNotSame()
+        {
+            MessageBox.Show("Passordene er ikke like.", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
     }
 }

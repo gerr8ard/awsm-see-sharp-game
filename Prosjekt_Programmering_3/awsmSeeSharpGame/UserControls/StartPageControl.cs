@@ -17,6 +17,7 @@ namespace awsmSeeSharpGame.UserControls
         public event startPageDelegate startgameEventForGameInfo;
         public event startPageDelegate logOutEvent;
         public event startPageDelegate terminateEvent;
+        public event startPageDelegate highScoreEvent;
 
         public StartPageControl()
         {
@@ -38,6 +39,11 @@ namespace awsmSeeSharpGame.UserControls
         private void btn_Terminate_Click(object sender, EventArgs e)
         {
             terminateEvent(sender, e);
+        }
+
+        private void btn_Highscores_Click(object sender, EventArgs e)
+        {
+            highScoreEvent(sender, e);
         }
     }
 }

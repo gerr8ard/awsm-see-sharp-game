@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using awsmSeeSharpGame.Classes;
+using awsmSeeSharpGame.Models;
+using System.Collections;
 
 namespace awsmSeeSharpGame.UserControls
 {
@@ -15,6 +18,7 @@ namespace awsmSeeSharpGame.UserControls
 
         public delegate void cancelDelegate(object sender, EventArgs e);
         public event cancelDelegate cancelEvent;
+        public event cancelDelegate redirectNewUserEvent;
         string newUserUserName;
 
         public NewUserControl()
@@ -29,7 +33,54 @@ namespace awsmSeeSharpGame.UserControls
 
         private void btnRegisterNewUserNewUserControl_Click(object sender, EventArgs e)
         {
-           
+            string givenUserName = tbUserNameNewUserControl.Text;
+            string givenFirstName = tbFirstNameNewUserControl.Text;
+            string givenSureName = tbSureNameNewUserControl.Text;
+            string givenPassword = tbPasswordNewUserControl.Text;
+            string givenRetypePassword = tbRetypePasswordNewUserControl.Text;
+
+            if (givenUserName != string.Empty && givenFirstName != string.Empty && givenSureName != string.Empty && givenPassword != string.Empty && givenRetypePassword != string.Empty)
+            {
+                if (givenPassword == givenRetypePassword)
+                {
+                    Hashtable HashAndSalt = Hash.GetHashAndSalt(givenPassword);
+                    string HashUser = (string)HashAndSalt["hash"];
+                    string SaltUser = (string)HashAndSalt["salt"];
+
+
+
+                    using (var context = new Context())
+                    {
+
+                        awsm_Privilege userPrivilege = context.Privilege.FirstOrDefault(privilege => privilege.Privilege == "Bruker");
+
+                        awsm_Users newUser = new awsm_Users()
+                            {
+                                UserName = givenUserName,
+                                SureName = givenSureName,
+                                FirstName = givenFirstName,
+                                Password = HashUser,
+                                Salt = SaltUser,
+                                Created = DateTime.Now,
+                                Privilege_id = userPrivilege.Privilege_id
+                            };
+                        context.Users.Add(newUser);
+                        context.SaveChanges();
+                    }
+                }
+                else WarningMessages.passwordNotSame();
+
+               
+
+            }
+            else WarningMessages.generalWarningMessage();
+
+            tbFirstNameNewUserControl.Clear();
+            tbPasswordNewUserControl.Clear();
+            tbRetypePasswordNewUserControl.Clear();
+            tbSureNameNewUserControl.Clear();
+            tbUserNameNewUserControl.Clear();
+            redirectNewUserEvent(sender, e);
         }
     }
 }

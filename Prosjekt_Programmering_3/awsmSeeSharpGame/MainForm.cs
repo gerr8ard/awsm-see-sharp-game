@@ -33,7 +33,7 @@ namespace awsmSeeSharpGame
 		private StartPageControl startPage;//UserControl med hovedmeny
 		private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
 
-		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess;
+		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess;
 		public static bool isLoggedIn = false;
 		public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
@@ -63,11 +63,13 @@ namespace awsmSeeSharpGame
 			startPage.startgameEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
 			startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
 			startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
+			newUser.redirectNewUserEvent += new NewUserControl.cancelDelegate(btnRegisterNewUserNewUserControl_Click);//Abonnerer på redirectNewUserEvent i newUserControl
+            startPage.highScoreEvent += new StartPageControl.startPageDelegate(btn_Highscores_Click);//Abonnerer på highScoreEventi StartPageControl
 
 			// Henter opp login panelet
-		    pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-		    login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-		    login.Show();//viser LoginControl form
+			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			login.Show();//viser LoginControl form
 
 			//Starter musikk til hovedmeny
 			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
@@ -201,7 +203,7 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(login);
 			pnlMainForm.Controls.Add(newUser);
 			newUser.Dock = DockStyle.Bottom;
-            
+			
 		}
 
 		private void btnLoginLoginControl_Click(object sender, EventArgs e)
@@ -212,7 +214,7 @@ namespace awsmSeeSharpGame
 				startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
 				startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
 				pnlMainForm.Controls.Add(startPage);
-				logInSuccess = new awsm_SoundPlayer("ugly.wav");
+				logInSuccess = new awsm_SoundPlayer("ready_4_action.wav");
 			}
 		}
 
@@ -263,7 +265,17 @@ namespace awsmSeeSharpGame
 			
 		}
 
+		private void btnRegisterNewUserNewUserControl_Click(object sender, EventArgs e)
+		{
+			registerSuccess = new awsm_SoundPlayer("out_of_gum_x.wav");
+			pnlMainForm.Controls.Remove(newUser);
+			pnlMainForm.Controls.Add(login);
+		}
 
+        private void btn_Highscores_Click(object sender, EventArgs e)
+        {
+
+        }
 
 		#endregion
 
