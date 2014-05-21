@@ -10,7 +10,7 @@ namespace awsmSeeSharpGame.Classes
 {
 
     /// <summary>
-    /// Klasse som tar seg av lydavspillingen.
+    /// Klasse som tar seg av lydavspillingen. Konstruktør tar i mot en string som inneholder banen til filen
     /// </summary>
     public class awsm_SoundPlayer
     {  
