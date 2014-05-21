@@ -84,6 +84,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Hash.cs" />
+    <Compile Include="Classes\Meteor.cs" />
+    <Compile Include="Classes\PointMapper.cs" />
     <Compile Include="Classes\Queries.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
     <Compile Include="Classes\awsm_SoundPlayer.cs" />
@@ -307,6 +309,9 @@
     <None Include="Resources\IntroMusicMuse.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Meteor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

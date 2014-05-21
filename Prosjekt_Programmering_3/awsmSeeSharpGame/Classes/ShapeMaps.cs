@@ -39,6 +39,44 @@ namespace awsmSeeSharpGame.Classes
             return new Point[] { point1, point2, point3, point4, point5, point6, point7, point8, point9, point10, point11, point12 };
         }
 
+        public static Point[] Meteor()
+        {
+            Point[] pointArray = new Point[]{
+            new Point(14,0),new Point(14,1),new Point(16,1),new Point(17,1),new Point(18,1),new Point(19,1),
+            new Point(20,2),new Point(20,3),new Point(21,2),new Point(22,3),new Point(23,3),new Point(23,3),
+            new Point(24,2),new Point(25,2),new Point(26,2),new Point(27,2),new Point(29,3),new Point(29,3),
+            new Point(30,4),new Point(31,3),new Point(32,3),new Point(33,4),new Point(33,3),new Point(33,3),
+            new Point(34,3),new Point(35,3),new Point(36,4),new Point(36,4),new Point(37,4),new Point(37,4),
+            new Point(37,4),new Point(38,4),new Point(38,5),new Point(39,5),new Point(40,5),new Point(41,5),
+            new Point(43,5),new Point(45,5),new Point(45,5),new Point(47,5),new Point(48,5),new Point(49,5),
+            new Point(49,5),new Point(50,5),new Point(50,4),new Point(51,5),new Point(52,5),new Point(54,5),
+            new Point(55,5),new Point(57,5),new Point(58,5),new Point(59,5),new Point(59,6),new Point(60,6),
+            new Point(62,6),new Point(63,6),new Point(64,6),new Point(66,6),new Point(66,6),new Point(67,6),
+            new Point(68,6),new Point(69,6),new Point(69,7),new Point(70,7),new Point(70,8),new Point(71,8),
+            new Point(72,8),new Point(73,8),new Point(74,9),new Point(74,9),new Point(76,9),new Point(76,9),
+            new Point(77,9),new Point(77,9),new Point(77,10),new Point(77,10),new Point(76,10),new Point(74,10),
+            new Point(73,11),new Point(72,11),new Point(70,11),new Point(69,11),new Point(68,11),new Point(67,11),
+            new Point(66,11),new Point(66,11),new Point(65,11),new Point(65,12),new Point(64,12),new Point(64,12),
+            new Point(63,12),new Point(63,12),new Point(62,12),new Point(61,13),new Point(60,13),new Point(59,12),
+            new Point(58,12),new Point(57,12),new Point(56,12),new Point(55,12),new Point(54,12),new Point(52,12),
+            new Point(51,12),new Point(48,12),new Point(47,13),new Point(47,13),new Point(45,13),new Point(44,14),
+            new Point(43,14),new Point(42,14),new Point(41,14),new Point(40,14),new Point(39,14),new Point(39,15),
+            new Point(38,16),new Point(36,15),new Point(35,15),new Point(33,15),new Point(32,15),new Point(32,15),
+            new Point(31,14),new Point(31,14),new Point(30,14),new Point(29,14),new Point(27,14),new Point(26,15),
+            new Point(26,15),new Point(25,16),new Point(24,16),new Point(24,16),new Point(24,16),new Point(24,17),
+            new Point(24,18),new Point(23,17),new Point(23,17),new Point(22,17),new Point(21,17),new Point(20,16),
+            new Point(19,16),new Point(19,17),new Point(18,17),new Point(18,17),new Point(17,17),new Point(16,17),
+            new Point(16,17),new Point(16,18),new Point(15,18),new Point(14,18),new Point(13,18),new Point(13,18),
+            new Point(12,18),new Point(12,18),new Point(12,18),new Point(12,18),new Point(11,19),new Point(9,19),
+            new Point(9,18),new Point(8,18),new Point(7,17),new Point(7,17),new Point(6,17),new Point(6,17),
+            new Point(5,17),new Point(5,16),new Point(5,16),new Point(4,16),new Point(4,15),new Point(4,14),
+            new Point(3,15),new Point(3,14),new Point(2,14),new Point(2,13),new Point(1,14),new Point(1,13),
+            new Point(1,13),new Point(0,12),new Point(0,11),new Point(0,10),new Point(0,9),new Point(1,8),
+            new Point(1,7),new Point(1,6),new Point(2,6),new Point(2,5),new Point(2,5),new Point(3,4),new Point(4,4),
+            new Point(4,3),new Point(5,2),new Point(6,2),new Point(7,2),new Point(7,1),new Point(7,1),new Point(9,0),
+            new Point(9,0),new Point(10,0),new Point(11,0),new Point(13,0)};
+            return pointArray;
+        }
         /// <summary>
         /// Metode for å konvertere et punkt array til en GraphicsPath
         /// </summary>

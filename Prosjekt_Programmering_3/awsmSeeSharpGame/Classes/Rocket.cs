@@ -19,12 +19,8 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Rocket : MovableShape
     {
-        public Pen pen;
-        private SolidBrush brush = new SolidBrush(Color.White);
         private Point[] rocketMap;
         private Point[] rocketMapPosition;
-
-        private TextureBrush textureBrush;
         private Bitmap bitmap;
         private Gravity gravityForRocket = new Gravity();
         public int Thrust;
