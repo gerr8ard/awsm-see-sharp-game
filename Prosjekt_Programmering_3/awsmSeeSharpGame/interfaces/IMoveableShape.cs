@@ -9,6 +9,5 @@ namespace awsmSeeSharpGame.interfaces
     public interface IMoveableShape
     {
         void Move();
-        bool Collision();
     }
 }

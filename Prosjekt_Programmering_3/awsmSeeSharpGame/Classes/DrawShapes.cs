@@ -71,7 +71,6 @@ namespace awsmSeeSharpGame.Classes
 
             foreach (Bullet bullet in bulletList)
             {
-                bullet.Collision();
             }
             foreach (Obstacle obstacle in obstacleList)
             {
@@ -83,6 +82,7 @@ namespace awsmSeeSharpGame.Classes
                 {
                     collision = true;
                 }
+                collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
             if (collision)
             {
@@ -93,6 +93,7 @@ namespace awsmSeeSharpGame.Classes
             {
                 rocket.pen.Color = Color.White;
             }
+            rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
         }
 /*
         public void Collision()
