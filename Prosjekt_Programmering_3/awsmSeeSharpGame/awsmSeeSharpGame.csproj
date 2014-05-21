@@ -226,21 +226,51 @@
     <None Include="Resources\darkgalactica.wav" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ready_4_action.wav" />
-    <None Include="Resources\out_of_gum_x.wav" />
-    <None Include="Resources\Shot.wav" />
-    <None Include="Resources\Shot 03.wav" />
-    <None Include="Resources\Shot 02.wav" />
-    <None Include="Resources\Lost life.wav" />
-    <None Include="Resources\Game over.wav" />
-    <None Include="Resources\Game over 2.wav" />
-    <None Include="Resources\Explosion01.wav" />
-    <None Include="Resources\Explosion02.wav" />
-    <None Include="Resources\Explosion03.wav" />
-    <None Include="Resources\Explosion04.wav" />
-    <None Include="Resources\Explosion05.wav" />
-    <None Include="Resources\back_2_work_y.wav" />
-    <None Include="Resources\come_get_some_x.wav" />
+    <None Include="Resources\ready_4_action.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\out_of_gum_x.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Shot.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Shot 03.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Shot 02.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Lost life.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Game over.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Game over 2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Explosion01.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Explosion02.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Explosion03.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Explosion04.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Explosion05.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\back_2_work_y.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\come_get_some_x.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\fireTexture.bmp" />
     <None Include="Resources\Metallica-Orion 8 bit.wav" />
     <None Include="Resources\PlanetTexture.png" />

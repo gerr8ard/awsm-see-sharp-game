@@ -19,44 +19,21 @@ namespace awsmSeeSharpGame
     public partial class MainForm : Form
     {
         #region Fields
-        GameTimer timer; //Timeren som holder styr på hvor lenge det er igjen av spillrunden.
-        Boolean isGameRunning;
-        ThreadStart threadStartInfoPanel;
-        Thread threadInfoPanel;
-        GamePanel gamePanel;
-        LoginControl login = new LoginControl();//UserControl med logginn muligheter
-        NewUserControl newUser = new NewUserControl();//UserControl for å registrere ny bruker
-        StartPageControl startPage = new StartPageControl();//UserControl med hovedmeny
-        GameInfoControl gameInfo = new GameInfoControl();//GameInfoControll med informasjon om gjeldende spill
-        SoundPlayer introMusic = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);//Legger til sang fra recources.
-        
-        
+        private GameTimer timer; //Timeren som holder styr på hvor lenge det er igjen av spillrunden.
+        private Boolean isGameRunning;
+        private ThreadStart threadStartInfoPanel;
+        private Thread threadInfoPanel;
+        private GamePanel gamePanel;
+        private LoginControl login;//UserControl med logginn muligheter
+        private NewUserControl newUser;//UserControl for å registrere ny bruker
+        private StartPageControl startPage;//UserControl med hovedmeny
+        private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
 
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
         public static GameInfo currentGameInfo = new GameInfo();
+        private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
 
-        /* pål sin
-        Thread song = new Thread(myFun1);
-        Thread song2 = new Thread(myFun2);
-
-        static void myFun1()
-        {
-             new System.Threading.Thread(() => {
-                var c = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);
-                    c.Play();
-                }).Start();
-        }
-
-        static void myFun2()
-        {
-            new System.Threading.Thread(() =>
-            {
-                var c = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);
-                c.Play();
-            }).Start();
-         * 
-        }*/
         #endregion
 
         /// <summary>
@@ -69,9 +46,13 @@ namespace awsmSeeSharpGame
             isGameRunning = false;
            // startSpill();
 
-            //pål song.Start();
+            //Instansierer de forskjellige panelene
+            login = new LoginControl();
+            newUser = new NewUserControl();
+            startPage = new StartPageControl();
+            gameInfo = new GameInfoControl();
 
-
+            // Abbonnerer på events fra de forskjellige panelene
             login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
             newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
             login.loginEvent += new LoginControl.loginControlDelegate(btnLoginLoginControl_Click);//Abonnerer på loginEvent i LoginControl
@@ -79,13 +60,16 @@ namespace awsmSeeSharpGame
             startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
             startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
 
+            // Henter opp login panelet
             pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
             login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
             login.Show();//viser LoginControl form
 
-            //introMusic.Play();//Spiller av introMusic
-            
+            var player = new WMPLib.WindowsMediaPlayer();
+            player.URL = resourceUrl + "back_2_work_y.wav";           
         }
+
+
         #region Spillrelaterte metoder
         /// <summary>
         /// Starter et nytt spill
@@ -180,7 +164,6 @@ namespace awsmSeeSharpGame
         /// <param name="e"></param>
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)
         {
-            //pål song2.Start();
             pnlMainForm.Controls.Remove(login);
             pnlMainForm.Controls.Add(newUser);
             newUser.Dock = DockStyle.Bottom;
