@@ -21,10 +21,11 @@ namespace awsmSeeSharpGame.Classes
         private List<Bullet> bulletList;
         private List<Obstacle> obstacleList;
         private List<Target> targetList;
+        private List<Meteor> meteorList;
         private Rocket rocket;
 
         public Label lblFps; // Label for FPS
-        Point lblFpsLocation = new Point(10, 10); //Setter posisjonen til FPS labelen!
+        Point lblFpsLocation = new Point(10, 200); //Setter posisjonen til FPS labelen!
         
         ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
         Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
@@ -49,6 +50,7 @@ namespace awsmSeeSharpGame.Classes
             bulletList = new List<Bullet>();
             obstacleList = new List<Obstacle>();
             targetList = new List<Target>();
+            meteorList = new List<Meteor>();
 
             Point[] rocketMap = ShapeMaps.RocketDesign2();
 
@@ -70,9 +72,12 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
 
+            //Lage nye metorer
+            Meteor meteor1 = new Meteor(1000, 400, 10, 0,ShapeMaps.Meteor());
+            meteorList.Add(meteor1);
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, rocket);
+            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, rocket);
 
             // Setter opp og starter oppdatering av OnPaint metoden
             threadStartGamePanel = new ThreadStart(GamePanelDraw);

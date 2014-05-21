@@ -26,6 +26,7 @@ namespace awsmSeeSharpGame.Classes
         List<Bullet> bulletList;
         List<Obstacle> obstacleList;
         List<Target> targetList;
+        List<Meteor> meteorList;
         Rocket rocket;
         Region collisionRegion;
 
@@ -40,13 +41,14 @@ namespace awsmSeeSharpGame.Classes
         /// <param name="_obstacleList">Liste med Obstacles</param>
         /// <param name="_targetList">Liste med targets</param>
         /// <param name="_rocket">Romskipet vårt</param>
-        public DrawShapes(GamePanel _parentPictureBox, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, Rocket _rocket)
+        public DrawShapes(GamePanel _parentPictureBox, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, Rocket _rocket)
         {
             parentGamePanel = _parentPictureBox;
             enemyList = _enemylist;
             bulletList = _bulletList;
             obstacleList = _obstacleList;
             targetList = _targetList;
+            meteorList = _meteorList;
             rocket = _rocket;
             collision = false;
         }
@@ -56,6 +58,11 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void Update()
         {
+            foreach(Meteor meteor in meteorList)
+            {
+                meteor.Move();
+            }
+
             foreach (Bullet bullet in bulletList)
             {
                 bullet.Move();
@@ -141,6 +148,10 @@ namespace awsmSeeSharpGame.Classes
             foreach (Target target in targetList)
             {
                 target.Draw(e);
+            }
+            foreach (Meteor meteor in meteorList)
+            {
+                meteor.Draw(e);
             }
             rocket.Draw(e);
 
