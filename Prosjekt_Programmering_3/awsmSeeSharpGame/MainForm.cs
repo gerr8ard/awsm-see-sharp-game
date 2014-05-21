@@ -43,51 +43,50 @@ namespace awsmSeeSharpGame
 		/// <summary>
 		/// Konstruktør
 		/// </summary>
-   
-		public MainForm()
-		{
-			InitializeComponent();
-			isGameRunning = false;
-		   // startSpill();
 
-			//Instansierer de forskjellige panelene
-			login = new LoginControl();
-			newUser = new NewUserControl();
-			startPage = new StartPageControl();
-			gameInfo = new GameInfoControl();
+        public MainForm()
+        {
+            InitializeComponent();
+            isGameRunning = false;
+            startSpill();
 
-			// Abbonnerer på events fra de forskjellige panelene
-			login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
-			newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
-			login.loginEvent += new LoginControl.loginControlDelegate(btnLoginLoginControl_Click);//Abonnerer på loginEvent i LoginControl
-			startPage.startgameEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
-			startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
-			startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
+            //Instansierer de forskjellige panelene
+            login = new LoginControl();
+            newUser = new NewUserControl();
+            startPage = new StartPageControl();
+            gameInfo = new GameInfoControl();
 
-			// Henter opp login panelet
-			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			login.Show();//viser LoginControl form
+            // Abbonnerer på events fra de forskjellige panelene
+            login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abbonerer på event i LoginControl
+            newUser.cancelEvent += new NewUserControl.cancelDelegate(btnCancelNewUserControl_Click);
+            login.loginEvent += new LoginControl.loginControlDelegate(btnLoginLoginControl_Click);//Abonnerer på loginEvent i LoginControl
+            startPage.startgameEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
+            startPage.logOutEvent += new StartPageControl.startPageDelegate(btn_logOut_Click);//Abonnerer på logOutEvent i StartPageControl
+            startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
 
-			//Starter musikk til hovedmeny
-			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+            // Henter opp login panelet
+        //    pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+         //   login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+          //  login.Show();//viser LoginControl form
 
-		}
+            //Starter musikk til hovedmeny
+            introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+
+        }
 
 
-		#region Spillrelaterte metoder
-		/// <summary>
-		/// Starter et nytt spill
-		/// </summary>
-		private void startSpill()
-		{
-			gamePanel = new GamePanel();
-			pnlMainForm.Controls.Add(gamePanel);
+        #region Spillrelaterte metoder
+        /// <summary>
+        /// Starter et nytt spill
+        /// </summary>
+        private void startSpill()
+        {
+            gamePanel = new GamePanel();
+            pnlMainForm.Controls.Add(gamePanel);
 
-	  /*      TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
-			timer = new GameTimer(spillTid); //starter en ny timer
-			isGameRunning = true; */
-
+      /*      TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+            timer = new GameTimer(spillTid); //starter en ny timer
+            isGameRunning = true; */
    /*         threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
 			threadInfoPanel = new Thread(threadStartInfoPanel);
 			threadInfoPanel.IsBackground = true;

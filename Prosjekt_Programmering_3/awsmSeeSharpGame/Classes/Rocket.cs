@@ -52,18 +52,19 @@ namespace awsmSeeSharpGame.Classes
 
         public override void Move()
         {
-         //   Accelerate();
+            Accelerate();
          //   Rotation += 1;
-        //    calcXPosition += DxPosition;
-        //    calcYPosition += DyPosition;
+            calcXPosition += DxPosition;
+            calcYPosition += DyPosition;
         //    rectangle.X = (int)calcXPosition;
         //    rectangle.Y = (int)calcYPosition;
 
-            rectangle.Y -= Thrust;
+       /*     rectangle.Y -= Thrust;
             if (Thrust > 1) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
             {
                 Thrust--;
-            }
+            }*/
+  //          Accelerate();
             updateRocketPosition();
         }
 
@@ -80,9 +81,12 @@ namespace awsmSeeSharpGame.Classes
 
         public void Accelerate()
         {
-            YAccelleration = gravityForRocket.gravitationalAcceleration;
+            gravityForRocket.SetAccelleration(1.0f, 45);
+            YAccelleration = gravityForRocket.accelerationY;
+            XAccelleration = gravityForRocket.thrustX;
             DxPosition += XAccelleration;
             DyPosition += YAccelleration;
+
         }
 
         public override void Draw(PaintEventArgs e)

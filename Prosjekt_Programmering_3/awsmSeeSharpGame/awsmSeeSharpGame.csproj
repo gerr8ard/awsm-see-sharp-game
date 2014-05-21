@@ -60,9 +60,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NAudio.1.7.1\lib\net35\NAudio.dll</HintPath>
     </Reference>
-    <Reference Include="NAudio.WindowsMediaFormat">
-      <HintPath>C:\Users\Gerr8ard\Google Drive\Programmering3\Dll\NAudio.WindowsMediaFormat.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -82,7 +79,6 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Accelration.cs" />
     <Compile Include="Classes\GameInfo.cs" />
     <Compile Include="Classes\GamePanel.cs">
       <SubType>Component</SubType>
@@ -101,6 +97,7 @@
     <Compile Include="Classes\Bullet.cs" />
     <Compile Include="Classes\DrawShapes.cs" />
     <Compile Include="Classes\Enemy.cs" />
+    <Compile Include="Classes\Accelration.cs" />
     <Compile Include="Classes\Hashing.cs" />
     <Compile Include="Classes\MovableShape.cs" />
     <Compile Include="Classes\Obstacle.cs" />
