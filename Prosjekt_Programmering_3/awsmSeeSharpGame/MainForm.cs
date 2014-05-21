@@ -171,6 +171,7 @@ namespace awsmSeeSharpGame
                 pnlMainForm.Controls.Add(startPage);
                 startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
                 startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
+                btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
 
                 if (gameMusic != null)
                 {
