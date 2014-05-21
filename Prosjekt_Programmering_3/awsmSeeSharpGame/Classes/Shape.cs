@@ -20,6 +20,12 @@ namespace awsmSeeSharpGame.Classes
         public Rectangle rectangle;
         public Region region;
         public float Rotation { get; set; }
+
+        protected int XPosition { get; set; }
+        protected int YPosition { get; set; }
+        protected int Width { get; set; }
+        protected int Height { get; set; }
+        protected Bitmap bitmap;
         public abstract void Draw(PaintEventArgs e);
     }
 }

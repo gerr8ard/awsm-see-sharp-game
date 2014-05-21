@@ -33,11 +33,13 @@ namespace awsmSeeSharpGame.Classes
             rocketMapPosition = new Point[rocketMap.Length];
             Array.Copy(rocketMap, rocketMapPosition, rocketMap.Length);
 
-            //rectangle objekt som tar vare på posisjon og størrelse på raketten
-            rectangle = new Rectangle(_XPosition, _YPosition, bitmap.Width, bitmap.Height);
+            XPosition = _XPosition;
+            YPosition = _YPosition;
+            Width = bitmap.Width;
+            Height = bitmap.Height;
 
-            calcXPosition = rectangle.X;
-            calcYPosition = rectangle.Y;
+            calcXPosition = XPosition;
+            calcYPosition = YPosition;
             Rotation = _Rotation;
             DxPosition = 0;
             DyPosition = 0;
@@ -92,10 +94,10 @@ namespace awsmSeeSharpGame.Classes
         public override void Draw(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            e.Graphics.TranslateTransform((float)(rectangle.X + bitmap.Width / 2), (float)(rectangle.Y) + bitmap.Height / 2);
+            e.Graphics.TranslateTransform((float)(XPosition + bitmap.Width / 2), (float)(YPosition) + bitmap.Height / 2);
             e.Graphics.RotateTransform(Rotation);
-            e.Graphics.TranslateTransform(-(float)(rectangle.X + bitmap.Width / 2), -(float)(rectangle.Y + bitmap.Height / 2));
-            e.Graphics.DrawImageUnscaled(bitmap, new Point(rectangle.X,rectangle.Y));
+            e.Graphics.TranslateTransform(-(float)(XPosition + bitmap.Width / 2), -(float)(YPosition + bitmap.Height / 2));
+            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition,YPosition));
             e.Graphics.DrawPolygon(pen, rocketMapPosition);
         }
 
