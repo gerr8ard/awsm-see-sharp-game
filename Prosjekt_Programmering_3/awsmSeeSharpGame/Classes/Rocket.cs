@@ -26,7 +26,7 @@ namespace awsmSeeSharpGame.Classes
 
         private TextureBrush textureBrush;
         private Bitmap bitmap;
-        private Gravity gravityForRocket = new Gravity();
+        private Acceleration gravityForRocket = new Acceleration();
         public int Thrust;
 
         public Rocket(int _XPosition, int _YPosition, float _Rotation, Point [] _rocketMap)
