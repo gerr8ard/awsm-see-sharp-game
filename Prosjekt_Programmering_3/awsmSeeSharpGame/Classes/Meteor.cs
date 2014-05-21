@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
@@ -21,6 +22,14 @@ namespace awsmSeeSharpGame.Classes
             meteorMap = _meteorMap;
             meteorMapPosition = new Point[meteorMap.Length];
             Array.Copy(meteorMap, meteorMapPosition, meteorMap.Length);
+        }
+        public override void Move()
+        {
+
+        }
+        public override void Draw(PaintEventArgs e)
+        {
+
         }
     }
 }

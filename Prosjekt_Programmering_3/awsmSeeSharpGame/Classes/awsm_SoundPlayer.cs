@@ -8,6 +8,10 @@ using NAudio.Wave;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Klasse som tar seg av lydavspillingen.
+    /// </summary>
     public class awsm_SoundPlayer
     {  
         
@@ -22,13 +26,17 @@ namespace awsmSeeSharpGame.Classes
              audioFileReader = new AudioFileReader(resourceUrl + _soundName);
 
             waveOutDevice.Init(audioFileReader);
-
             waveOutDevice.Play();
         }
 
         public void Stop()
         {
             waveOutDevice.Stop();
+        }
+
+        public void Start()
+        {
+            waveOutDevice.Play();
         }
         
     }

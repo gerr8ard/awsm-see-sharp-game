@@ -60,6 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NAudio.1.7.1\lib\net35\NAudio.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio.WindowsMediaFormat">
+      <HintPath>C:\Users\Gerr8ard\Google Drive\Programmering3\Dll\NAudio.WindowsMediaFormat.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -79,6 +82,7 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Accelration.cs" />
     <Compile Include="Classes\GameInfo.cs" />
     <Compile Include="Classes\GamePanel.cs">
       <SubType>Component</SubType>
@@ -89,6 +93,7 @@
     <Compile Include="Classes\Queries.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
     <Compile Include="Classes\awsm_SoundPlayer.cs" />
+    <Compile Include="Classes\WarningMessages.cs" />
     <Compile Include="interfaces\IMoveableShape.cs" />
     <Compile Include="interfaces\IShape.cs" />
     <Compile Include="interfaces\IGameTimer.cs" />
@@ -96,7 +101,6 @@
     <Compile Include="Classes\Bullet.cs" />
     <Compile Include="Classes\DrawShapes.cs" />
     <Compile Include="Classes\Enemy.cs" />
-    <Compile Include="Classes\Gravity.cs" />
     <Compile Include="Classes\Hashing.cs" />
     <Compile Include="Classes\MovableShape.cs" />
     <Compile Include="Classes\Obstacle.cs" />
@@ -121,6 +125,11 @@
     <Compile Include="Models\awsm_Users.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SystemTimer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -161,14 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UserControls\GameInfoControl.resx">
       <DependentUpon>GameInfoControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -312,6 +316,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Meteor.png" />
+    <None Include="Resources\Cancel.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ugly.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

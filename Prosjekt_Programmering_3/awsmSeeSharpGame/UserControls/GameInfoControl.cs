@@ -37,7 +37,7 @@ namespace awsmSeeSharpGame.UserControls
             threadInfoControl.Start();
 
             startPage = new StartPageControl();
-            startPage.startgameEvent += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
+            startPage.startgameEventForGameInfo += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
 
         }
 

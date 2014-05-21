@@ -44,9 +44,11 @@ namespace awsmSeeSharpGame.UserControls
                         MainForm.isLoggedIn = true;
                         loginEvent(sender, e);
                     }
+                    else WarningMessages.wrongPassword();
                 }
+                else WarningMessages.wrongUserName();
             }
-            
+            else WarningMessages.generalWarningMessage();
         }
         
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)

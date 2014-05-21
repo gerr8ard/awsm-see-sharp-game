@@ -82,6 +82,15 @@ namespace awsmSeeSharpGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream Cancel {
+            get {
+                return ResourceManager.GetStream("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream come_get_some_x {
             get {
                 return ResourceManager.GetStream("come_get_some_x", resourceCulture);
@@ -282,6 +291,15 @@ namespace awsmSeeSharpGame.Properties {
             get {
                 object obj = ResourceManager.GetObject("spaceBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream ugly {
+            get {
+                return ResourceManager.GetStream("ugly", resourceCulture);
             }
         }
     }
