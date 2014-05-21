@@ -32,11 +32,11 @@ namespace awsmSeeSharpGame
         private StartPageControl startPage;//UserControl med hovedmeny
         private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
 
-
+        private awsm_SoundPlayer introMusic, gameMusic;
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
-        private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
+        
 
         #endregion
 
@@ -69,10 +69,8 @@ namespace awsmSeeSharpGame
             login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
             login.Show();//viser LoginControl form
 
-
-
-            awsm_SoundPlayer introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
-            
+            //Starter musikk til hovedmeny
+            introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
         }
 
@@ -158,6 +156,24 @@ namespace awsmSeeSharpGame
         {
             AboutBox about = new AboutBox();
             about.ShowDialog(this);
+        }  
+        
+        private void MenuItemHovedmeny_Click(object sender, EventArgs e)
+        {
+            if (isLoggedIn == true)
+            {
+                stoppSpill();
+                pnlMainForm.Controls.Remove(gamePanel);
+                pnlMainForm.Controls.Remove(gameInfo);
+                pnlMainForm.Controls.Remove(login);
+                pnlMainForm.Controls.Remove(newUser);
+                pnlMainForm.Controls.Add(startPage);
+                startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
+                startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
+                gameMusic.Stop();
+                introMusic.Start();
+                
+            }
         }
         #endregion
 
@@ -210,6 +226,11 @@ namespace awsmSeeSharpGame
                 currentGameInfo.timer.sekundOppdatering += new GameTimer.sekundOppdateringHandler()
 
             } */
+
+            //Stopper hovedmenymusikk og starter spillmusikk.
+            introMusic.Stop();
+            gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
+
             gameInfo = new GameInfoControl();
             pnlMainForm.Controls.Remove(startPage);
             pnlMainForm.Controls.Add(gameInfo);
@@ -231,5 +252,7 @@ namespace awsmSeeSharpGame
 
 
         #endregion
+
+      
     }
 }
