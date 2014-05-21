@@ -60,6 +60,12 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio">
+      <HintPath>C:\Users\Gerr8ard\Google Drive\Programmering3\Dll\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WindowsMediaFormat">
+      <HintPath>C:\Users\Gerr8ard\Google Drive\Programmering3\Dll\NAudio.WindowsMediaFormat.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -239,8 +245,12 @@
     <None Include="Resources\Explosion03.wav" />
     <None Include="Resources\Explosion04.wav" />
     <None Include="Resources\Explosion05.wav" />
-    <None Include="Resources\back_2_work_y.wav" />
-    <None Include="Resources\come_get_some_x.wav" />
+    <None Include="Resources\back_2_work_y.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\come_get_some_x.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\fireTexture.bmp" />
     <None Include="Resources\Metallica-Orion 8 bit.wav" />
     <None Include="Resources\PlanetTexture.png" />

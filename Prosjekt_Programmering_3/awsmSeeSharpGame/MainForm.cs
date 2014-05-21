@@ -13,6 +13,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAudio;
+using NAudio.Wave;
 
 namespace awsmSeeSharpGame
 {
@@ -29,7 +31,8 @@ namespace awsmSeeSharpGame
         StartPageControl startPage = new StartPageControl();//UserControl med hovedmeny
         GameInfoControl gameInfo = new GameInfoControl();//GameInfoControll med informasjon om gjeldende spill
         SoundPlayer introMusic = new SoundPlayer(Properties.Resources.Metallica_Orion_8_bit);//Legger til sang fra recources.
-        
+        IWavePlayer waveOutDevice, waveOutDevice2;
+        AudioFileReader audioFileReader, audioFileReader2; 
         
 
         public static bool isLoggedIn = false;
@@ -84,6 +87,14 @@ namespace awsmSeeSharpGame
             login.Show();//viser LoginControl form
 
             //introMusic.Play();//Spiller av introMusic
+            waveOutDevice = new WaveOut();
+            waveOutDevice2 = new WaveOut();
+            audioFileReader = new AudioFileReader(@"Resources\back_2_work_y.wav");
+            audioFileReader2 = new AudioFileReader(@"C:\Users\Gerr8ard\Google Drive\Programmering3\Music\Music\Metallica-Orion 8 bit.wav");
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice2.Init(audioFileReader2);
+            waveOutDevice.Play();
+            waveOutDevice2.Play();
             
         }
         #region Spillrelaterte metoder
