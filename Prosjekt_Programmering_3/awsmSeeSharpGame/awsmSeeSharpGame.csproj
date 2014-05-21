@@ -90,6 +90,7 @@
     <Compile Include="Classes\Queries.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
     <Compile Include="Classes\awsm_SoundPlayer.cs" />
+    <Compile Include="Classes\WarningMessages.cs" />
     <Compile Include="interfaces\IMoveableShape.cs" />
     <Compile Include="interfaces\IShape.cs" />
     <Compile Include="interfaces\IGameTimer.cs" />
@@ -308,6 +309,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IntroMusicMuse.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ugly.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

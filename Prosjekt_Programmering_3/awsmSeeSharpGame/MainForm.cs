@@ -32,7 +32,7 @@ namespace awsmSeeSharpGame
         private StartPageControl startPage;//UserControl med hovedmeny
         private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
 
-        private awsm_SoundPlayer introMusic, gameMusic;
+        private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess;
         public static bool isLoggedIn = false;
         public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
@@ -162,6 +162,7 @@ namespace awsmSeeSharpGame
         {
             if (isLoggedIn == true)
             {
+
                 stoppSpill();
                 pnlMainForm.Controls.Remove(gamePanel);
                 pnlMainForm.Controls.Remove(gameInfo);
@@ -170,10 +171,16 @@ namespace awsmSeeSharpGame
                 pnlMainForm.Controls.Add(startPage);
                 startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
                 startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
-                gameMusic.Stop();
+
+                if (gameMusic != null)
+                {
+                    gameMusic.Stop();
+                }
+
                 introMusic.Start();
-                
+
             }
+            else WarningMessages.noAccessWarning();
         }
         #endregion
 
@@ -203,6 +210,7 @@ namespace awsmSeeSharpGame
                 startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
                 startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
                 pnlMainForm.Controls.Add(startPage);
+                logInSuccess = new awsm_SoundPlayer("ugly.wav");
             }
         }
 
@@ -216,6 +224,7 @@ namespace awsmSeeSharpGame
         {
             pnlMainForm.Controls.Remove(newUser);
             pnlMainForm.Controls.Add(login);
+            btnCancelSound= new awsm_SoundPlayer("Cancel.wav");
         }
 
         private void btn_StartGame_Click(object sender, EventArgs e)
@@ -242,11 +251,14 @@ namespace awsmSeeSharpGame
             pnlMainForm.Controls.Remove(startPage);
             pnlMainForm.Controls.Add(login);
             isLoggedIn = false;
+            btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
         }
 
         private void btn_Terminate_Click(object sender, EventArgs e)
         {
+            btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
             this.Close();
+            
         }
 
 
