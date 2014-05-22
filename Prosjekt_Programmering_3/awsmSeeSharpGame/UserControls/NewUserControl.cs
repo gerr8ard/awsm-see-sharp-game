@@ -13,9 +13,9 @@ namespace awsmSeeSharpGame.UserControls
     public partial class NewUserControl : UserControl
     {
 
-        public delegate void cancelDelegate(object sender, EventArgs e);
-        public event cancelDelegate cancelEvent;
-        string newUserUserName;
+        public delegate void NewUserControlDelegate(object sender, EventArgs e);
+        public event NewUserControlDelegate newUserControlEvent;
+        string newUserUserName, newUserFirstName, newUserSureName, newUserPassword, newUserRetypePassword;
 
         public NewUserControl()
         {
@@ -24,12 +24,16 @@ namespace awsmSeeSharpGame.UserControls
 
         private void btnCancelNewUserControl_Click(object sender, EventArgs e)
         {
-            cancelEvent(sender, e);
+            newUserControlEvent(sender, e);
         }
 
         private void btnRegisterNewUserNewUserControl_Click(object sender, EventArgs e)
         {
-           
+            newUserUserName = tbUserNameNewUserControl.Text;
+            newUserFirstName = tbFirstNameNewUserControl.Text;
+            newUserSureName = tbSureNameNewUserControl.Text;
+            newUserPassword = tbPasswordNewUserControl.Text;
+            newUserRetypePassword = tbRetypePasswordNewUserControl.Text;
         }
     }
 }
