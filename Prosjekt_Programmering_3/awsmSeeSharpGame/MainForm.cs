@@ -33,14 +33,14 @@ namespace awsmSeeSharpGame
 		private NewUserControl newUser;//UserControl for å registrere ny bruker
 		private StartPageControl startPage;//UserControl med hovedmeny
 		private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
-        private HighScoreControl highScore;//HighscoreControl med en liste over de med høyest score.
-        private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
+		private HighScoreControl highScore;//HighscoreControl med en liste over de med høyest score.
+		private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
 
-        private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
+		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
 		public static bool isLoggedIn = false;
 		public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
-        
+		
 
 		#endregion
 
@@ -59,8 +59,8 @@ namespace awsmSeeSharpGame
 			newUser = new NewUserControl();
 			startPage = new StartPageControl();
 			gameInfo = new GameInfoControl();
-            highScore = new HighScoreControl();
-            highScorePersonal = new PersonalHighScoreControl();
+			highScore = new HighScoreControl();
+			highScorePersonal = new PersonalHighScoreControl();
 
 			// Abbonnerer på events fra de forskjellige panelene
 			login.newUserEvent += new LoginControl.loginControlDelegate(btnNewUserLoginControl_Click);//Abonnerer på event i LoginControl
@@ -71,7 +71,7 @@ namespace awsmSeeSharpGame
 			startPage.terminateEvent += new StartPageControl.startPageDelegate(btn_Terminate_Click);//Abonnerer på terminateEvent i StartPageControl
 			newUser.redirectNewUserEvent += new NewUserControl.cancelDelegate(btnRegisterNewUserNewUserControl_Click);//Abonnerer på redirectNewUserEvent i newUserControl
 			startPage.highScoreEvent += new StartPageControl.startPageDelegate(btn_Highscores_Click);//Abonnerer på highScoreEventi StartPageControl
-            startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
+			startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
 
 			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
 			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
@@ -91,7 +91,7 @@ namespace awsmSeeSharpGame
 		{
 			gamePanel = new GamePanel();
 			pnlMainForm.Controls.Add(gamePanel);
-            
+			
 
 	  /*      TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
 			timer = new GameTimer(spillTid); //starter en ny timer
@@ -206,11 +206,10 @@ namespace awsmSeeSharpGame
 		/// <param name="e"></param>
 		private void btnNewUserLoginControl_Click(object sender, EventArgs e)
 		{
-		    btnRegisterNewUserClick = new awsm_SoundPlayer("come_get_some_x.wav");
 			pnlMainForm.Controls.Remove(login);
 			pnlMainForm.Controls.Add(newUser);
 			newUser.Dock = DockStyle.Bottom;
-			
+			btnRegisterNewUserClick = new awsm_SoundPlayer("come_get_some_x.wav");			
 		}
 
 		private void btnLoginLoginControl_Click(object sender, EventArgs e)
@@ -249,21 +248,20 @@ namespace awsmSeeSharpGame
 
 			//Stopper hovedmenymusikk og starter spillmusikk.
 			introMusic.Stop();
-			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
-
 			gameInfo = new GameInfoControl();
 			pnlMainForm.Controls.Remove(startPage);
-            pnlMainForm.Controls.Remove(highScore);
-            pnlMainForm.Controls.Remove(highScorePersonal);
+			pnlMainForm.Controls.Remove(highScore);
+			pnlMainForm.Controls.Remove(highScorePersonal);
 			pnlMainForm.Controls.Add(gameInfo);
 			startSpill();
+			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
 		}
 
 		private void btn_logOut_Click(object sender, EventArgs e)
 		{
 			pnlMainForm.Controls.Remove(startPage);
-            pnlMainForm.Controls.Remove(highScore);
-            pnlMainForm.Controls.Remove(highScorePersonal);
+			pnlMainForm.Controls.Remove(highScore);
+			pnlMainForm.Controls.Remove(highScorePersonal);
 			pnlMainForm.Controls.Add(login);
 			isLoggedIn = false;
 			btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
@@ -278,27 +276,26 @@ namespace awsmSeeSharpGame
 
 		private void btnRegisterNewUserNewUserControl_Click(object sender, EventArgs e)
 		{
-			registerSuccess = new awsm_SoundPlayer("out_of_gum_x.wav");
 			pnlMainForm.Controls.Remove(newUser);
 			pnlMainForm.Controls.Add(login);
+			registerSuccess = new awsm_SoundPlayer("out_of_gum_x.wav");
 		}
 
 		private void btn_Highscores_Click(object sender, EventArgs e)
-		{
-            
-            pnlMainForm.Controls.Add(highScore);
-            highScore.Left = 700;
-            highScore.Top = 60;
-            highScoreSound = new awsm_SoundPlayer("you_suck.wav");
+		{			
+			highScore.Left = 700;
+			highScore.Top = 60;
+			pnlMainForm.Controls.Add(highScore);
+			highScoreSound = new awsm_SoundPlayer("you_suck.wav");
 		}
 
-        private void btn_PersonalRecords_Click(object sender, EventArgs e)
-        {
-            pnlMainForm.Controls.Add(highScorePersonal);
-            highScorePersonal.Left = 30;
-            highScorePersonal.Top = 60;
-            personalHighScoreSound = new awsm_SoundPlayer("good.wav");
-        }
+		private void btn_PersonalRecords_Click(object sender, EventArgs e)
+		{
+			highScorePersonal.Left = 30;
+			highScorePersonal.Top = 60;
+			pnlMainForm.Controls.Add(highScorePersonal);
+			personalHighScoreSound = new awsm_SoundPlayer("good.wav");
+		}
 
 		#endregion
 
