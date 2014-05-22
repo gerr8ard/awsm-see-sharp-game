@@ -10,8 +10,6 @@ namespace awsmSeeSharpGame.Classes
 {
     public class Meteor : MovableShape
     {
-
-        private Bitmap bitmap;
         public int speed;
         
         public Meteor(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _meteorMap)

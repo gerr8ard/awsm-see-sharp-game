@@ -1,4 +1,5 @@
-﻿using System;
+﻿using awsmSeeSharpGame.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -23,12 +24,16 @@ namespace awsmSeeSharpGame.Classes
         private List<Target> targetList;
         private List<Meteor> meteorList;
         private Rocket rocket;
+        private UserControls.GameInfoControl gameInfoControl;
 
         public Label lblFps; // Label for FPS
         Point lblFpsLocation = new Point(10, 200); //Setter posisjonen til FPS labelen!
         
         ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
         Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
+
+        public event UpdateLivesDelegate UpdateLivesEvent;
+        public delegate void UpdateLivesDelegate(object sender, EventArgs e);
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
 
@@ -37,8 +42,11 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public GamePanel()
         {
+            //gameInfoControl = new GameInfoControl();
             this.SetStyle(ControlStyles.Selectable, true);
             this.TabStop = true;
+
+
 
 
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);

@@ -23,6 +23,13 @@ namespace awsmSeeSharpGame.UserControls
         public static GameInfo currentGameInfo;
 
         private StartPageControl startPage;
+        private int level;
+        private int lives;
+        private string time;
+        private int points;
+        private int myRecord;
+
+
 
  //       public delegate void GameInfoControlDelegate(object sender, EventArgs e);
   //      public event GameInfoControlDelegate GameInfoControlLoad;
@@ -30,6 +37,13 @@ namespace awsmSeeSharpGame.UserControls
         public GameInfoControl()
         {
             InitializeComponent();
+            level = 1; //Første brett
+            lives = 3; //Tre liv til å starte med
+            points = 0; //Starter med null poeng
+
+            lbl_levelValue.Text = level.ToString();
+            lbl_livesValue.Text = lives.ToString();
+            lbl_PointsValue.Text = points.ToString();
 
             threadStartInfoControl = new ThreadStart(InfoPanelDraw);
             threadInfoControl = new Thread(threadStartInfoControl);
@@ -38,9 +52,15 @@ namespace awsmSeeSharpGame.UserControls
 
             startPage = new StartPageControl();
             startPage.startgameEventForGameInfo += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
+            //GamePanel.UpdateLivesEvent += new GamePanel.UpdateLivesDelegate(Update_lives);
 
+  
         }
 
+        public void Update_lives(Object sender, EventArgs e)
+        {
+
+        }
 
         public void GameInfoControl_Update()
         {
@@ -85,8 +105,6 @@ namespace awsmSeeSharpGame.UserControls
 
 
             //lbl_remainingTime.Text = MainForm.currentGameInfo.timer.GetTid().ToString(); // Oppdater tidslabelen.
-
-
-        }  
+        }
     }
 }

@@ -78,7 +78,7 @@ namespace awsmSeeSharpGame
 			login.Show();//viser LoginControl form
 
 			//Starter musikk til hovedmeny
-			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
 
@@ -247,7 +247,10 @@ namespace awsmSeeSharpGame
 			} */
 
 			//Stopper hovedmenymusikk og starter spillmusikk.
-			introMusic.Stop();
+			if (introMusic != null)
+			{
+				introMusic.Stop();
+			}
 			gameInfo = new GameInfoControl();
 			pnlMainForm.Controls.Remove(startPage);
 			pnlMainForm.Controls.Remove(highScore);
