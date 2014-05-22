@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +19,16 @@ namespace awsmSeeSharpGame.Classes
         private double timeSinceLastUpdate = 0.0;
         private double fps = 0.0;
         private DateTime lastTime = DateTime.Now;
+        private bool collision;
 
         // Lister som inneholder objektene som skal tegnes opp
         List<Enemy> enemyList;
         List<Bullet> bulletList;
         List<Obstacle> obstacleList;
         List<Target> targetList;
+        List<Meteor> meteorList;
         Rocket rocket;
+        Region collisionRegion;
 
         GamePanel parentGamePanel; // lenke til Gamepanelet, så vi kan akkssere FPS labelen
 
@@ -37,14 +41,16 @@ namespace awsmSeeSharpGame.Classes
         /// <param name="_obstacleList">Liste med Obstacles</param>
         /// <param name="_targetList">Liste med targets</param>
         /// <param name="_rocket">Romskipet vårt</param>
-        public DrawShapes(GamePanel _parentPictureBox, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, Rocket _rocket)
+        public DrawShapes(GamePanel _parentPictureBox, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, Rocket _rocket)
         {
             parentGamePanel = _parentPictureBox;
             enemyList = _enemylist;
             bulletList = _bulletList;
             obstacleList = _obstacleList;
             targetList = _targetList;
+            meteorList = _meteorList;
             rocket = _rocket;
+            collision = false;
         }
 
         /// <summary>
@@ -52,6 +58,11 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void Update()
         {
+            foreach(Meteor meteor in meteorList)
+            {
+                meteor.Move();
+            }
+
             foreach (Bullet bullet in bulletList)
             {
                 bullet.Move();
@@ -63,15 +74,68 @@ namespace awsmSeeSharpGame.Classes
         /// <summary>
         /// Sjekker for kollisjoner ved å gå igjennom alle flyttbare objekter og sjekke kollisjonsmetodene deres
         /// </summary>
-        public void CollisonCheck()
+        public void CollisonCheck(PaintEventArgs e)
         {
+
             foreach (Bullet bullet in bulletList)
             {
-                bullet.Collision();
             }
-            rocket.Collision();
-        }
+            foreach (Obstacle obstacle in obstacleList)
+            {
+                RegionData regionData = obstacle.region.GetRegionData();
 
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
+                {
+                    collision = true;
+                }
+                collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+            }
+            
+            foreach (Meteor meteor in meteorList)
+            {
+                RegionData regionData = meteor.region.GetRegionData();
+
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
+                {
+                    collision = true;
+                }
+                collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+            }
+            
+            if (collision)
+            {
+                rocket.pen.Color = Color.Red;
+                collision = false; //Resetter collisions testen
+            }
+            else
+            {
+                rocket.pen.Color = Color.White;
+            }
+            rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+        }
+/*
+        public void Collision()
+        {
+            {
+                foreach (Firkant firkant in firkanter)
+                {
+                    foreach (Ball ball in balls)
+                    {
+                        if (ball.rectangle.IntersectsWith(firkant.rectangle))
+                        {
+                            ball.running = false;
+                            Debug.WriteLine(string.Format("{0} terminert ved kollisjon", ball.getNameOfThread()));
+                        }
+                    }
+                }
+                balls.RemoveAll(ball => ball.running == false);
+            }
+        }
+ * */
         /// <summary>
         /// Går igjennom alle objektene og kaller opp Draw metodene deres for å tegne de opp
         /// </summary>
@@ -79,7 +143,7 @@ namespace awsmSeeSharpGame.Classes
         public void Draw(PaintEventArgs e)
         {
             Update(); //Flytter objektene som skal flyttes
-            CollisonCheck(); // Sjekker for kollisjon
+            CollisonCheck(e); // Sjekker for kollisjon
 
             BeregnFPS(); //Beregner og viser Frames Per Second (FPS)
 
@@ -99,6 +163,10 @@ namespace awsmSeeSharpGame.Classes
             foreach (Target target in targetList)
             {
                 target.Draw(e);
+            }
+            foreach (Meteor meteor in meteorList)
+            {
+                meteor.Draw(e);
             }
             rocket.Draw(e);
 

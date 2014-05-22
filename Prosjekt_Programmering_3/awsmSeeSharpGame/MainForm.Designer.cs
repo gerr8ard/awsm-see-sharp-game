@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.pnlInfo = new System.Windows.Forms.Panel();
-            this.lblTid = new System.Windows.Forms.Label();
-            this.lblPoeng = new System.Windows.Forms.Label();
-            this.lblTidTekst = new System.Windows.Forms.Label();
-            this.lblLevel = new System.Windows.Forms.Label();
             this.msMenyStripe = new System.Windows.Forms.MenuStrip();
             this.MenuItemMeny = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemHovedmeny = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,64 +47,12 @@
             // pnlInfo
             // 
             this.pnlInfo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlInfo.Controls.Add(this.lblTid);
-            this.pnlInfo.Controls.Add(this.lblPoeng);
-            this.pnlInfo.Controls.Add(this.lblTidTekst);
-            this.pnlInfo.Controls.Add(this.lblLevel);
             this.pnlInfo.Controls.Add(this.msMenyStripe);
             this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlInfo.Location = new System.Drawing.Point(0, 0);
             this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(1184, 68);
+            this.pnlInfo.Size = new System.Drawing.Size(1184, 24);
             this.pnlInfo.TabIndex = 0;
-            this.pnlInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlInfo_Paint);
-            // 
-            // lblTid
-            // 
-            this.lblTid.AutoSize = true;
-            this.lblTid.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTid.ForeColor = System.Drawing.Color.Snow;
-            this.lblTid.Location = new System.Drawing.Point(623, 33);
-            this.lblTid.Name = "lblTid";
-            this.lblTid.Size = new System.Drawing.Size(86, 23);
-            this.lblTid.TabIndex = 3;
-            this.lblTid.Text = "00:00:00";
-            // 
-            // lblPoeng
-            // 
-            this.lblPoeng.AutoSize = true;
-            this.lblPoeng.BackColor = System.Drawing.Color.Transparent;
-            this.lblPoeng.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPoeng.ForeColor = System.Drawing.Color.Snow;
-            this.lblPoeng.Location = new System.Drawing.Point(997, 33);
-            this.lblPoeng.Name = "lblPoeng";
-            this.lblPoeng.Size = new System.Drawing.Size(76, 23);
-            this.lblPoeng.TabIndex = 2;
-            this.lblPoeng.Text = "Poeng: ";
-            // 
-            // lblTidTekst
-            // 
-            this.lblTidTekst.AutoSize = true;
-            this.lblTidTekst.BackColor = System.Drawing.Color.Transparent;
-            this.lblTidTekst.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTidTekst.ForeColor = System.Drawing.Color.Snow;
-            this.lblTidTekst.Location = new System.Drawing.Point(526, 33);
-            this.lblTidTekst.Name = "lblTidTekst";
-            this.lblTidTekst.Size = new System.Drawing.Size(91, 23);
-            this.lblTidTekst.TabIndex = 1;
-            this.lblTidTekst.Text = "Tid igjen:";
-            // 
-            // lblLevel
-            // 
-            this.lblLevel.AutoSize = true;
-            this.lblLevel.BackColor = System.Drawing.Color.Transparent;
-            this.lblLevel.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLevel.ForeColor = System.Drawing.Color.Snow;
-            this.lblLevel.Location = new System.Drawing.Point(3, 33);
-            this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(54, 23);
-            this.lblLevel.TabIndex = 0;
-            this.lblLevel.Text = "Nivå:";
             // 
             // msMenyStripe
             // 
@@ -137,6 +81,7 @@
             this.MenuItemHovedmeny.Name = "MenuItemHovedmeny";
             this.MenuItemHovedmeny.Size = new System.Drawing.Size(139, 22);
             this.MenuItemHovedmeny.Text = "Hovedmeny";
+            this.MenuItemHovedmeny.Click += new System.EventHandler(this.MenuItemHovedmeny_Click);
             // 
             // MenuItemSkilleMeny
             // 
@@ -180,12 +125,12 @@
             // 
             // pnlMainForm
             // 
-            this.pnlMainForm.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.space_background;
+            this.pnlMainForm.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.pnlMainForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMainForm.Location = new System.Drawing.Point(0, 68);
+            this.pnlMainForm.Location = new System.Drawing.Point(0, 24);
             this.pnlMainForm.Name = "pnlMainForm";
-            this.pnlMainForm.Size = new System.Drawing.Size(1184, 594);
+            this.pnlMainForm.Size = new System.Drawing.Size(1184, 638);
             this.pnlMainForm.TabIndex = 1;
             // 
             // MainForm
@@ -196,6 +141,7 @@
             this.Controls.Add(this.pnlMainForm);
             this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";

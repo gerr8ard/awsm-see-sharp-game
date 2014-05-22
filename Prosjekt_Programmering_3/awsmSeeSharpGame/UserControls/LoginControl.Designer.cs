@@ -93,8 +93,10 @@
             this.tbPasswordLoginControl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tbPasswordLoginControl.Location = new System.Drawing.Point(353, 36);
             this.tbPasswordLoginControl.Name = "tbPasswordLoginControl";
+            this.tbPasswordLoginControl.PasswordChar = '*';
             this.tbPasswordLoginControl.Size = new System.Drawing.Size(144, 20);
-            this.tbPasswordLoginControl.TabIndex = 3;
+            this.tbPasswordLoginControl.TabIndex = 2;
+            this.tbPasswordLoginControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPasswordLoginControl_KeyPress);
             // 
             // tbUserNameLoginControl
             // 
@@ -102,7 +104,8 @@
             this.tbUserNameLoginControl.Location = new System.Drawing.Point(103, 36);
             this.tbUserNameLoginControl.Name = "tbUserNameLoginControl";
             this.tbUserNameLoginControl.Size = new System.Drawing.Size(144, 20);
-            this.tbUserNameLoginControl.TabIndex = 4;
+            this.tbUserNameLoginControl.TabIndex = 1;
+            this.tbUserNameLoginControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUserNameLoginControl_KeyPress);
             // 
             // btnLoginLoginControl
             // 
@@ -110,8 +113,8 @@
             this.btnLoginLoginControl.Location = new System.Drawing.Point(503, 29);
             this.btnLoginLoginControl.Name = "btnLoginLoginControl";
             this.btnLoginLoginControl.Size = new System.Drawing.Size(94, 35);
-            this.btnLoginLoginControl.TabIndex = 5;
-            this.btnLoginLoginControl.Text = "Logg inn";
+            this.btnLoginLoginControl.TabIndex = 3;
+            this.btnLoginLoginControl.Text = "&Logg inn";
             this.btnLoginLoginControl.UseVisualStyleBackColor = true;
             this.btnLoginLoginControl.Click += new System.EventHandler(this.btnLoginLoginControl_Click);
             // 
@@ -121,8 +124,8 @@
             this.btnNewUserLoginControl.Location = new System.Drawing.Point(603, 29);
             this.btnNewUserLoginControl.Name = "btnNewUserLoginControl";
             this.btnNewUserLoginControl.Size = new System.Drawing.Size(145, 35);
-            this.btnNewUserLoginControl.TabIndex = 6;
-            this.btnNewUserLoginControl.Text = "Reigstrer ny bruker";
+            this.btnNewUserLoginControl.TabIndex = 4;
+            this.btnNewUserLoginControl.Text = "&Registrer ny bruker";
             this.btnNewUserLoginControl.UseVisualStyleBackColor = true;
             this.btnNewUserLoginControl.Click += new System.EventHandler(this.btnNewUserLoginControl_Click);
             // 
@@ -139,13 +142,13 @@
             this.lblHeaderLoginControl.Text = "Logg inn her eller registrer ny bruker";
             this.lblHeaderLoginControl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // LoginControl2
+            // LoginControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "LoginControl2";
+            this.Name = "LoginControl";
             this.Size = new System.Drawing.Size(751, 67);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

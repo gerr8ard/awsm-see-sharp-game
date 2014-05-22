@@ -21,10 +21,11 @@ namespace awsmSeeSharpGame.Classes
         private List<Bullet> bulletList;
         private List<Obstacle> obstacleList;
         private List<Target> targetList;
+        private List<Meteor> meteorList;
         private Rocket rocket;
 
         public Label lblFps; // Label for FPS
-        Point lblFpsLocation = new Point(10, 10); //Setter posisjonen til FPS labelen!
+        Point lblFpsLocation = new Point(10, 200); //Setter posisjonen til FPS labelen!
         
         ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
         Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
@@ -34,7 +35,14 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public GamePanel()
         {
-            this.BackColor = Color.Black;
+            this.SetStyle(ControlStyles.Selectable, true);
+            this.TabStop = true;
+
+
+            this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);
+
+            //this.BackColor = Color.Black;
+            this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
 
             //Setter opp alle objekt listene
@@ -42,10 +50,11 @@ namespace awsmSeeSharpGame.Classes
             bulletList = new List<Bullet>();
             obstacleList = new List<Obstacle>();
             targetList = new List<Target>();
+            meteorList = new List<Meteor>();
 
             Point[] rocketMap = ShapeMaps.RocketDesign2();
 
-            rocket = new Rocket(300,150,0, rocketMap);
+            rocket = new Rocket(200,400,0, rocketMap);
 
             // Setter opp labelen som viser FPS
             lblFps = new Label();
@@ -57,15 +66,18 @@ namespace awsmSeeSharpGame.Classes
 
 
             //Lager et test objekt og legger det til i obstacle lista
-            Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.BlueViolet);
-            Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.BlueViolet);
+            Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.White);
+            Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.White);
 
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
 
+            //Lage nye metorer
+            Meteor meteor1 = new Meteor(1000, 400, 10, 0,ShapeMaps.Meteor());
+            meteorList.Add(meteor1);
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, rocket);
+            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, rocket);
 
             // Setter opp og starter oppdatering av OnPaint metoden
             threadStartGamePanel = new ThreadStart(GamePanelDraw);
@@ -74,6 +86,29 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel.Start();
 
         }
+
+        private void previewKeyEventHandler(object sender, PreviewKeyDownEventArgs e)
+        {
+           
+            if (e.KeyCode == Keys.Left)
+            {
+                rocket.Rotation -= 5;
+            }
+
+            else if (e.KeyCode == Keys.Right)
+            {
+                rocket.Rotation += 5;
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                rocket.Thrust += 0.3f;
+            }
+            else if (e.KeyCode == Keys.Space)
+            {
+                   // Skyte pang! pang!
+            }
+        }
+
 
         /// <summary>
         /// Kaller On Paint metoden ca 60 ganger i sekundet
