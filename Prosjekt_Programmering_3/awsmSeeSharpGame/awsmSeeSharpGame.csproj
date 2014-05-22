@@ -239,10 +239,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\alienblaster.png" />
-    <None Include="Resources\animated-gifs-of-fighting-game-backgrounds-15.gif" />
+    <None Include="Resources\animated-gifs-of-fighting-game-backgrounds-15.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\space-background.jpg" />
+    <None Include="Resources\space-background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ready_4_action.wav" />
@@ -352,6 +356,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\good.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z2AvXVG.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ezgif-save.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stars.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

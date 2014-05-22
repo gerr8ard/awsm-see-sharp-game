@@ -40,6 +40,7 @@ namespace awsmSeeSharpGame
 		public static bool isLoggedIn = false;
 		public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
+        
 
 		#endregion
 
@@ -90,6 +91,7 @@ namespace awsmSeeSharpGame
 		{
 			gamePanel = new GamePanel();
 			pnlMainForm.Controls.Add(gamePanel);
+            
 
 	  /*      TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
 			timer = new GameTimer(spillTid); //starter en ny timer

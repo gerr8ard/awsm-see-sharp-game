@@ -69,7 +69,7 @@ namespace awsmSeeSharpGame.UserControls
         private void btnNewUserLoginControl_Click(object sender, EventArgs e)
         {
 
-            loginControlEvent(sender, e);
+            newUserEvent(sender, e);
             
         }
 

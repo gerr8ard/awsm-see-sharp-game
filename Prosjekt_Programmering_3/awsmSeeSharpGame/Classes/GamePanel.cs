@@ -30,6 +30,8 @@ namespace awsmSeeSharpGame.Classes
         ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
         Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
 
+        private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
+
         /// <summary>
         /// Konstruktør som setter opp objektene, objektlistene, FPSlabel og starter oppdateringene av OnPaint metoden
         /// </summary>
@@ -42,8 +44,10 @@ namespace awsmSeeSharpGame.Classes
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);
 
             //this.BackColor = Color.Black;
-            this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
+            //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
+            this.Image = Image.FromFile(resourceUrl + "stars.gif");
+            
 
             //Setter opp alle objekt listene
             enemyList = new List<Enemy>();
