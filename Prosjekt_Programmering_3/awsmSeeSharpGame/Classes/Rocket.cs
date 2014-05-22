@@ -21,7 +21,7 @@ namespace awsmSeeSharpGame.Classes
     {
         private Bitmap bitmap;
         private Acceleration gravityForRocket = new Acceleration();
-        public int Thrust;
+        public float Thrust;
 
         public Rocket(int _XPosition, int _YPosition, float _Rotation, Point [] _rocketMap)
         {
@@ -52,10 +52,14 @@ namespace awsmSeeSharpGame.Classes
 
         public override void Move()
         {
-            Accelerate();
+         //   Accelerate(_thrust, _rotation);
+         //   Accelerate();
          //   Rotation += 1;
             calcXPosition += DxPosition;
             calcYPosition += DyPosition;
+
+            YPosition = (int)calcYPosition;
+            XPosition = (int)calcXPosition;
         //    XPosition = (int)calcXPosition;
         //    YPostition = (int)calcYPosition;
 
@@ -70,11 +74,31 @@ namespace awsmSeeSharpGame.Classes
 
         public void Accelerate()
         {
-            gravityForRocket.SetAccelleration(1.0f, 45);
+            gravityForRocket.SetAccelleration(Thrust, Rotation);
             YAccelleration = gravityForRocket.accelerationY;
             XAccelleration = gravityForRocket.thrustX;
             DxPosition += XAccelleration;
             DyPosition += YAccelleration;
+            if (Thrust > 0.2995)
+                Thrust -= 0.2995f;
+            else if (Thrust > 0.15)
+                Thrust -= 0.15f;
+            else if (Thrust > 0.03)
+                Thrust -= 0.03f;
+            else if (Thrust > 0.005)
+                Thrust -= 0.005f;
+
+            if (DxPosition > 0.03)
+                DxPosition -= 0.03f;
+            else if (DxPosition < -0.03)
+                DxPosition += 0.03f;
+
+            if (DyPosition > 0.005)
+            {
+              //  DyPosition -= 0.005f;
+            }
+            else if (DyPosition < -0.03)
+               DyPosition += 0.03f; 
 
         }
 

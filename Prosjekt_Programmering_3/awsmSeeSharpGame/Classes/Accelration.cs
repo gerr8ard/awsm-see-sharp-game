@@ -18,6 +18,7 @@ namespace awsmSeeSharpGame.Classes
         public Acceleration()
         {
             gravitationalAcceleration = 0.01635f; //635f;
+          //  gravitationalAcceleration = 0.025f;
         }
 
         public Acceleration(float _gravity)
@@ -35,9 +36,9 @@ namespace awsmSeeSharpGame.Classes
         {
             thrust = _thrust;
             rotationRad = (_rotation / 180) * (float)Math.PI;
-            thrustX = (thrust * (float)Math.Sin(rotationRad));
-            thrustY = (thrust * (float)Math.Cos(rotationRad));
-            accelerationY = gravitationalAcceleration + thrustY;
+            thrustX = (thrust * (float)(Math.Sin(rotationRad)));
+            thrustY = (thrust * (float)(Math.Cos(rotationRad)));
+            accelerationY = gravitationalAcceleration - thrustY;
         }
     }
 }

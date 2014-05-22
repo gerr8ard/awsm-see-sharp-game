@@ -92,16 +92,16 @@ namespace awsmSeeSharpGame.Classes
            
             if (e.KeyCode == Keys.Left)
             {
-                rocket.Rotation -= 3;
+                rocket.Rotation -= 5;
             }
 
             else if (e.KeyCode == Keys.Right)
             {
-                rocket.Rotation += 3;
+                rocket.Rotation += 5;
             }
             else if (e.KeyCode == Keys.Down)
             {
-                rocket.Thrust += 1;
+                rocket.Thrust += 0.3f;
             }
             else if (e.KeyCode == Keys.Space)
             {

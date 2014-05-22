@@ -67,6 +67,7 @@ namespace awsmSeeSharpGame.Classes
             {
                 bullet.Move();
             }
+            rocket.Accelerate();
             rocket.Move();
         }
 
@@ -91,6 +92,7 @@ namespace awsmSeeSharpGame.Classes
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
+            
             foreach (Meteor meteor in meteorList)
             {
                 RegionData regionData = meteor.region.GetRegionData();
@@ -103,7 +105,7 @@ namespace awsmSeeSharpGame.Classes
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
-
+            
             if (collision)
             {
                 rocket.pen.Color = Color.Red;

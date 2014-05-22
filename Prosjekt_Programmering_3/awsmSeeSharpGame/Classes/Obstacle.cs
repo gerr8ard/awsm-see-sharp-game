@@ -24,7 +24,7 @@ namespace awsmSeeSharpGame.Classes
             pen = new Pen(color, 1);
             bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.PlanetTexture);
 
-            path = ShapeMaps.MakeElipseGraphicsPath(rectangle);
+            path = ShapeMaps.MakeElipseGraphicsPath(new Rectangle(XPosition, YPosition, Width, Height));
             region = new Region(path);
 
             textureBrush = new TextureBrush(bitmap);
