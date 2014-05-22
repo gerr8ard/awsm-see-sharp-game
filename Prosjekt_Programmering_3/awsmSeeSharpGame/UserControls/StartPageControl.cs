@@ -18,6 +18,7 @@ namespace awsmSeeSharpGame.UserControls
         public event startPageDelegate logOutEvent;
         public event startPageDelegate terminateEvent;
         public event startPageDelegate highScoreEvent;
+        public event startPageDelegate personalHighScoreEvent;
 
         public StartPageControl()
         {
@@ -43,7 +44,21 @@ namespace awsmSeeSharpGame.UserControls
 
         private void btn_Highscores_Click(object sender, EventArgs e)
         {
+
+            if (btn_Highscores.Text == "Rekorder")
+            {
+                btn_Highscores.Text = "Skjul Rekorder";
+            }
+            else if (btn_Highscores.Text == "Skjul Rekorder")
+            {
+                btn_Highscores.Text = "Rekorder";
+            }
             highScoreEvent(sender, e);
+        }
+
+        private void btn_PersonalRecords_Click(object sender, EventArgs e)
+        {
+            personalHighScoreEvent(sender, e);
         }
     }
 }

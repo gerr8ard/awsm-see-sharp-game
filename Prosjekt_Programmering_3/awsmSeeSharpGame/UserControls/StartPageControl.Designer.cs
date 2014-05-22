@@ -63,6 +63,7 @@
             this.btn_PersonalRecords.TabIndex = 2;
             this.btn_PersonalRecords.Text = "Mine Rekorder";
             this.btn_PersonalRecords.UseVisualStyleBackColor = true;
+            this.btn_PersonalRecords.Click += new System.EventHandler(this.btn_PersonalRecords_Click);
             // 
             // btn_logOut
             // 
