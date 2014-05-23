@@ -17,8 +17,10 @@ namespace awsmSeeSharpGame.Classes
 
         public Acceleration()
         {
-            gravitationalAcceleration = 0.01635f; //635f;
+           // gravitationalAcceleration = 0.01635f; //635f;
           //  gravitationalAcceleration = 0.025f;
+            gravitationalAcceleration = 0.005f; //635f;
+
         }
 
         public Acceleration(float _gravity)

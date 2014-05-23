@@ -36,7 +36,7 @@ namespace awsmSeeSharpGame.Classes
         public delegate void UpdateLivesDelegate(object sender, EventArgs e);
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
-
+        Font fontDavid = new Font("Arial", 11.0F);
         /// <summary>
         /// Konstruktør som setter opp objektene, objektlistene, FPSlabel og starter oppdateringene av OnPaint metoden
         /// </summary>
@@ -46,16 +46,68 @@ namespace awsmSeeSharpGame.Classes
             this.SetStyle(ControlStyles.Selectable, true);
             this.TabStop = true;
 
+            // Setter opp labelen som viser FPS
+            lblFps = new Label();
+            lblFps.Location = new Point (50, 10);
+            lblFps.ForeColor = Color.White;
+            lblFps.BackColor = Color.Transparent;
+            lblFps.Text = string.Empty;
+            lblFps.Font = fontDavid;
+            this.Controls.Add(lblFps);
 
+            // Setter opp labelen som viser Navn
+            Label lblNavn = new Label();
+            lblNavn.Location = new Point(250, 10);
+            lblNavn.ForeColor = Color.White;
+            lblNavn.BackColor = Color.Transparent;
+            lblNavn.Text = "Navn";
+            lblNavn.Font = fontDavid;
+            this.Controls.Add(lblNavn);
 
+            // Setter opp labelen som viser antall liv
+            Label lblLives = new Label();
+            lblLives.Text = "3 lives";
+            lblLives.Location = new Point(450, 10);
+            lblLives.ForeColor = Color.White;
+            lblLives.BackColor = Color.Transparent;
+            lblLives.Font = fontDavid;
+            this.Controls.Add(lblLives);
+
+            // Setter opp labelen som viser gjenstående tid
+            Label lblTime = new Label();
+            lblTime.Text = "05:00";
+            lblTime.Location = new Point(650, 10);
+            lblTime.ForeColor = Color.White;
+            lblTime.BackColor = Color.Transparent;
+            lblTime.Font = fontDavid;
+            this.Controls.Add(lblTime);
+
+            // Setter opp labelen som viser Poeng
+            Label lblScore = new Label();
+            lblScore.Text = "0";
+            lblScore.Location = new Point(850, 10);
+            lblScore.ForeColor = Color.White;
+            lblScore.BackColor = Color.Transparent;
+            lblScore.Font = fontDavid;
+            this.Controls.Add(lblScore);
+
+            // Setter opp labelen som viser din rekord
+            Label lblRecord = new Label();
+            lblRecord.Text = "1000";
+            lblRecord.Location = new Point(1050, 10);
+            lblRecord.ForeColor = Color.White;
+            lblRecord.BackColor = Color.Transparent;
+            lblRecord.Font = fontDavid;
+            this.Controls.Add(lblRecord);
 
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);
 
             //this.BackColor = Color.Black;
             //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
-            this.Image = Image.FromFile(resourceUrl + "stars.gif");
-            
+            //this.Image = Image.FromFile(resourceUrl + "stars.gif");
+            this.Image = Image.FromFile(resourceUrl + "space-background.jpg");
+
 
             //Setter opp alle objekt listene
             enemyList = new List<Enemy>();
@@ -68,13 +120,7 @@ namespace awsmSeeSharpGame.Classes
 
             rocket = new Rocket(200,400,0, rocketMap);
 
-            // Setter opp labelen som viser FPS
-            lblFps = new Label();
-            lblFps.Location = lblFpsLocation;
-            lblFps.ForeColor = Color.White;
-            lblFps.BackColor = Color.Transparent;
-            lblFps.Text = string.Empty;
-            this.Controls.Add(lblFps);
+ 
 
 
             //Lager et test objekt og legger det til i obstacle lista
@@ -139,6 +185,16 @@ namespace awsmSeeSharpGame.Classes
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             base.OnPaint(e);
             drawShapes.Draw(e); //Kaller Draw metoden som tegner opp alle objektene i Gamepanelet
-        }        
+        }
+
+        private void InitializeComponent()
+        {
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+     
     }
 }
