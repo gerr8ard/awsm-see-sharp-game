@@ -54,6 +54,7 @@ namespace awsmSeeSharpGame
 			isGameRunning = false;
 			//startSpill();
 
+
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
 			newUser = new NewUserControl();
@@ -76,11 +77,20 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
 			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
 			login.Show();//viser LoginControl form
-
 			//Starter musikk til hovedmeny
 			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
+        } 
 
 
 		#region Spillrelaterte metoder
