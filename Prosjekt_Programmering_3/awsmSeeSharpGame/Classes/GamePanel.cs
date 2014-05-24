@@ -24,6 +24,7 @@ namespace awsmSeeSharpGame.Classes
         private List<Obstacle> obstacleList;
         private List<Target> targetList;
         private List<Meteor> meteorList;
+        private List<AlienHead> alienHeadList;
         private Rocket rocket;
         private UserControls.GameInfoControl gameInfoControl;
         private Label lblNavn;
@@ -115,11 +116,11 @@ namespace awsmSeeSharpGame.Classes
 
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);
 
-            //this.BackColor = Color.Black;
+            this.BackColor = Color.Black;
             //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
             //this.Image = Image.FromFile(resourceUrl + "stars.gif");
-            this.Image = Image.FromFile(resourceUrl + "space-background.jpg");
+            //this.Image = Image.FromFile(resourceUrl + "space-background.jpg");
             
             //Setter opp alle objekt listene
             enemyList = new List<Enemy>();
@@ -127,6 +128,7 @@ namespace awsmSeeSharpGame.Classes
             obstacleList = new List<Obstacle>();
             targetList = new List<Target>();
             meteorList = new List<Meteor>();
+            alienHeadList = new List<AlienHead>();
 
             Point[] rocketMap = ShapeMaps.RocketDesign2();
             rocket = new Rocket(200,400,0, rocketMap);
@@ -138,12 +140,16 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
 
-            //Lage nye metorer
-            Meteor meteor1 = new Meteor(1000, 400, 10, 0,ShapeMaps.Meteor());
+            //Lager nye metorer
+            Meteor meteor1 = new Meteor(1200, 400, 10, 0,ShapeMaps.Meteor());
             meteorList.Add(meteor1);
 
+            //Lager nye alienhead
+            AlienHead alienHead1 = new AlienHead(1200, 200, 1, 0, ShapeMaps.alienHead());
+            alienHeadList.Add(alienHead1);
+
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, rocket);
+            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, rocket);
 
             // Setter opp og starter oppdatering av OnPaint metoden
             threadStartGamePanel = new ThreadStart(GamePanelDraw);

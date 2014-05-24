@@ -79,6 +79,7 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\AlienHead.cs" />
     <Compile Include="Classes\GameInfo.cs" />
     <Compile Include="Classes\GamePanel.cs">
       <SubType>Component</SubType>
@@ -370,6 +371,9 @@
     <None Include="Resources\stars.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alien-head.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

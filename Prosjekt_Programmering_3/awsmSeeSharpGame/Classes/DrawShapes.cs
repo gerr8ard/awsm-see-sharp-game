@@ -28,6 +28,7 @@ namespace awsmSeeSharpGame.Classes
         List<Obstacle> obstacleList;
         List<Target> targetList;
         List<Meteor> meteorList;
+        List<AlienHead> alienHeadList;
         Rocket rocket;
         Region collisionRegion;
 
@@ -42,7 +43,7 @@ namespace awsmSeeSharpGame.Classes
         /// <param name="_obstacleList">Liste med Obstacles</param>
         /// <param name="_targetList">Liste med targets</param>
         /// <param name="_rocket">Romskipet vårt</param>
-        public DrawShapes(GamePanel _parentPictureBox, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, Rocket _rocket)
+        public DrawShapes(GamePanel _parentPictureBox, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, List<AlienHead> _alienHeadList, Rocket _rocket)
         {
             parentGamePanel = _parentPictureBox;
             enemyList = _enemylist;
@@ -50,6 +51,7 @@ namespace awsmSeeSharpGame.Classes
             obstacleList = _obstacleList;
             targetList = _targetList;
             meteorList = _meteorList;
+            alienHeadList = _alienHeadList;
             rocket = _rocket;
             collision = false;
         }
@@ -71,10 +73,18 @@ namespace awsmSeeSharpGame.Classes
                 meteor.Move();
             }
 
+            foreach(AlienHead alienHead in alienHeadList)
+            {
+                alienHead.Move();
+            }
+
             foreach (Bullet bullet in bulletList)
             {
                 bullet.Move();
             }
+
+            
+
             rocket.Accelerate();
             rocket.Move();
         }
@@ -105,6 +115,18 @@ namespace awsmSeeSharpGame.Classes
             {
                 RegionData regionData = meteor.region.GetRegionData();
 
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
+                {
+                    collision = true;
+                }
+                collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+            }
+
+            foreach (AlienHead alienHead in alienHeadList)
+            {
+                RegionData regionData = alienHead.region.GetRegionData();
                 collisionRegion = new Region(regionData);
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
@@ -175,6 +197,10 @@ namespace awsmSeeSharpGame.Classes
             foreach (Meteor meteor in meteorList)
             {
                 meteor.Draw(e);
+            }
+            foreach (AlienHead alienHead in alienHeadList)
+            {
+                alienHead.Draw(e);
             }
             rocket.Draw(e);
 
