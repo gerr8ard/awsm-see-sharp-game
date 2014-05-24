@@ -182,9 +182,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\GameInfoControl.resx">
-      <DependentUpon>GameInfoControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\HighScoreControl.resx">
       <DependentUpon>HighScoreControl.cs</DependentUpon>
     </EmbeddedResource>
