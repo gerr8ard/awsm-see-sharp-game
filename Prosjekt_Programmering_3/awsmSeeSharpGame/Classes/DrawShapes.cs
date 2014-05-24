@@ -75,7 +75,7 @@ namespace awsmSeeSharpGame.Classes
             {
                 bullet.Move();
             }
-            rocket.Accelerate();
+            rocket.Accelerate(GetDeltaTime);
             rocket.Move();
         }
 
