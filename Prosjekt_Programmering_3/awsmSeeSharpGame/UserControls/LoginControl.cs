@@ -34,6 +34,7 @@ namespace awsmSeeSharpGame.UserControls
             InitializeComponent();           
         }
 
+
         private void btnLoginLoginControl_Click(object sender, EventArgs e)
         {
             string givenUsername = tbUserNameLoginControl.Text;
