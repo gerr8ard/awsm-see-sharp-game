@@ -52,9 +52,7 @@ namespace awsmSeeSharpGame.UserControls
 
             startPage = new StartPageControl();
             startPage.startgameEventForGameInfo += new StartPageControl.startPageDelegate(btn_StartGame_Click);//Abonnerer på startgameEvent i StartPageControl
-            //GamePanel.UpdateLivesEvent += new GamePanel.UpdateLivesDelegate(Update_lives);
-
-  
+            //GamePanel.UpdateLivesEvent += new GamePanel.UpdateLivesDelegate(Update_lives);  
         }
 
         public void Update_lives(Object sender, EventArgs e)

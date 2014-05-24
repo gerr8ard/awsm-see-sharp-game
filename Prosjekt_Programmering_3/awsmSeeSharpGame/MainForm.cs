@@ -25,7 +25,6 @@ namespace awsmSeeSharpGame
 		#region Fields
 
 		private GameTimer timer; //Timeren som holder styr på hvor lenge det er igjen av spillrunden.
-		private Boolean isGameRunning;
 		private ThreadStart threadStartInfoPanel;
 		private Thread threadInfoPanel;
 		private GamePanel gamePanel;
@@ -38,6 +37,9 @@ namespace awsmSeeSharpGame
 
 		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
 		public static bool isLoggedIn = false;
+        public static int user_id;
+        public static string userName = "Dag";
+
 		public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
 		
@@ -51,7 +53,6 @@ namespace awsmSeeSharpGame
 		public MainForm()
 		{
 			InitializeComponent();
-			isGameRunning = false;
 			startSpill();
 
 
@@ -100,17 +101,7 @@ namespace awsmSeeSharpGame
 		private void startSpill()
 		{
 			gamePanel = new GamePanel();
-			pnlMainForm.Controls.Add(gamePanel);
-			
-
-	  /*      TimeSpan spillTid = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
-			timer = new GameTimer(spillTid); //starter en ny timer
-			isGameRunning = true; */
-   /*         threadStartInfoPanel = new ThreadStart(InfoPanelDraw);
-			threadInfoPanel = new Thread(threadStartInfoPanel);
-			threadInfoPanel.IsBackground = true;
-			threadInfoPanel.Start();  */
-			
+			pnlMainForm.Controls.Add(gamePanel);		
 		}
 
 		/// <summary>
@@ -118,34 +109,7 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		private void stoppSpill()
 		{
-			timer = null;
-			isGameRunning = false;
 		}
-
-		/// <summary>
-		/// Tegner opp Info panelet
-		/// </summary>
-		private void InfoPanelDraw()
-		{
-			while (true)
-			{
-				pnlInfo.Invalidate();
-				Thread.Sleep(17); 
-			}
-		} 
-
-
-
-		/// <summary>
-		/// Paint metode for Info panelet
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-   /*     private void pnlInfo_Paint(object sender, PaintEventArgs e)
-		{
-			lblTid.Text = timer.GetTid().ToString(); // Oppdater tidslabelen.
-
-		}  */
 
 		#endregion
 
@@ -157,13 +121,8 @@ namespace awsmSeeSharpGame
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			stoppSpill();
-		 //   threadInfoPanel.Abort();
 		}
 
-		protected override void OnPaint(PaintEventArgs e)
-		{
-			base.OnPaint(e);
-		}
 
 		#region MenuItem Metoder
 		private void MenuItemAvslutt_Click(object sender, EventArgs e)
@@ -202,10 +161,7 @@ namespace awsmSeeSharpGame
 			}
 			else WarningMessages.noAccessWarning();
 		}
-		#endregion
-
-
-	   
+		#endregion	   
 
 		#region Button click events
 		/// <summary>
@@ -261,11 +217,9 @@ namespace awsmSeeSharpGame
 			{
 				introMusic.Stop();
 			}
-			gameInfo = new GameInfoControl();
 			pnlMainForm.Controls.Remove(startPage);
 			pnlMainForm.Controls.Remove(highScore);
 			pnlMainForm.Controls.Remove(highScorePersonal);
-			//pnlMainForm.Controls.Add(gameInfo);
 			startSpill();
 			//gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
 		}
