@@ -20,6 +20,7 @@ namespace awsmSeeSharpGame.Classes
         private double fps = 0.0;
         private DateTime lastTime = DateTime.Now;
         private bool collision;
+        public double elapsedTime;
 
         // Lister som inneholder objektene som skal tegnes opp
         List<Enemy> enemyList;
@@ -51,6 +52,13 @@ namespace awsmSeeSharpGame.Classes
             meteorList = _meteorList;
             rocket = _rocket;
             collision = false;
+        }
+
+        //Public get for Deltatiden. Brukt for å oppdatere spillobjektene uavhengig av FPS
+        public double GetDeltaTime{
+            get{
+                return elapsedTime;
+            }
         }
 
         /// <summary>
@@ -184,13 +192,13 @@ namespace awsmSeeSharpGame.Classes
             //Finner differansen som et timespan-objekt:
             TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
             //Finner forløpt tid siden siste kall på Draw() - i antall sekunder:
-            double elapsed = (elapsedSpan.Milliseconds) / 1000.0; //NB! .0
+            elapsedTime = (elapsedSpan.Milliseconds) / 1000.0; //NB! .0
 
             //Beregner og viser:
             //Teller antall frames:
             frameCount++;
             //Inkrementerer timeSinceLastUpdate med forløpt tid:
-            timeSinceLastUpdate += elapsed;
+            timeSinceLastUpdate += elapsedTime;
             //Når det er gått mer enn 1 sekund (timeSinceLastUpdate > 1) beregnes fps:
             if (timeSinceLastUpdate > 1.0)
             {

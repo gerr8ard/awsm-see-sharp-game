@@ -19,7 +19,6 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Rocket : MovableShape
     {
-        private Bitmap bitmap;
         private Acceleration gravityForRocket = new Acceleration();
         public float Thrust;
 

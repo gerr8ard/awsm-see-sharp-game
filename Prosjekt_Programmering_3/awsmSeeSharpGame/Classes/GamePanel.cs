@@ -44,9 +44,6 @@ namespace awsmSeeSharpGame.Classes
         ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
         Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
 
-        public event UpdateLivesDelegate UpdateLivesEvent;
-        public delegate void UpdateLivesDelegate(object sender, EventArgs e);
-
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
         Font fontDavid = new Font("Arial", 11.0F); //Font som blir brukt til informasjonen om spillet øverst på skjermen.
 

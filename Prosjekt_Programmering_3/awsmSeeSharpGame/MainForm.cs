@@ -90,6 +90,8 @@ namespace awsmSeeSharpGame
 		/// <summary>
 		/// Hentet fra http://stackoverflow.com/questions/2612487/how-to-fix-the-flickering-in-user-controls for å stoppe flimmer på bilde.
 		/// </summary>
+        /// 
+        
 		protected override CreateParams CreateParams
 		{
 			get
@@ -99,7 +101,7 @@ namespace awsmSeeSharpGame
 				return cp;
 			}
 		} 
-
+        
 
 		#region Spillrelaterte metoder
 		/// <summary>
