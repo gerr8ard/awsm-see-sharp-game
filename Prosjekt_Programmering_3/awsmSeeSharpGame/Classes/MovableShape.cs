@@ -12,7 +12,6 @@ namespace awsmSeeSharpGame.Classes
     public abstract class MovableShape : Shape, IMoveableShape
     {
 
-        abstract public void Move();
         public float DxPosition { get; set; }
         public float DyPosition { get; set; }
 
@@ -22,6 +21,15 @@ namespace awsmSeeSharpGame.Classes
         public float calcXPosition { get; set; }
         public float calcYPosition { get; set; }
 
+        public float speed { get; set; }
+
         public override abstract void Draw(PaintEventArgs e);
+
+        public virtual void Move(float _elapsedTime)
+        {
+            DxPosition -= speed * _elapsedTime;
+            XPosition = (int)DxPosition;
+            updateShapePosition();
+        }
     }
 }

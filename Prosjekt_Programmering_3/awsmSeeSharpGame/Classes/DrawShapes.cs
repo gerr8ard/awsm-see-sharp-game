@@ -20,7 +20,10 @@ namespace awsmSeeSharpGame.Classes
         private double fps = 0.0;
         private DateTime lastTime = DateTime.Now;
         private bool collision;
-        public double elapsedTime;
+        public float elapsedTime;
+
+        private awsm_SoundPlayer alienHeadSound;
+
 
         // Lister som inneholder objektene som skal tegnes opp
         List<Enemy> enemyList;
@@ -43,9 +46,9 @@ namespace awsmSeeSharpGame.Classes
         /// <param name="_obstacleList">Liste med Obstacles</param>
         /// <param name="_targetList">Liste med targets</param>
         /// <param name="_rocket">Romskipet vårt</param>
-        public DrawShapes(GamePanel _parentPictureBox, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, List<AlienHead> _alienHeadList, Rocket _rocket)
+        public DrawShapes(GamePanel _parentGamePanel, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, List<AlienHead> _alienHeadList, Rocket _rocket)
         {
-            parentGamePanel = _parentPictureBox;
+            parentGamePanel = _parentGamePanel;
             enemyList = _enemylist;
             bulletList = _bulletList;
             obstacleList = _obstacleList;
@@ -57,7 +60,7 @@ namespace awsmSeeSharpGame.Classes
         }
 
         //Public get for Deltatiden. Brukt for å oppdatere spillobjektene uavhengig av FPS
-        public double GetDeltaTime{
+        public float GetElapsedTime{
             get{
                 return elapsedTime;
             }
@@ -70,21 +73,21 @@ namespace awsmSeeSharpGame.Classes
         {
             foreach(Meteor meteor in meteorList)
             {
-                meteor.Move();
+                meteor.Move(GetElapsedTime);
             }
 
             foreach(AlienHead alienHead in alienHeadList)
             {
-                alienHead.Move();
+                alienHead.Move(GetElapsedTime);
             }
 
             foreach (Bullet bullet in bulletList)
             {
-                bullet.Move();
+                bullet.Move(GetElapsedTime);
             }
-        
-            rocket.Accelerate(GetDeltaTime);
-            rocket.Move();
+
+            rocket.Accelerate();
+            rocket.Move(GetElapsedTime);
         }
 
         /// <summary>
@@ -127,9 +130,12 @@ namespace awsmSeeSharpGame.Classes
                 RegionData regionData = alienHead.region.GetRegionData();
                 collisionRegion = new Region(regionData);
                 collisionRegion.Intersect(rocket.region);
-                if (!collisionRegion.IsEmpty(e.Graphics))
+                if (!collisionRegion.IsEmpty(e.Graphics) && alienHead.isCollected == false)
                 {
-                    collision = true;
+                    alienHead.isCollected = true;
+                    parentGamePanel.score += 100;
+                    alienHeadSound = new awsm_SoundPlayer("Shot.wav");
+                    
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -216,7 +222,7 @@ namespace awsmSeeSharpGame.Classes
             //Finner differansen som et timespan-objekt:
             TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
             //Finner forløpt tid siden siste kall på Draw() - i antall sekunder:
-            elapsedTime = (elapsedSpan.Milliseconds) / 1000.0; //NB! .0
+            elapsedTime = (elapsedSpan.Milliseconds) / 1000.0F; //NB! .0
 
             //Beregner og viser:
             //Teller antall frames:

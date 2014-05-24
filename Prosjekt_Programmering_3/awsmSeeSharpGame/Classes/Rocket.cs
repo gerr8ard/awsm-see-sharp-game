@@ -49,7 +49,7 @@ namespace awsmSeeSharpGame.Classes
             YAccelleration = 0;
         }
 
-        public override void Move()
+        public override void Move(float _elapsedTime)
         {
          //   Accelerate(_thrust, _rotation);
          //   Accelerate();
@@ -59,8 +59,7 @@ namespace awsmSeeSharpGame.Classes
 
             YPosition = (int)calcYPosition;
             XPosition = (int)calcXPosition;
-        //    XPosition = (int)calcXPosition;
-        //    YPostition = (int)calcYPosition;
+     
 
        /*     rectangle.Y -= Thrust;
             if (Thrust > 1) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
@@ -71,11 +70,11 @@ namespace awsmSeeSharpGame.Classes
             updateShapePosition();
         }       
 
-        public void Accelerate(double _elapsedTime)
+        public void Accelerate()
         {
         //    double elapsedTime = DrawShapes.GetDeltaTime;
 
-            gravityForRocket.SetAccelleration(_elapsedTime, Thrust, Rotation);
+            gravityForRocket.SetAccelleration(Thrust, Rotation);
             YAccelleration = gravityForRocket.accelerationY;
             XAccelleration = gravityForRocket.thrustX;
             DxPosition += XAccelleration;

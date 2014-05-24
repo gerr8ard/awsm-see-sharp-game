@@ -32,18 +32,20 @@ namespace awsmSeeSharpGame.Classes
         private Label lblTime;
         private Label lblScore;
         private Label lblRecord;
-        private int numberOfLivesLeft;
-        private int score;
         private TimeSpan timeLeft;
         private Boolean isGameRunning;
         private GameTimer gameTimer;
 
+
+        public int score { get; set; }
+        public int numberOfLivesLeft { get; set; }
 
         public Label lblFps; // Label for FPS
         Point lblFpsLocation = new Point(10, 200); //Setter posisjonen til FPS labelen!
         
         ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
         Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
+        
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
         Font fontDavid = new Font("Arial", 11.0F); //Font som blir brukt til informasjonen om spillet øverst på skjermen.
@@ -116,11 +118,11 @@ namespace awsmSeeSharpGame.Classes
 
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);
 
-            this.BackColor = Color.Black;
+            //this.BackColor = Color.Black;
             //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
             //this.Image = Image.FromFile(resourceUrl + "stars.gif");
-            //this.Image = Image.FromFile(resourceUrl + "space-background.jpg");
+            this.Image = Image.FromFile(resourceUrl + "space-background.jpg");
             
             //Setter opp alle objekt listene
             enemyList = new List<Enemy>();
@@ -141,12 +143,33 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle2);
 
             //Lager nye metorer
-            Meteor meteor1 = new Meteor(1200, 400, 10, 0,ShapeMaps.Meteor());
+            Meteor meteor1 = new Meteor(1000, 400, 300, 0,ShapeMaps.Meteor());
             meteorList.Add(meteor1);
 
             //Lager nye alienhead
-            AlienHead alienHead1 = new AlienHead(1200, 200, 1, 0, ShapeMaps.alienHead());
+            AlienHead alienHead1 = new AlienHead(1600, 200, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead2 = new AlienHead(2000, 400, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead3 = new AlienHead(2500, 700, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead4 = new AlienHead(3200, 100, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead5 = new AlienHead(3600, 400, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead6 = new AlienHead(5000, 50, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead7 = new AlienHead(6000, 250, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead8 = new AlienHead(6500, 200, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead9 = new AlienHead(7600, 500, 100, 0, ShapeMaps.alienHead());
+            AlienHead alienHead10 = new AlienHead(8600, 200, 100, 0, ShapeMaps.alienHead());
+
+
             alienHeadList.Add(alienHead1);
+            alienHeadList.Add(alienHead2);
+            alienHeadList.Add(alienHead3);
+            alienHeadList.Add(alienHead4);
+            alienHeadList.Add(alienHead5);
+            alienHeadList.Add(alienHead6);
+            alienHeadList.Add(alienHead7);
+            alienHeadList.Add(alienHead8);
+            alienHeadList.Add(alienHead9);
+            alienHeadList.Add(alienHead10);
+
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, rocket);
@@ -223,6 +246,8 @@ namespace awsmSeeSharpGame.Classes
         protected override void OnPaint(PaintEventArgs e)
         {
             lblTime.Text = string.Format("Time Left: {0}", timeLeft); //Oppdaterer tiden som er igjen.
+            lblLives.Text = string.Format("Lives left: {0}", numberOfLivesLeft);
+            lblScore.Text = string.Format("Score: {0}", score);
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             base.OnPaint(e);

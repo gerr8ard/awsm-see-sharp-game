@@ -8,6 +8,6 @@ namespace awsmSeeSharpGame.interfaces
 {
     public interface IMoveableShape
     {
-        void Move();
+        void Move(float _elapsedTime);
     }
 }
