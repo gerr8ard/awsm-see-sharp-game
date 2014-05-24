@@ -48,16 +48,30 @@ namespace awsmSeeSharpGame.UserControls
             if (btn_Highscores.Text == "Rekorder")
             {
                 btn_Highscores.Text = "Skjul Rekorder";
+                MainForm.isHighScoreShowing = true;
             }
             else if (btn_Highscores.Text == "Skjul Rekorder")
             {
                 btn_Highscores.Text = "Rekorder";
+                MainForm.isHighScoreShowing = false;
             }
             highScoreEvent(sender, e);
         }
 
         private void btn_PersonalRecords_Click(object sender, EventArgs e)
         {
+
+            if (btn_PersonalRecords.Text == "Mine Rekorder")
+            {
+                btn_PersonalRecords.Text = "Skjul Mine Rekorder";
+                MainForm.isPersonalHighScoreShowing = true;
+            }
+            else if (btn_PersonalRecords.Text == "Skjul Mine Rekorder")
+            {
+                btn_PersonalRecords.Text = "Mine Rekorder";
+                MainForm.isPersonalHighScoreShowing = false;
+            }
+
             personalHighScoreEvent(sender, e);
         }
     }

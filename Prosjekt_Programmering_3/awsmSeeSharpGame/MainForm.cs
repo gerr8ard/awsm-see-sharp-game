@@ -37,9 +37,13 @@ namespace awsmSeeSharpGame
 
 		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
 		public static bool isLoggedIn = false;
+
         public static int user_id;
         public static string userName = "Dag";
 
+
+		public static bool isHighScoreShowing = false;
+		public static bool isPersonalHighScoreShowing = false;
 		public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
 		
@@ -83,15 +87,18 @@ namespace awsmSeeSharpGame
 
 		}
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
-                return cp;
-            }
-        } 
+		/// <summary>
+		/// Hentet fra http://stackoverflow.com/questions/2612487/how-to-fix-the-flickering-in-user-controls for å stoppe flimmer på bilde.
+		/// </summary>
+		protected override CreateParams CreateParams
+		{
+			get
+			{
+				CreateParams cp = base.CreateParams;
+				cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+				return cp;
+			}
+		} 
 
 
 		#region Spillrelaterte metoder
@@ -252,16 +259,36 @@ namespace awsmSeeSharpGame
 		{			
 			highScore.Left = 700;
 			highScore.Top = 60;
-			pnlMainForm.Controls.Add(highScore);
-			highScoreSound = new awsm_SoundPlayer("you_suck.wav");
+			
+			if (isHighScoreShowing == true)
+			{
+				pnlMainForm.Controls.Add(highScore);
+				highScoreSound = new awsm_SoundPlayer("you_suck.wav");
+			}
+            else
+            {
+                pnlMainForm.Controls.Remove(highScore);
+                btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
+            } 
+                
 		}
 
 		private void btn_PersonalRecords_Click(object sender, EventArgs e)
 		{
 			highScorePersonal.Left = 30;
 			highScorePersonal.Top = 60;
-			pnlMainForm.Controls.Add(highScorePersonal);
-			personalHighScoreSound = new awsm_SoundPlayer("good.wav");
+			
+			if (isPersonalHighScoreShowing == true)
+			{
+				pnlMainForm.Controls.Add(highScorePersonal);
+				personalHighScoreSound = new awsm_SoundPlayer("good.wav");
+			}
+            else
+            {
+                pnlMainForm.Controls.Remove(highScorePersonal);
+                btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
+            }
+
 		}
 
 		#endregion

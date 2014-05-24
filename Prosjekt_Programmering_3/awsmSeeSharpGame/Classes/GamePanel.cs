@@ -186,11 +186,13 @@ namespace awsmSeeSharpGame.Classes
             if (e.KeyCode == Keys.Left)
             {
                 rocket.Rotation -= 5;
+                
             }
 
             else if (e.KeyCode == Keys.Right)
             {
                 rocket.Rotation += 5;
+                
             }
             else if (e.KeyCode == Keys.Down)
             {
