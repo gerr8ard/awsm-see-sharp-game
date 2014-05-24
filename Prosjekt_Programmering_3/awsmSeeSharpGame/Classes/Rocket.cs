@@ -71,9 +71,11 @@ namespace awsmSeeSharpGame.Classes
             updateShapePosition();
         }       
 
-        public void Accelerate()
+        public void Accelerate(double _elapsedTime)
         {
-            gravityForRocket.SetAccelleration(Thrust, Rotation);
+        //    double elapsedTime = DrawShapes.GetDeltaTime;
+
+            gravityForRocket.SetAccelleration(_elapsedTime, Thrust, Rotation);
             YAccelleration = gravityForRocket.accelerationY;
             XAccelleration = gravityForRocket.thrustX;
             DxPosition += XAccelleration;
