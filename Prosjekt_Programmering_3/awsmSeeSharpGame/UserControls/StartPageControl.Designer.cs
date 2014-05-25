@@ -33,6 +33,7 @@
             this.btn_PersonalRecords = new System.Windows.Forms.Button();
             this.btn_logOut = new System.Windows.Forms.Button();
             this.btn_Terminate = new System.Windows.Forms.Button();
+            this.btn_Settings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_StartGame
@@ -67,7 +68,7 @@
             // 
             // btn_logOut
             // 
-            this.btn_logOut.Location = new System.Drawing.Point(31, 110);
+            this.btn_logOut.Location = new System.Drawing.Point(31, 138);
             this.btn_logOut.Name = "btn_logOut";
             this.btn_logOut.Size = new System.Drawing.Size(114, 23);
             this.btn_logOut.TabIndex = 3;
@@ -77,7 +78,7 @@
             // 
             // btn_Terminate
             // 
-            this.btn_Terminate.Location = new System.Drawing.Point(31, 140);
+            this.btn_Terminate.Location = new System.Drawing.Point(31, 167);
             this.btn_Terminate.Name = "btn_Terminate";
             this.btn_Terminate.Size = new System.Drawing.Size(114, 23);
             this.btn_Terminate.TabIndex = 4;
@@ -85,18 +86,29 @@
             this.btn_Terminate.UseVisualStyleBackColor = true;
             this.btn_Terminate.Click += new System.EventHandler(this.btn_Terminate_Click);
             // 
+            // btn_Settings
+            // 
+            this.btn_Settings.Location = new System.Drawing.Point(31, 109);
+            this.btn_Settings.Name = "btn_Settings";
+            this.btn_Settings.Size = new System.Drawing.Size(114, 23);
+            this.btn_Settings.TabIndex = 5;
+            this.btn_Settings.Text = "Innstillinger";
+            this.btn_Settings.UseVisualStyleBackColor = true;
+            this.btn_Settings.Click += new System.EventHandler(this.btn_Settings_Click);
+            // 
             // StartPageControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btn_Settings);
             this.Controls.Add(this.btn_Terminate);
             this.Controls.Add(this.btn_logOut);
             this.Controls.Add(this.btn_PersonalRecords);
             this.Controls.Add(this.btn_Highscores);
             this.Controls.Add(this.btn_StartGame);
             this.Name = "StartPageControl";
-            this.Size = new System.Drawing.Size(180, 185);
+            this.Size = new System.Drawing.Size(180, 222);
             this.ResumeLayout(false);
 
         }
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button btn_PersonalRecords;
         private System.Windows.Forms.Button btn_logOut;
         private System.Windows.Forms.Button btn_Terminate;
+        private System.Windows.Forms.Button btn_Settings;
     }
 }
