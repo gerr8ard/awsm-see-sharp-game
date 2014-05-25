@@ -28,34 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lvHighScore = new System.Windows.Forms.ListView();
+            this.dgvHighScore = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHighScore)).BeginInit();
             this.SuspendLayout();
             // 
-            // lvHighScore
+            // dgvHighScore
             // 
-            this.lvHighScore.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.ExplodingStar;
-            this.lvHighScore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvHighScore.Location = new System.Drawing.Point(0, 0);
-            this.lvHighScore.Name = "lvHighScore";
-            this.lvHighScore.Size = new System.Drawing.Size(450, 500);
-            this.lvHighScore.TabIndex = 0;
-            this.lvHighScore.UseCompatibleStateImageBehavior = false;
+            this.dgvHighScore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHighScore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvHighScore.Location = new System.Drawing.Point(0, 0);
+            this.dgvHighScore.Name = "dgvHighScore";
+            this.dgvHighScore.Size = new System.Drawing.Size(450, 500);
+            this.dgvHighScore.TabIndex = 0;
             // 
             // HighScoreControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.lvHighScore);
+            this.Controls.Add(this.dgvHighScore);
             this.Name = "HighScoreControl";
             this.Size = new System.Drawing.Size(450, 500);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHighScore)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView lvHighScore;
+        private System.Windows.Forms.DataGridView dgvHighScore;
+
 
     }
 }

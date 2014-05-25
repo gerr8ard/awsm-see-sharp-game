@@ -13,7 +13,7 @@ namespace awsmSeeSharpGame.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201405161205123_First"; }
+            get { return "201405241758417_First"; }
         }
         
         string IMigrationMetadata.Source

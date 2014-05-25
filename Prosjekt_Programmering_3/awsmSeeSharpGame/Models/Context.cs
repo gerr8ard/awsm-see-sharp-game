@@ -14,7 +14,6 @@ namespace awsmSeeSharpGame.Models
         public DbSet<awsm_Users> Users { get; set; }
         public DbSet<awsm_Privilege> Privilege { get; set; }
         public DbSet<awsm_Score> Score { get; set; }
-        public DbSet<awsm_HighScore> HighScore { get; set; }
 
         public Context()
         {

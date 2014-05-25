@@ -69,6 +69,97 @@ namespace awsmSeeSharpGame.Migrations
             context.SaveChanges();
 
 
+            var user1 = context.Users.Where(users => users.UserName == "MrBean").FirstOrDefault();
+            var user2 = context.Users.Where(users => users.UserName == "Sjefen").FirstOrDefault();
+
+            var score = new List<awsm_Score>
+            {
+                new awsm_Score
+                {
+                    Score = 120,
+                    Created = DateTime.Now.AddDays(-31),
+                    User_id = user1.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 1000,
+                    Created = DateTime.Now.AddDays(-32),
+                    User_id = user2.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 1,
+                    Created = DateTime.Now.AddDays(-33),
+                    User_id = user1.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 150,
+                    Created = DateTime.Now.AddDays(-34),
+                    User_id = user2.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 250,
+                    Created = DateTime.Now.AddDays(-35),
+                    User_id = user1.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 260,
+                    Created = DateTime.Now.AddDays(-36),
+                    User_id = user2.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 270,
+                    Created = DateTime.Now.AddDays(-37),
+                    User_id = user1.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 360,
+                    Created = DateTime.Now.AddDays(-38),
+                    User_id = user2.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 1500,
+                    Created = DateTime.Now.AddDays(-39),
+                    User_id = user1.User_id,
+                    
+                },
+
+                new awsm_Score
+                {
+                    Score = 800,
+                    Created = DateTime.Now.AddDays(-40),
+                    User_id = user2.User_id,
+                    
+                },
+
+            };
+
+            score.ForEach(element => context.Score.AddOrUpdate(scores => scores.Created, element));
+            context.SaveChanges();
+
+
         }
     }
 }

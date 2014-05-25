@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using awsmSeeSharpGame.Classes;
+using awsmSeeSharpGame.Models;
 
 namespace awsmSeeSharpGame.UserControls
 {
@@ -15,6 +17,24 @@ namespace awsmSeeSharpGame.UserControls
         public HighScoreControl()
         {
             InitializeComponent();
+            
+            //var topScores = Queries.GetTopTenScores();
+
+            using (var context = new Context())
+            {
+                var topScoreList = context.Score
+                                    .Include("Users")
+                                    .OrderByDescending(S => S.Score)
+                                    .Take(10)
+                                    .ToList();
+                
+            
+            
+            dgvHighScore.DataSource = topScoreList;
+            }
+
+            
+           
         }
     }
 }

@@ -15,11 +15,10 @@ namespace awsmSeeSharpGame.Classes
         [Key]
         public int Score_id { get; set; }
         public int Score { get; set; }
-        public int HighScore_id { get; set; }
         public int User_id { get; set; }
         public DateTime Created { get; set; }
 
-        public virtual awsm_Users User { get; set; }
-        public virtual awsm_HighScore HighScore { get; set; }
+        public virtual awsm_Users Users { get; set; }
+        
     }
 }
