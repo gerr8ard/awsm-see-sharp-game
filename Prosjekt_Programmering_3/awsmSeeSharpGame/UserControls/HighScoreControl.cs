@@ -20,10 +20,12 @@ namespace awsmSeeSharpGame.UserControls
         public HighScoreControl()
         {
             InitializeComponent();
+            lvHighScore.View = View.Details;
             lvHighScore.Columns.Add("Nr");
             lvHighScore.Columns.Add("Navn");
             lvHighScore.Columns.Add("Poeng");
             lvHighScore.Columns.Add("Dato");
+
 
             List<awsm_Score> highscoreListe = Queries.GetTopTenScores();
             for (int i = 0; i < highscoreListe.Count; i++)
