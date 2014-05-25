@@ -36,7 +36,11 @@ namespace awsmSeeSharpGame.Classes
         private Boolean isGameRunning;
         private GameTimer gameTimer;
 
+        public int numberOfAlienHead { get; set; }
+        public int numberOfMeteors { get; set; }
+        public int numberOfPlanets { get; set; }
 
+        private Random random;
         public int score { get; set; }
         public int numberOfLivesLeft { get; set; }
 
@@ -60,6 +64,7 @@ namespace awsmSeeSharpGame.Classes
             this.TabStop = true;
             numberOfLivesLeft = 3;
             timeLeft = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+            random = new Random(); // Setter opp et random objekt for å kalkulere flere parametre på objektene som skal dukke opp i spillet
 
 
             #region Game info Panel
@@ -181,6 +186,15 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel.Start();
 
         }
+        private List<Shape> MakeObjectList(int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Type typeObject)
+        {
+            List<Shape> objectList = new List<Shape>();
+            for (int i = 0; i < _numberOfObjects; i++)
+            {
+
+            }
+            return objectList;
+        } 
 
         GamePanel (int _NumberOflives, TimeSpan _time) :base() 
         {

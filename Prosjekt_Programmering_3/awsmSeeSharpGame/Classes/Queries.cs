@@ -21,5 +21,17 @@ namespace awsmSeeSharpGame.Classes
 
             }
         }
+
+        static public List<awsm_Score> GetTopTenScores()
+        {
+            using (var context = new Context())
+            {
+                var highScoreListe = context.Score
+                                    .OrderByDescending(s => s.Score)
+                                    .Take(10)
+                                    .ToList();
+                return highScoreListe;
+            }
+        }
     }
 }
