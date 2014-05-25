@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio;
 using NAudio.Wave;
+using System.Diagnostics;
 
 namespace awsmSeeSharpGame
 {
@@ -130,6 +131,11 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		private void stoppSpill()
 		{
+            if (isGameRunning) 
+            { 
+                gamePanel.threadGamePanel.Abort();
+                Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
+            }
 		}
 
 		#endregion
@@ -141,7 +147,14 @@ namespace awsmSeeSharpGame
 		/// <param name="e"></param>
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
+            try 
+            { 
 			stoppSpill();
+            }
+            catch
+            {
+
+            }
 		}
 
 
@@ -163,6 +176,7 @@ namespace awsmSeeSharpGame
 			{
 
 				stoppSpill();
+                isGameRunning = false;
 				pnlMainForm.Controls.Remove(gamePanel);
 				pnlMainForm.Controls.Remove(gameInfo);
 				pnlMainForm.Controls.Remove(login);
@@ -177,7 +191,7 @@ namespace awsmSeeSharpGame
 					gameMusic.Stop();
 				}
 
-				introMusic.Start();
+				//introMusic.Start();
 
 			}
 			else WarningMessages.noAccessWarning();
@@ -247,6 +261,7 @@ namespace awsmSeeSharpGame
 
 			pnlMainForm.Controls.Add(gameInfo);
 			startSpill();
+            isGameRunning = true;
 			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
 		}
 
@@ -313,8 +328,8 @@ namespace awsmSeeSharpGame
 
         private void btn_Settings_Click(object sender, EventArgs e)
         {
-            settings.Left = 30;
-            settings.Top = 470;
+            settings.Left = 500;
+            settings.Top = 400;
 
             if (isSettingsShowing == true)
             {
