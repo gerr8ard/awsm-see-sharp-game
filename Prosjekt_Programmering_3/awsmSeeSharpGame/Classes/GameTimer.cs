@@ -44,7 +44,7 @@ namespace awsmSeeSharpGame.Classes
             if (tid > zeroTime)
             {
                 tid = tid - oneSecond;
-                sekundOppdatering(source, e);
+                sekundOppdatering(this, e);
             }
             else
             {

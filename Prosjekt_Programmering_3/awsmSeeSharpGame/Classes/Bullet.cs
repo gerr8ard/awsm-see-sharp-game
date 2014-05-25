@@ -28,7 +28,7 @@ namespace awsmSeeSharpGame.Classes
             DyPosition = 0;
         }
 
-        public override void Move()
+        public override void Move(float _elapsedTime)
         {
             throw new NotImplementedException();
         }

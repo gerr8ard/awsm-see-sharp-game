@@ -9,9 +9,7 @@ using System.Windows.Forms;
 namespace awsmSeeSharpGame.Classes
 {
     public class Meteor : MovableShape
-    {
-        public int speed;
-        
+    {       
         public Meteor(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _meteorMap)
         {
             bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.Meteor);
@@ -22,6 +20,7 @@ namespace awsmSeeSharpGame.Classes
 
             XPosition = _XPosition;
             YPosition = _YPosition;
+            DxPosition = XPosition;
             Width = bitmap.Width;
             Height = bitmap.Height;
 
@@ -32,11 +31,6 @@ namespace awsmSeeSharpGame.Classes
 
         }
 
-        public override void Move()
-        {
-            XPosition -= speed;
-            updateShapePosition();
-        }
         public override void Draw(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;

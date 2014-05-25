@@ -77,6 +77,19 @@ namespace awsmSeeSharpGame.Classes
             new Point(9,0),new Point(10,0),new Point(11,0),new Point(13,0)};
             return pointArray;
         }
+
+        public static Point[] alienHead()
+        {
+            Point[] pointArray = new Point[] { new Point(14, 43), new Point(16, 43), new Point(17, 42), new Point(19, 39),
+            new Point(21, 36), new Point(22, 34), new Point(24, 31), new Point(26, 29), new Point(29, 29), new Point(30, 27),
+            new Point(32, 23), new Point(33, 19), new Point(33, 13), new Point(33, 9), new Point(31, 6), new Point(26, 2),
+            new Point(21, 0), new Point(16, 0), new Point(10, 1), new Point(8, 2), new Point(5, 4), new Point(3, 6), new Point(1, 9),
+            new Point(0, 12), new Point(0, 16), new Point(0, 20), new Point(0, 22), new Point(1, 29), new Point(1, 30), 
+            new Point(3, 31), new Point(5, 35), new Point(6, 37), new Point(7, 41), new Point(8, 42), new Point(10, 44)};
+
+            return pointArray;
+
+        }
         /// <summary>
         /// Metode for å konvertere et punkt array til en GraphicsPath
         /// </summary>
