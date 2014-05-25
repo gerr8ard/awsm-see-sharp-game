@@ -91,7 +91,7 @@ namespace awsmSeeSharpGame
 			login.Show();//viser LoginControl form
 			
 			//Starter musikk til hovedmeny
-			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
 
