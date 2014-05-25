@@ -1,4 +1,5 @@
-﻿using awsmSeeSharpGame.UserControls;
+﻿using awsmSeeSharpGame.interfaces;
+using awsmSeeSharpGame.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,6 +37,8 @@ namespace awsmSeeSharpGame.Classes
         private TimeSpan timeLeft;
         private Boolean isGameRunning;
         private GameTimer gameTimer;
+        private int panelHeight = 638;
+        private int panelWidth = 1184;
 
         public int numberOfAlienHead { get; set; }
         public int numberOfMeteors { get; set; }
@@ -60,6 +63,7 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public GamePanel()
         {
+
             //gameInfoControl = new GameInfoControl();
             this.SetStyle(ControlStyles.Selectable, true);
             this.TabStop = true;
@@ -144,39 +148,15 @@ namespace awsmSeeSharpGame.Classes
             //Lager et test objekt og legger det til i obstacle lista
             Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.White);
             Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.White);
-
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
 
             //Lager nye metorer
-            Meteor meteor1 = new Meteor(1000, 400, 300, 0,ShapeMaps.Meteor());
-            meteorList.Add(meteor1);
+            meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 150, ShapeMaps.Meteor());
 
             //Lager nye alienhead
-            AlienHead alienHead1 = new AlienHead(1600, 200, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead2 = new AlienHead(2000, 400, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead3 = new AlienHead(2500, 700, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead4 = new AlienHead(3200, 100, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead5 = new AlienHead(3600, 400, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead6 = new AlienHead(5000, 50, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead7 = new AlienHead(6000, 250, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead8 = new AlienHead(6500, 200, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead9 = new AlienHead(7600, 500, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead10 = new AlienHead(8600, 200, 100, 0, ShapeMaps.alienHead());
-
-
-            alienHeadList.Add(alienHead1);
-            alienHeadList.Add(alienHead2);
-            alienHeadList.Add(alienHead3);
-            alienHeadList.Add(alienHead4);
-            alienHeadList.Add(alienHead5);
-            alienHeadList.Add(alienHead6);
-            alienHeadList.Add(alienHead7);
-            alienHeadList.Add(alienHead8);
-            alienHeadList.Add(alienHead9);
-            alienHeadList.Add(alienHead10);
-
-
+            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.alienHead());
+                  
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, rocket);
 
@@ -188,22 +168,12 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel.Start();
 
         }
-        private List<Shape> MakeObjectList(int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Type typeObject)
-        {
-            List<Shape> objectList = new List<Shape>();
-            for (int i = 0; i < _numberOfObjects; i++)
-            {
 
-            }
-            return objectList;
-        } 
-
-        GamePanel (int _NumberOflives, TimeSpan _time) :base() 
+        public GamePanel(int _NumberOflives, TimeSpan _time) : base()
         {
             numberOfLivesLeft = _NumberOflives;
             timeLeft = _time;
         }
-
         private void StartNewGame()
         {
             lblNavn.Text = MainForm.userName;
@@ -215,6 +185,25 @@ namespace awsmSeeSharpGame.Classes
             isGameRunning = true;
             gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
         }
+
+        // Generisk liste metode som lager lister for alle type shape objekter
+        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap)
+        {
+            for (int i = 0; i < _numberOfObjects; i++)
+            {
+                int XPosition = random.Next(panelWidth, panelWidth * (int)_time.TotalSeconds/10); //**** SILJE, kan du ta en beregning på denne så vi får spredd elementene utover til tida går ut?
+                int YPosition = random.Next(panelHeight); //Høyden på mainform 638                  
+                int rotation = 0;
+                if (_useRotation)
+                {
+                    rotation = random.Next(360); //Rotasjon på mellom 0 og 360 grader
+                }
+                shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap));
+
+            }
+            return shapeListe;
+        } 
+       
         private void sekundOppdateringEventHandler(object sender, ElapsedEventArgs e)
         {
             GameTimer time = sender as GameTimer;
@@ -223,18 +212,15 @@ namespace awsmSeeSharpGame.Classes
         
 
         private void previewKeyEventHandler(object sender, PreviewKeyDownEventArgs e)
-        {
-           
+        {           
             if (e.KeyCode == Keys.Left)
             {
-                rocket.Rotation -= 5;
-                
+                rocket.Rotation -= 5;                
             }
 
             else if (e.KeyCode == Keys.Right)
             {
-                rocket.Rotation += 5;
-                
+                rocket.Rotation += 5;                
             }
             else if (e.KeyCode == Keys.Down)
             {
@@ -245,8 +231,7 @@ namespace awsmSeeSharpGame.Classes
                    // Skyte pang! pang!
             }
         }
-
-
+        
         /// <summary>
         /// Kaller On Paint metoden ca 60 ganger i sekundet
         /// </summary>
@@ -261,6 +246,7 @@ namespace awsmSeeSharpGame.Classes
             }
             Debug.Print("Slutt tråd");
         }
+
         // OnPaint metoden for GamePanel
         protected override void OnPaint(PaintEventArgs e)
         {

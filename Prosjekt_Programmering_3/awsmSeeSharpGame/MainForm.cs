@@ -63,12 +63,7 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-			isGameRunning = false;
-			//startSpill();
-
-			//startSpill();
-
-
+            startSpill();
 
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
@@ -91,9 +86,9 @@ namespace awsmSeeSharpGame
 			startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
             startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
 
-			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			login.Show();//viser LoginControl form
+		//	pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+		//	login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+		//	login.Show();//viser LoginControl form
 			
 			//Starter musikk til hovedmeny
 			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
