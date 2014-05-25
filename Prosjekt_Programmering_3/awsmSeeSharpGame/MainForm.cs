@@ -36,17 +36,15 @@ namespace awsmSeeSharpGame
 		private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
 
 		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
-		public static bool isLoggedIn = false;
+		public static bool isLoggedIn = false;//Sjekk på om bruker er logget inn
+		public static bool isHighScoreShowing = false;//Sjekk på om highscore tavlen vises
+		public static bool isPersonalHighScoreShowing = false;//Sjekk på om personalHighScore tavlen vises
 
         public static int user_id;
         public static string userName = "Dag";
-
-
-		public static bool isHighScoreShowing = false;
-		public static bool isPersonalHighScoreShowing = false;
-		public static awsm_Users currentUser;
-   //     public static GameInfo currentGameInfo = new GameInfo();
-		
+        
+        public static awsm_Users currentUser;
+	
 
 		#endregion
 
@@ -57,7 +55,7 @@ namespace awsmSeeSharpGame
 		public MainForm()
 		{
 			InitializeComponent();
-			startSpill();
+			//startSpill();
 
 
 			//Instansierer de forskjellige panelene
@@ -79,11 +77,12 @@ namespace awsmSeeSharpGame
 			startPage.highScoreEvent += new StartPageControl.startPageDelegate(btn_Highscores_Click);//Abonnerer på highScoreEventi StartPageControl
 			startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
 
-			//pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			//login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			//login.Show();//viser LoginControl form
+			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			login.Show();//viser LoginControl form
+			
 			//Starter musikk til hovedmeny
-			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
 
@@ -195,7 +194,7 @@ namespace awsmSeeSharpGame
 				startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
 				startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
 				pnlMainForm.Controls.Add(startPage);
-				//logInSuccess = new awsm_SoundPlayer("ready_4_action.wav");
+				logInSuccess = new awsm_SoundPlayer("ready_4_action.wav");
 			}
 		}
 
@@ -229,8 +228,9 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(startPage);
 			pnlMainForm.Controls.Remove(highScore);
 			pnlMainForm.Controls.Remove(highScorePersonal);
+
 			startSpill();
-			//gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
+			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
 		}
 
 		private void btn_logOut_Click(object sender, EventArgs e)
@@ -267,12 +267,12 @@ namespace awsmSeeSharpGame
 				pnlMainForm.Controls.Add(highScore);
 				highScoreSound = new awsm_SoundPlayer("you_suck.wav");
 			}
-            else
-            {
-                pnlMainForm.Controls.Remove(highScore);
-                btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
-            } 
-                
+			else
+			{
+				pnlMainForm.Controls.Remove(highScore);
+				btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
+			} 
+				
 		}
 
 		private void btn_PersonalRecords_Click(object sender, EventArgs e)
@@ -285,11 +285,11 @@ namespace awsmSeeSharpGame
 				pnlMainForm.Controls.Add(highScorePersonal);
 				personalHighScoreSound = new awsm_SoundPlayer("good.wav");
 			}
-            else
-            {
-                pnlMainForm.Controls.Remove(highScorePersonal);
-                btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
-            }
+			else
+			{
+				pnlMainForm.Controls.Remove(highScorePersonal);
+				btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
+			}
 
 		}
 

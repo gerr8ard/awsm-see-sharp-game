@@ -22,8 +22,8 @@ namespace awsmSeeSharpGame.Models
         public string Salt { get; set; }
         public DateTime Created { get; set; }
 
-        public virtual awsm_Privilege Privilege { get; set; }
-        public virtual List<awsm_Score> Score { get; set; }
+        public virtual awsm_Privilege Privileges { get; set; }
+        public virtual List<awsm_Score> Scores { get; set; }
 
 
     }

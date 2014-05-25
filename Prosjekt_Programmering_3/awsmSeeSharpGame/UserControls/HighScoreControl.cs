@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using awsmSeeSharpGame.Classes;
+using awsmSeeSharpGame.Models;
 
 namespace awsmSeeSharpGame.UserControls
 {
@@ -36,6 +37,7 @@ namespace awsmSeeSharpGame.UserControls
                 listViewItem = new ListViewItem(row);
                 lvHighScore.Items.Add(listViewItem);
             }
+           
         }
     }
 }

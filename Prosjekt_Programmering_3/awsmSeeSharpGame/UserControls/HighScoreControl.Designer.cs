@@ -33,7 +33,6 @@
             // 
             // lvHighScore
             // 
-            this.lvHighScore.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.ExplodingStar;
             this.lvHighScore.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvHighScore.Location = new System.Drawing.Point(0, 0);
             this.lvHighScore.Name = "lvHighScore";
@@ -56,6 +55,9 @@
         #endregion
 
         private System.Windows.Forms.ListView lvHighScore;
+
+
+
 
     }
 }

@@ -9,7 +9,11 @@ namespace awsmSeeSharpGame.Classes
 {
     class Queries
     {
-
+        /// <summary>
+        /// Spørring som henter ut en brukers info ved hjelp av brukernavn
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns>Info om bruker</returns>
         static public awsm_Users GetUserByUserName(string userName)
         {
             using (var context = new Context())
@@ -22,6 +26,10 @@ namespace awsmSeeSharpGame.Classes
             }
         }
 
+        /// <summary>
+        /// Spørring som henter ut en liste med de ti beste poengsummene
+        /// </summary>
+        /// <returns>En liste med de ti høeste poengsummene</returns>
         static public List<awsm_Score> GetTopTenScores()
         {
             using (var context = new Context())
@@ -31,6 +39,7 @@ namespace awsmSeeSharpGame.Classes
                                     .Take(10)
                                     .ToList();
                 return highScoreListe;
+
             }
         }
     }
