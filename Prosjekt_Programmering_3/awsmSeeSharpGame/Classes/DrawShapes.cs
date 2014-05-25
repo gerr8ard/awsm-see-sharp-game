@@ -71,11 +71,12 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void Update()
         {
+            
             foreach(Meteor meteor in meteorList)
             {
                 meteor.Move(GetElapsedTime);
             }
-
+            
             foreach(AlienHead alienHead in alienHeadList)
             {
                 alienHead.Move(GetElapsedTime);
@@ -151,25 +152,7 @@ namespace awsmSeeSharpGame.Classes
             }
             rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
         }
-/*
-        public void Collision()
-        {
-            {
-                foreach (Firkant firkant in firkanter)
-                {
-                    foreach (Ball ball in balls)
-                    {
-                        if (ball.rectangle.IntersectsWith(firkant.rectangle))
-                        {
-                            ball.running = false;
-                            Debug.WriteLine(string.Format("{0} terminert ved kollisjon", ball.getNameOfThread()));
-                        }
-                    }
-                }
-                balls.RemoveAll(ball => ball.running == false);
-            }
-        }
- * */
+
         /// <summary>
         /// Går igjennom alle objektene og kaller opp Draw metodene deres for å tegne de opp
         /// </summary>
@@ -206,6 +189,12 @@ namespace awsmSeeSharpGame.Classes
             {
                 alienHead.Draw(e);
             }
+            
+            foreach(Meteor meteor in meteorList)
+            {
+               meteor.Draw(e);
+            }
+            
             rocket.Draw(e);
 
         }
