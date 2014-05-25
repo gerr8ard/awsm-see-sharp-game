@@ -36,15 +36,19 @@ namespace awsmSeeSharpGame
 		private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
 
 		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
+
+        private Boolean isGameRunning;
 		public static bool isLoggedIn = false;//Sjekk på om bruker er logget inn
 		public static bool isHighScoreShowing = false;//Sjekk på om highscore tavlen vises
 		public static bool isPersonalHighScoreShowing = false;//Sjekk på om personalHighScore tavlen vises
 
+
         public static int user_id;
         public static string userName = "Dag";
-        
-        public static awsm_Users currentUser;
-	
+
+		public static awsm_Users currentUser;
+   //     public static GameInfo currentGameInfo = new GameInfo();
+		
 
 		#endregion
 
@@ -55,7 +59,12 @@ namespace awsmSeeSharpGame
 		public MainForm()
 		{
 			InitializeComponent();
+
+			isGameRunning = false;
 			//startSpill();
+
+			startSpill();
+
 
 
 			//Instansierer de forskjellige panelene
@@ -229,6 +238,7 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(highScore);
 			pnlMainForm.Controls.Remove(highScorePersonal);
 
+			pnlMainForm.Controls.Add(gameInfo);
 			startSpill();
 			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
 		}
