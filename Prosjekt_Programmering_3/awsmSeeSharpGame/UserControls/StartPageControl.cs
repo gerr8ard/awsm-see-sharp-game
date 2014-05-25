@@ -19,6 +19,7 @@ namespace awsmSeeSharpGame.UserControls
         public event startPageDelegate terminateEvent;
         public event startPageDelegate highScoreEvent;
         public event startPageDelegate personalHighScoreEvent;
+        public event startPageDelegate settingsEvent;
 
         public StartPageControl()
         {
@@ -73,6 +74,22 @@ namespace awsmSeeSharpGame.UserControls
             }
 
             personalHighScoreEvent(sender, e);
+        }
+
+        private void btn_Settings_Click(object sender, EventArgs e)
+        {
+            if (btn_Settings.Text == "Innstillinger")
+            {
+                btn_Settings.Text = "Skjul Innstillinger";
+                MainForm.isSettingsShowing = true;
+            }
+            else if (btn_Settings.Text == "Skjul Innstillinger")
+            {
+                btn_Settings.Text = "Innstillinger";
+                MainForm.isSettingsShowing = false;
+            }
+
+            settingsEvent(sender, e);
         }
     }
 }

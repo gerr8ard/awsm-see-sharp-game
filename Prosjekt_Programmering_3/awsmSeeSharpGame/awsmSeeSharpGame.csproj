@@ -161,6 +161,12 @@
     <Compile Include="UserControls\PersonalHighScoreControl.Designer.cs">
       <DependentUpon>PersonalHighScoreControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\SettingsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingsControl.Designer.cs">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\StartPageControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PersonalHighScoreControl.resx">
       <DependentUpon>PersonalHighScoreControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SettingsControl.resx">
+      <DependentUpon>SettingsControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\StartPageControl.resx">
       <DependentUpon>StartPageControl.cs</DependentUpon>
@@ -373,6 +382,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\alien-head.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payback_time.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExplodingStar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SettingsBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
