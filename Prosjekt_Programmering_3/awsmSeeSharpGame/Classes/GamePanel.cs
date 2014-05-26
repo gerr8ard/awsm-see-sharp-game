@@ -2,6 +2,7 @@
 using awsmSeeSharpGame.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -50,8 +51,8 @@ namespace awsmSeeSharpGame.Classes
         public Label lblFps; // Label for FPS
         Point lblFpsLocation = new Point(10, 200); //Setter posisjonen til FPS labelen!
         
-        ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
-        Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
+        public ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
+        public Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
         
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
@@ -163,6 +164,7 @@ namespace awsmSeeSharpGame.Classes
             threadStartGamePanel = new ThreadStart(GamePanelDraw);
             threadGamePanel = new Thread(threadStartGamePanel);
             threadGamePanel.IsBackground = true;
+            threadGamePanel.Name = "gamePanelDraw";
             threadGamePanel.Start();
 
         }
@@ -234,11 +236,14 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         private void GamePanelDraw()
         {
+
+            Debug.Print("start tråd");
             while (true)
             {
                 this.Invalidate();
                 Thread.Sleep(17);
             }
+            Debug.Print("Slutt tråd");
         }
 
         // OnPaint metoden for GamePanel

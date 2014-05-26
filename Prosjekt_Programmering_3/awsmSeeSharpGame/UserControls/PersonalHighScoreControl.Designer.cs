@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lvPersonalHighScore = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.lvPersonalHighScore = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lvPersonalHighScore
-            // 
-            this.lvPersonalHighScore.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.ExplodingStar1;
-            this.lvPersonalHighScore.Location = new System.Drawing.Point(0, 52);
-            this.lvPersonalHighScore.Name = "lvPersonalHighScore";
-            this.lvPersonalHighScore.Size = new System.Drawing.Size(450, 373);
-            this.lvPersonalHighScore.TabIndex = 0;
-            this.lvPersonalHighScore.UseCompatibleStateImageBehavior = false;
             // 
             // panel1
             // 
@@ -63,6 +54,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Dine høyeste poengsummer";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lvPersonalHighScore
+            // 
+            this.lvPersonalHighScore.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.ExplodingStar1;
+            this.lvPersonalHighScore.Location = new System.Drawing.Point(0, 52);
+            this.lvPersonalHighScore.Name = "lvPersonalHighScore";
+            this.lvPersonalHighScore.Size = new System.Drawing.Size(450, 446);
+            this.lvPersonalHighScore.TabIndex = 0;
+            this.lvPersonalHighScore.UseCompatibleStateImageBehavior = false;
             // 
             // PersonalHighScoreControl
             // 
