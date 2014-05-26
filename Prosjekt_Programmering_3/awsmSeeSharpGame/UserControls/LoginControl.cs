@@ -55,8 +55,8 @@ namespace awsmSeeSharpGame.UserControls
                     if (Hash.CheckPassord(givenPassword, hash, salt))
                     {
                         MainForm.isLoggedIn = true;
-                        MainForm.user_id = user.User_id;
-                        MainForm.userName = user.UserName;
+                        //MainForm.user_id = user.User_id;
+                        //MainForm.userName = user.UserName;
                         MainForm.currentUser = user;
                         loginEvent(sender, e);
                     }

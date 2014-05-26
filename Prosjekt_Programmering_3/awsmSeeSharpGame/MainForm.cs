@@ -46,8 +46,8 @@ namespace awsmSeeSharpGame
         public static bool isSettingsShowing = false;//Sjekk på om settings tavlen skal vises
 
 
-        public static int user_id;
-        public static string userName = "Dag";
+ //       public static int user_id;
+//        public static string userName = "Dag";
 
 		public static awsm_Users currentUser;
    //     public static GameInfo currentGameInfo = new GameInfo();
@@ -62,8 +62,6 @@ namespace awsmSeeSharpGame
 		public MainForm()
 		{
 			InitializeComponent();
-
-            PointMapper.Mapper("0.167,7.5 1.5,5.5 3.333,4.333 5.333,3.667 8.333,3 11.333,3 12.667,2.667 14.333,1.5 16.167,0.833 17.938,0 20.875,0 26.5,0 29.833,0 32.167,0 33.563,0.625 36,2 36.167,3 40.5,3 43.333,3.667 45,4.5 47.333,5.333 49.333,6.167 50.167,7.667 49.833,9.334 48.833,10.334 46.333,11.834 43.333,12.667 38.667,13.834 33.5,13.834 18.667,13.834 14.167,13.667 10.375,13.313 7.688,12.625 3.688,11.313 1.333,9.834");
 
             startSpill();
 
@@ -119,20 +117,20 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		private void startSpill()
 		{
-			gamePanel = new GamePanel();
+			gamePanel = new GamePanel(this);
 			pnlMainForm.Controls.Add(gamePanel);		
 		}
 
 		/// <summary>
 		/// Stopper et spill
 		/// </summary>
-		private void stoppSpill()
+		public void stoppSpill()
 		{
-            if (isGameRunning) 
-            { 
-                gamePanel.threadGamePanel.Abort();
-                Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
-            }
+            gamePanel.threadGamePanel.Abort();
+            Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
+            pnlMainForm.Controls.Remove(gamePanel);
+            gamePanel = null;
+
 		}
 
 		#endregion
