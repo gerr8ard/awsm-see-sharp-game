@@ -143,6 +143,12 @@
     <Compile Include="UserControls\HighScoreControl.Designer.cs">
       <DependentUpon>HighScoreControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\HowToPlayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\HowToPlayControl.Designer.cs">
+      <DependentUpon>HowToPlayControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\HighScoreControl.resx">
       <DependentUpon>HighScoreControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HowToPlayControl.resx">
+      <DependentUpon>HowToPlayControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
@@ -393,6 +402,46 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SettingsBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowDownKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowLeftKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowRightKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowUpKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpaceBarKey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mess.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pling.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splat.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

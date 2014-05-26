@@ -135,7 +135,7 @@ namespace awsmSeeSharpGame.Classes
                 {
                     alienHead.isCollected = true;
                     parentGamePanel.score += 100;
-                    alienHeadSound = new awsm_SoundPlayer("Shot.wav");
+                    alienHeadSound = new awsm_SoundPlayer("splat.wav");
                     
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet

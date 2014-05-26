@@ -81,6 +81,46 @@ namespace awsmSeeSharpGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ArrowDownKeys {
+            get {
+                object obj = ResourceManager.GetObject("ArrowDownKeys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ArrowLeftKeys {
+            get {
+                object obj = ResourceManager.GetObject("ArrowLeftKeys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ArrowRightKeys {
+            get {
+                object obj = ResourceManager.GetObject("ArrowRightKeys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ArrowUpKeys {
+            get {
+                object obj = ResourceManager.GetObject("ArrowUpKeys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream back_2_work_y {
@@ -259,6 +299,15 @@ namespace awsmSeeSharpGame.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream mess {
+            get {
+                return ResourceManager.GetStream("mess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Meteor {
@@ -293,6 +342,15 @@ namespace awsmSeeSharpGame.Properties {
             get {
                 object obj = ResourceManager.GetObject("PlanetTexture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream pling {
+            get {
+                return ResourceManager.GetStream("pling", resourceCulture);
             }
         }
         
@@ -359,6 +417,25 @@ namespace awsmSeeSharpGame.Properties {
             get {
                 object obj = ResourceManager.GetObject("spaceBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SpaceBarKey {
+            get {
+                object obj = ResourceManager.GetObject("SpaceBarKey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream splat {
+            get {
+                return ResourceManager.GetStream("splat", resourceCulture);
             }
         }
         

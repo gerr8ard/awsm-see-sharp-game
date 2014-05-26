@@ -36,8 +36,9 @@ namespace awsmSeeSharpGame
 		private HighScoreControl highScore;//HighscoreControl med en liste over de med høyest score.
 		private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
         private SettingsControl settings;//UserControl for innstillinger
+        private HowToPlayControl howToPlay;//UserCotrol som viser hvordan man spiller spillet.
 
-		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
+		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound, menuItemHowToPlaySound;
 
         private Boolean isGameRunning;
 		public static bool isLoggedIn = false;//Sjekk på om bruker er logget inn
@@ -63,7 +64,7 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-            startSpill();
+            //startSpill();
 
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
@@ -72,6 +73,7 @@ namespace awsmSeeSharpGame
 			gameInfo = new GameInfoControl();
 			highScore = new HighScoreControl();
             settings = new SettingsControl();
+            howToPlay = new HowToPlayControl();
 			//highScorePersonal = new PersonalHighScoreControl();
 
 			// Abbonnerer på events fra de forskjellige panelene
@@ -85,13 +87,14 @@ namespace awsmSeeSharpGame
 			startPage.highScoreEvent += new StartPageControl.startPageDelegate(btn_Highscores_Click);//Abonnerer på highScoreEventi StartPageControl
 			startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
             startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
+            howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(hvordanSpilleToolStripMenuItem_Click);
 
-		//	pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-		//	login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-		//	login.Show();//viser LoginControl form
+			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			login.Show();//viser LoginControl form
 			
 			//Starter musikk til hovedmeny
-			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
 
@@ -169,13 +172,17 @@ namespace awsmSeeSharpGame
 		{
 			if (isLoggedIn == true)
 			{
-
-				stoppSpill();
-                isGameRunning = false;
+                if (isGameRunning)
+                {
+                    stoppSpill();
+                    isGameRunning = false;
+                }
+				
 				pnlMainForm.Controls.Remove(gamePanel);
 				pnlMainForm.Controls.Remove(gameInfo);
 				pnlMainForm.Controls.Remove(login);
 				pnlMainForm.Controls.Remove(newUser);
+                pnlMainForm.Controls.Remove(howToPlay);
 				pnlMainForm.Controls.Add(startPage);
 				startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
 				startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
@@ -186,11 +193,29 @@ namespace awsmSeeSharpGame
 					gameMusic.Stop();
 				}
 
-				//introMusic.Start();
+				introMusic.Start();
 
 			}
 			else WarningMessages.noAccessWarning();
 		}
+
+        private void hvordanSpilleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isLoggedIn == true)
+            {
+                howToPlay.Left = 300;
+                pnlMainForm.Controls.Add(howToPlay);
+                pnlMainForm.Controls.Remove(login);
+                pnlMainForm.Controls.Remove(newUser);
+                pnlMainForm.Controls.Remove(startPage);
+                pnlMainForm.Controls.Remove(highScore);
+                pnlMainForm.Controls.Remove(highScorePersonal);
+                pnlMainForm.Controls.Remove(settings);
+                menuItemHowToPlaySound = new awsm_SoundPlayer("mess.wav");
+            }
+            else WarningMessages.noAccessWarning();
+           
+        }
 		#endregion	   
 
 		#region Button click events
@@ -220,6 +245,7 @@ namespace awsmSeeSharpGame
                 highScorePersonal = new PersonalHighScoreControl();
                 
 			}
+
 		}
 
 		/// <summary>
@@ -339,6 +365,8 @@ namespace awsmSeeSharpGame
         }
 
 		#endregion
+
+       
 
 	  
 	}
