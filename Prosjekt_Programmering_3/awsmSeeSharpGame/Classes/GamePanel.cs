@@ -27,6 +27,8 @@ namespace awsmSeeSharpGame.Classes
         private List<Target> targetList;
         private List<Meteor> meteorList;
         private List<AlienHead> alienHeadList;
+        private List<UFO> ufoList;
+
         private Rocket rocket;
         private UserControls.GameInfoControl gameInfoControl;
         private Label lblNavn;
@@ -37,8 +39,8 @@ namespace awsmSeeSharpGame.Classes
         private TimeSpan timeLeft;
         private Boolean isGameRunning;
         private GameTimer gameTimer;
-        private int panelHeight = 638;
-        private int panelWidth = 1184;
+        public int panelHeight = 638;
+        public int panelWidth = 1184;
 
         public int numberOfAlienHead { get; set; }
         public int numberOfMeteors { get; set; }
@@ -67,8 +69,7 @@ namespace awsmSeeSharpGame.Classes
             //gameInfoControl = new GameInfoControl();
             this.SetStyle(ControlStyles.Selectable, true);
             this.TabStop = true;
-            numberOfLivesLeft = 3;
-            timeLeft = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+           
             random = new Random(); // Setter opp et random objekt for å kalkulere flere parametre på objektene som skal dukke opp i spillet
 
 
@@ -141,6 +142,7 @@ namespace awsmSeeSharpGame.Classes
             targetList = new List<Target>();
             meteorList = new List<Meteor>();
             alienHeadList = new List<AlienHead>();
+            ufoList = new List<UFO>();
 
             Point[] rocketMap = ShapeMaps.RocketDesign2();
             rocket = new Rocket(200,400,0, rocketMap);
@@ -151,14 +153,17 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
 
+            //Lager nye ufoer
+            ufoList = MakeObjectList(ufoList, 30, timeLeft, false, 200, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
+
             //Lager nye metorer
-            meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 150, ShapeMaps.Meteor());
+            meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
             //Lager nye alienhead
-            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.alienHead());
+            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
                   
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, rocket);
+            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, ufoList, rocket);
 
             // Setter opp og starter oppdatering av OnPaint metoden
             threadStartGamePanel = new ThreadStart(GamePanelDraw);
@@ -176,18 +181,36 @@ namespace awsmSeeSharpGame.Classes
         }
         private void StartNewGame()
         {
+            numberOfLivesLeft = 3;
+            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
             lblNavn.Text = MainForm.userName;
-            lblTime.Text = string.Format("Time left: 05:00");
-            lblLives.Text = string.Format("Lives left: {0}", numberOfLivesLeft);
-            lblScore.Text = "Score: 0";
-            lblRecord.Text = "Record: 1000";
+            score = 0;
+            lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
+            lblTime.Text = string.Format("Tid: {0}", timeLeft);
+            lblScore.Text = string.Format("Poeng: {0}", score.ToString());
+            lblRecord.Text = string.Format("Rekord: {0}",Queries.getHighestScore().Score.ToString());
             gameTimer = new GameTimer(timeLeft); //starter en ny timer
             isGameRunning = true;
             gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
         }
 
+        public void LossOfLife()
+        {
+            if (numberOfLivesLeft > 0)
+            {
+                numberOfLivesLeft -= 1;
+                MessageBox.Show(string.Format("Du har {0} liv igjen", numberOfLivesLeft.ToString()));
+            }
+            else GameOver();
+        }
+
+        private void GameOver()
+        {
+
+        }
+
         // Generisk liste metode som lager lister for alle type shape objekter
-        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap)
+        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
         {
             for (int i = 0; i < _numberOfObjects; i++)
             {
@@ -198,8 +221,7 @@ namespace awsmSeeSharpGame.Classes
                 {
                     rotation = random.Next(360); //Rotasjon på mellom 0 og 360 grader
                 }
-                shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap));
-
+                shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap, bitmap));
             }
             return shapeListe;
         } 

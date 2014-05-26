@@ -73,6 +73,16 @@ namespace awsmSeeSharpGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap alien_spaceship {
+            get {
+                object obj = ResourceManager.GetObject("alien_spaceship", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap alienblaster {
             get {
                 object obj = ResourceManager.GetObject("alienblaster", resourceCulture);
@@ -126,6 +136,16 @@ namespace awsmSeeSharpGame.Properties {
         public static System.IO.UnmanagedMemoryStream back_2_work_y {
             get {
                 return ResourceManager.GetStream("back_2_work_y", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap bullet3 {
+            get {
+                object obj = ResourceManager.GetObject("bullet3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

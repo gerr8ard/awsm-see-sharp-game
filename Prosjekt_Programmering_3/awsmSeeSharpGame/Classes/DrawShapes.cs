@@ -32,6 +32,7 @@ namespace awsmSeeSharpGame.Classes
         List<Target> targetList;
         List<Meteor> meteorList;
         List<AlienHead> alienHeadList;
+        List<UFO> ufoList;
         Rocket rocket;
         Region collisionRegion;
 
@@ -46,7 +47,7 @@ namespace awsmSeeSharpGame.Classes
         /// <param name="_obstacleList">Liste med Obstacles</param>
         /// <param name="_targetList">Liste med targets</param>
         /// <param name="_rocket">Romskipet vårt</param>
-        public DrawShapes(GamePanel _parentGamePanel, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, List<AlienHead> _alienHeadList, Rocket _rocket)
+        public DrawShapes(GamePanel _parentGamePanel, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, List<AlienHead> _alienHeadList, List<UFO> _ufoList, Rocket _rocket)
         {
             parentGamePanel = _parentGamePanel;
             enemyList = _enemylist;
@@ -55,6 +56,7 @@ namespace awsmSeeSharpGame.Classes
             targetList = _targetList;
             meteorList = _meteorList;
             alienHeadList = _alienHeadList;
+            ufoList = _ufoList;
             rocket = _rocket;
             collision = false;
         }
@@ -82,6 +84,11 @@ namespace awsmSeeSharpGame.Classes
                 alienHead.Move(GetElapsedTime);
             }
 
+            foreach (UFO ufo in ufoList)
+            {
+                ufo.Move(GetElapsedTime);
+            }
+
             foreach (Bullet bullet in bulletList)
             {
                 bullet.Move(GetElapsedTime);
@@ -96,6 +103,14 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void CollisonCheck(PaintEventArgs e)
         {
+            if (rocket.X < 0 - rocket.WidthOfRocket || rocket.X > parentGamePanel.panelWidth)
+            {
+                parentGamePanel.LossOfLife();
+            }
+            if (rocket.Y < 0 || rocket.Y > parentGamePanel.panelHeight)
+            {
+                parentGamePanel.LossOfLife();
+            }
 
             foreach (Bullet bullet in bulletList)
             {
@@ -109,6 +124,7 @@ namespace awsmSeeSharpGame.Classes
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
                     collision = true;
+                    parentGamePanel.LossOfLife();
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -121,6 +137,7 @@ namespace awsmSeeSharpGame.Classes
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
+                    parentGamePanel.LossOfLife();
                     collision = true;
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
@@ -137,6 +154,20 @@ namespace awsmSeeSharpGame.Classes
                     parentGamePanel.score += 100;
                     alienHeadSound = new awsm_SoundPlayer("splat.wav");
                     
+                }
+                collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+            }
+
+            foreach (UFO ufo in ufoList)
+            {
+                RegionData regionData = ufo.region.GetRegionData();
+
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
+                {
+                    parentGamePanel.LossOfLife();
+                    collision = true;
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -193,6 +224,11 @@ namespace awsmSeeSharpGame.Classes
             foreach(Meteor meteor in meteorList)
             {
                meteor.Draw(e);
+            }
+
+            foreach (UFO ufo in ufoList)
+            {
+                ufo.Draw(e);
             }
             
             rocket.Draw(e);

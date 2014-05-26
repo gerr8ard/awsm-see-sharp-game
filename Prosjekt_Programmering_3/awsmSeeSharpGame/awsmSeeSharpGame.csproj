@@ -90,6 +90,7 @@
     <Compile Include="Classes\Queries.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
     <Compile Include="Classes\awsm_SoundPlayer.cs" />
+    <Compile Include="Classes\UFO.cs" />
     <Compile Include="Classes\WarningMessages.cs" />
     <Compile Include="interfaces\IMoveableShape.cs" />
     <Compile Include="interfaces\IShape.cs" />
@@ -444,6 +445,10 @@
     <None Include="Resources\splat.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\alien-spaceship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bullet3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

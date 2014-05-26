@@ -29,7 +29,6 @@ namespace awsmSeeSharpGame.Classes
         protected int Width { get; set; }
         protected int Height { get; set; }
         protected Bitmap bitmap;
-        public abstract void Draw(PaintEventArgs e);
 
         protected virtual void updateShapePosition()
         {
@@ -40,6 +39,13 @@ namespace awsmSeeSharpGame.Classes
             }
             GraphicsPath graphicPath = ShapeMaps.MakeGraphicsPath(shapeMapPosition);
             region = new Region(graphicPath);
+        }
+
+        public virtual void Draw(PaintEventArgs e)
+        {
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition, YPosition));
+            e.Graphics.DrawPolygon(pen, shapeMapPosition);
         }
     }
 }
