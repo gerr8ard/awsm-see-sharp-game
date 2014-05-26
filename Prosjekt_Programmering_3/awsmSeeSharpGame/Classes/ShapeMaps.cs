@@ -38,6 +38,10 @@ namespace awsmSeeSharpGame.Classes
             Point point12 = new Point(2, 48);
             return new Point[] { point1, point2, point3, point4, point5, point6, point7, point8, point9, point10, point11, point12 };
         }
+        public static Bitmap BitmapRocketDesign2()
+        {
+            return new Bitmap(awsmSeeSharpGame.Properties.Resources.Rocket2);
+        }
 
         public static Point[] Meteor()
         {
@@ -77,8 +81,12 @@ namespace awsmSeeSharpGame.Classes
             new Point(9,0),new Point(10,0),new Point(11,0),new Point(13,0)};
             return pointArray;
         }
+        public static Bitmap BitmapMeteor()
+        {
+            return new Bitmap(awsmSeeSharpGame.Properties.Resources.Meteor);
+        }
 
-        public static Point[] alienHead()
+        public static Point[] AlienHead()
         {
             Point[] pointArray = new Point[] { new Point(14, 43), new Point(16, 43), new Point(17, 42), new Point(19, 39),
             new Point(21, 36), new Point(22, 34), new Point(24, 31), new Point(26, 29), new Point(29, 29), new Point(30, 27),
@@ -86,10 +94,30 @@ namespace awsmSeeSharpGame.Classes
             new Point(21, 0), new Point(16, 0), new Point(10, 1), new Point(8, 2), new Point(5, 4), new Point(3, 6), new Point(1, 9),
             new Point(0, 12), new Point(0, 16), new Point(0, 20), new Point(0, 22), new Point(1, 29), new Point(1, 30), 
             new Point(3, 31), new Point(5, 35), new Point(6, 37), new Point(7, 41), new Point(8, 42), new Point(10, 44)};
-
             return pointArray;
-
         }
+        public static Bitmap BitmapAlienHead()
+        {
+            return new Bitmap(awsmSeeSharpGame.Properties.Resources.alien_head);
+        }
+
+        public static Point[] UFO ()
+        {
+            Point [] pointArray = new Point[] {
+                new Point(0,7),new Point(1,5),new Point(3,4),new Point(5,3),new Point(8,3),new Point(11,3),new Point(12,2),
+                new Point(14,1),new Point(16,0),new Point(17,0),new Point(20,0),new Point(26,0),new Point(29,0),new Point(32,0),
+                new Point(33,0),new Point(36,2),new Point(36,3),new Point(40,3),new Point(43,3),new Point(45,4),new Point(47,5),
+                new Point(49,6),new Point(50,7),new Point(49,9),new Point(48,10),new Point(46,11),new Point(43,12),new Point(38,13),
+                new Point(33,13),new Point(18,13),new Point(14,13),new Point(10,13),new Point(7,12),new Point(3,11),new Point(1,9)
+            };
+            return pointArray;
+        }
+        public static Bitmap BitmapUFO()
+        {
+            return new Bitmap(awsmSeeSharpGame.Properties.Resources.alien_spaceship);
+        }
+
+
         /// <summary>
         /// Metode for å konvertere et punkt array til en GraphicsPath
         /// </summary>

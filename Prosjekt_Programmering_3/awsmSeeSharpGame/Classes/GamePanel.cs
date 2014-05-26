@@ -27,6 +27,8 @@ namespace awsmSeeSharpGame.Classes
         private List<Target> targetList;
         private List<Meteor> meteorList;
         private List<AlienHead> alienHeadList;
+        private List<UFO> ufoList;
+
         private Rocket rocket;
         private UserControls.GameInfoControl gameInfoControl;
         private Label lblNavn;
@@ -141,6 +143,7 @@ namespace awsmSeeSharpGame.Classes
             targetList = new List<Target>();
             meteorList = new List<Meteor>();
             alienHeadList = new List<AlienHead>();
+            ufoList = new List<UFO>();
 
             Point[] rocketMap = ShapeMaps.RocketDesign2();
             rocket = new Rocket(200,400,0, rocketMap);
@@ -151,14 +154,17 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
 
+            //Lager nye ufoer
+            ufoList = MakeObjectList(ufoList, 30, timeLeft, false, 200, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
+
             //Lager nye metorer
-            meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 150, ShapeMaps.Meteor());
+            meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
             //Lager nye alienhead
-            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.alienHead());
+            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
                   
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, rocket);
+            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, ufoList, rocket);
 
             // Setter opp og starter oppdatering av OnPaint metoden
             threadStartGamePanel = new ThreadStart(GamePanelDraw);
@@ -187,7 +193,7 @@ namespace awsmSeeSharpGame.Classes
         }
 
         // Generisk liste metode som lager lister for alle type shape objekter
-        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap)
+        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
         {
             for (int i = 0; i < _numberOfObjects; i++)
             {
@@ -198,7 +204,7 @@ namespace awsmSeeSharpGame.Classes
                 {
                     rotation = random.Next(360); //Rotasjon på mellom 0 og 360 grader
                 }
-                shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap));
+                shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap, bitmap));
             }
             return shapeListe;
         } 
