@@ -27,13 +27,14 @@ namespace awsmSeeSharpGame.Classes
 
         public static void noAccessWarning()
         {
-            MessageBox.Show("Du må logge inn for tilgang til hovedmeny.", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Du må logge inn for tilgang til menyvalgene.", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         public static void passwordNotSame()
         {
             MessageBox.Show("Passordene er ikke like.", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
 
     }
 }
