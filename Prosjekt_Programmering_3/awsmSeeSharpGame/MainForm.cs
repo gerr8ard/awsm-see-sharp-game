@@ -32,7 +32,6 @@ namespace awsmSeeSharpGame
 		private LoginControl login;//UserControl med logginn muligheter
 		private NewUserControl newUser;//UserControl for å registrere ny bruker
 		private StartPageControl startPage;//UserControl med hovedmeny
-		private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
 		private HighScoreControl highScore;//HighscoreControl med en liste over de med høyest score.
 		private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
         private SettingsControl settings;//UserControl for innstillinger
@@ -62,14 +61,13 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-            startSpill();
+            //startSpill();
 
 
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
 			newUser = new NewUserControl();
 			startPage = new StartPageControl();
-			gameInfo = new GameInfoControl();
 			highScore = new HighScoreControl();
             settings = new SettingsControl();
             howToPlay = new HowToPlayControl();
@@ -93,7 +91,7 @@ namespace awsmSeeSharpGame
 			login.Show();//viser LoginControl form
 			
 			//Starter musikk til hovedmeny
-			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
 
@@ -178,7 +176,6 @@ namespace awsmSeeSharpGame
                 }
 				
 				pnlMainForm.Controls.Remove(gamePanel);
-				pnlMainForm.Controls.Remove(gameInfo);
 				pnlMainForm.Controls.Remove(login);
 				pnlMainForm.Controls.Remove(newUser);
                 pnlMainForm.Controls.Remove(howToPlay);
@@ -279,7 +276,6 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(highScorePersonal);
             pnlMainForm.Controls.Remove(settings);
 
-			pnlMainForm.Controls.Add(gameInfo);
 			startSpill();
             isGameRunning = true;
 			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");

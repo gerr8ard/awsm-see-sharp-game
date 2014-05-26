@@ -19,7 +19,6 @@ namespace awsmSeeSharpGame.Classes
         public Bullet(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _shapeMap, Bitmap _bitmap)
             : base(_XPosition, _YPosition, _Rotation, _speed, _shapeMap, _bitmap)
         {
-            updateShapePosition();
         }
 
     }

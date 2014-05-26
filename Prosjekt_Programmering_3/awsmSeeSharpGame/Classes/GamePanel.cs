@@ -31,7 +31,6 @@ namespace awsmSeeSharpGame.Classes
         private List<UFO> ufoList;
 
         private Rocket rocket;
-        private UserControls.GameInfoControl gameInfoControl;
         private Label lblNavn;
         private Label lblLives;
         private Label lblTime;
@@ -201,6 +200,9 @@ namespace awsmSeeSharpGame.Classes
 
             //Setter opp alienhead
             alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
+
+            //Setter opp bullets
+            bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 100, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, ufoList, rocket);

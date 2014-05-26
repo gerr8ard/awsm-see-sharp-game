@@ -132,12 +132,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Rocket.cs" />
-    <Compile Include="UserControls\GameInfoControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\GameInfoControl.Designer.cs">
-      <DependentUpon>GameInfoControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\HighScoreControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
