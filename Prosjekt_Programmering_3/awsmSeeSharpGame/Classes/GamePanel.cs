@@ -197,7 +197,6 @@ namespace awsmSeeSharpGame.Classes
                     rotation = random.Next(360); //Rotasjon på mellom 0 og 360 grader
                 }
                 shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap));
-
             }
             return shapeListe;
         } 
