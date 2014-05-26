@@ -49,6 +49,42 @@ namespace awsmSeeSharpGame.Classes
             YAccelleration = 0;
         }
 
+        ////Gjør Xposition public, mulighet for å hent ut posisjonene til Rocket
+        public int X
+        {
+            get { 
+                return XPosition;
+            }
+        }
+
+        ////Gjør Yposition public, mulighet for å hent ut posisjonene til Rocket
+        public int Y
+        {
+            get
+            {
+                return YPosition;
+            }
+        }
+
+        ////Gjør Bredden public, mulighet for å hent ut posisjonene til Rocket
+        public int WidthOfRocket
+        {
+            get
+            {
+                return Width;
+            }
+        }
+
+        ////Gjør Høyden public, mulighet for å hent ut posisjonene til Rocket
+        public int HeightOfRocket
+        {
+            get
+            {
+                return Height;
+            }
+        }
+
+        ////Gjør Xposition public, mulighet for å hent ut posisjonene til Rocket
         public override void Move(float _elapsedTime)
         {
          //   Accelerate(_thrust, _rotation);

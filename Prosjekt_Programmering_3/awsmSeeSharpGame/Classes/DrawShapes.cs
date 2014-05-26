@@ -103,6 +103,14 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void CollisonCheck(PaintEventArgs e)
         {
+            if (rocket.X < 0 - rocket.WidthOfRocket || rocket.X > parentGamePanel.panelWidth)
+            {
+                parentGamePanel.LossOfLife();
+            }
+            if (rocket.Y < 0 || rocket.Y > parentGamePanel.panelHeight)
+            {
+                parentGamePanel.LossOfLife();
+            }
 
             foreach (Bullet bullet in bulletList)
             {
@@ -116,6 +124,7 @@ namespace awsmSeeSharpGame.Classes
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
                     collision = true;
+                    parentGamePanel.LossOfLife();
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -128,6 +137,7 @@ namespace awsmSeeSharpGame.Classes
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
+                    parentGamePanel.LossOfLife();
                     collision = true;
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
@@ -156,6 +166,7 @@ namespace awsmSeeSharpGame.Classes
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
+                    parentGamePanel.LossOfLife();
                     collision = true;
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet

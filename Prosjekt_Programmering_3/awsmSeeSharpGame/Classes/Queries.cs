@@ -44,6 +44,17 @@ namespace awsmSeeSharpGame.Classes
             }
         }
 
+        static public awsm_Score getHighestScore()
+        {
+            using (var context = new Context())
+            {
+                var score = context.Score
+                            .OrderByDescending(s => s.Score)
+                            .FirstOrDefault();
+                return score;
+            }
+        }
+
         static public List<awsm_Score> GetTopTenPersonalScores(string userName)
         {
             using (var context = new Context())

@@ -39,8 +39,8 @@ namespace awsmSeeSharpGame.Classes
         private TimeSpan timeLeft;
         private Boolean isGameRunning;
         private GameTimer gameTimer;
-        private int panelHeight = 638;
-        private int panelWidth = 1184;
+        public int panelHeight = 638;
+        public int panelWidth = 1184;
 
         public int numberOfAlienHead { get; set; }
         public int numberOfMeteors { get; set; }
@@ -69,8 +69,7 @@ namespace awsmSeeSharpGame.Classes
             //gameInfoControl = new GameInfoControl();
             this.SetStyle(ControlStyles.Selectable, true);
             this.TabStop = true;
-            numberOfLivesLeft = 3;
-            timeLeft = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+           
             random = new Random(); // Setter opp et random objekt for å kalkulere flere parametre på objektene som skal dukke opp i spillet
 
 
@@ -182,14 +181,32 @@ namespace awsmSeeSharpGame.Classes
         }
         private void StartNewGame()
         {
+            numberOfLivesLeft = 3;
+            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
             lblNavn.Text = MainForm.userName;
-            lblTime.Text = string.Format("Time left: 05:00");
-            lblLives.Text = string.Format("Lives left: {0}", numberOfLivesLeft);
-            lblScore.Text = "Score: 0";
-            lblRecord.Text = "Record: 1000";
+            score = 0;
+            lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
+            lblTime.Text = string.Format("Tid: {0}", timeLeft);
+            lblScore.Text = string.Format("Poeng: {0}", score.ToString());
+            lblRecord.Text = string.Format("Rekord: {0}",Queries.getHighestScore().Score.ToString());
             gameTimer = new GameTimer(timeLeft); //starter en ny timer
             isGameRunning = true;
             gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
+        }
+
+        public void LossOfLife()
+        {
+            if (numberOfLivesLeft > 0)
+            {
+                numberOfLivesLeft -= 1;
+                MessageBox.Show(string.Format("Du har {0} liv igjen", numberOfLivesLeft.ToString()));
+            }
+            else GameOver();
+        }
+
+        private void GameOver()
+        {
+
         }
 
         // Generisk liste metode som lager lister for alle type shape objekter
