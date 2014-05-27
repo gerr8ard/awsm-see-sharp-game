@@ -145,7 +145,7 @@ namespace awsmSeeSharpGame.Classes
 
         }
 
-        // Ekstra konstruktår for å sette antall liv og tid, kan kanskje tas bort
+        // Ekstra konstruktør for å sette antall liv og tid, kan kanskje tas bort
         public GamePanel(int _NumberOflives, TimeSpan _time) : base()
         {
             numberOfLivesLeft = _NumberOflives;
@@ -187,10 +187,12 @@ namespace awsmSeeSharpGame.Classes
             rocket = new Rocket(100, panelHeight / 2, 90, rocketMap);
 
             //Setter opp planeter
-            Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.White);
-            Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.White);
+            Obstacle obstackle1 = new Obstacle(random.Next(panelWidth - 200), random.Next(panelHeight - 200), 200, 200, Color.White);
+            Obstacle obstackle2 = new Obstacle(random.Next(panelWidth - 150), random.Next(panelHeight - 150), 150, 150, Color.White);
+            Obstacle obstackle3 = new Obstacle(random.Next(panelWidth - 100), random.Next(panelHeight - 100), 100, 100, Color.White);
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
+            obstacleList.Add(obstackle3);
 
             //Setter opp ufoene
             ufoList = MakeObjectList(ufoList, 30, timeLeft, false, 200, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());

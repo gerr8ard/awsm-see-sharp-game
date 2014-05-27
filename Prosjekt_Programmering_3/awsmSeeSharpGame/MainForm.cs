@@ -61,7 +61,7 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-            //startSpill();
+            startSpill();
 
 
 			//Instansierer de forskjellige panelene
@@ -86,9 +86,9 @@ namespace awsmSeeSharpGame
             startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
             howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(hvordanSpilleToolStripMenuItem_Click);
 
-			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			login.Show();//viser LoginControl form
+			//pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			//login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			//login.Show();//viser LoginControl form
 			
 			//Starter musikk til hovedmeny
 			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
@@ -99,7 +99,7 @@ namespace awsmSeeSharpGame
 		/// Hentet fra http://stackoverflow.com/questions/2612487/how-to-fix-the-flickering-in-user-controls for å stoppe flimmer på bilde.
 		/// </summary>
         /// 
-        
+    /*
 		protected override CreateParams CreateParams
 		{
 			get
@@ -109,7 +109,7 @@ namespace awsmSeeSharpGame
 				return cp;
 			}
 		} 
-        
+        */
 
 		#region Spillrelaterte metoder
 		/// <summary>
@@ -126,11 +126,13 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		public void stoppSpill()
 		{
-            gamePanel.threadGamePanel.Abort();
-            Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
-            pnlMainForm.Controls.Remove(gamePanel);
-            gamePanel = null;
-
+            if (isGameRunning)
+            {
+                gamePanel.threadGamePanel.Abort();
+                Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
+                pnlMainForm.Controls.Remove(gamePanel);
+                gamePanel = null;
+            }
 		}
 
 		#endregion
@@ -142,14 +144,14 @@ namespace awsmSeeSharpGame
 		/// <param name="e"></param>
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-            try 
-            { 
+            //try 
+            //{ 
 			stoppSpill();
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }
+            //}
 		}
 
 
