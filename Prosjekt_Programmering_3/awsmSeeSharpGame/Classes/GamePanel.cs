@@ -1,4 +1,6 @@
-﻿using awsmSeeSharpGame.UserControls;
+﻿using awsmSeeSharpGame.interfaces;
+using awsmSeeSharpGame.Models;
+using awsmSeeSharpGame.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,8 +28,9 @@ namespace awsmSeeSharpGame.Classes
         private List<Target> targetList;
         private List<Meteor> meteorList;
         private List<AlienHead> alienHeadList;
+        private List<UFO> ufoList;
+
         private Rocket rocket;
-        private UserControls.GameInfoControl gameInfoControl;
         private Label lblNavn;
         private Label lblLives;
         private Label lblTime;
@@ -36,11 +39,14 @@ namespace awsmSeeSharpGame.Classes
         private TimeSpan timeLeft;
         private Boolean isGameRunning;
         private GameTimer gameTimer;
+        public int panelHeight = 638;
+        public int panelWidth = 1184;
 
         public int numberOfAlienHead { get; set; }
         public int numberOfMeteors { get; set; }
         public int numberOfPlanets { get; set; }
 
+        private MainForm parentMainForm;
         private Random random;
         public int score { get; set; }
         public int numberOfLivesLeft { get; set; }
@@ -48,8 +54,8 @@ namespace awsmSeeSharpGame.Classes
         public Label lblFps; // Label for FPS
         Point lblFpsLocation = new Point(10, 200); //Setter posisjonen til FPS labelen!
         
-        ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
-        Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
+        public ThreadStart threadStartGamePanel; //Threadmetode som kjører oppdatering av OnPaint metoden 
+        public Thread threadGamePanel; // Thread som oppdaterer OnPaint metoden
         
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
@@ -58,15 +64,21 @@ namespace awsmSeeSharpGame.Classes
         /// <summary>
         /// Konstruktør som setter opp objektene, objektlistene, FPSlabel og starter oppdateringene av OnPaint metoden
         /// </summary>
-        public GamePanel()
+        public GamePanel(MainForm _parentMainForm)
         {
-            //gameInfoControl = new GameInfoControl();
-            this.SetStyle(ControlStyles.Selectable, true);
-            this.TabStop = true;
-            numberOfLivesLeft = 3;
-            timeLeft = new TimeSpan(0, 5, 0); //Setter spilltiden til 5 minutter
+            parentMainForm = _parentMainForm;
             random = new Random(); // Setter opp et random objekt for å kalkulere flere parametre på objektene som skal dukke opp i spillet
 
+            this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
+            this.Image = Image.FromFile(resourceUrl + "space-background.jpg"); // Laster inn bakgrunnsbilde
+            //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
+            //this.Image = Image.FromFile(resourceUrl + "stars.gif");
+
+            // Gjør det mulig å registrer tastetrykk på Gamepanel
+            this.SetStyle(ControlStyles.Selectable, true);
+            this.TabStop = true;
+
+            this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler); //Registrer en ny handler for tastetrykk
 
             #region Game info Panel
             // Setter opp labelen som viser FPS
@@ -120,16 +132,47 @@ namespace awsmSeeSharpGame.Classes
 
             #endregion
 
-            StartNewGame(); //Setter variabler for et nytt spill
+            // Setter opp og starter oppdatering av OnPaint metoden som tegner opp alle spillobjektene om IsGameRunning er satt til true
+            threadStartGamePanel = new ThreadStart(GamePanelDraw);
+            threadGamePanel = new Thread(threadStartGamePanel);
+            threadGamePanel.IsBackground = true;
+            threadGamePanel.Name = "gamePanelDraw";
+            threadGamePanel.Start();
 
-            this.PreviewKeyDown += new PreviewKeyDownEventHandler(previewKeyEventHandler);
+            NewGame(); //Setter variabler for et nytt spill
+            InitializeAndStartGame(); //Setter opp alle objektene for å spille.               
 
-            //this.BackColor = Color.Black;
-            //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
-            this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
-            //this.Image = Image.FromFile(resourceUrl + "stars.gif");
-            this.Image = Image.FromFile(resourceUrl + "space-background.jpg");
-            
+
+        }
+
+        // Ekstra konstruktår for å sette antall liv og tid, kan kanskje tas bort
+        public GamePanel(int _NumberOflives, TimeSpan _time) : base()
+        {
+            numberOfLivesLeft = _NumberOflives;
+            timeLeft = _time;
+        }
+        
+        private void NewGame()
+        {
+            numberOfLivesLeft = 3;
+            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
+            if (MainForm.currentUser != null)
+            {
+                lblNavn.Text = MainForm.currentUser.UserName;
+            }
+            else
+            {
+                lblNavn.Text = "Testbruker";
+            }
+            score = 0;
+            lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
+            lblTime.Text = string.Format("Tid: {0}", timeLeft);
+            lblScore.Text = string.Format("Poeng: {0}", score.ToString());
+            lblRecord.Text = string.Format("Rekord: {0}",Queries.getHighestScore().Score.ToString());
+        }
+
+        private void InitializeAndStartGame()
+        {
             //Setter opp alle objekt listene
             enemyList = new List<Enemy>();
             bulletList = new List<Bullet>();
@@ -137,48 +180,33 @@ namespace awsmSeeSharpGame.Classes
             targetList = new List<Target>();
             meteorList = new List<Meteor>();
             alienHeadList = new List<AlienHead>();
+            ufoList = new List<UFO>();
 
+            //Setter opp raketten
             Point[] rocketMap = ShapeMaps.RocketDesign2();
-            rocket = new Rocket(200,400,0, rocketMap);
+            rocket = new Rocket(100, panelHeight / 2, 90, rocketMap);
 
-            //Lager et test objekt og legger det til i obstacle lista
+            //Setter opp planeter
             Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.White);
             Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.White);
-
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
 
-            //Lager nye metorer
-            Meteor meteor1 = new Meteor(1000, 400, 300, 0,ShapeMaps.Meteor());
-            meteorList.Add(meteor1);
+            //Setter opp ufoene
+            ufoList = MakeObjectList(ufoList, 30, timeLeft, false, 200, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
 
-            //Lager nye alienhead
-            AlienHead alienHead1 = new AlienHead(1600, 200, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead2 = new AlienHead(2000, 400, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead3 = new AlienHead(2500, 700, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead4 = new AlienHead(3200, 100, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead5 = new AlienHead(3600, 400, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead6 = new AlienHead(5000, 50, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead7 = new AlienHead(6000, 250, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead8 = new AlienHead(6500, 200, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead9 = new AlienHead(7600, 500, 100, 0, ShapeMaps.alienHead());
-            AlienHead alienHead10 = new AlienHead(8600, 200, 100, 0, ShapeMaps.alienHead());
+            //Setter opp meteorene
+            meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
+            //Setter opp alienhead
+            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
 
-            alienHeadList.Add(alienHead1);
-            alienHeadList.Add(alienHead2);
-            alienHeadList.Add(alienHead3);
-            alienHeadList.Add(alienHead4);
-            alienHeadList.Add(alienHead5);
-            alienHeadList.Add(alienHead6);
-            alienHeadList.Add(alienHead7);
-            alienHeadList.Add(alienHead8);
-            alienHeadList.Add(alienHead9);
-            alienHeadList.Add(alienHead10);
-
+            //Setter opp bullets
+            bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 100, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, rocket);
+            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, ufoList, rocket);
+
 
             // Setter opp og starter oppdatering av OnPaint metoden
             threadStartGamePanel = new ThreadStart(GamePanelDraw);
@@ -186,35 +214,102 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel.IsBackground = true;
             threadGamePanel.Start();
             
+           //Starter en ny timer
+            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
+            gameTimer = new GameTimer(timeLeft); //starter en ny timer
+            gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
 
+            //Starter opptegningen av objektene
+            isGameRunning = true;
         }
-        private List<Shape> MakeObjectList(int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Type typeObject)
+
+        //Må fikses, kjøres når tida går ut.
+        private void EndLevel()
         {
-            List<Shape> objectList = new List<Shape>();
+            isGameRunning = false;
+            if (MessageBox.Show(string.Format("Gratulerer, du klarte nivået!")) == DialogResult.OK)
+            {
+                emptyObjects();
+                InitializeAndStartGame();
+            }
+        }
+
+        // Opprydning, tømmer alle objektene
+        private void emptyObjects()
+        {
+            drawShapes = null;
+            ufoList = null;
+            meteorList = null;
+            alienHeadList = null;
+            obstacleList = null;
+            bulletList = null;
+            enemyList = null;
+            rocket = null;
+            gameTimer.Stopp();
+            gameTimer = null;
+        }
+
+        // Spilleren døde
+        public void LossOfLife()
+        {
+            isGameRunning = false;
+
+            if (numberOfLivesLeft > 0)
+            {
+                numberOfLivesLeft -= 1;
+                if (MessageBox.Show(string.Format("Du har {0} liv igjen", numberOfLivesLeft.ToString())) == DialogResult.OK)
+                {
+                    emptyObjects();
+                    InitializeAndStartGame();
+                }
+            }
+            else GameOver();
+        }
+
+        private void GameOver()
+        {
+            emptyObjects();
+            if (MainForm.currentUser != null) //Sjekker om brukeren er logget inn og lagrer scoren 
+            {
+                if (MessageBox.Show(string.Format("Gratulerer {0}! Din poengsum ble {1}.", MainForm.currentUser.UserName, score.ToString())) == DialogResult.OK)
+                {
+                        using (var context = new Context())
+                        {
+                            awsm_Score scoreToSave = new awsm_Score()
+                            {
+                                Score = score,
+                                User_id = MainForm.currentUser.User_id,
+                                Created = DateTime.Now
+                            };
+                            context.Score.Add(scoreToSave);
+                            context.SaveChanges();
+                        }                  
+                }
+            }
+            else MessageBox.Show("Du må være logget inn for å kunne lagre poengsummen din!");
+
+            threadGamePanel.Abort();
+            Debug.Print("Slutt tråd");
+            parentMainForm.stoppSpill();  
+        }
+
+        // Generisk liste metode som lager lister for alle type moveable shape objekter
+        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
+        {
             for (int i = 0; i < _numberOfObjects; i++)
             {
-
+                int XPosition = random.Next(panelWidth, panelWidth * (int)_time.TotalSeconds); //**** SILJE, kan du ta en beregning på denne så vi får spredd elementene utover til tida går ut?
+                int YPosition = random.Next(panelHeight); //Høyden på mainform 638                  
+                int rotation = 0;
+                if (_useRotation)
+                {
+                    rotation = random.Next(360); //Rotasjon på mellom 0 og 360 grader
+                }
+                shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap, bitmap));
             }
-            return objectList;
+            return shapeListe;
         } 
-
-        GamePanel (int _NumberOflives, TimeSpan _time) :base() 
-        {
-            numberOfLivesLeft = _NumberOflives;
-            timeLeft = _time;
-        }
-
-        private void StartNewGame()
-        {
-            lblNavn.Text = MainForm.userName;
-            lblTime.Text = string.Format("Time left: 05:00");
-            lblLives.Text = string.Format("Lives left: {0}", numberOfLivesLeft);
-            lblScore.Text = "Score: 0";
-            lblRecord.Text = "Record: 1000";
-            gameTimer = new GameTimer(timeLeft); //starter en ny timer
-            isGameRunning = true;
-            gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
-        }
+       
         private void sekundOppdateringEventHandler(object sender, ElapsedEventArgs e)
         {
             GameTimer time = sender as GameTimer;
@@ -223,18 +318,15 @@ namespace awsmSeeSharpGame.Classes
         
 
         private void previewKeyEventHandler(object sender, PreviewKeyDownEventArgs e)
-        {
-           
+        {           
             if (e.KeyCode == Keys.Left)
             {
-                rocket.Rotation -= 5;
-                
+                rocket.Rotation -= 5;                
             }
 
             else if (e.KeyCode == Keys.Right)
             {
-                rocket.Rotation += 5;
-                
+                rocket.Rotation += 5;                
             }
             else if (e.KeyCode == Keys.Down)
             {
@@ -246,7 +338,40 @@ namespace awsmSeeSharpGame.Classes
             }
         }
 
+        /* Alternativ keycheck
+         * 
+        public static bool IsKeyDown(Keys key)
+        {
+            return (GetKeyState(Convert.ToInt16(key)) & 0X80) == 0X80;
+        }
 
+        [DllImport("user32.dll")]
+        public extern static Int16 GetKeyState(Int16 nVirtKey);
+
+        if (IsKeyDown(Keys.Left) && IsKeyDown(Keys.Up) )
+            {
+                rocket.XPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
+                rocket.YPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
+            }
+
+            if (IsKeyDown(Keys.Left) && IsKeyDown(Keys.Down))
+            {
+                rocket.XPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
+                rocket.YPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Right) && IsKeyDown(Keys.Up))
+            {
+                rocket.XPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
+                rocket.YPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Right) && IsKeyDown(Keys.Down))
+            {
+                rocket.XPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
+                rocket.YPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
+            }
+         * 
+         * */
+        
         /// <summary>
         /// Kaller On Paint metoden ca 60 ganger i sekundet
         /// </summary>
@@ -261,16 +386,24 @@ namespace awsmSeeSharpGame.Classes
             }
             Debug.Print("stoppet");
         }
+
         // OnPaint metoden for GamePanel
         protected override void OnPaint(PaintEventArgs e)
         {
-            lblTime.Text = string.Format("Time Left: {0}", timeLeft); //Oppdaterer tiden som er igjen.
-            lblLives.Text = string.Format("Lives left: {0}", numberOfLivesLeft);
-            lblScore.Text = string.Format("Score: {0}", score);
-
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             base.OnPaint(e);
-            drawShapes.Draw(e); //Kaller Draw metoden som tegner opp alle objektene i Gamepanelet
+
+            if (isGameRunning) //Oppdater spillobjektene dersom spillet kjøres
+            {
+                if (timeLeft == TimeSpan.Zero)
+                {
+                    EndLevel();
+                }
+                lblTime.Text = string.Format("Tid: {0}", timeLeft); //Oppdaterer tiden som er igjen.
+                lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
+                lblScore.Text = string.Format("Poeng: {0}", score);
+                drawShapes.Draw(e); //Kaller Draw metoden som tegner opp alle objektene i Gamepanelet
+            }
         }
 
         private void InitializeComponent()

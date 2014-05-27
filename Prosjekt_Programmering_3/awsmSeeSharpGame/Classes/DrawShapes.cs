@@ -26,14 +26,15 @@ namespace awsmSeeSharpGame.Classes
 
 
         // Lister som inneholder objektene som skal tegnes opp
-        List<Enemy> enemyList;
-        List<Bullet> bulletList;
-        List<Obstacle> obstacleList;
-        List<Target> targetList;
-        List<Meteor> meteorList;
-        List<AlienHead> alienHeadList;
-        Rocket rocket;
-        Region collisionRegion;
+        private List<Enemy> enemyList;
+        private List<Bullet> bulletList;
+        private List<Obstacle> obstacleList;
+        private List<Target> targetList;
+        private List<Meteor> meteorList;
+        private List<AlienHead> alienHeadList;
+        private List<UFO> ufoList;
+        private Rocket rocket;
+        private Region collisionRegion;
 
         GamePanel parentGamePanel; // lenke til Gamepanelet, så vi kan akkssere FPS labelen
 
@@ -46,7 +47,7 @@ namespace awsmSeeSharpGame.Classes
         /// <param name="_obstacleList">Liste med Obstacles</param>
         /// <param name="_targetList">Liste med targets</param>
         /// <param name="_rocket">Romskipet vårt</param>
-        public DrawShapes(GamePanel _parentGamePanel, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, List<AlienHead> _alienHeadList, Rocket _rocket)
+        public DrawShapes(GamePanel _parentGamePanel, List<Enemy> _enemylist, List<Bullet> _bulletList, List<Obstacle> _obstacleList, List<Target> _targetList, List<Meteor> _meteorList, List<AlienHead> _alienHeadList, List<UFO> _ufoList, Rocket _rocket)
         {
             parentGamePanel = _parentGamePanel;
             enemyList = _enemylist;
@@ -55,8 +56,14 @@ namespace awsmSeeSharpGame.Classes
             targetList = _targetList;
             meteorList = _meteorList;
             alienHeadList = _alienHeadList;
+            ufoList = _ufoList;
             rocket = _rocket;
             collision = false;
+        }
+
+        //Legger til en bullet i bullet lista
+        public void AddBullet(Bullet bullet){
+            bulletList.Add(bullet);
         }
 
         //Public get for Deltatiden. Brukt for å oppdatere spillobjektene uavhengig av FPS
@@ -71,14 +78,20 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void Update()
         {
+            
             foreach(Meteor meteor in meteorList)
             {
                 meteor.Move(GetElapsedTime);
             }
-
+            
             foreach(AlienHead alienHead in alienHeadList)
             {
                 alienHead.Move(GetElapsedTime);
+            }
+
+            foreach (UFO ufo in ufoList)
+            {
+                ufo.Move(this, GetElapsedTime);
             }
 
             foreach (Bullet bullet in bulletList)
@@ -95,6 +108,14 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void CollisonCheck(PaintEventArgs e)
         {
+            if (rocket.X < 0 - rocket.WidthOfRocket || rocket.X > parentGamePanel.panelWidth)
+            {
+                parentGamePanel.LossOfLife();
+            }
+            if (rocket.Y < 0 || rocket.Y > parentGamePanel.panelHeight)
+            {
+                parentGamePanel.LossOfLife();
+            }
 
             foreach (Bullet bullet in bulletList)
             {
@@ -108,6 +129,7 @@ namespace awsmSeeSharpGame.Classes
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
                     collision = true;
+                    parentGamePanel.LossOfLife();
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -120,6 +142,7 @@ namespace awsmSeeSharpGame.Classes
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
+                    parentGamePanel.LossOfLife();
                     collision = true;
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
@@ -134,8 +157,22 @@ namespace awsmSeeSharpGame.Classes
                 {
                     alienHead.isCollected = true;
                     parentGamePanel.score += 100;
-                    alienHeadSound = new awsm_SoundPlayer("Shot.wav");
+                    alienHeadSound = new awsm_SoundPlayer("splat.wav");
                     
+                }
+                collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+            }
+
+            foreach (UFO ufo in ufoList)
+            {
+                RegionData regionData = ufo.region.GetRegionData();
+
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
+                {
+                    parentGamePanel.LossOfLife();
+                    collision = true;
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -151,25 +188,7 @@ namespace awsmSeeSharpGame.Classes
             }
             rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
         }
-/*
-        public void Collision()
-        {
-            {
-                foreach (Firkant firkant in firkanter)
-                {
-                    foreach (Ball ball in balls)
-                    {
-                        if (ball.rectangle.IntersectsWith(firkant.rectangle))
-                        {
-                            ball.running = false;
-                            Debug.WriteLine(string.Format("{0} terminert ved kollisjon", ball.getNameOfThread()));
-                        }
-                    }
-                }
-                balls.RemoveAll(ball => ball.running == false);
-            }
-        }
- * */
+
         /// <summary>
         /// Går igjennom alle objektene og kaller opp Draw metodene deres for å tegne de opp
         /// </summary>
@@ -206,6 +225,17 @@ namespace awsmSeeSharpGame.Classes
             {
                 alienHead.Draw(e);
             }
+            
+            foreach(Meteor meteor in meteorList)
+            {
+               meteor.Draw(e);
+            }
+
+            foreach (UFO ufo in ufoList)
+            {
+                ufo.Draw(e);
+            }
+            
             rocket.Draw(e);
 
         }

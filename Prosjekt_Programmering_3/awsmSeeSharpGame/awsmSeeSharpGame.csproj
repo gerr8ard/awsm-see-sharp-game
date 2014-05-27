@@ -90,6 +90,7 @@
     <Compile Include="Classes\Queries.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
     <Compile Include="Classes\awsm_SoundPlayer.cs" />
+    <Compile Include="Classes\UFO.cs" />
     <Compile Include="Classes\WarningMessages.cs" />
     <Compile Include="interfaces\IMoveableShape.cs" />
     <Compile Include="interfaces\IShape.cs" />
@@ -131,17 +132,17 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Rocket.cs" />
-    <Compile Include="UserControls\GameInfoControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\GameInfoControl.Designer.cs">
-      <DependentUpon>GameInfoControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\HighScoreControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\HighScoreControl.Designer.cs">
       <DependentUpon>HighScoreControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HowToPlayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\HowToPlayControl.Designer.cs">
+      <DependentUpon>HowToPlayControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LoginControl.cs">
       <SubType>UserControl</SubType>
@@ -190,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\HighScoreControl.resx">
       <DependentUpon>HighScoreControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\HowToPlayControl.resx">
+      <DependentUpon>HowToPlayControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\LoginControl.resx">
       <DependentUpon>LoginControl.cs</DependentUpon>
@@ -395,6 +399,50 @@
     <None Include="Resources\SettingsBackground.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowDownKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowLeftKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowRightKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowUpKeys.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpaceBarKey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mess.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pling.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splat.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\alien-spaceship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bullet3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

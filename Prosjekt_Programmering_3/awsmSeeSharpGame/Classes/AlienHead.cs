@@ -12,25 +12,10 @@ namespace awsmSeeSharpGame.Classes
     {
         public bool isCollected { get; set; } //Om hodet er plukke opp eller ei.
 
-        public AlienHead(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _alienHeadMap)
+        public AlienHead(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _shapeMap, Bitmap _bitmap) 
+            : base(_XPosition, _YPosition, _Rotation, _speed, _shapeMap, _bitmap)
         {
-            bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.alien_head);
-            shapeMap = _alienHeadMap;
-            shapeMapPosition = new Point[shapeMap.Length];
-            Array.Copy(shapeMap, shapeMapPosition, shapeMap.Length);
-
             isCollected = false; //setter alienhodet til å ikke være plukket opp.
-
-            XPosition = _XPosition;
-            YPosition = _YPosition;
-            DxPosition = XPosition;
-            DyPosition = YPosition;
-            Width = bitmap.Width;
-            Height = bitmap.Height;
-
-            Rotation = _Rotation;
-            speed = _speed;
-            pen = new Pen(Color.White);
             updateShapePosition();
         }
 

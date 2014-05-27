@@ -10,32 +10,8 @@ namespace awsmSeeSharpGame.Classes
 {
     public class Meteor : MovableShape
     {       
-        public Meteor(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _meteorMap)
+        public Meteor(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _shapeMap, Bitmap _bitmap) : base(_XPosition, _YPosition, _Rotation, _speed, _shapeMap, _bitmap)
         {
-            bitmap = new Bitmap(awsmSeeSharpGame.Properties.Resources.Meteor);
-
-            shapeMap = _meteorMap;
-            shapeMapPosition = new Point[shapeMap.Length];
-            Array.Copy(shapeMap, shapeMapPosition, shapeMap.Length);
-
-            XPosition = _XPosition;
-            YPosition = _YPosition;
-            DxPosition = XPosition;
-            Width = bitmap.Width;
-            Height = bitmap.Height;
-
-            Rotation = _Rotation;
-            speed = _speed;
-            pen = new Pen(Color.White);
-            updateShapePosition();
-
-        }
-
-        public override void Draw(PaintEventArgs e)
-        {
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition, YPosition));
-            e.Graphics.DrawPolygon(pen, shapeMapPosition);
         }
     }
 }

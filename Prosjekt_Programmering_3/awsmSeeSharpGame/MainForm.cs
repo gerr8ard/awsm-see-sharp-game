@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio;
 using NAudio.Wave;
+using System.Diagnostics;
 
 namespace awsmSeeSharpGame
 {
@@ -31,12 +32,12 @@ namespace awsmSeeSharpGame
 		private LoginControl login;//UserControl med logginn muligheter
 		private NewUserControl newUser;//UserControl for å registrere ny bruker
 		private StartPageControl startPage;//UserControl med hovedmeny
-		private GameInfoControl gameInfo;//GameInfoControll med informasjon om gjeldende spill
 		private HighScoreControl highScore;//HighscoreControl med en liste over de med høyest score.
 		private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
         private SettingsControl settings;//UserControl for innstillinger
+        private HowToPlayControl howToPlay;//UserCotrol som viser hvordan man spiller spillet.
 
-		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound;
+		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound, menuItemHowToPlaySound;
 
         private Boolean isGameRunning;
 		public static bool isLoggedIn = false;//Sjekk på om bruker er logget inn
@@ -45,11 +46,9 @@ namespace awsmSeeSharpGame
         public static bool isSettingsShowing = false;//Sjekk på om settings tavlen skal vises
 
 
-        public static int user_id;
-        public static string userName = "Dag";
-
+ //       public static int user_id;
+//        public static string userName = "Dag";
 		public static awsm_Users currentUser;
-   //     public static GameInfo currentGameInfo = new GameInfo();
 		
 
 		#endregion
@@ -62,20 +61,16 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-			isGameRunning = false;
-			//startSpill();
-
-			//startSpill();
-
+            //startSpill();
 
 
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
 			newUser = new NewUserControl();
 			startPage = new StartPageControl();
-			gameInfo = new GameInfoControl();
 			highScore = new HighScoreControl();
             settings = new SettingsControl();
+            howToPlay = new HowToPlayControl();
 			//highScorePersonal = new PersonalHighScoreControl();
 
 			// Abbonnerer på events fra de forskjellige panelene
@@ -89,6 +84,7 @@ namespace awsmSeeSharpGame
 			startPage.highScoreEvent += new StartPageControl.startPageDelegate(btn_Highscores_Click);//Abonnerer på highScoreEventi StartPageControl
 			startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
             startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
+            howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(hvordanSpilleToolStripMenuItem_Click);
 
 			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
 			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
@@ -121,15 +117,20 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		private void startSpill()
 		{
-			gamePanel = new GamePanel();
+			gamePanel = new GamePanel(this);
 			pnlMainForm.Controls.Add(gamePanel);		
 		}
 
 		/// <summary>
 		/// Stopper et spill
 		/// </summary>
-		private void stoppSpill()
+		public void stoppSpill()
 		{
+            gamePanel.threadGamePanel.Abort();
+            Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
+            pnlMainForm.Controls.Remove(gamePanel);
+            gamePanel = null;
+
 		}
 
 		#endregion
@@ -141,7 +142,14 @@ namespace awsmSeeSharpGame
 		/// <param name="e"></param>
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
+            try 
+            { 
 			stoppSpill();
+            }
+            catch
+            {
+
+            }
 		}
 
 
@@ -161,12 +169,16 @@ namespace awsmSeeSharpGame
 		{
 			if (isLoggedIn == true)
 			{
-
-				stoppSpill();
+                if (isGameRunning)
+                {
+                    stoppSpill();
+                    isGameRunning = false;
+                }
+				
 				pnlMainForm.Controls.Remove(gamePanel);
-				pnlMainForm.Controls.Remove(gameInfo);
 				pnlMainForm.Controls.Remove(login);
 				pnlMainForm.Controls.Remove(newUser);
+                pnlMainForm.Controls.Remove(howToPlay);
 				pnlMainForm.Controls.Add(startPage);
 				startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
 				startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
@@ -182,6 +194,24 @@ namespace awsmSeeSharpGame
 			}
 			else WarningMessages.noAccessWarning();
 		}
+
+        private void hvordanSpilleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (isLoggedIn == true)
+            {
+                howToPlay.Left = 300;
+                pnlMainForm.Controls.Add(howToPlay);
+                pnlMainForm.Controls.Remove(login);
+                pnlMainForm.Controls.Remove(newUser);
+                pnlMainForm.Controls.Remove(startPage);
+                pnlMainForm.Controls.Remove(highScore);
+                pnlMainForm.Controls.Remove(highScorePersonal);
+                pnlMainForm.Controls.Remove(settings);
+                menuItemHowToPlaySound = new awsm_SoundPlayer("mess.wav");
+            }
+            else WarningMessages.noAccessWarning();
+           
+        }
 		#endregion	   
 
 		#region Button click events
@@ -211,6 +241,7 @@ namespace awsmSeeSharpGame
                 highScorePersonal = new PersonalHighScoreControl();
                 
 			}
+
 		}
 
 		/// <summary>
@@ -245,8 +276,8 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(highScorePersonal);
             pnlMainForm.Controls.Remove(settings);
 
-			pnlMainForm.Controls.Add(gameInfo);
 			startSpill();
+            isGameRunning = true;
 			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
 		}
 
@@ -313,8 +344,8 @@ namespace awsmSeeSharpGame
 
         private void btn_Settings_Click(object sender, EventArgs e)
         {
-            settings.Left = 30;
-            settings.Top = 470;
+            settings.Left = 500;
+            settings.Top = 400;
 
             if (isSettingsShowing == true)
             {
@@ -329,6 +360,8 @@ namespace awsmSeeSharpGame
         }
 
 		#endregion
+
+       
 
 	  
 	}

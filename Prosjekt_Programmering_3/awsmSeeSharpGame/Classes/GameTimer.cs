@@ -17,7 +17,7 @@ namespace awsmSeeSharpGame.Classes
         private TimeSpan zeroTime = new TimeSpan(0); //Timespan objekt med verdien 0, som brukes for sammenligningsgrunnlag
         private TimeSpan oneSecond = new TimeSpan(0, 0, 1); // Timepan objekt på 1 sekund. Settes her for å slippe å lage mange søppelobjekter
         private ITimer timer; //System Timer objekt
-        private Boolean isRunning; //Bool som indikerer om timeren er aktiv
+        public bool isRunning; //Bool som indikerer om timeren er aktiv
 
         /// <summary>
         /// Konstruktør som setter igang timeren med angitt tid
@@ -70,6 +70,11 @@ namespace awsmSeeSharpGame.Classes
             return isRunning;
         }
 
+        public void Stopp()
+        {
+            timer.Stop();
+            isRunning = false;
+        }
         // Metode for å kjøre tester
         public GameTimer(ITimer _timer, TimeSpan _tid)
         {

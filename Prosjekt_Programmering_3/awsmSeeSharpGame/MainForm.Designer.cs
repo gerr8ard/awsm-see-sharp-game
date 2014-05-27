@@ -115,6 +115,7 @@
             this.hvordanSpilleToolStripMenuItem.Name = "hvordanSpilleToolStripMenuItem";
             this.hvordanSpilleToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.hvordanSpilleToolStripMenuItem.Text = "Hvordan spille...";
+            this.hvordanSpilleToolStripMenuItem.Click += new System.EventHandler(this.hvordanSpilleToolStripMenuItem_Click);
             // 
             // omToolStripMenuItem
             // 

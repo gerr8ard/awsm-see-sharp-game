@@ -16,26 +16,9 @@ namespace awsmSeeSharpGame.Classes
     /// </summary>
     public class Bullet : MovableShape
     {
-        public Bullet(int _XPosition, int _YPosition, int _Rotation)
+        public Bullet(int _XPosition, int _YPosition, int _speed, float _Rotation, Point[] _shapeMap, Bitmap _bitmap)
+            : base(_XPosition, _YPosition, _Rotation, _speed, _shapeMap, _bitmap)
         {
-            rectangle = new Rectangle();
-            rectangle.X = _XPosition;
-            rectangle.Y = _YPosition;
-            calcXPosition = rectangle.X;
-            calcYPosition = rectangle.Y;
-            Rotation = _Rotation;
-            DxPosition = 0;
-            DyPosition = 0;
-        }
-
-        public override void Move(float _elapsedTime)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Draw(PaintEventArgs e)
-        {
-
         }
 
     }
