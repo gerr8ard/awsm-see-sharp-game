@@ -26,15 +26,15 @@ namespace awsmSeeSharpGame.Classes
 
 
         // Lister som inneholder objektene som skal tegnes opp
-        List<Enemy> enemyList;
-        List<Bullet> bulletList;
-        List<Obstacle> obstacleList;
-        List<Target> targetList;
-        List<Meteor> meteorList;
-        List<AlienHead> alienHeadList;
-        List<UFO> ufoList;
-        Rocket rocket;
-        Region collisionRegion;
+        private List<Enemy> enemyList;
+        private List<Bullet> bulletList;
+        private List<Obstacle> obstacleList;
+        private List<Target> targetList;
+        private List<Meteor> meteorList;
+        private List<AlienHead> alienHeadList;
+        private List<UFO> ufoList;
+        private Rocket rocket;
+        private Region collisionRegion;
 
         GamePanel parentGamePanel; // lenke til Gamepanelet, så vi kan akkssere FPS labelen
 
@@ -59,6 +59,11 @@ namespace awsmSeeSharpGame.Classes
             ufoList = _ufoList;
             rocket = _rocket;
             collision = false;
+        }
+
+        //Legger til en bullet i bullet lista
+        public void AddBullet(Bullet bullet){
+            bulletList.Add(bullet);
         }
 
         //Public get for Deltatiden. Brukt for å oppdatere spillobjektene uavhengig av FPS
@@ -86,7 +91,7 @@ namespace awsmSeeSharpGame.Classes
 
             foreach (UFO ufo in ufoList)
             {
-                ufo.Move(GetElapsedTime);
+                ufo.Move(this, GetElapsedTime);
             }
 
             foreach (Bullet bullet in bulletList)

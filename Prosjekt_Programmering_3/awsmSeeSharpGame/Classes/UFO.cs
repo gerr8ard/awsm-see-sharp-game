@@ -14,5 +14,20 @@ namespace awsmSeeSharpGame.Classes
         {
             updateShapePosition();
         }
+
+        //Lager en ny bullet og legger den til i bulletlista. Bør oppdateres så den kun legger ut en kule hver nte gang rutinen kjøres eller noe slikt
+        public void Move(DrawShapes _drawShapes, float _elapsedTime)
+        {
+            Move(_elapsedTime);
+            if (XPosition < 1200 && XPosition > 0)
+            {
+                Bullet newbullet = new Bullet(XPosition, YPosition, (int) speed+100, 0.0F, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
+                _drawShapes.AddBullet(newbullet);
+            }
+        }
+        public override void Move(float _elapsedTime)
+        {
+            base.Move(_elapsedTime);
+        }
     }
 }
