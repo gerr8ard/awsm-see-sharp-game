@@ -1,6 +1,7 @@
 ﻿using awsmSeeSharpGame.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -184,6 +185,7 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel = new Thread(threadStartGamePanel);
             threadGamePanel.IsBackground = true;
             threadGamePanel.Start();
+            
 
         }
         private List<Shape> MakeObjectList(int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Type typeObject)
@@ -250,11 +252,14 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         private void GamePanelDraw()
         {
+
+            Debug.Print("startet tråd gamepanelDraw");
             while (true)
             {
                 this.Invalidate();
                 Thread.Sleep(17);
             }
+            Debug.Print("stoppet");
         }
         // OnPaint metoden for GamePanel
         protected override void OnPaint(PaintEventArgs e)

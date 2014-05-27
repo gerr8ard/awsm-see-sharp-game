@@ -104,9 +104,9 @@
     <Compile Include="Classes\Obstacle.cs" />
     <Compile Include="Classes\Shape.cs" />
     <Compile Include="Classes\GameTimer.cs" />
-    <Compile Include="Migrations\201405250826060_First.cs" />
-    <Compile Include="Migrations\201405250826060_First.Designer.cs">
-      <DependentUpon>201405250826060_First.cs</DependentUpon>
+    <Compile Include="Migrations\201405251346130_First.cs" />
+    <Compile Include="Migrations\201405251346130_First.Designer.cs">
+      <DependentUpon>201405251346130_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Classes\Target.cs" />
@@ -180,8 +180,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405250826060_First.resx">
-      <DependentUpon>201405250826060_First.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405251346130_First.resx">
+      <DependentUpon>201405251346130_First.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
