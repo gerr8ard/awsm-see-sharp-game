@@ -61,7 +61,7 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-            //startSpill();
+            startSpill();
 
 
 			//Instansierer de forskjellige panelene
@@ -86,9 +86,9 @@ namespace awsmSeeSharpGame
             startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
             howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(hvordanSpilleToolStripMenuItem_Click);
 
-			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			login.Show();//viser LoginControl form
+			//pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			//login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			//login.Show();//viser LoginControl form
 			
 			//Starter musikk til hovedmeny
 			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
@@ -99,7 +99,7 @@ namespace awsmSeeSharpGame
 		/// Hentet fra http://stackoverflow.com/questions/2612487/how-to-fix-the-flickering-in-user-controls for å stoppe flimmer på bilde.
 		/// </summary>
         /// 
-        
+    /*
 		protected override CreateParams CreateParams
 		{
 			get
@@ -108,7 +108,7 @@ namespace awsmSeeSharpGame
 				cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
 				return cp;
 			}
-		} 
+		} */
         
 
 		#region Spillrelaterte metoder
@@ -189,7 +189,7 @@ namespace awsmSeeSharpGame
 					gameMusic.Stop();
 				}
 
-				introMusic.Start();
+				//introMusic.Start();
 
 			}
 			else WarningMessages.noAccessWarning();

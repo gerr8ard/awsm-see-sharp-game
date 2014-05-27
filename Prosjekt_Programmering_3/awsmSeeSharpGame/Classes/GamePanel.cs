@@ -325,6 +325,10 @@ namespace awsmSeeSharpGame.Classes
             {
                 rocket.Thrust += 0.3f;
             }
+            else if (e.KeyCode == Keys.Up)
+            {
+                rocket.Thrust -= 0.3f;
+            }
             else if (e.KeyCode == Keys.Space)
             {
                    // Skyte pang! pang!
