@@ -22,7 +22,7 @@ namespace awsmSeeSharpGame.Classes
         //Lager en ny bullet og legger den til i bulletlista. Bør oppdateres så den kun legger ut en kule hver nte gang rutinen kjøres eller noe slikt
         public void Move(DrawShapes _drawShapes, float _elapsedTime)
         {
-            //timer = new Timer(random.Next(2));
+
             Move(_elapsedTime);
             if (XPosition < 1200 && XPosition > 0)
             {
@@ -34,5 +34,7 @@ namespace awsmSeeSharpGame.Classes
         {
             base.Move(_elapsedTime);
         }
+
+       
     }
 }
