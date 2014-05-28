@@ -13,7 +13,7 @@ namespace awsmSeeSharpGame.Classes
         static public int randomIntBetween20And60()
         {
 
-            int n = random.Next(20, 60);
+            int n = random.Next(1, 600);
             return n;
         }
 

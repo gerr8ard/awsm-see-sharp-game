@@ -20,32 +20,29 @@ using System.Diagnostics;
 namespace awsmSeeSharpGame
 {
 
-    /// <summary>
-    /// @Author Dag, Pål og Silje. 
-    /// </summary>
+	/// <summary>
+	/// @Author Dag, Pål og Silje. 
+	/// </summary>
 	public partial class MainForm : Form
 	{
 		#region Fields
 
-		private GameTimer timer; //Timeren som holder styr på hvor lenge det er igjen av spillrunden.
-		private ThreadStart threadStartInfoPanel;
-		private Thread threadInfoPanel;
 		private GamePanel gamePanel;
 		private LoginControl login;//UserControl med logginn muligheter
 		private NewUserControl newUser;//UserControl for å registrere ny bruker
 		private StartPageControl startPage;//UserControl med hovedmeny
 		private HighScoreControl highScore;//HighscoreControl med en liste over de med høyest score.
 		private PersonalHighScoreControl highScorePersonal;//HighScoreControl med en liste over høyeste personlige score.
-        private SettingsControl settings;//UserControl for innstillinger
-        private HowToPlayControl howToPlay;//UserCotrol som viser hvordan man spiller spillet.
+		private SettingsControl settings;//UserControl for innstillinger
+		private HowToPlayControl howToPlay;//UserCotrol som viser hvordan man spiller spillet.
 
 		private awsm_SoundPlayer introMusic, gameMusic, btnCancelSound, logInSuccess, registerSuccess, highScoreSound, btnRegisterNewUserClick, personalHighScoreSound, menuItemHowToPlaySound;
 
-        private Boolean isGameRunning;
+		
 		public static bool isLoggedIn = false;//Sjekk på om bruker er logget inn
 		public static bool isHighScoreShowing = false;//Sjekk på om highscore tavlen vises
 		public static bool isPersonalHighScoreShowing = false;//Sjekk på om personalHighScore tavlen vises
-        public static bool isSettingsShowing = false;//Sjekk på om settings tavlen skal vises
+		public static bool isSettingsShowing = false;//Sjekk på om settings tavlen skal vises
 
 
  //       public static int user_id;
@@ -63,7 +60,7 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-            startSpill();
+			startSpill();
 
 
 			//Instansierer de forskjellige panelene
@@ -71,8 +68,8 @@ namespace awsmSeeSharpGame
 			newUser = new NewUserControl();
 			startPage = new StartPageControl();
 			highScore = new HighScoreControl();
-            settings = new SettingsControl();
-            howToPlay = new HowToPlayControl();
+			settings = new SettingsControl();
+			howToPlay = new HowToPlayControl();
 			//highScorePersonal = new PersonalHighScoreControl();
 
 			// Abbonnerer på events fra de forskjellige panelene
@@ -85,24 +82,22 @@ namespace awsmSeeSharpGame
 			newUser.redirectNewUserEvent += new NewUserControl.cancelDelegate(btnRegisterNewUserNewUserControl_Click);//Abonnerer på redirectNewUserEvent i newUserControl
 			startPage.highScoreEvent += new StartPageControl.startPageDelegate(btn_Highscores_Click);//Abonnerer på highScoreEventi StartPageControl
 			startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
-            startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
-            howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(hvordanSpilleToolStripMenuItem_Click);
+			startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
+			howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(hvordanSpilleToolStripMenuItem_Click);
 
 			//pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
 			//login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
 			//login.Show();//viser LoginControl form
 			
-			//Starter musikk til hovedmeny
-			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
 
 		/// <summary>
 		/// Hentet fra http://stackoverflow.com/questions/2612487/how-to-fix-the-flickering-in-user-controls for å stoppe flimmer på bilde.
-        /// Gjør flyten i spillet dårligere. Blir mest sannsynligvis ikke brukt.
+		/// Gjør flyten i spillet dårligere. Blir mest sannsynligvis ikke brukt.
 		/// </summary>
-        /// 
-    /*
+		/// 
+	/*
 		protected override CreateParams CreateParams
 		{
 			get
@@ -113,15 +108,15 @@ namespace awsmSeeSharpGame
 			}
 
 		} */
-        
+		
 
 		
 
 
 		#region Spillrelaterte metoder
-        /// <summary>
-        /// @Author Dag Ivarsøy og Pål Skogsrud
-        /// </summary>
+		/// <summary>
+		/// @Author Dag Ivarsøy og Pål Skogsrud
+		/// </summary>
 
 		/// <summary>
 		/// Starter et nytt spill
@@ -129,7 +124,8 @@ namespace awsmSeeSharpGame
 		private void startSpill()
 		{
 			gamePanel = new GamePanel(this);
-			pnlMainForm.Controls.Add(gamePanel);		
+			pnlMainForm.Controls.Add(gamePanel);
+            //gamePanel.isGameRunning = true;
 		}
 
 		/// <summary>
@@ -137,43 +133,48 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		public void stoppSpill()
 		{
-            if (isGameRunning)
-            {
-                gamePanel.threadGamePanel.Abort();
-                Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
-                pnlMainForm.Controls.Remove(gamePanel);
-                pnlMainForm.Controls.Add(startPage);
-                gamePanel = null;
-            }
+			//if (isGameRunning)
+			//{
+				gamePanel.threadGamePanel.Abort();
+				pnlMainForm.Controls.Remove(gamePanel);
+                gamePanel.Dispose();
+                //gamePanel.isGameRunning = false;
+                gameMusic.Stop();
+                startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
+                startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
+				pnlMainForm.Controls.Add(startPage);
+                introMusic.Start();
+				//gamePanel = null;
+			//}
 		}
-        
-        /// <summary>
+		
+		/// <summary>
 		/// Metode som blir kjørt når programmet lukkes. Stopper kjørende spill og tråder
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-            //try 
-            //{ 
+			try 
+			{ 
 			stoppSpill();
-            //}
-            //catch
-            //{
-
-            //}
+			}
+			catch(NullReferenceException)
+			{
+               
+			}
 		}
 
 		#endregion
 
 		
 
-        
+		
 		#region MenuItem Metoder
-        /// <summary>
-        /// @Author Pål Skogsrud
-        /// Metoder som tar seg av hva som skjer når en av menuItem sine elementer blir trykket.
-        /// </summary
+		/// <summary>
+		/// @Author Pål Skogsrud
+		/// Metoder som tar seg av hva som skjer når en av menuItem sine elementer blir trykket.
+		/// </summary
 		private void MenuItemAvslutt_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -189,16 +190,16 @@ namespace awsmSeeSharpGame
 		{
 			if (isLoggedIn == true)
 			{
-                if (isGameRunning)
-                {
-                    stoppSpill();
-                    isGameRunning = false;
-                }
+                //if (gamePanel.isGameRunning)
+				{
+					stoppSpill();
+                  //  gamePanel.isGameRunning = false;
+				}
 				
 				pnlMainForm.Controls.Remove(gamePanel);
 				pnlMainForm.Controls.Remove(login);
 				pnlMainForm.Controls.Remove(newUser);
-                pnlMainForm.Controls.Remove(howToPlay);
+				pnlMainForm.Controls.Remove(howToPlay);
 				pnlMainForm.Controls.Add(startPage);
 				startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
 				startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
@@ -215,31 +216,31 @@ namespace awsmSeeSharpGame
 			else WarningMessages.noAccessWarning();
 		}
 
-        private void hvordanSpilleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (isLoggedIn == true)
-            {
-                howToPlay.Left = 300;
-                pnlMainForm.Controls.Add(howToPlay);
-                pnlMainForm.Controls.Remove(login);
-                pnlMainForm.Controls.Remove(newUser);
-                pnlMainForm.Controls.Remove(startPage);
-                pnlMainForm.Controls.Remove(highScore);
-                pnlMainForm.Controls.Remove(highScorePersonal);
-                pnlMainForm.Controls.Remove(settings);
-                menuItemHowToPlaySound = new awsm_SoundPlayer("mess.wav");
-            }
-            else WarningMessages.noAccessWarning();
-           
-        }
+		private void hvordanSpilleToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (isLoggedIn == true)
+			{
+				howToPlay.Left = 300;
+				pnlMainForm.Controls.Add(howToPlay);
+				pnlMainForm.Controls.Remove(login);
+				pnlMainForm.Controls.Remove(newUser);
+				pnlMainForm.Controls.Remove(startPage);
+				pnlMainForm.Controls.Remove(highScore);
+				pnlMainForm.Controls.Remove(highScorePersonal);
+				pnlMainForm.Controls.Remove(settings);
+				menuItemHowToPlaySound = new awsm_SoundPlayer("mess.wav");
+			}
+			else WarningMessages.noAccessWarning();
+		   
+		}
 		#endregion	   
-        
+		
 		#region Button click events
-        /// <summary>
-        /// @Author Pål Skogsrud og Silje Hauknes
-        /// Metoder som tar seg av hva som skal skje når en knapp blir tykket.
-        /// </summary>
-        
+		/// <summary>
+		/// @Author Pål Skogsrud og Silje Hauknes
+		/// Metoder som tar seg av hva som skal skje når en knapp blir tykket.
+		/// </summary>
+		
 
 		/// <summary>
 		/// Metode som blir kjørt når "Registrer ny bruker" knapp trykkes.
@@ -252,9 +253,11 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(login);
 			pnlMainForm.Controls.Add(newUser);
 			newUser.Dock = DockStyle.Bottom;
-			btnRegisterNewUserClick = new awsm_SoundPlayer("come_get_some_x.wav");			
+			btnRegisterNewUserClick = new awsm_SoundPlayer("come_get_some_x.wav");
+
+            
 		}
-        
+		
 		private void btnLoginLoginControl_Click(object sender, EventArgs e)
 		{
 			if (isLoggedIn == true)
@@ -263,9 +266,11 @@ namespace awsmSeeSharpGame
 				startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
 				startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
 				pnlMainForm.Controls.Add(startPage);
+                //Starter musikk til hovedmeny
+                introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 				logInSuccess = new awsm_SoundPlayer("ready_4_action.wav");
-                highScorePersonal = new PersonalHighScoreControl();
-                
+				highScorePersonal = new PersonalHighScoreControl();
+				
 			}
 
 		}
@@ -300,10 +305,9 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(startPage);
 			pnlMainForm.Controls.Remove(highScore);
 			pnlMainForm.Controls.Remove(highScorePersonal);
-            pnlMainForm.Controls.Remove(settings);
+			pnlMainForm.Controls.Remove(settings);
 
-			startSpill();
-            isGameRunning = true;
+            startSpill();
 			gameMusic = new awsm_SoundPlayer("GameMusic.mp3");
 		}
 
@@ -312,7 +316,7 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Remove(startPage);
 			pnlMainForm.Controls.Remove(highScore);
 			pnlMainForm.Controls.Remove(highScorePersonal);
-            pnlMainForm.Controls.Remove(settings);
+			pnlMainForm.Controls.Remove(settings);
 			pnlMainForm.Controls.Add(login);
 			isLoggedIn = false;
 			btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
@@ -368,26 +372,26 @@ namespace awsmSeeSharpGame
 
 		}
 
-        private void btn_Settings_Click(object sender, EventArgs e)
-        {
-            settings.Left = 500;
-            settings.Top = 400;
+		private void btn_Settings_Click(object sender, EventArgs e)
+		{
+			settings.Left = 500;
+			settings.Top = 400;
 
-            if (isSettingsShowing == true)
-            {
-                pnlMainForm.Controls.Add(settings);
-                personalHighScoreSound = new awsm_SoundPlayer("payback_time.wav");
-            }
-            else
-            {
-                pnlMainForm.Controls.Remove(settings);
-                btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
-            }
-        }
+			if (isSettingsShowing == true)
+			{
+				pnlMainForm.Controls.Add(settings);
+				personalHighScoreSound = new awsm_SoundPlayer("payback_time.wav");
+			}
+			else
+			{
+				pnlMainForm.Controls.Remove(settings);
+				btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
+			}
+		}
 
 		#endregion
 
-       
+	   
 
 	  
 	}

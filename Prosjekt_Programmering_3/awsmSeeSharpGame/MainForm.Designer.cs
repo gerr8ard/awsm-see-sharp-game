@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.pnlInfo = new System.Windows.Forms.Panel();
             this.msMenyStripe = new System.Windows.Forms.MenuStrip();
             this.MenuItemMeny = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemHovedmeny = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,19 +39,8 @@
             this.hvordanSpilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMainForm = new System.Windows.Forms.Panel();
-            this.pnlInfo.SuspendLayout();
             this.msMenyStripe.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlInfo
-            // 
-            this.pnlInfo.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlInfo.Controls.Add(this.msMenyStripe);
-            this.pnlInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlInfo.Location = new System.Drawing.Point(0, 0);
-            this.pnlInfo.Name = "pnlInfo";
-            this.pnlInfo.Size = new System.Drawing.Size(1184, 24);
-            this.pnlInfo.TabIndex = 0;
             // 
             // msMenyStripe
             // 
@@ -140,7 +128,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 662);
             this.Controls.Add(this.pnlMainForm);
-            this.Controls.Add(this.pnlInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1200, 700);
@@ -148,8 +135,6 @@
             this.Name = "MainForm";
             this.Text = "Maximum Combat Havoc - Mystery Robot Strikes Back";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.pnlInfo.ResumeLayout(false);
-            this.pnlInfo.PerformLayout();
             this.msMenyStripe.ResumeLayout(false);
             this.msMenyStripe.PerformLayout();
             this.ResumeLayout(false);
@@ -158,11 +143,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlInfo;
-        private System.Windows.Forms.Label lblLevel;
-        private System.Windows.Forms.Label lblTidTekst;
-        private System.Windows.Forms.Label lblPoeng;
-        private System.Windows.Forms.Label lblTid;
         private System.Windows.Forms.MenuStrip msMenyStripe;
         private System.Windows.Forms.ToolStripMenuItem MenuItemMeny;
         private System.Windows.Forms.ToolStripMenuItem MenuItemHovedmeny;

@@ -27,8 +27,6 @@ namespace awsmSeeSharpGame.UserControls
     public partial class LoginControl : UserControl
     {
 
-        public delegate void LoginControlDelegate(object sender, EventArgs e);
-        public event LoginControlDelegate loginControlEvent;
         public delegate void loginControlDelegate(object sender, EventArgs e);
         public event loginControlDelegate newUserEvent;
         public event loginControlDelegate loginEvent;

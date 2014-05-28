@@ -42,10 +42,10 @@ namespace awsmSeeSharpGame.Classes
         private Label lblScore;
         private Label lblRecord;
         private TimeSpan timeLeft;
-        private Boolean isGameRunning;
         private GameTimer gameTimer;
         public int panelHeight = 638;
         public int panelWidth = 1184;
+        public bool isGameRunning;
 
         public int numberOfAlienHead { get; set; }
         public int numberOfMeteors { get; set; }
@@ -171,7 +171,7 @@ namespace awsmSeeSharpGame.Classes
             }
             else
             {
-                lblNavn.Text = "Tessssstbruker";
+                lblNavn.Text = "Testbruker";
                 
             }
             score = 0;
@@ -221,11 +221,12 @@ namespace awsmSeeSharpGame.Classes
             
             
            //Starter en ny timer
-            //timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
+            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
             gameTimer = new GameTimer(timeLeft); //starter en ny timer
             gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
             
             //Starter opptegningen av objektene
+            
             isGameRunning = true;
         }
 
@@ -397,7 +398,6 @@ namespace awsmSeeSharpGame.Classes
                 this.Invalidate();
                 Thread.Sleep(17);
             }
-            Debug.Print("stoppet");
         }
 
         // OnPaint metoden for GamePanel

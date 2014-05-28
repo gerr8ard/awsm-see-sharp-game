@@ -144,9 +144,10 @@ namespace awsmSeeSharpGame.Classes
                 collisionRegion = new Region(regionData);
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
-                {
-                    collision = true;
+                { 
                     LossOfPoints();
+                    collision = true;
+                   
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -208,7 +209,7 @@ namespace awsmSeeSharpGame.Classes
 
         public void LossOfPoints()
         {
-            if (parentGamePanel.score >= 0)
+            if (parentGamePanel.score > 0)
             {
                 parentGamePanel.score -= 10;
             }
@@ -236,6 +237,7 @@ namespace awsmSeeSharpGame.Classes
             }
             foreach (Obstacle obstacle in obstacleList)
             {
+                
                 obstacle.Draw(e);
             }
             foreach (Target target in targetList)

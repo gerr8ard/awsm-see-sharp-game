@@ -17,7 +17,6 @@ namespace awsmSeeSharpGame.UserControls
     {
         public delegate void startPageDelegate(object sender, EventArgs e);
         public event startPageDelegate startgameEvent;
-        public event startPageDelegate startgameEventForGameInfo;
         public event startPageDelegate logOutEvent;
         public event startPageDelegate terminateEvent;
         public event startPageDelegate highScoreEvent;
@@ -32,7 +31,7 @@ namespace awsmSeeSharpGame.UserControls
 
         private void btn_StartGame_Click(object sender, EventArgs e)
         {
-            startgameEvent(sender, e);
+            startgameEvent(sender, e);;
             //startgameEventForGameInfo(sender, e);
         }
 
