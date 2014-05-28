@@ -41,14 +41,13 @@ namespace awsmSeeSharpGame.Classes
         private GameTimer gameTimer;
         public int panelHeight = 638;
         public int panelWidth = 1184;
-        private int planet;
 
         public int numberOfAlienHead { get; set; }
         public int numberOfMeteors { get; set; }
         public int numberOfPlanets { get; set; }
 
         private MainForm parentMainForm;
-        private Random random, randomPlanet;
+        private Random random;
         public int score { get; set; }
         public int numberOfLivesLeft { get; set; }
 
@@ -69,7 +68,6 @@ namespace awsmSeeSharpGame.Classes
         {
             parentMainForm = _parentMainForm;
             random = new Random(); // Setter opp et random objekt for å kalkulere flere parametre på objektene som skal dukke opp i spillet
-            randomPlanet = new Random();
 
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
             this.Image = Image.FromFile(resourceUrl + "space-background.jpg"); // Laster inn bakgrunnsbilde
@@ -187,11 +185,10 @@ namespace awsmSeeSharpGame.Classes
             //Setter opp raketten
             Point[] rocketMap = ShapeMaps.RocketDesign2();
             rocket = new Rocket(100, panelHeight / 2, 90, rocketMap);
-            planet = randomPlanet.Next(50, 200);
             //Setter opp planeter
-            Obstacle obstackle1 = new Obstacle(random.Next(panelWidth - planet), random.Next(panelHeight - planet), planet, planet, Color.White);
-            Obstacle obstackle2 = new Obstacle(random.Next(panelWidth - planet), random.Next(panelHeight - planet), planet, planet, Color.White);
-            Obstacle obstackle3 = new Obstacle(random.Next(panelWidth - planet), random.Next(panelHeight - planet), planet, planet, Color.White);
+            Obstacle obstackle1 = new Obstacle(random.Next(panelWidth), random.Next(panelHeight), 200, 200, Color.White);
+            Obstacle obstackle2 = new Obstacle(random.Next(panelWidth), random.Next(panelHeight), 100, 100, Color.White);
+            Obstacle obstackle3 = new Obstacle(random.Next(panelWidth), random.Next(panelHeight), 150, 150, Color.White);
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
             obstacleList.Add(obstackle3);
