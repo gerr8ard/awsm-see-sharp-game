@@ -91,7 +91,7 @@ namespace awsmSeeSharpGame
 			//login.Show();//viser LoginControl form
 			
 			//Starter musikk til hovedmeny
-			//introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
+			introMusic = new awsm_SoundPlayer("introMusicMuse.mp3");
 
 		}
 
@@ -108,8 +108,12 @@ namespace awsmSeeSharpGame
 				cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
 				return cp;
 			}
+
 		} */
         
+
+		
+
 
 		#region Spillrelaterte metoder
 		/// <summary>
@@ -126,11 +130,13 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		public void stoppSpill()
 		{
-            gamePanel.threadGamePanel.Abort();
-            Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
-            pnlMainForm.Controls.Remove(gamePanel);
-            gamePanel = null;
-
+            if (isGameRunning)
+            {
+                gamePanel.threadGamePanel.Abort();
+                Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
+                pnlMainForm.Controls.Remove(gamePanel);
+                gamePanel = null;
+            }
 		}
 
 		#endregion
@@ -142,14 +148,14 @@ namespace awsmSeeSharpGame
 		/// <param name="e"></param>
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-            try 
-            { 
+            //try 
+            //{ 
 			stoppSpill();
-            }
-            catch
-            {
+            //}
+            //catch
+            //{
 
-            }
+            //}
 		}
 
 

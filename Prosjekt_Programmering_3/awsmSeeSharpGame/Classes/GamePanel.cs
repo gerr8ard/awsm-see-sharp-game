@@ -69,7 +69,7 @@ namespace awsmSeeSharpGame.Classes
             parentMainForm = _parentMainForm;
             random = new Random(); // Setter opp et random objekt for å kalkulere flere parametre på objektene som skal dukke opp i spillet
 
-            this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel helle vinduet, og infoPanelet og menyen ligger over gamepanelet
+            this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel hele vinduet, og infoPanelet og menyen ligger over gamepanelet
             this.Image = Image.FromFile(resourceUrl + "space-background.jpg"); // Laster inn bakgrunnsbilde
             //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
             //this.Image = Image.FromFile(resourceUrl + "stars.gif");
@@ -144,25 +144,28 @@ namespace awsmSeeSharpGame.Classes
 
 
         }
-
-        // Ekstra konstruktår for å sette antall liv og tid, kan kanskje tas bort
+        /*
+        // Ekstra konstruktør for å sette antall liv og tid, kan kanskje tas bort
         public GamePanel(int _NumberOflives, TimeSpan _time) : base()
         {
             numberOfLivesLeft = _NumberOflives;
             timeLeft = _time;
-        }
+        }*/
         
         private void NewGame()
         {
             numberOfLivesLeft = 3;
             timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
+            
             if (MainForm.currentUser != null)
             {
                 lblNavn.Text = MainForm.currentUser.UserName;
+                
             }
             else
             {
-                lblNavn.Text = "Testbruker";
+                lblNavn.Text = "Tessssstbruker";
+                
             }
             score = 0;
             lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
@@ -185,15 +188,16 @@ namespace awsmSeeSharpGame.Classes
             //Setter opp raketten
             Point[] rocketMap = ShapeMaps.RocketDesign2();
             rocket = new Rocket(100, panelHeight / 2, 90, rocketMap);
-
             //Setter opp planeter
-            Obstacle obstackle1 = new Obstacle(200, 200, 200, 200, Color.White);
-            Obstacle obstackle2 = new Obstacle(600, 300, 150, 150, Color.White);
+            Obstacle obstackle1 = new Obstacle(random.Next(panelWidth -200), random.Next(panelHeight - 200), 200, 200, Color.White);
+            Obstacle obstackle2 = new Obstacle(random.Next(panelWidth - 150), random.Next(panelHeight - 150), 150, 150, Color.White);
+            Obstacle obstackle3 = new Obstacle(random.Next(panelWidth - 150), random.Next(panelHeight - 150), 150, 150, Color.White);
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
-
+            obstacleList.Add(obstackle3);
+            
             //Setter opp ufoene
-            ufoList = MakeObjectList(ufoList, 30, timeLeft, false, 200, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
+            ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
 
             //Setter opp meteorene
             meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
@@ -202,16 +206,17 @@ namespace awsmSeeSharpGame.Classes
             alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
 
             //Setter opp bullets
-            bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 100, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
+            bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, ufoList, rocket);
-
-            //Starter en ny timer
-            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
+            
+            
+           //Starter en ny timer
+            //timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
             gameTimer = new GameTimer(timeLeft); //starter en ny timer
             gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
-
+            
             //Starter opptegningen av objektene
             isGameRunning = true;
         }
@@ -375,12 +380,13 @@ namespace awsmSeeSharpGame.Classes
         private void GamePanelDraw()
         {
 
-            Debug.Print("start tråd");
+            Debug.Print("startet tråd gamepanelDraw");
             while (true)
             {
                 this.Invalidate();
                 Thread.Sleep(17);
             }
+            Debug.Print("stoppet");
         }
 
         // OnPaint metoden for GamePanel

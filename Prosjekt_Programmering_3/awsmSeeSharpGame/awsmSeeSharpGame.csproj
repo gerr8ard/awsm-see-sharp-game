@@ -105,9 +105,9 @@
     <Compile Include="Classes\Obstacle.cs" />
     <Compile Include="Classes\Shape.cs" />
     <Compile Include="Classes\GameTimer.cs" />
-    <Compile Include="Migrations\201405250826060_First.cs" />
-    <Compile Include="Migrations\201405250826060_First.Designer.cs">
-      <DependentUpon>201405250826060_First.cs</DependentUpon>
+    <Compile Include="Migrations\201405251346130_First.cs" />
+    <Compile Include="Migrations\201405251346130_First.Designer.cs">
+      <DependentUpon>201405251346130_First.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Classes\Target.cs" />
@@ -181,8 +181,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405250826060_First.resx">
-      <DependentUpon>201405250826060_First.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201405251346130_First.resx">
+      <DependentUpon>201405251346130_First.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -323,7 +323,9 @@
     <None Include="Resources\come_get_some_x.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\PlanetTexture.png" />
+    <None Include="Resources\PlanetTexture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\" />
@@ -443,6 +445,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bullet3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Planet.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Planet2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
