@@ -20,7 +20,9 @@ using System.Diagnostics;
 namespace awsmSeeSharpGame
 {
 
-
+    /// <summary>
+    /// @Author Dag, Pål og Silje. 
+    /// </summary>
 	public partial class MainForm : Form
 	{
 		#region Fields
@@ -97,6 +99,7 @@ namespace awsmSeeSharpGame
 
 		/// <summary>
 		/// Hentet fra http://stackoverflow.com/questions/2612487/how-to-fix-the-flickering-in-user-controls for å stoppe flimmer på bilde.
+        /// Gjør flyten i spillet dårligere. Blir mest sannsynligvis ikke brukt.
 		/// </summary>
         /// 
     /*
@@ -116,6 +119,10 @@ namespace awsmSeeSharpGame
 
 
 		#region Spillrelaterte metoder
+        /// <summary>
+        /// @Author Dag Ivarsøy og Pål Skogsrud
+        /// </summary>
+
 		/// <summary>
 		/// Starter et nytt spill
 		/// </summary>
@@ -135,13 +142,12 @@ namespace awsmSeeSharpGame
                 gamePanel.threadGamePanel.Abort();
                 Debug.Print(string.Format("Slutt tråd: {0}", gamePanel.threadGamePanel.Name));
                 pnlMainForm.Controls.Remove(gamePanel);
+                pnlMainForm.Controls.Add(startPage);
                 gamePanel = null;
             }
 		}
-
-		#endregion
-
-		/// <summary>
+        
+        /// <summary>
 		/// Metode som blir kjørt når programmet lukkes. Stopper kjørende spill og tråder
 		/// </summary>
 		/// <param name="sender"></param>
@@ -158,8 +164,16 @@ namespace awsmSeeSharpGame
             //}
 		}
 
+		#endregion
 
+		
+
+        
 		#region MenuItem Metoder
+        /// <summary>
+        /// @Author Pål Skogsrud
+        /// Metoder som tar seg av hva som skjer når en av menuItem sine elementer blir trykket.
+        /// </summary
 		private void MenuItemAvslutt_Click(object sender, EventArgs e)
 		{
 			this.Close();
@@ -195,7 +209,7 @@ namespace awsmSeeSharpGame
 					gameMusic.Stop();
 				}
 
-				//introMusic.Start();
+				introMusic.Start();
 
 			}
 			else WarningMessages.noAccessWarning();
@@ -219,8 +233,14 @@ namespace awsmSeeSharpGame
            
         }
 		#endregion	   
-
+        
 		#region Button click events
+        /// <summary>
+        /// @Author Pål Skogsrud og Silje Hauknes
+        /// Metoder som tar seg av hva som skal skje når en knapp blir tykket.
+        /// </summary>
+        
+
 		/// <summary>
 		/// Metode som blir kjørt når "Registrer ny bruker" knapp trykkes.
 		/// Fjerner LoginControl og legger til NewUserControl til pnlMainForm.
@@ -234,7 +254,7 @@ namespace awsmSeeSharpGame
 			newUser.Dock = DockStyle.Bottom;
 			btnRegisterNewUserClick = new awsm_SoundPlayer("come_get_some_x.wav");			
 		}
-
+        
 		private void btnLoginLoginControl_Click(object sender, EventArgs e)
 		{
 			if (isLoggedIn == true)

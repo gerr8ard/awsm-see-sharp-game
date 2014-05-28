@@ -12,6 +12,13 @@ using awsmSeeSharpGame.Models;
 
 namespace awsmSeeSharpGame.UserControls
 {
+    /// <Forfatter>
+    /// Pål Skogsrud og Dag Ivarsøy
+    /// </summary>
+
+    /// <summary>
+    /// Klasse som viser de ti høyeste poengsummene ved hjelp av en ListView.
+    /// </summary>
     public partial class HighScoreControl : UserControl
     {
         private ListViewItem listViewItem, listViewItemEmpty, listViewItemEmpty2;

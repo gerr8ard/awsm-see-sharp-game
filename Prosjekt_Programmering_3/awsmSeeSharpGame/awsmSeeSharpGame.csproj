@@ -88,6 +88,7 @@
     <Compile Include="Classes\Meteor.cs" />
     <Compile Include="Classes\PointMapper.cs" />
     <Compile Include="Classes\Queries.cs" />
+    <Compile Include="Classes\RandomGenerator.cs" />
     <Compile Include="Classes\ShapeMaps.cs" />
     <Compile Include="Classes\awsm_SoundPlayer.cs" />
     <Compile Include="Classes\UFO.cs" />
@@ -245,10 +246,14 @@
     <None Include="Resources\fire.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Rocket2.bmp" />
+    <None Include="Resources\Rocket2.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\alienblaster.png" />
+    <None Include="Resources\alienblaster.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\animated-gifs-of-fighting-game-backgrounds-15.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -387,7 +392,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\alien-head.png" />
+    <None Include="Resources\alien-head.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\payback_time.wav">
@@ -441,10 +448,14 @@
     <None Include="Resources\splat.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\alien-spaceship.png" />
+    <None Include="Resources\alien-spaceship.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bullet3.png" />
+    <None Include="Resources\bullet3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Planet.png">

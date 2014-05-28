@@ -8,6 +8,9 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
+    /// <Forfatter>
+    /// Dag Ivarsøy
+    /// </Forfatter>
     public class AlienHead : MovableShape
     {
         public bool isCollected { get; set; } //Om hodet er plukke opp eller ei.

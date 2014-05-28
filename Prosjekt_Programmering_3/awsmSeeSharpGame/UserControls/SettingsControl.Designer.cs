@@ -80,6 +80,7 @@
             this.btn_EasyDifficulty.TabIndex = 1;
             this.btn_EasyDifficulty.Text = "Lett";
             this.btn_EasyDifficulty.UseVisualStyleBackColor = true;
+            this.btn_EasyDifficulty.Click += new System.EventHandler(this.btn_EasyDifficulty_Click);
             // 
             // btn_NormalDifficulty
             // 
@@ -91,6 +92,7 @@
             this.btn_NormalDifficulty.TabIndex = 2;
             this.btn_NormalDifficulty.Text = "Normal";
             this.btn_NormalDifficulty.UseVisualStyleBackColor = true;
+            this.btn_NormalDifficulty.Click += new System.EventHandler(this.btn_NormalDifficulty_Click);
             // 
             // lbl_HardDifficulty
             // 
@@ -102,6 +104,7 @@
             this.lbl_HardDifficulty.TabIndex = 3;
             this.lbl_HardDifficulty.Text = "Vanskelig";
             this.lbl_HardDifficulty.UseVisualStyleBackColor = true;
+            this.lbl_HardDifficulty.Click += new System.EventHandler(this.lbl_HardDifficulty_Click);
             // 
             // btn_VeryHardDifficulty
             // 
@@ -113,6 +116,7 @@
             this.btn_VeryHardDifficulty.TabIndex = 4;
             this.btn_VeryHardDifficulty.Text = "Sykt vanskelig";
             this.btn_VeryHardDifficulty.UseVisualStyleBackColor = true;
+            this.btn_VeryHardDifficulty.Click += new System.EventHandler(this.btn_VeryHardDifficulty_Click);
             // 
             // SettingsControl
             // 

@@ -12,6 +12,11 @@ using awsmSeeSharpGame.Classes;
 
 namespace awsmSeeSharpGame.UserControls
 {
+
+    /// <Forfatter>
+    /// Pål Skogsrud
+    /// </Forfatter>
+
     /// <summary>
     /// User control som tar seg av logg inn delen,
     /// og bruker delegater og eventer for å bli vist i panelet pnlMainForm i MainForm.

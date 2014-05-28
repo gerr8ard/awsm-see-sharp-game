@@ -6,8 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <Forfatter>
+/// Pål Skogsrud og Dag Ivarsøy
+/// </Forfatter>
+
+/// <summary>
+/// Klasse som inneholder 
+/// </summary>
 namespace awsmSeeSharpGame.Models
 {
+    
     [Table("awsm_Privilege")]
     public class awsm_Privilege
     {

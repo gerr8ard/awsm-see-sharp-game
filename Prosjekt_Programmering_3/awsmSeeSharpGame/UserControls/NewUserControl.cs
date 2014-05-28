@@ -13,6 +13,13 @@ using System.Collections;
 
 namespace awsmSeeSharpGame.UserControls
 {
+    /// <Forfatter>
+    /// Pål Skogsrud
+    /// </Forfatter>
+
+    /// <summary>
+    /// UserControl som viser registrerer en ny bruker. Gjøres ved hjelp av delegater som MainForm abonnerer på.
+    /// </summary>
     public partial class NewUserControl : UserControl
     {
 

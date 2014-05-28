@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.UserControls
 {
+    /// <Forfatter>
+    /// Pål Skogsrud og Silje Hauknes
+    /// </Forfatter>
     public partial class StartPageControl : UserControl
     {
         public delegate void startPageDelegate(object sender, EventArgs e);

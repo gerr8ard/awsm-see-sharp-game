@@ -14,11 +14,16 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
+    /// <Forfatter>
+    /// Dag Ivarsøy, Silje Hauknes og Pål Skogsrud
+    /// </Forfatter>
+
     /// <summary>
     /// Klasse som viser selve spillet. 
     /// </summary>
     public class GamePanel : PictureBox
     {
+        #region Fields
         private DrawShapes drawShapes; // Klasse som tar for seg opptegningen av objektene
 
         // Lister med objektene
@@ -60,6 +65,8 @@ namespace awsmSeeSharpGame.Classes
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
         Font fontDavid = new Font("Arial", 11.0F); //Font som blir brukt til informasjonen om spillet øverst på skjermen.
+
+        #endregion
 
         /// <summary>
         /// Konstruktør som setter opp objektene, objektlistene, FPSlabel og starter oppdateringene av OnPaint metoden
@@ -201,13 +208,13 @@ namespace awsmSeeSharpGame.Classes
             ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
 
             //Setter opp meteorene
-            meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
+            //meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
             //Setter opp alienhead
             alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
 
             //Setter opp bullets
-            bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
+            //bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, ufoList, rocket);
@@ -265,6 +272,8 @@ namespace awsmSeeSharpGame.Classes
             else GameOver();
         }
 
+       
+
         private void GameOver()
         {
             emptyObjects();
@@ -282,6 +291,7 @@ namespace awsmSeeSharpGame.Classes
                             };
                             context.Score.Add(scoreToSave);
                             context.SaveChanges();
+                            context.Entry(scoreToSave).Reload();
                         }                  
                 }
             }

@@ -21,8 +21,9 @@ namespace awsmSeeSharpGame.Classes
         private DateTime lastTime = DateTime.Now;
         private bool collision;
         public float elapsedTime;
+        private Random random;
 
-        private awsm_SoundPlayer alienHeadSound;
+        private awsm_SoundPlayer alienHeadSound, bulletHitSound;
 
 
         // Lister som inneholder objektene som skal tegnes opp
@@ -73,11 +74,14 @@ namespace awsmSeeSharpGame.Classes
             }
         }
 
+        
+
         /// <summary>
         /// Flytter objektene ved å å gå igjennom alle flyttbare objekter og gå igjennom Move metodene deres.
         /// </summary>
         public void Update()
         {
+            random = new Random();
             
             foreach(Meteor meteor in meteorList)
             {
@@ -91,7 +95,7 @@ namespace awsmSeeSharpGame.Classes
 
             foreach (UFO ufo in ufoList)
             {
-                ufo.Move(this, GetElapsedTime);
+                ufo.Move(this, GetElapsedTime, RandomGenerator.randomIntBetween20And60());
             }
 
             foreach (Bullet bullet in bulletList)
@@ -119,6 +123,19 @@ namespace awsmSeeSharpGame.Classes
 
             foreach (Bullet bullet in bulletList)
             {
+
+                RegionData regionData = bullet.region.GetRegionData();
+
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
+                {
+                    collision = true;
+                    bulletHitSound = new awsm_SoundPlayer("Explosion02.wav");
+                    parentGamePanel.LossOfLife();
+                    
+                }
+                collisionRegion.Dispose();
             }
             foreach (Obstacle obstacle in obstacleList)
             {
@@ -129,7 +146,7 @@ namespace awsmSeeSharpGame.Classes
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
                     collision = true;
-                    parentGamePanel.LossOfLife();
+                    LossOfPoints();
                 }
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
@@ -187,6 +204,14 @@ namespace awsmSeeSharpGame.Classes
                 rocket.pen.Color = Color.White;
             }
             rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+        }
+
+        public void LossOfPoints()
+        {
+            if (parentGamePanel.score >= 0)
+            {
+                parentGamePanel.score -= 10;
+            }
         }
 
         /// <summary>
