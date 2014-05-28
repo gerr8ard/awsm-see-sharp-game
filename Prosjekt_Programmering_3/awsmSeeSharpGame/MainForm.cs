@@ -108,8 +108,12 @@ namespace awsmSeeSharpGame
 				cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
 				return cp;
 			}
-		} 
-        */
+
+		} */
+        
+
+		
+
 
 		#region Spillrelaterte metoder
 		/// <summary>
@@ -191,7 +195,7 @@ namespace awsmSeeSharpGame
 					gameMusic.Stop();
 				}
 
-				introMusic.Start();
+				//introMusic.Start();
 
 			}
 			else WarningMessages.noAccessWarning();
