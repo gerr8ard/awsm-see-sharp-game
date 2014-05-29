@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
@@ -19,9 +20,10 @@ namespace awsmSeeSharpGame.Classes
         private double timeSinceLastUpdate = 0.0;
         private double fps = 0.0;
         private DateTime lastTime = DateTime.Now;
-        private bool collision;
+        private bool collision, planetCollision;
         public float elapsedTime;
         private Random random;
+        private System.Timers.Timer timer = new System.Timers.Timer();
 
         private awsm_SoundPlayer alienHeadSound, bulletHitSound;
 
@@ -144,11 +146,19 @@ namespace awsmSeeSharpGame.Classes
                 collisionRegion = new Region(regionData);
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
-                { 
-                    LossOfPoints();
+                {
                     collision = true;
-                   
+                    planetCollision = true;
+
+                    if (planetCollision) 
+                    { 
+                    timer.Elapsed += new ElapsedEventHandler(LossOfPointsEvent);
+                    timer.Interval = 5000;
+                    timer.Enabled = true;
+                    }
                 }
+                else planetCollision = false;
+
                 collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
             
@@ -207,12 +217,19 @@ namespace awsmSeeSharpGame.Classes
             rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
         }
 
-        public void LossOfPoints()
+        public void LossOfPointsEvent(object source, ElapsedEventArgs e)
         {
-            if (parentGamePanel.score > 0)
+ if (parentGamePanel.score > 0)
             {
                 parentGamePanel.score -= 10;
             }
+
+            //lossOfPoints();
+        }
+
+        public void lossOfPoints()
+        {
+           
         }
 
         /// <summary>
@@ -299,5 +316,7 @@ namespace awsmSeeSharpGame.Classes
             lastTime = DateTime.Now;
 
         }
+
+
     }
 }

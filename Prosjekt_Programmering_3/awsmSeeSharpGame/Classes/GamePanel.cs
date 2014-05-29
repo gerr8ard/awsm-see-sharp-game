@@ -205,13 +205,13 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle3);
             
             //Setter opp ufoene
-            ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
+            //ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
 
             //Setter opp meteorene
             //meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
             //Setter opp alienhead
-            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
+            alienHeadList = MakeObjectList(alienHeadList, 100, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
 
             //Setter opp bullets
             //bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
@@ -404,6 +404,8 @@ namespace awsmSeeSharpGame.Classes
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             base.OnPaint(e);
 
             if (isGameRunning) //Oppdater spillobjektene dersom spillet kjøres
@@ -425,6 +427,7 @@ namespace awsmSeeSharpGame.Classes
             this.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
-        }     
+        }
+
     }
 }

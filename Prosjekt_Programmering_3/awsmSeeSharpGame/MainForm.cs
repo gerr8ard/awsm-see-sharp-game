@@ -97,7 +97,7 @@ namespace awsmSeeSharpGame
 		/// Gjør flyten i spillet dårligere. Blir mest sannsynligvis ikke brukt.
 		/// </summary>
 		/// 
-	/*
+	    
 		protected override CreateParams CreateParams
 		{
 			get
@@ -107,11 +107,7 @@ namespace awsmSeeSharpGame
 				return cp;
 			}
 
-		} */
-		
-
-		
-
+		}
 
 		#region Spillrelaterte metoder
 		/// <summary>

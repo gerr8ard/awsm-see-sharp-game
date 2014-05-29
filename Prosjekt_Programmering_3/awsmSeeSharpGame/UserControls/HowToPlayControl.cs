@@ -33,5 +33,15 @@ namespace awsmSeeSharpGame.UserControls
         {
             howToPlayEvent(sender, e);
         }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var parms = base.CreateParams;
+                parms.Style &= ~0x02000000;  // Turn off WS_CLIPCHILDREN
+                return parms;
+            }
+        }
     }
 }
