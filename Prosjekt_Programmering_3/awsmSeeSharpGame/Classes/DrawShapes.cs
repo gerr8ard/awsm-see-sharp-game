@@ -37,6 +37,10 @@ namespace awsmSeeSharpGame.Classes
         private Rocket rocket;
         private Region collisionRegion;
 
+        private List<MovableShape> movableShapeList; //STH
+        private List<MovableShape> activeMovableShapeList;
+        Emitter emitter;
+
         GamePanel parentGamePanel; // lenke til Gamepanelet, så vi kan akkssere FPS labelen
 
         /// <summary>
@@ -62,6 +66,18 @@ namespace awsmSeeSharpGame.Classes
             collision = false;
         }
 
+        //STH
+        public DrawShapes(GamePanel _parentGamePanel, List<Obstacle> _obstacleList, List<MovableShape> _movableShapeList, Rocket _rocket)
+        {
+            parentGamePanel = _parentGamePanel;
+            obstacleList = _obstacleList;
+            movableShapeList = _movableShapeList;
+            activeMovableShapeList = new List<MovableShape>();
+            rocket = _rocket;
+            emitter = new Emitter(_parentGamePanel, _movableShapeList);
+            collision = false;
+        }
+
         //Legger til en bullet i bullet lista
         public void AddBullet(Bullet bullet){
             bulletList.Add(bullet);
@@ -74,6 +90,10 @@ namespace awsmSeeSharpGame.Classes
             }
         }
 
+ /*       public void SetMovableObjectList(List<MovableShape> list)
+        {
+            movableShapeList = list;
+        } */
         
 
         /// <summary>
@@ -81,27 +101,34 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void Update()
         {
-            random = new Random();
-            
-            foreach(Meteor meteor in meteorList)
+            Emit();
+            activeMovableShapeList = emitter.activeMovableShapeList;
+            emitter.RemoveMovableShapesWhenGone();
+
+            foreach (MovableShape shape in activeMovableShapeList)
+            {
+                shape.Move(GetElapsedTime);
+            } 
+
+        /*    foreach (Meteor meteor in activeMovableShapeList)
             {
                 meteor.Move(GetElapsedTime);
             }
-            
-            foreach(AlienHead alienHead in alienHeadList)
+
+            foreach (AlienHead alienHead in activeMovableShapeList)
             {
                 alienHead.Move(GetElapsedTime);
             }
 
-            foreach (UFO ufo in ufoList)
+            foreach (UFO ufo in activeMovableShapeList)
             {
                 ufo.Move(this, GetElapsedTime, RandomGenerator.randomIntBetween20And60());
-            }
-
-            foreach (Bullet bullet in bulletList)
+            } */
+            
+       /*     foreach (Bullet bullet in movableShapeList)
             {
                 bullet.Move(GetElapsedTime);
-            }
+            } */
 
             rocket.Accelerate();
             rocket.Move(GetElapsedTime);
@@ -110,7 +137,7 @@ namespace awsmSeeSharpGame.Classes
         /// <summary>
         /// Sjekker for kollisjoner ved å gå igjennom alle flyttbare objekter og sjekke kollisjonsmetodene deres
         /// </summary>
-        public void CollisonCheck(PaintEventArgs e)
+  /*      public void CollisonCheck(PaintEventArgs e)
         {
             if (rocket.X < 0 - rocket.WidthOfRocket || rocket.X > parentGamePanel.panelWidth)
             {
@@ -213,13 +240,13 @@ namespace awsmSeeSharpGame.Classes
             {
                 parentGamePanel.score -= 10;
             }
-        }
+        } */
 
         /// <summary>
         /// Går igjennom alle objektene og kaller opp Draw metodene deres for å tegne de opp
         /// </summary>
         /// <param name="e"></param>
-        public void Draw(PaintEventArgs e)
+ /*       public void Draw(PaintEventArgs e)
         {
             Update(); //Flytter objektene som skal flyttes
             CollisonCheck(e); // Sjekker for kollisjon
@@ -265,7 +292,66 @@ namespace awsmSeeSharpGame.Classes
             
             rocket.Draw(e);
 
+        } */
+
+        public void Draw(PaintEventArgs e)
+        {
+            Update(); //Flytter objektene som skal flyttes
+          //  CollisonCheck(e); // Sjekker for kollisjon
+
+            BeregnFPS(); //Beregner og viser Frames Per Second (FPS)
+
+            //Tegner opp objektene
+         /*   foreach (Enemy enemy in enemyList)
+            {
+                enemy.Draw(e);
+            } 
+            foreach (Bullet bullet in bulletList)
+            {
+                bullet.Draw(e);
+            } */
+            foreach (Obstacle obstacle in obstacleList)
+            {
+
+                obstacle.Draw(e);
+            }
+     /*       foreach (Target target in targetList)
+            {
+                target.Draw(e);
+           } */
+   /*         foreach (Meteor meteor in activeMovableShapeList)
+            {
+                meteor.Draw(e);
+            }
+            foreach (AlienHead alienHead in activeMovableShapeList)
+            {
+                alienHead.Draw(e);
+            }
+
+            foreach (UFO ufo in activeMovableShapeList)
+            {
+                ufo.Draw(e);
+            } */
+
+            foreach (MovableShape shape in activeMovableShapeList)
+            {
+                shape.Draw(e);
+            }
+
+            rocket.Draw(e);
+
         }
+
+        public void Emit()
+        {
+            int nextEmit = random.Next(50);
+            int count = 0;
+            if (count == nextEmit)
+                emitter.EmitMovableShape();
+            else
+                count++;
+        }
+
 
         /// <summary>
         /// Kode som beregner FPS

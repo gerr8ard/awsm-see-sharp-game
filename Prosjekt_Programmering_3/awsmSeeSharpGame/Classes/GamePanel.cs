@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
+using awsmSeeSharpGame.Classes;
 
 namespace awsmSeeSharpGame.Classes
 {
@@ -27,13 +28,14 @@ namespace awsmSeeSharpGame.Classes
         private DrawShapes drawShapes; // Klasse som tar for seg opptegningen av objektene
 
         // Lister med objektene
-        private List<Enemy> enemyList;
-        private List<Bullet> bulletList;
-        private List<Obstacle> obstacleList;
-        private List<Target> targetList;
-        private List<Meteor> meteorList;
-        private List<AlienHead> alienHeadList;
-        private List<UFO> ufoList;
+//        private List<Enemy> enemyList;
+//        private List<Bullet> bulletList;
+        private List<Obstacle> obstacleList = new List<Obstacle>();
+        private List<MovableShape> movableShapeList = new List<MovableShape>();
+//        private List<Target> targetList;
+//        private List<Meteor> meteorList;
+//        private List<AlienHead> alienHeadList;
+//        private List<UFO> ufoList;
 
         private Rocket rocket;
         private Label lblNavn;
@@ -65,6 +67,8 @@ namespace awsmSeeSharpGame.Classes
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
         Font fontDavid = new Font("Arial", 11.0F); //Font som blir brukt til informasjonen om spillet øverst på skjermen.
+
+//        Emitter emitter;
 
         #endregion
 
@@ -146,6 +150,8 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel.Name = "gamePanelDraw";
             threadGamePanel.Start();
 
+//            emitter = new Emitter(this);
+
             NewGame(); //Setter variabler for et nytt spill
             InitializeAndStartGame(); //Setter opp alle objektene for å spille.               
 
@@ -184,13 +190,13 @@ namespace awsmSeeSharpGame.Classes
         private void InitializeAndStartGame()
         {
             //Setter opp alle objekt listene
-            enemyList = new List<Enemy>();
+        /*    enemyList = new List<Enemy>();
             bulletList = new List<Bullet>();
             obstacleList = new List<Obstacle>();
             targetList = new List<Target>();
             meteorList = new List<Meteor>();
             alienHeadList = new List<AlienHead>();
-            ufoList = new List<UFO>();
+            ufoList = new List<UFO>(); */
 
             //Setter opp raketten
             Point[] rocketMap = ShapeMaps.RocketDesign2();
@@ -205,19 +211,25 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle3);
             
             //Setter opp ufoene
-            ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
+        //    ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
 
             //Setter opp meteorene
-            //meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
+       //     meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
             //Setter opp alienhead
-            alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
+       //     alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
 
             //Setter opp bullets
-            //bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
+       //     bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-            drawShapes = new DrawShapes(this, enemyList, bulletList, obstacleList, targetList, meteorList, alienHeadList, ufoList, rocket);
+
+
+      //      meteorList = emitter.EmitMovingObject(meteorList);
+
+            movableShapeList = MakeShapeList(60, 60, 30);
+
+            drawShapes = new DrawShapes(this, obstacleList, movableShapeList, rocket);
             
             
            //Starter en ny timer
@@ -245,12 +257,12 @@ namespace awsmSeeSharpGame.Classes
         private void emptyObjects()
         {
             drawShapes = null;
-            ufoList = null;
+       /*     ufoList = null;
             meteorList = null;
             alienHeadList = null;
             obstacleList = null;
             bulletList = null;
-            enemyList = null;
+            enemyList = null; */
             rocket = null;
             gameTimer.Stopp();
             gameTimer = null;
@@ -303,8 +315,31 @@ namespace awsmSeeSharpGame.Classes
             parentMainForm.stoppSpill();  
         }
 
+        //Laget av Silje
+        private List<MovableShape> MakeShapeList(int _numberOfAlienHeads, int _numberOfUFOs, int _numberOfMeteors)
+        {
+            List<MovableShape> list = new List<MovableShape>();
+            Random random = new Random();
+
+            for (int i = 0; i < _numberOfAlienHeads; i++)
+            {
+                list.Add(new AlienHead(panelWidth, random.Next(panelHeight), 200, 0, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead()));
+            }
+            for (int i = 0; i < _numberOfUFOs; i++)
+            {
+                list.Add(new UFO(panelWidth, random.Next(panelHeight), 150, 0, ShapeMaps.UFO(), ShapeMaps.BitmapUFO()));
+            }
+            for (int i = 0; i < _numberOfMeteors; i++ )
+            {
+                list.Add(new Meteor(panelWidth, random.Next(panelHeight), 100, 0, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor()));
+            }
+
+            return list;
+
+        }
+
         // Generisk liste metode som lager lister for alle type moveable shape objekter
-        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
+ /*       private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
         {
             for (int i = 0; i < _numberOfObjects; i++)
             {
@@ -318,7 +353,7 @@ namespace awsmSeeSharpGame.Classes
                 shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap, bitmap));
             }
             return shapeListe;
-        } 
+        }  */
        
         private void sekundOppdateringEventHandler(object sender, ElapsedEventArgs e)
         {
@@ -328,15 +363,15 @@ namespace awsmSeeSharpGame.Classes
         
 
         private void previewKeyEventHandler(object sender, PreviewKeyDownEventArgs e)
-        {           
+        {
             if (e.KeyCode == Keys.Left)
             {
-                rocket.Rotation -= 5;                
+                rocket.Rotation -= 5;
             }
 
             else if (e.KeyCode == Keys.Right)
             {
-                rocket.Rotation += 5;                
+                rocket.Rotation += 5;
             }
             else if (e.KeyCode == Keys.Down)
             {
@@ -348,7 +383,11 @@ namespace awsmSeeSharpGame.Classes
             }
             else if (e.KeyCode == Keys.Space)
             {
-                   // Skyte pang! pang!
+                // Skyte pang! pang!
+            }
+            else if (e.KeyCode == Keys.P)
+            {
+                drawShapes.Emit();
             }
         }
 

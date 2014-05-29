@@ -80,6 +80,7 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\AlienHead.cs" />
+    <Compile Include="Classes\Emitter.cs" />
     <Compile Include="Classes\GamePanel.cs">
       <SubType>Component</SubType>
     </Compile>
