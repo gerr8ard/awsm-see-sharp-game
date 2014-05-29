@@ -257,12 +257,12 @@ namespace awsmSeeSharpGame.Classes
         private void emptyObjects()
         {
             drawShapes = null;
-       /*     ufoList = null;
-            meteorList = null;
-            alienHeadList = null;
+       //     ufoList = null;
+       //     meteorList = null;
+        ///    alienHeadList = null;
             obstacleList = null;
-            bulletList = null;
-            enemyList = null; */
+         //   bulletList = null;
+         //   enemyList = null; */
             rocket = null;
             gameTimer.Stopp();
             gameTimer = null;

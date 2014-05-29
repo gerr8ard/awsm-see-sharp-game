@@ -33,7 +33,7 @@ namespace awsmSeeSharpGame.Classes
                 Bullet newbullet = new Bullet(XPosition, YPosition, (int) speed+300, 0.0F, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
                 if (updateCounter >= _random)
                 {
-                    _drawShapes.AddBullet(newbullet);
+                 //   _drawShapes.AddBullet(newbullet);
                     updateCounter = 0;
                 }
                 else updateCounter++;
