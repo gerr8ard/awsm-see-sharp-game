@@ -67,19 +67,19 @@
             // MenuItemHovedmeny
             // 
             this.MenuItemHovedmeny.Name = "MenuItemHovedmeny";
-            this.MenuItemHovedmeny.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemHovedmeny.Size = new System.Drawing.Size(139, 22);
             this.MenuItemHovedmeny.Text = "Hovedmeny";
             this.MenuItemHovedmeny.Click += new System.EventHandler(this.MenuItemHovedmeny_Click);
             // 
             // MenuItemSkilleMeny
             // 
             this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
-            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(149, 6);
+            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(136, 6);
             // 
             // MenuItemAvslutt
             // 
             this.MenuItemAvslutt.Name = "MenuItemAvslutt";
-            this.MenuItemAvslutt.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemAvslutt.Size = new System.Drawing.Size(139, 22);
             this.MenuItemAvslutt.Text = "&Avslutt";
             this.MenuItemAvslutt.Click += new System.EventHandler(this.MenuItemAvslutt_Click);
             // 
@@ -133,7 +133,7 @@
             this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
-            this.Text = "Maximum Combat Havoc - Mystery Robot Strikes Back";
+            this.Text = "Alien Wars";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.msMenyStripe.ResumeLayout(false);
             this.msMenyStripe.PerformLayout();

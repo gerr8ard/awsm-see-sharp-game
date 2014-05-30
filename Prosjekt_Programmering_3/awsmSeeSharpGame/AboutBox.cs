@@ -9,13 +9,19 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame
 {
+    /// <Forfatter>
+    /// Pål Skogsrud
+    /// </Forfatter>
+    /// <summary>
+    /// Klasse som viser en "Om" box med diverse informasjon om spillet
+    /// </summary>
     partial class AboutBox : Form
     {
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = "Om Maximum Combat Havoc";//Overskrift
-            this.labelProductName.Text = "Maximum Combat Havoc - Mystery Robot Strikes Back";//Produktnavn
+            this.Text = "Om Alien Wars";//Overskrift
+            this.labelProductName.Text = "Alien Wars";//Produktnavn
             this.labelVersion.Text = String.Format("Versjon {0}", AssemblyVersion);//Versjonsnummer
             this.labelCopyright.Text = AssemblyCopyright;//Copyright
             this.labelCompanyName.Text = AssemblyCompany;//Navn på selskap

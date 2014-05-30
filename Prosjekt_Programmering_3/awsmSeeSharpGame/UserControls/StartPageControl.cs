@@ -13,6 +13,9 @@ namespace awsmSeeSharpGame.UserControls
     /// <Forfatter>
     /// Pål Skogsrud og Silje Hauknes
     /// </Forfatter>
+    /// <summary>
+    /// Klasse som viser hovedmenyen i spillet.
+    /// </summary>
     public partial class StartPageControl : UserControl
     {
         public delegate void startPageDelegate(object sender, EventArgs e);
@@ -94,14 +97,5 @@ namespace awsmSeeSharpGame.UserControls
             settingsEvent(sender, e);
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                var parms = base.CreateParams;
-                parms.Style &= ~0x02000000;  // Turn off WS_CLIPCHILDREN
-                return parms;
-            }
-        }
     }
 }

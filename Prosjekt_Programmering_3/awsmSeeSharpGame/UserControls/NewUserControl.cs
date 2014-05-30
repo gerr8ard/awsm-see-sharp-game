@@ -18,7 +18,7 @@ namespace awsmSeeSharpGame.UserControls
     /// </Forfatter>
 
     /// <summary>
-    /// UserControl som viser registrerer en ny bruker. Gjøres ved hjelp av delegater som MainForm abonnerer på.
+    /// UserControl som registrerer en ny bruker. Gjøres ved hjelp av delegater som MainForm abonnerer på.
     /// </summary>
     public partial class NewUserControl : UserControl
     {
@@ -93,14 +93,5 @@ namespace awsmSeeSharpGame.UserControls
             redirectNewUserEvent(sender, e);
         }
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                var parms = base.CreateParams;
-                parms.Style &= ~0x02000000;  // Turn off WS_CLIPCHILDREN
-                return parms;
-            }
-        }
     }
 }

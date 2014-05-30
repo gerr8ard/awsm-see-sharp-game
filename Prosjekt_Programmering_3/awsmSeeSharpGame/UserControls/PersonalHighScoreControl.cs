@@ -17,7 +17,8 @@ namespace awsmSeeSharpGame.UserControls
     /// </Forfatter>
 
     /// <summary>
-    /// UserControl som viser de ti beste poengsummene til innlogget spiller. Gjøres ved hjelp av delegater som MainForm abonnerer på.
+    /// UserControl som viser de ti beste poengsummene til innlogget spiller. 
+    /// Vises i pnlMainForm ved hjelp av delegater som MainForm abonnerer på.
     /// </summary>
     public partial class PersonalHighScoreControl : UserControl
     {

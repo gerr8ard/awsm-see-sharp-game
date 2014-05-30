@@ -28,32 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblHeaderPersonalHighScore = new System.Windows.Forms.Label();
             this.lvPersonalHighScore = new System.Windows.Forms.ListView();
-            this.panel1.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlHeader
             // 
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 46);
-            this.panel1.TabIndex = 1;
+            this.pnlHeader.Controls.Add(this.lblHeaderPersonalHighScore);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(450, 46);
+            this.pnlHeader.TabIndex = 1;
             // 
-            // label1
+            // lblHeaderPersonalHighScore
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(450, 46);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Dine høyeste poengsummer";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHeaderPersonalHighScore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHeaderPersonalHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHeaderPersonalHighScore.ForeColor = System.Drawing.Color.White;
+            this.lblHeaderPersonalHighScore.Location = new System.Drawing.Point(0, 0);
+            this.lblHeaderPersonalHighScore.Name = "lblHeaderPersonalHighScore";
+            this.lblHeaderPersonalHighScore.Size = new System.Drawing.Size(450, 46);
+            this.lblHeaderPersonalHighScore.TabIndex = 0;
+            this.lblHeaderPersonalHighScore.Text = "Dine høyeste poengsummer";
+            this.lblHeaderPersonalHighScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lvPersonalHighScore
             // 
@@ -69,11 +69,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.lvPersonalHighScore);
             this.Name = "PersonalHighScoreControl";
             this.Size = new System.Drawing.Size(450, 425);
-            this.panel1.ResumeLayout(false);
+            this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -81,7 +81,7 @@
         #endregion
 
         private System.Windows.Forms.ListView lvPersonalHighScore;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Label lblHeaderPersonalHighScore;
     }
 }

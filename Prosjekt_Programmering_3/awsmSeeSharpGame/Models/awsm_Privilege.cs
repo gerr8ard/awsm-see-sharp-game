@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 /// <Forfatter>
-/// Pål Skogsrud og Dag Ivarsøy
+/// Pål Skogsrud med hjelp av Dag Ivarsøy
 /// </Forfatter>
 
 /// <summary>
-/// Klasse som inneholder 
+/// Database
 /// </summary>
 namespace awsmSeeSharpGame.Models
 {
