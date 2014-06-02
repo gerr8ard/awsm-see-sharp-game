@@ -171,17 +171,6 @@ namespace awsmSeeSharpGame.Classes
                     
                     collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
                 }
-
-                if (collision)
-                {
-                    rocket.pen.Color = Color.Red;
-                    collision = false; //Resetter collisions testen
-                }
-                else
-                {
-                    rocket.pen.Color = Color.White;
-                }
-                //rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
             
             foreach (Bullet bullet in bulletList)
@@ -200,6 +189,16 @@ namespace awsmSeeSharpGame.Classes
                     collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
                 }
                
+            }
+
+            if (collision)
+            {
+                rocket.pen.Color = Color.Red;
+                collision = false; //Resetter collisions testen
+            }
+            else
+            {
+                rocket.pen.Color = Color.White;
             }
         }
 
