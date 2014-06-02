@@ -58,6 +58,7 @@ namespace awsmSeeSharpGame.Classes
             rocket = _rocket;
             emitter = new Emitter(_parentGamePanel, _movableShapeList);
             collision = false;
+            random = new Random();
 
             bulletList = new List<Bullet>();
             thisPanel = this;
@@ -94,19 +95,20 @@ namespace awsmSeeSharpGame.Classes
 
             foreach (MovableShape shape in activeMovableShapeList)
             {
-                /*
+                
                 if (shape is UFO)
                 {
                     UFO ufo = shape as UFO;
                     //ufo.Move(GetElapsedTime);
-                    ufo.Move(thisPanel, GetElapsedTime, random.Next(20, 600));
-                }*/
+                    
+                    ufo.Move(thisPanel, GetElapsedTime, random.Next(100,400));
+                }
                 shape.Move(GetElapsedTime);
             }
 
             foreach (Bullet bullet in bulletList)
             {
-                //bullet.Move(GetElapsedTime);
+                bullet.Move(GetElapsedTime);
             }
 
             rocket.Accelerate();
@@ -183,7 +185,7 @@ namespace awsmSeeSharpGame.Classes
                 }
                 //rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
-            /*
+            
             foreach (Bullet bullet in bulletList)
             {
                 RegionData regionData = bullet.region.GetRegionData();
@@ -200,7 +202,7 @@ namespace awsmSeeSharpGame.Classes
                     collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
                 }
                
-            }*/
+            }
         }
 
         public void LossOfPointsEvent(object source, ElapsedEventArgs e)
@@ -238,7 +240,7 @@ namespace awsmSeeSharpGame.Classes
 
             foreach (Bullet bullet in bulletList)
             {
-                //bullet.Draw(e);
+                bullet.Draw(e);
             }
 
             rocket.Draw(e);

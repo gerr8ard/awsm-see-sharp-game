@@ -25,8 +25,8 @@ namespace awsmSeeSharpGame.Classes
         public void Move(DrawShapes _drawShapes, float _elapsedTime, int _random)
         {
            
-            //Move(_elapsedTime);
-            /*if (XPosition < 1200 && XPosition > 0)
+            Move(_elapsedTime);
+            if (XPosition < 1200 && XPosition > 0)
             {
 
                 Bullet newbullet = new Bullet(XPosition, YPosition, (int) speed+300, 0.0F, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
@@ -37,7 +37,7 @@ namespace awsmSeeSharpGame.Classes
                 }
                 else updateCounter++;
                 
-            }*/
+            }
         }
 
         

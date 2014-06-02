@@ -160,10 +160,11 @@ namespace awsmSeeSharpGame.Classes
             timeLeft = _time;
         }*/
         
+        //Laget av Dag
         private void NewGame()
         {
             numberOfLivesLeft = 3;
-            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
+            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 1 Minutt
             
             if (MainForm.currentUser != null)
             {
@@ -182,6 +183,7 @@ namespace awsmSeeSharpGame.Classes
             lblRecord.Text = string.Format("Rekord: {0}",Queries.getHighestScore().Score.ToString());
         }
 
+        // Laget av Dag
         private void InitializeAndStartGame()
         {
             //Setter opp alle objekt listene
@@ -198,9 +200,9 @@ namespace awsmSeeSharpGame.Classes
             rocket = new Rocket(100, panelHeight / 2, 90, rocketMap);
             //Setter opp planeter
 
-            Obstacle obstackle1 = new Obstacle(random.Next(panelWidth -200), random.Next(panelHeight - 200), 200, 200, Color.White);
-            Obstacle obstackle2 = new Obstacle(random.Next(panelWidth - 150), random.Next(panelHeight - 150), 150, 150, Color.White);
-            Obstacle obstackle3 = new Obstacle(random.Next(panelWidth - 150), random.Next(panelHeight - 150), 150, 150, Color.White);
+            Obstacle obstackle1 = new Obstacle(random.Next(200, panelWidth -200), random.Next(panelHeight - 200), 200, 200, Color.White);
+            Obstacle obstackle2 = new Obstacle(random.Next(200, panelWidth - 150), random.Next(panelHeight - 150), 150, 150, Color.White);
+            Obstacle obstackle3 = new Obstacle(random.Next(200, panelWidth - 150), random.Next(panelHeight - 150), 150, 150, Color.White);
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
             obstacleList.Add(obstackle3);
@@ -242,6 +244,7 @@ namespace awsmSeeSharpGame.Classes
             isGameRunning = true;
         }
 
+        // Laget av Dag
         //Må fikses, kjøres når tida går ut.
         private void EndLevel()
         {
@@ -253,6 +256,7 @@ namespace awsmSeeSharpGame.Classes
             }
         }
 
+        // Laget av Dag
         // Opprydning, tømmer alle objektene
         private void emptyObjects()
         {
@@ -269,7 +273,7 @@ namespace awsmSeeSharpGame.Classes
         }
 
 
-
+        // Laget av Dag
         // Spilleren døde
         public void LossOfLife()
         {
@@ -288,7 +292,7 @@ namespace awsmSeeSharpGame.Classes
         }
 
        
-
+        //Laget av Dag
         private void GameOver()
         {
             emptyObjects();
@@ -329,17 +333,17 @@ namespace awsmSeeSharpGame.Classes
             }
             for (int i = 0; i < _numberOfUFOs; i++)
             {
-                list.Add(new UFO(panelWidth, random.Next(panelHeight), 150, 0, ShapeMaps.UFO(), ShapeMaps.BitmapUFO()));
+                list.Add(new UFO(panelWidth, random.Next(panelHeight), 100, 0, ShapeMaps.UFO(), ShapeMaps.BitmapUFO()));
             }
             for (int i = 0; i < _numberOfMeteors; i++ )
             {
-                list.Add(new Meteor(panelWidth, random.Next(panelHeight), 100, 0, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor()));
+                list.Add(new Meteor(panelWidth, random.Next(panelHeight), 150, 0, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor()));
             }
 
             return list;
 
         }
-        /*
+        
         // Generisk liste metode som lager lister for alle type moveable shape objekter
         private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
         {
@@ -355,7 +359,7 @@ namespace awsmSeeSharpGame.Classes
                 shapeListe.Add((T)Activator.CreateInstance(typeof(T), XPosition, YPosition, speed, rotation, shapeMap, bitmap));
             }
             return shapeListe;
-        }  */
+        }
        
         private void sekundOppdateringEventHandler(object sender, ElapsedEventArgs e)
         {
@@ -392,40 +396,6 @@ namespace awsmSeeSharpGame.Classes
                 drawShapes.Emit();
             }
         }
-
-        /* Alternativ keycheck
-         * 
-        public static bool IsKeyDown(Keys key)
-        {
-            return (GetKeyState(Convert.ToInt16(key)) & 0X80) == 0X80;
-        }
-
-        [DllImport("user32.dll")]
-        public extern static Int16 GetKeyState(Int16 nVirtKey);
-
-        if (IsKeyDown(Keys.Left) && IsKeyDown(Keys.Up) )
-            {
-                rocket.XPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
-                rocket.YPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
-            }
-
-            if (IsKeyDown(Keys.Left) && IsKeyDown(Keys.Down))
-            {
-                rocket.XPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
-                rocket.YPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
-            }
-            if (IsKeyDown(Keys.Right) && IsKeyDown(Keys.Up))
-            {
-                rocket.XPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
-                rocket.YPosition -= Rocket.MOVEMENT_PER_KEY_PRESS;
-            }
-            if (IsKeyDown(Keys.Right) && IsKeyDown(Keys.Down))
-            {
-                rocket.XPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
-                rocket.YPosition += Rocket.MOVEMENT_PER_KEY_PRESS;
-            }
-         * 
-         * */
         
         /// <summary>
         /// Kaller On Paint metoden ca 60 ganger i sekundet
