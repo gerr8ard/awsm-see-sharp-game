@@ -43,6 +43,7 @@ namespace awsmSeeSharpGame.Classes
         
         public override void Move(float _elapsedTime)
         {
+            
             base.Move(_elapsedTime);
         }
 
