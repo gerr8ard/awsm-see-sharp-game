@@ -184,8 +184,6 @@ namespace awsmSeeSharpGame.Classes
                     parentGamePanel.LossOfLife();
                    
                     collision = true;
-                    
-
                     collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
                 }
                
@@ -195,6 +193,7 @@ namespace awsmSeeSharpGame.Classes
             {
                 rocket.pen.Color = Color.Red;
                 collision = false; //Resetter collisions testen
+                parentGamePanel.score -= 1;
             }
             else
             {
