@@ -229,7 +229,7 @@ namespace awsmSeeSharpGame.Classes
 
             //meteorList = emitter.EmitMovingObject(meteorList);
 
-            movableShapeList = MakeShapeList(60, 60, 30);
+            movableShapeList = MakeShapeList(random.Next(10, 60), random.Next(10, 60), random.Next(10, 60));
 
             drawShapes = new DrawShapes(this, obstacleList, movableShapeList, rocket);
             
@@ -329,15 +329,15 @@ namespace awsmSeeSharpGame.Classes
 
             for (int i = 0; i < _numberOfAlienHeads; i++)
             {
-                list.Add(new AlienHead(panelWidth, random.Next(panelHeight), 200, 0, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead()));
+                list.Add(new AlienHead(panelWidth, random.Next(panelHeight), random.Next(50,300), 0, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead()));
             }
             for (int i = 0; i < _numberOfUFOs; i++)
             {
-                list.Add(new UFO(panelWidth, random.Next(panelHeight), 100, 0, ShapeMaps.UFO(), ShapeMaps.BitmapUFO()));
+                list.Add(new UFO(panelWidth, random.Next(panelHeight), random.Next(50,150), 0, ShapeMaps.UFO(), ShapeMaps.BitmapUFO()));
             }
             for (int i = 0; i < _numberOfMeteors; i++ )
             {
-                list.Add(new Meteor(panelWidth, random.Next(panelHeight), 150, 0, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor()));
+                list.Add(new Meteor(panelWidth, random.Next(panelHeight), random.Next(100,400), 0, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor()));
             }
 
             return list;

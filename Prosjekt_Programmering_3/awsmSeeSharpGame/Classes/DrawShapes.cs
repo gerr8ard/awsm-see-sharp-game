@@ -100,7 +100,6 @@ namespace awsmSeeSharpGame.Classes
                 {
                     UFO ufo = shape as UFO;
                     //ufo.Move(GetElapsedTime);
-                    
                     ufo.Move(thisPanel, GetElapsedTime, random.Next(100,400));
                 }
                 shape.Move(GetElapsedTime);
@@ -154,7 +153,6 @@ namespace awsmSeeSharpGame.Classes
                     }
 
                     //collision = true;
-                    //bulletHitSound = new awsm_SoundPlayer("Explosion02.wav");
                     //parentGamePanel.LossOfLife();
 
                 }
@@ -189,13 +187,13 @@ namespace awsmSeeSharpGame.Classes
             foreach (Bullet bullet in bulletList)
             {
                 RegionData regionData = bullet.region.GetRegionData();
-
                 collisionRegion = new Region(regionData);
                 collisionRegion.Intersect(rocket.region);
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
-
+                    bulletHitSound = new awsm_SoundPlayer("Explosion02.wav");
                     parentGamePanel.LossOfLife();
+                   
                     collision = true;
                     
 
@@ -252,7 +250,7 @@ namespace awsmSeeSharpGame.Classes
         public void Emit()
         {
             Random rndm = new Random();
-            int nextEmit = rndm.Next(100);
+            int nextEmit = rndm.Next(300);
             int count = 0;
             if (count == nextEmit)
                 emitter.EmitMovableShape();
