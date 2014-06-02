@@ -8,9 +8,9 @@ namespace awsmSeeSharpGame.Migrations
     using System.Collections.Generic;
     using System.Collections;
     using awsmSeeSharpGame.Classes;
-    
-   
-       
+
+
+
     internal sealed class Configuration : DbMigrationsConfiguration<awsmSeeSharpGame.Models.Context>
     {
 
@@ -26,7 +26,7 @@ namespace awsmSeeSharpGame.Migrations
 
         protected override void Seed(awsmSeeSharpGame.Models.Context context)
         {
-            
+
             var privileges = new List<awsm_Privilege> {
                 new awsm_Privilege {
                     Privilege = "Administrator"

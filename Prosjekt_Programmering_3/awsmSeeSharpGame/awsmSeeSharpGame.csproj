@@ -105,11 +105,6 @@
     <Compile Include="Classes\Obstacle.cs" />
     <Compile Include="Classes\Shape.cs" />
     <Compile Include="Classes\GameTimer.cs" />
-    <Compile Include="Migrations\201405301904334_First.cs" />
-    <Compile Include="Migrations\201405301904334_First.Designer.cs">
-      <DependentUpon>201405301904334_First.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Classes\Target.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -118,6 +113,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Program.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\awsm_Privilege.cs" />
     <Compile Include="Models\awsm_Score.cs" />
     <Compile Include="Models\awsm_Users.cs" />
@@ -128,7 +124,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SystemTimer.cs">
+    <Compile Include="Classes\SystemTimer.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\Rocket.cs" />
@@ -180,9 +176,6 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201405301904334_First.resx">
-      <DependentUpon>201405301904334_First.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -465,6 +458,15 @@
     <None Include="Resources\Planet2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="awsmDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="awsmDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>awsmDatabase.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
