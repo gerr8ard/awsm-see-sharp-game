@@ -26,8 +26,8 @@ namespace awsmSeeSharpGame.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\v11.0;AttachDbFilename=|DataDirectory|\\awsmDatabase.mdf;Int" +
-            "egrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ljauk6mone.database.windows.net,1433;Initial Catalog=awsmDatabase;Per" +
+            "sist Security Info=True;User ID=sdp2014;Password=appelsinFarge5")]
         public string awsmSeeSharpGame_Models_ContextConnectionString {
             get {
                 return ((string)(this["awsmSeeSharpGame_Models_ContextConnectionString"]));
