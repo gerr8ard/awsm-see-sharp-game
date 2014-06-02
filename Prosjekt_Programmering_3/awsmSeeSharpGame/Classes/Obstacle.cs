@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy
+    /// </summary>
     public class Obstacle : Shape
     {
         private TextureBrush textureBrush;

@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy
+    /// </summary>
     public class ShapeMaps
     {
         public static Point[] RocketDesign1 ()

@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy
+    /// </summary>
     public static class PointMapper
     {
         public static void Mapper(string illustratorMap)

@@ -8,6 +8,10 @@ using System.Timers;
 
 namespace awsmSeeSharpGame
 {
+
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy
+    /// </summary>
     public interface ITimer
     {
         void Start();

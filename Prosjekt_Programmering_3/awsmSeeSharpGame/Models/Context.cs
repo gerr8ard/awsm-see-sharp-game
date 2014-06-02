@@ -6,16 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <Forfatter>
-/// Pål Skogsrud med hjelp av Dag Ivarsøy
-/// </Forfatter>
 
-/// <summary>
-/// Database
-/// </summary>
 
 namespace awsmSeeSharpGame.Models
 {
+
+    /// <summary>
+    /// Skrevet av Pål Skogsrud og Dag Ivarsøy
+    /// Database
+    /// </summary>
     public class Context : DbContext
     {
 

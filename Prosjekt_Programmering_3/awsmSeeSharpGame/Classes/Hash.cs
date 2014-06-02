@@ -9,6 +9,7 @@
 namespace awsmSeeSharpGame.Classes
 {
     /// <summary>
+    /// Skrevet av Dag Ivarsøy
     /// Dette er en Hashing klasse som tar seg av generering av Salt og kryptering av passord.
     /// </summary>
     static public class Hash

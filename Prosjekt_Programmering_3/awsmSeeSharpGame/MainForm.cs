@@ -20,9 +20,9 @@ using System.Diagnostics;
 namespace awsmSeeSharpGame
 {
 
-	/// <summary>
-	/// @Author Dag, Pål og Silje. 
-	/// </summary>
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy og Pål Skogsrud
+    /// </summary>
 	public partial class MainForm : Form
 	{
 		#region Fields
@@ -60,9 +60,6 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-			startSpill();
-
-
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
 			newUser = new NewUserControl();
@@ -83,11 +80,11 @@ namespace awsmSeeSharpGame
 			startPage.highScoreEvent += new StartPageControl.startPageDelegate(btn_Highscores_Click);//Abonnerer på highScoreEventi StartPageControl
 			startPage.personalHighScoreEvent += new StartPageControl.startPageDelegate(btn_PersonalRecords_Click);
 			startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
-			howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(hvordanSpilleToolStripMenuItem_Click);
+            howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(tsMenuItemHowToPlay_Click);
 
-			//pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			//login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			//login.Show();//viser LoginControl form
+			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			login.Show();//viser LoginControl form
 			
 
 		}
@@ -110,9 +107,9 @@ namespace awsmSeeSharpGame
 		}
 
 		#region Spillrelaterte metoder
-		/// <summary>
-		/// @Author Dag Ivarsøy og Pål Skogsrud
-		/// </summary>
+		/// <Forfatter>
+		/// Dag Ivarsøy og Pål Skogsrud
+		/// </Forfatter>
 
 		/// <summary>
 		/// Starter et nytt spill
@@ -129,20 +126,27 @@ namespace awsmSeeSharpGame
 		/// </summary>
 		public void stoppSpill()
 		{
-			//if (isGameRunning)
-			//{
+			//if (gamePanel.isGameRunning)
+			{
 				gamePanel.threadGamePanel.Abort();
 				pnlMainForm.Controls.Remove(gamePanel);
                 gamePanel.Dispose();
                 //gamePanel.isGameRunning = false;
                 gameMusic.Stop();
-                startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
-                startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
-				pnlMainForm.Controls.Add(startPage);
+                
                 introMusic.Start();
 				//gamePanel = null;
-			//}
+                loadStartMenu();
+               
+			}
 		}
+
+        public void loadStartMenu() 
+        {
+            startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
+            startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
+            pnlMainForm.Controls.Add(startPage);
+        }
 		
 		/// <summary>
 		/// Metode som blir kjørt når programmet lukkes. Stopper kjørende spill og tråder
@@ -167,73 +171,80 @@ namespace awsmSeeSharpGame
 
 		
 		#region MenuItem Metoder
-		/// <summary>
-		/// @Author Pål Skogsrud
+		/// <Forfatter>
+		/// Pål Skogsrud
 		/// Metoder som tar seg av hva som skjer når en av menuItem sine elementer blir trykket.
-		/// </summary
-		private void MenuItemAvslutt_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+		/// </Forfatter>
 
-		private void omToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			AboutBox about = new AboutBox();
-			about.ShowDialog(this);
-		}  
+        private void tsMenuItemQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tsMenuItemAbout_Click(object sender, EventArgs e)
+        {
+            AboutBox about = new AboutBox();
+            about.ShowDialog(this);
+        }
+
+        private void tsMenuItemMainMenu_Click(object sender, EventArgs e)
+        {
+            if (isLoggedIn == true)
+            {
+
+                if (gamePanel != null)
+                {
+                    if (gamePanel.isGameRunning)
+                    {
+                        stoppSpill();
+                        gamePanel.isGameRunning = false;
+                    }
+
+                    pnlMainForm.Controls.Remove(gamePanel);
+                    pnlMainForm.Controls.Remove(login);
+                    pnlMainForm.Controls.Remove(newUser);
+                    pnlMainForm.Controls.Remove(howToPlay);
+                    btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
+
+                    if (gameMusic != null)
+                    {
+                        gameMusic.Stop();
+                    }
+
+                    introMusic.Start();
+                }
+
+                loadStartMenu();
+                pnlMainForm.Controls.Remove(howToPlay);
+            }
+            else WarningMessages.noAccessWarning();
+
+
+        }
+
+        private void tsMenuItemHowToPlay_Click(object sender, EventArgs e)
+        {
+            if (isLoggedIn == true)
+            {
+                howToPlay.Left = 300;
+                howToPlay.Top = 20;
+                pnlMainForm.Controls.Add(howToPlay);
+                pnlMainForm.Controls.Remove(login);
+                pnlMainForm.Controls.Remove(newUser);
+                pnlMainForm.Controls.Remove(startPage);
+                pnlMainForm.Controls.Remove(highScore);
+                pnlMainForm.Controls.Remove(highScorePersonal);
+                pnlMainForm.Controls.Remove(settings);
+                menuItemHowToPlaySound = new awsm_SoundPlayer("mess.wav");
+            }
+            else WarningMessages.noAccessWarning();
+        }
 		
-		private void MenuItemHovedmeny_Click(object sender, EventArgs e)
-		{
-			if (isLoggedIn == true)
-			{
-                //if (gamePanel.isGameRunning)
-				{
-					stoppSpill();
-                  //  gamePanel.isGameRunning = false;
-				}
-				
-				pnlMainForm.Controls.Remove(gamePanel);
-				pnlMainForm.Controls.Remove(login);
-				pnlMainForm.Controls.Remove(newUser);
-				pnlMainForm.Controls.Remove(howToPlay);
-				pnlMainForm.Controls.Add(startPage);
-				startPage.Left = (this.ClientSize.Width - startPage.Width) / 2;
-				startPage.Top = ((this.ClientSize.Height - startPage.Height) / 2) - 40;
-				btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
-
-				if (gameMusic != null)
-				{
-					gameMusic.Stop();
-				}
-
-				introMusic.Start();
-
-			}
-			else WarningMessages.noAccessWarning();
-		}
-
-		private void hvordanSpilleToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			if (isLoggedIn == true)
-			{
-				howToPlay.Left = 300;
-				pnlMainForm.Controls.Add(howToPlay);
-				pnlMainForm.Controls.Remove(login);
-				pnlMainForm.Controls.Remove(newUser);
-				pnlMainForm.Controls.Remove(startPage);
-				pnlMainForm.Controls.Remove(highScore);
-				pnlMainForm.Controls.Remove(highScorePersonal);
-				pnlMainForm.Controls.Remove(settings);
-				menuItemHowToPlaySound = new awsm_SoundPlayer("mess.wav");
-			}
-			else WarningMessages.noAccessWarning();
-		   
-		}
 		#endregion	   
 		
 		#region Button click events
-		/// <summary>
-		/// @Author Pål Skogsrud og Silje Hauknes
+		/// <Forfatter>
+		/// Pål Skogsrud
 		/// Metoder som tar seg av hva som skal skje når en knapp blir tykket.
 		/// </summary>
 		
@@ -316,6 +327,7 @@ namespace awsmSeeSharpGame
 			pnlMainForm.Controls.Add(login);
 			isLoggedIn = false;
 			btnCancelSound = new awsm_SoundPlayer("Cancel.wav");
+            introMusic.Stop();
 		}
 
 		private void btn_Terminate_Click(object sender, EventArgs e)
@@ -386,6 +398,14 @@ namespace awsmSeeSharpGame
 		}
 
 		#endregion
+
+
+
+
+
+
+
+
 
 	   
 

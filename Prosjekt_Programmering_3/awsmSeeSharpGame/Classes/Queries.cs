@@ -10,6 +10,7 @@ namespace awsmSeeSharpGame.Classes
     class Queries
     {
         /// <summary>
+        /// Skrevet av Pål Skogsrud og Dag Ivarsøy
         /// Spørring som henter ut en brukers info ved hjelp av brukernavn
         /// </summary>
         /// <param name="userName"></param>
@@ -43,7 +44,10 @@ namespace awsmSeeSharpGame.Classes
 
             }
         }
-
+        /// <summary>
+        /// Spørring som henter ut den høyeste poengsummen til innlogget bruker
+        /// </summary>
+        /// <returns></returns>
         static public awsm_Score getHighestScore()
         {
             using (var context = new Context())
@@ -55,6 +59,11 @@ namespace awsmSeeSharpGame.Classes
             }
         }
 
+        /// <summary>
+        /// Spørring som henter ut de ti høyeste poengsummene til innlogget bruker.
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
         static public List<awsm_Score> GetTopTenPersonalScores(string userName)
         {
             using (var context = new Context())

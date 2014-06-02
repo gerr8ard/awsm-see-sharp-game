@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace awsmSeeSharpGame.Classes
 {
     /// <summary>
+    /// Skrevet av Dag ivarsøy og Silje Hauknes
     /// DrawShapes klassen tar seg av oppdatering, kollisjonstesting og opptegning av alle objektene.
     /// </summary>
     public class DrawShapes
@@ -24,6 +25,9 @@ namespace awsmSeeSharpGame.Classes
         public float elapsedTime;
         private Random random;
         private System.Timers.Timer timer = new System.Timers.Timer();
+        private List<Bullet> bulletList;
+
+        private DrawShapes thisPanel;
 
         private awsm_SoundPlayer alienHeadSound, bulletHitSound;
 
@@ -54,6 +58,9 @@ namespace awsmSeeSharpGame.Classes
             rocket = _rocket;
             emitter = new Emitter(_parentGamePanel, _movableShapeList);
             collision = false;
+
+            bulletList = new List<Bullet>();
+            thisPanel = this;
         }
 
 
@@ -62,6 +69,11 @@ namespace awsmSeeSharpGame.Classes
             get{
                 return elapsedTime;
             }
+        }
+
+        public void AddBullet(Bullet bullet)
+        {
+            bulletList.Add(bullet);
         }
 
  /*       public void SetMovableObjectList(List<MovableShape> list)
@@ -82,8 +94,20 @@ namespace awsmSeeSharpGame.Classes
 
             foreach (MovableShape shape in activeMovableShapeList)
             {
+                /*
+                if (shape is UFO)
+                {
+                    UFO ufo = shape as UFO;
+                    //ufo.Move(GetElapsedTime);
+                    ufo.Move(thisPanel, GetElapsedTime, random.Next(20, 600));
+                }*/
                 shape.Move(GetElapsedTime);
-            } 
+            }
+
+            foreach (Bullet bullet in bulletList)
+            {
+                //bullet.Move(GetElapsedTime);
+            }
 
             rocket.Accelerate();
             rocket.Move(GetElapsedTime);
@@ -103,7 +127,7 @@ namespace awsmSeeSharpGame.Classes
             {
                 parentGamePanel.LossOfLife();
             }
-
+           
             foreach (MovableShape shape in activeMovableShapeList)
             {
                 RegionData regionData = shape.region.GetRegionData();
@@ -113,13 +137,28 @@ namespace awsmSeeSharpGame.Classes
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
 
-                    collision = true;
-                    bulletHitSound = new awsm_SoundPlayer("Explosion02.wav");
-                    parentGamePanel.LossOfLife();
+                    if (shape is AlienHead && shape.active == true)
+                    {
+                        shape.active = false;
+                        parentGamePanel.score += 100;
+                        alienHeadSound = new awsm_SoundPlayer("splat.wav");
+
+                    }
+                    else if(shape.active == true)
+                    {
+                        parentGamePanel.LossOfLife();
+                        collision = true;
+
+                    }
+
+                    //collision = true;
+                    //bulletHitSound = new awsm_SoundPlayer("Explosion02.wav");
+                    //parentGamePanel.LossOfLife();
 
                 }
                 collisionRegion.Dispose();
             }
+            
             foreach (Obstacle obstacle in obstacleList)
             {
                 RegionData regionData = obstacle.region.GetRegionData();
@@ -129,30 +168,7 @@ namespace awsmSeeSharpGame.Classes
                 if (!collisionRegion.IsEmpty(e.Graphics))
                 {
                     collision = true;
-                    planetCollision = true;
-
-                    if (planetCollision)
-                    {
-                        timer.Elapsed += new ElapsedEventHandler(LossOfPointsEvent);
-                        timer.Interval = 5000;
-                        timer.Enabled = true;
-
-                        /* if (shape is AlienHead)
-                         {
-                             emitter.activeMovableShapeList.Remove(shape);
-                             parentGamePanel.score += 100;
-                             alienHeadSound = new awsm_SoundPlayer("splat.wav");
-
-                         }
-                         else
-                         {
-                             parentGamePanel.LossOfLife();
-                             collision = true;
-
-                         }*/
-                    }
-                    else planetCollision = false;
-
+                    
                     collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
                 }
 
@@ -165,8 +181,26 @@ namespace awsmSeeSharpGame.Classes
                 {
                     rocket.pen.Color = Color.White;
                 }
-                rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+                //rocket.region.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
             }
+            /*
+            foreach (Bullet bullet in bulletList)
+            {
+                RegionData regionData = bullet.region.GetRegionData();
+
+                collisionRegion = new Region(regionData);
+                collisionRegion.Intersect(rocket.region);
+                if (!collisionRegion.IsEmpty(e.Graphics))
+                {
+
+                    parentGamePanel.LossOfLife();
+                    collision = true;
+                    
+
+                    collisionRegion.Dispose();//Ferdig med regionen, så vi kan fjerne den fra minnet
+                }
+               
+            }*/
         }
 
         public void LossOfPointsEvent(object source, ElapsedEventArgs e)
@@ -200,6 +234,11 @@ namespace awsmSeeSharpGame.Classes
             foreach (MovableShape shape in activeMovableShapeList)
             {
                 shape.Draw(e);
+            }
+
+            foreach (Bullet bullet in bulletList)
+            {
+                //bullet.Draw(e);
             }
 
             rocket.Draw(e);

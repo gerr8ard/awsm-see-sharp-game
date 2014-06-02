@@ -9,17 +9,15 @@ namespace awsmSeeSharpGame.Migrations
     using System.Collections;
     using awsmSeeSharpGame.Classes;
     
-    /// <Forfatter>
-    /// Pål Skogsrud og dag Ivarsøy
-    /// </Forfatter>
-     
-
-        /// <summary>
-        /// Klasse som generer litt innhold i databasen
-        /// </summary>
-        /// <param name="context"></param>
+   
+       
     internal sealed class Configuration : DbMigrationsConfiguration<awsmSeeSharpGame.Models.Context>
     {
+
+        /// <summary>
+        /// Skrevet av Pål Skogsrud og Dag Ivarsøy
+        /// Klasse som genererer litt innhold i databasen
+        /// </summary>
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;

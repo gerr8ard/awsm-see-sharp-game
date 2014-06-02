@@ -15,11 +15,8 @@ using awsmSeeSharpGame.Classes;
 
 namespace awsmSeeSharpGame.Classes
 {
-    /// <Forfatter>
-    /// Dag Ivarsøy, Silje Hauknes og Pål Skogsrud
-    /// </Forfatter>
-
     /// <summary>
+    /// Skrevet av Dag Ivarsøy, Silje Hauknes og Pål Skogsrud
     /// Klasse som viser selve spillet. 
     /// </summary>
     public class GamePanel : PictureBox
@@ -28,14 +25,14 @@ namespace awsmSeeSharpGame.Classes
         private DrawShapes drawShapes; // Klasse som tar for seg opptegningen av objektene
 
         // Lister med objektene
-//        private List<Enemy> enemyList;
-//        private List<Bullet> bulletList;
+        private List<Enemy> enemyList;
+        private List<Bullet> bulletList;
         private List<Obstacle> obstacleList = new List<Obstacle>();
         private List<MovableShape> movableShapeList = new List<MovableShape>();
-//        private List<Target> targetList;
-//        private List<Meteor> meteorList;
-//        private List<AlienHead> alienHeadList;
-//        private List<UFO> ufoList;
+        private List<Target> targetList;  
+        private List<Meteor> meteorList;
+        private List<AlienHead> alienHeadList;
+        private List<UFO> ufoList;
 
         private Rocket rocket;
         private Label lblNavn;
@@ -68,7 +65,7 @@ namespace awsmSeeSharpGame.Classes
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
         Font fontDavid = new Font("Arial", 11.0F); //Font som blir brukt til informasjonen om spillet øverst på skjermen.
 
-//        Emitter emitter;
+        Emitter emitter;
 
         #endregion
 
@@ -82,8 +79,6 @@ namespace awsmSeeSharpGame.Classes
 
             this.Dock = DockStyle.Fill; // Hmmm... Nå fyller Gamepanel hele vinduet, og infoPanelet og menyen ligger over gamepanelet
             this.Image = Image.FromFile(resourceUrl + "space-background.jpg"); // Laster inn bakgrunnsbilde
-            //this.BackgroundImage = awsmSeeSharpGame.Properties.Resources.spaceBackground;
-            //this.Image = Image.FromFile(resourceUrl + "stars.gif");
 
             // Gjør det mulig å registrer tastetrykk på Gamepanel
             this.SetStyle(ControlStyles.Selectable, true);
@@ -94,7 +89,7 @@ namespace awsmSeeSharpGame.Classes
             #region Game info Panel
             // Setter opp labelen som viser FPS
             lblFps = new Label();
-            lblFps.Location = new Point (50, 10);
+            lblFps.Location = new Point (50, 30);
             lblFps.ForeColor = Color.White;
             lblFps.BackColor = Color.Transparent;
             lblFps.Font = fontDavid;
@@ -102,7 +97,7 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser Navn
             lblNavn = new Label();
-            lblNavn.Location = new Point(250, 10);
+            lblNavn.Location = new Point(250, 30);
             lblNavn.ForeColor = Color.White;
             lblNavn.BackColor = Color.Transparent;
             lblNavn.Font = fontDavid;
@@ -110,7 +105,7 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser antall liv
             lblLives = new Label();
-            lblLives.Location = new Point(450, 10);
+            lblLives.Location = new Point(450, 30);
             lblLives.ForeColor = Color.White;
             lblLives.BackColor = Color.Transparent;
             lblLives.Font = fontDavid;
@@ -118,7 +113,7 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser gjenstående tid
             lblTime = new Label();
-            lblTime.Location = new Point(650, 10);
+            lblTime.Location = new Point(650, 30);
             lblTime.Size = new Size(150, 15);
             lblTime.ForeColor = Color.White;
             lblTime.BackColor = Color.Transparent;
@@ -127,7 +122,7 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser Poeng
             lblScore = new Label();
-            lblScore.Location = new Point(850, 10);
+            lblScore.Location = new Point(850, 30);
             lblScore.ForeColor = Color.White;
             lblScore.BackColor = Color.Transparent;
             lblScore.Font = fontDavid;
@@ -135,7 +130,7 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser din rekord
             lblRecord = new Label();
-            lblRecord.Location = new Point(1050, 10);
+            lblRecord.Location = new Point(1050, 30);
             lblRecord.ForeColor = Color.White;
             lblRecord.BackColor = Color.Transparent;
             lblRecord.Font = fontDavid;
@@ -150,7 +145,7 @@ namespace awsmSeeSharpGame.Classes
             threadGamePanel.Name = "gamePanelDraw";
             threadGamePanel.Start();
 
-//            emitter = new Emitter(this);
+            //emitter = new Emitter(this);
 
             NewGame(); //Setter variabler for et nytt spill
             InitializeAndStartGame(); //Setter opp alle objektene for å spille.               
@@ -190,13 +185,13 @@ namespace awsmSeeSharpGame.Classes
         private void InitializeAndStartGame()
         {
             //Setter opp alle objekt listene
-        /*    enemyList = new List<Enemy>();
+            enemyList = new List<Enemy>();
             bulletList = new List<Bullet>();
             obstacleList = new List<Obstacle>();
             targetList = new List<Target>();
             meteorList = new List<Meteor>();
             alienHeadList = new List<AlienHead>();
-            ufoList = new List<UFO>(); */
+            ufoList = new List<UFO>(); 
 
             //Setter opp raketten
             Point[] rocketMap = ShapeMaps.RocketDesign2();
@@ -214,26 +209,23 @@ namespace awsmSeeSharpGame.Classes
 
             //ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
 
-        //    ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
-
-
             //Setter opp meteorene
-       //     meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
+            //meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
             //Setter opp alienhead
 
             //alienHeadList = MakeObjectList(alienHeadList, 100, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
 
-       //     alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
+            //alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
 
 
             //Setter opp bullets
-       //     bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
+            //bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
 
 
-      //      meteorList = emitter.EmitMovingObject(meteorList);
+            //meteorList = emitter.EmitMovingObject(meteorList);
 
             movableShapeList = MakeShapeList(60, 60, 30);
 
@@ -265,16 +257,18 @@ namespace awsmSeeSharpGame.Classes
         private void emptyObjects()
         {
             drawShapes = null;
-       //     ufoList = null;
-       //     meteorList = null;
-        ///    alienHeadList = null;
+            //ufoList = null;
+            //meteorList = null;
+            //alienHeadList = null;
             obstacleList = null;
-         //   bulletList = null;
-         //   enemyList = null; */
+            //bulletList = null;
+            //enemyList = null;
             rocket = null;
             gameTimer.Stopp();
             gameTimer = null;
         }
+
+
 
         // Spilleren døde
         public void LossOfLife()
@@ -345,9 +339,9 @@ namespace awsmSeeSharpGame.Classes
             return list;
 
         }
-
+        /*
         // Generisk liste metode som lager lister for alle type moveable shape objekter
- /*       private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
+        private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
         {
             for (int i = 0; i < _numberOfObjects; i++)
             {
@@ -438,8 +432,6 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         private void GamePanelDraw()
         {
-
-            Debug.Print("startet tråd gamepanelDraw");
             while (true)
             {
                 this.Invalidate();
@@ -451,8 +443,6 @@ namespace awsmSeeSharpGame.Classes
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             base.OnPaint(e);
 
             if (isGameRunning) //Oppdater spillobjektene dersom spillet kjøres

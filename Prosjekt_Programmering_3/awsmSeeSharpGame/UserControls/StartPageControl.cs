@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.UserControls
 {
-    /// <Forfatter>
-    /// Pål Skogsrud og Silje Hauknes
-    /// </Forfatter>
+
     /// <summary>
+    /// Skrevet av Pål Skogsrud og Silje Hauknes
     /// Klasse som viser hovedmenyen i spillet.
     /// </summary>
     public partial class StartPageControl : UserControl

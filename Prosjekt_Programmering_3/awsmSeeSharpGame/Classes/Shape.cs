@@ -11,8 +11,8 @@ using System.Windows.Forms;
 namespace awsmSeeSharpGame.Classes
 {
     /// <summary>
+    /// Skrevet av Dag Ivarsøy og Silje Hauknes
     /// Shape har retning, posisjon og fart
-    /// 
     /// </summary>
     public abstract class Shape : IShape
     {
@@ -22,6 +22,8 @@ namespace awsmSeeSharpGame.Classes
         public Region region;
         public float Rotation { get; set; }
 
+        public bool active { get; set; }
+
         protected Point[] shapeMap;
         protected Point[] shapeMapPosition;
         protected int XPosition { get; set; }
@@ -29,6 +31,11 @@ namespace awsmSeeSharpGame.Classes
         protected int Width { get; set; }
         protected int Height { get; set; }
         protected Bitmap bitmap;
+
+        public Shape()
+        {
+            active = true;
+        }
 
         protected virtual void updateShapePosition()
         {
@@ -44,8 +51,11 @@ namespace awsmSeeSharpGame.Classes
         public virtual void Draw(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition, YPosition));
-            e.Graphics.DrawPolygon(pen, shapeMapPosition);
+            if (active)
+            {
+                e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition, YPosition));
+                e.Graphics.DrawPolygon(pen, shapeMapPosition);
+            }
         }
     }
 }

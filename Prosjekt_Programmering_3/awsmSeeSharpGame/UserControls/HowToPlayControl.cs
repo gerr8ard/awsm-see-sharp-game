@@ -10,11 +10,9 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.UserControls
 {
-    /// <Forfatter>
-    /// Pål Skogsrud
-    /// </Forfatter>
 
     /// <summary>
+    /// Skrevet av Pål Skogsrud
     /// UserControl som viser hvordan spillet skal spilles. Gjøres ved hjelp av delegater som MainForm abonnerer på.
     /// </summary>
     public partial class HowToPlayControl : UserControl

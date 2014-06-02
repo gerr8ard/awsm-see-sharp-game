@@ -7,16 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <Forfatter>
-/// Pål Skogsrud med hjelp av Dag Ivarsøy
-/// </Forfatter>
 
-/// <summary>
-/// Database
-/// </summary>
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Skrevet av Pål Skogsrud og Dag Ivarsøy
+    /// Database
+    /// </summary>
     [Table("awsm_Score")]
     public class awsm_Score
     {

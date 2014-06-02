@@ -7,6 +7,11 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Skrevet av Pål Skogsrud
+    /// Klasse som generer forskjellige feilmeldinger.
+    /// </summary>
     public static class WarningMessages
     {
 

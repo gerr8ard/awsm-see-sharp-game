@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace awsmSeeSharpGame.Classes
 {
     /// <summary>
-    /// 
+    /// Skrevet av Dag Ivarsøy og Silje Hauknes
     /// Gravitasjon trekker objektet nedover
     /// Kollisjon med bullet avslutter spillet
     /// Kollisjon med obsticles gir minuspoeng

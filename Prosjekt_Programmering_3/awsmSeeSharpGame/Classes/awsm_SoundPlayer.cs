@@ -10,6 +10,7 @@ namespace awsmSeeSharpGame.Classes
 {
 
     /// <summary>
+    /// Skrevet av Pål Skogsrud
     /// Klasse som tar seg av lydavspillingen. Konstruktør tar i mot en string som inneholder banen til filen
     /// Lydfilene er hentet fra https://www.freesound.org og http://www.wavsource.com/video_games/duke_nukem.htm
     /// </summary>

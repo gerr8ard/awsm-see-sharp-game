@@ -101,11 +101,14 @@
     <Compile Include="Classes\DrawShapes.cs" />
     <Compile Include="Classes\Enemy.cs" />
     <Compile Include="Classes\Accelration.cs" />
-    <Compile Include="Classes\Hashing.cs" />
     <Compile Include="Classes\MovableShape.cs" />
     <Compile Include="Classes\Obstacle.cs" />
     <Compile Include="Classes\Shape.cs" />
     <Compile Include="Classes\GameTimer.cs" />
+    <Compile Include="Migrations\201405301904334_First.cs" />
+    <Compile Include="Migrations\201405301904334_First.Designer.cs">
+      <DependentUpon>201405301904334_First.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Classes\Target.cs" />
     <Compile Include="MainForm.cs">
@@ -177,6 +180,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405301904334_First.resx">
+      <DependentUpon>201405301904334_First.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

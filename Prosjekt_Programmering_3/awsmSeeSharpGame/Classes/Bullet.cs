@@ -9,6 +9,7 @@ using System.Windows.Forms;
 namespace awsmSeeSharpGame.Classes
 {
     /// <summary>
+    /// Skrevet av Dag Ivarsøy
     /// Posisjon, fart og retning arves
     /// Startposisjon er ved Enemy toppunkt
     /// Retning er samme som Enemy

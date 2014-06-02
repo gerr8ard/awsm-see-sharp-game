@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Bare tjafs skrevet av Pål Skogsrud
+    /// </summary>
     class RandomGenerator
     {
         private static Random random = new Random();

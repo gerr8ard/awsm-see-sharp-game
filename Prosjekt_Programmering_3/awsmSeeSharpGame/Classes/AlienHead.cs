@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.Classes
 {
-    /// <Forfatter>
-    /// Dag Ivarsøy
-    /// </Forfatter>
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy.
+    /// </summary>
     public class AlienHead : MovableShape
     {
         public bool isCollected { get; set; } //Om hodet er plukke opp eller ei.
@@ -22,14 +22,5 @@ namespace awsmSeeSharpGame.Classes
             updateShapePosition();
         }
 
-        public override void Draw(PaintEventArgs e)
-        {
-            if (!isCollected)
-            {
-                e.Graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                e.Graphics.DrawImageUnscaled(bitmap, new Point(XPosition, YPosition));
-                e.Graphics.DrawPolygon(pen, shapeMapPosition);
-            }
-        }
     }
 }

@@ -9,10 +9,8 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame
 {
-    /// <Forfatter>
-    /// Pål Skogsrud
-    /// </Forfatter>
     /// <summary>
+    /// Skrevet av Pål Skogsrud
     /// Klasse som viser en "Om" box med diverse informasjon om spillet
     /// </summary>
     partial class AboutBox : Form

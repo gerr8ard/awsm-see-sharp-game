@@ -29,98 +29,92 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.msMenyStripe = new System.Windows.Forms.MenuStrip();
-            this.MenuItemMeny = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemHovedmeny = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemSkilleMeny = new System.Windows.Forms.ToolStripSeparator();
-            this.MenuItemAvslutt = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemInnstillinger = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemHjelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.hvordanSpilleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.omToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMainForm = new System.Windows.Forms.Panel();
-            this.msMenyStripe.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuItemMainMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuItemSplitterMenu = new System.Windows.Forms.ToolStripSeparator();
+            this.tsMenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuItemHowToPlay = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlMainForm.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // msMenyStripe
-            // 
-            this.msMenyStripe.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemMeny,
-            this.MenuItemInnstillinger,
-            this.MenuItemHjelp});
-            this.msMenyStripe.Location = new System.Drawing.Point(0, 0);
-            this.msMenyStripe.Name = "msMenyStripe";
-            this.msMenyStripe.Size = new System.Drawing.Size(1184, 24);
-            this.msMenyStripe.TabIndex = 4;
-            this.msMenyStripe.Text = "menuStrip1";
-            // 
-            // MenuItemMeny
-            // 
-            this.MenuItemMeny.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemHovedmeny,
-            this.MenuItemSkilleMeny,
-            this.MenuItemAvslutt});
-            this.MenuItemMeny.Name = "MenuItemMeny";
-            this.MenuItemMeny.Size = new System.Drawing.Size(49, 20);
-            this.MenuItemMeny.Text = "Meny";
-            // 
-            // MenuItemHovedmeny
-            // 
-            this.MenuItemHovedmeny.Name = "MenuItemHovedmeny";
-            this.MenuItemHovedmeny.Size = new System.Drawing.Size(139, 22);
-            this.MenuItemHovedmeny.Text = "Hovedmeny";
-            this.MenuItemHovedmeny.Click += new System.EventHandler(this.MenuItemHovedmeny_Click);
-            // 
-            // MenuItemSkilleMeny
-            // 
-            this.MenuItemSkilleMeny.Name = "MenuItemSkilleMeny";
-            this.MenuItemSkilleMeny.Size = new System.Drawing.Size(136, 6);
-            // 
-            // MenuItemAvslutt
-            // 
-            this.MenuItemAvslutt.Name = "MenuItemAvslutt";
-            this.MenuItemAvslutt.Size = new System.Drawing.Size(139, 22);
-            this.MenuItemAvslutt.Text = "&Avslutt";
-            this.MenuItemAvslutt.Click += new System.EventHandler(this.MenuItemAvslutt_Click);
-            // 
-            // MenuItemInnstillinger
-            // 
-            this.MenuItemInnstillinger.Name = "MenuItemInnstillinger";
-            this.MenuItemInnstillinger.Size = new System.Drawing.Size(81, 20);
-            this.MenuItemInnstillinger.Text = "Innstillinger";
-            // 
-            // MenuItemHjelp
-            // 
-            this.MenuItemHjelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hvordanSpilleToolStripMenuItem,
-            this.omToolStripMenuItem});
-            this.MenuItemHjelp.Name = "MenuItemHjelp";
-            this.MenuItemHjelp.Size = new System.Drawing.Size(47, 20);
-            this.MenuItemHjelp.Text = "Hjelp";
-            // 
-            // hvordanSpilleToolStripMenuItem
-            // 
-            this.hvordanSpilleToolStripMenuItem.Name = "hvordanSpilleToolStripMenuItem";
-            this.hvordanSpilleToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.hvordanSpilleToolStripMenuItem.Text = "Hvordan spille...";
-            this.hvordanSpilleToolStripMenuItem.Click += new System.EventHandler(this.hvordanSpilleToolStripMenuItem_Click);
-            // 
-            // omToolStripMenuItem
-            // 
-            this.omToolStripMenuItem.Name = "omToolStripMenuItem";
-            this.omToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.omToolStripMenuItem.Text = "Om...";
-            this.omToolStripMenuItem.Click += new System.EventHandler(this.omToolStripMenuItem_Click);
             // 
             // pnlMainForm
             // 
             this.pnlMainForm.BackgroundImage = global::awsmSeeSharpGame.Properties.Resources.spaceBackground;
             this.pnlMainForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlMainForm.Controls.Add(this.menuStrip1);
             this.pnlMainForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainForm.Location = new System.Drawing.Point(0, 0);
             this.pnlMainForm.Name = "pnlMainForm";
             this.pnlMainForm.Size = new System.Drawing.Size(1184, 662);
             this.pnlMainForm.TabIndex = 1;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItemMenu,
+            this.tsMenuItemHelp});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
+            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsMenuItemMenu
+            // 
+            this.tsMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItemMainMenu,
+            this.tsMenuItemSplitterMenu,
+            this.tsMenuItemQuit});
+            this.tsMenuItemMenu.Name = "tsMenuItemMenu";
+            this.tsMenuItemMenu.Size = new System.Drawing.Size(49, 20);
+            this.tsMenuItemMenu.Text = "Meny";
+            // 
+            // tsMenuItemMainMenu
+            // 
+            this.tsMenuItemMainMenu.Name = "tsMenuItemMainMenu";
+            this.tsMenuItemMainMenu.Size = new System.Drawing.Size(167, 22);
+            this.tsMenuItemMainMenu.Text = "Gå til hovedmeny";
+            this.tsMenuItemMainMenu.Click += new System.EventHandler(this.tsMenuItemMainMenu_Click);
+            // 
+            // tsMenuItemSplitterMenu
+            // 
+            this.tsMenuItemSplitterMenu.Name = "tsMenuItemSplitterMenu";
+            this.tsMenuItemSplitterMenu.Size = new System.Drawing.Size(164, 6);
+            // 
+            // tsMenuItemQuit
+            // 
+            this.tsMenuItemQuit.Name = "tsMenuItemQuit";
+            this.tsMenuItemQuit.Size = new System.Drawing.Size(167, 22);
+            this.tsMenuItemQuit.Text = "Avslutt";
+            this.tsMenuItemQuit.Click += new System.EventHandler(this.tsMenuItemQuit_Click);
+            // 
+            // tsMenuItemHelp
+            // 
+            this.tsMenuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuItemHowToPlay,
+            this.tsMenuItemAbout});
+            this.tsMenuItemHelp.Name = "tsMenuItemHelp";
+            this.tsMenuItemHelp.Size = new System.Drawing.Size(47, 20);
+            this.tsMenuItemHelp.Text = "Hjelp";
+            // 
+            // tsMenuItemHowToPlay
+            // 
+            this.tsMenuItemHowToPlay.Name = "tsMenuItemHowToPlay";
+            this.tsMenuItemHowToPlay.Size = new System.Drawing.Size(209, 22);
+            this.tsMenuItemHowToPlay.Text = "Hvordan spille Alien Wars";
+            this.tsMenuItemHowToPlay.Click += new System.EventHandler(this.tsMenuItemHowToPlay_Click);
+            // 
+            // tsMenuItemAbout
+            // 
+            this.tsMenuItemAbout.Name = "tsMenuItemAbout";
+            this.tsMenuItemAbout.Size = new System.Drawing.Size(209, 22);
+            this.tsMenuItemAbout.Text = "Om...";
+            this.tsMenuItemAbout.Click += new System.EventHandler(this.tsMenuItemAbout_Click);
             // 
             // MainForm
             // 
@@ -130,29 +124,31 @@
             this.Controls.Add(this.pnlMainForm);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximumSize = new System.Drawing.Size(1200, 700);
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "MainForm";
             this.Text = "Alien Wars";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.msMenyStripe.ResumeLayout(false);
-            this.msMenyStripe.PerformLayout();
+            this.pnlMainForm.ResumeLayout(false);
+            this.pnlMainForm.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip msMenyStripe;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemMeny;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemHovedmeny;
-        private System.Windows.Forms.ToolStripSeparator MenuItemSkilleMeny;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemAvslutt;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemInnstillinger;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemHjelp;
-        private System.Windows.Forms.ToolStripMenuItem hvordanSpilleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem omToolStripMenuItem;
         private System.Windows.Forms.Panel pnlMainForm;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsMenuItemMenu;
+        private System.Windows.Forms.ToolStripMenuItem tsMenuItemMainMenu;
+        private System.Windows.Forms.ToolStripSeparator tsMenuItemSplitterMenu;
+        private System.Windows.Forms.ToolStripMenuItem tsMenuItemQuit;
+        private System.Windows.Forms.ToolStripMenuItem tsMenuItemHelp;
+        private System.Windows.Forms.ToolStripMenuItem tsMenuItemHowToPlay;
+        private System.Windows.Forms.ToolStripMenuItem tsMenuItemAbout;
     }
 }
 

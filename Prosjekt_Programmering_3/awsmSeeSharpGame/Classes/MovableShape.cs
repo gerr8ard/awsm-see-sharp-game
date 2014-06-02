@@ -10,6 +10,10 @@ using System.Drawing;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy
+    /// </summary>
     public abstract class MovableShape : Shape, IMoveableShape
     {
 
@@ -21,6 +25,8 @@ namespace awsmSeeSharpGame.Classes
 
         public float calcXPosition { get; set; }
         public float calcYPosition { get; set; }
+
+    
 
         public float speed { get; set; }
 
@@ -41,6 +47,7 @@ namespace awsmSeeSharpGame.Classes
             Width = bitmap.Width;
             Height = bitmap.Height;
             speed = _speed;
+
 
             Rotation = _Rotation;
             pen = new Pen(Color.White);

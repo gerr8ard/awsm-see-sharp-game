@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace awsmSeeSharpGame.interfaces
 {
+
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy
+    /// </summary>
     public interface IShape
     {
         float Rotation { get; set; }

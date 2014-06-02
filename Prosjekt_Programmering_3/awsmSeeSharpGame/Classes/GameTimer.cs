@@ -7,6 +7,10 @@ using System.Timers;
 
 namespace awsmSeeSharpGame.Classes
 {
+
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy
+    /// </summary>
     public class GameTimer : IGameTimer
     {
         public delegate void sekundOppdateringHandler(object source, ElapsedEventArgs e); //ikke brukt ennå

@@ -11,11 +11,8 @@ using System.Windows.Forms;
 namespace awsmSeeSharpGame.UserControls
 {
 
-    /// <Forfatter>
-    /// Pål Skogsrud
-    /// </Forfatter>
-
     /// <summary>
+    /// Skrevet av Pål Skogsrud
     /// UserControl som setter vanskelighetsgraden på spillet. Har ikke blitt tatt i bruk ennå. 
     /// Vises i pnlMainForm ved hjelp av delegater som MainForm abonnerer på.
     /// </summary>

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace awsmSeeSharpGame.Classes
 {
+    /// <summary>
+    /// Skrevet av Dag Ivarsøy og Silje Hauknes
+    /// </summary>
     class Acceleration
     {
         public float gravitationalAcceleration { get; set; }

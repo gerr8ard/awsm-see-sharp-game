@@ -11,12 +11,8 @@ using awsmSeeSharpGame.Classes;
 
 namespace awsmSeeSharpGame.UserControls
 {
-
-    /// <Forfatter>
-    /// Pål Skogsrud
-    /// </Forfatter>
-
     /// <summary>
+    /// Skrevet av Pål Skogsrud
     /// UserControl som viser de ti beste poengsummene til innlogget spiller. 
     /// Vises i pnlMainForm ved hjelp av delegater som MainForm abonnerer på.
     /// </summary>
