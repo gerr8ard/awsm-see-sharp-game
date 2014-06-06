@@ -21,11 +21,14 @@ namespace awsmSeeSharpGame.Classes
         private double timeSinceLastUpdate = 0.0;
         private double fps = 0.0;
         private DateTime lastTime = DateTime.Now;
-        private bool collision, planetCollision;
+        private bool collision;
         public float elapsedTime;
         private Random random;
+        private int nextEmit; //counter som bestemmer når neste moveableShape skal emites
+        private int emitCounter; // counter som teller opp til neste emit;
         private System.Timers.Timer timer = new System.Timers.Timer();
         private List<Bullet> bulletList;
+        private int emitRate; //Hvor ofte moveable shapes skal sendes ut på skjermen
 
         private DrawShapes thisPanel;
 
@@ -49,9 +52,10 @@ namespace awsmSeeSharpGame.Classes
         /// <param name="_parentGamePanel">Referanse til GamePanelet </param>
         /// <param name="_obstacleList">Liste med Obstacles</param>
         /// <param name="_rocket">Romskipet vårt</param>
-        public DrawShapes(GamePanel _parentGamePanel, List<Obstacle> _obstacleList, List<MovableShape> _movableShapeList, Rocket _rocket)
+        public DrawShapes(GamePanel _parentGamePanel, int _emitRate, List<Obstacle> _obstacleList, List<MovableShape> _movableShapeList, Rocket _rocket)
         {
             parentGamePanel = _parentGamePanel;
+            emitRate = _emitRate;
             obstacleList = _obstacleList;
             movableShapeList = _movableShapeList;
             activeMovableShapeList = new List<MovableShape>();
@@ -62,6 +66,7 @@ namespace awsmSeeSharpGame.Classes
 
             bulletList = new List<Bullet>();
             thisPanel = this;
+            nextEmit = random.Next(300);
         }
 
 
@@ -87,9 +92,9 @@ namespace awsmSeeSharpGame.Classes
         /// Flytter objektene ved å å gå igjennom alle flyttbare objekter og gå igjennom Move metodene deres.
         /// Skrevet av Silje
         /// </summary>
-        public void Update()
+        public void Update(int _emitRate)
         {
-            Emit();
+            Emit(_emitRate);
             activeMovableShapeList = emitter.activeMovableShapeList;
             emitter.RemoveMovableShapesWhenGone();
 
@@ -99,7 +104,6 @@ namespace awsmSeeSharpGame.Classes
                 if (shape is UFO)
                 {
                     UFO ufo = shape as UFO;
-                    //ufo.Move(GetElapsedTime);
                     ufo.Move(thisPanel, GetElapsedTime, random.Next(100,400));
                 }
                 shape.Move(GetElapsedTime);
@@ -109,7 +113,6 @@ namespace awsmSeeSharpGame.Classes
             {
                 bullet.Move(GetElapsedTime);
             }
-
             //rocket.Accelerate();
             rocket.Move(GetElapsedTime);
         }
@@ -215,10 +218,10 @@ namespace awsmSeeSharpGame.Classes
   
 
         //Metode som tar seg av opptegning av objektene
-        //Skrevet av Silje
+        //Skrevet av Dag og Silje
         public void Draw(PaintEventArgs e)
         {
-            Update(); //Flytter objektene som skal flyttes
+            Update(emitRate); //Flytter objektene som skal flyttes
             CollisonCheck(e); // Sjekker for kollisjon
 
             BeregnFPS(); //Beregner og viser Frames Per Second (FPS)
@@ -244,16 +247,17 @@ namespace awsmSeeSharpGame.Classes
         }
 
         //Metode som sender ut MovableShapes på tilfeldige tidspunkt
-        //Skrevet av Silje
-        public void Emit()
+        //Skrevet av Silje og Dag
+        public void Emit(int _emitRate)
         {
-            Random rndm = new Random();
-            int nextEmit = rndm.Next(300);
-            int count = 0;
-            if (count == nextEmit)
+            if (emitCounter == nextEmit)
+            {
+                nextEmit = random.Next(_emitRate);
+                emitCounter = 0;
                 emitter.EmitMovableShape();
+            }
             else
-                count++;
+                emitCounter++;
         }
 
 

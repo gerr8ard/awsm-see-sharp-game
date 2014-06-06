@@ -44,6 +44,7 @@ namespace awsmSeeSharpGame.Classes
         private Label lblRecord;
         private TimeSpan timeLeft;
         private GameTimer gameTimer;
+        private int emitRate; // Hvor ofte objektene skal sendes ut på skjermen 
         public int panelHeight = 638;
         public int panelWidth = 1184;
         public bool isGameRunning;
@@ -193,6 +194,7 @@ namespace awsmSeeSharpGame.Classes
             numberOfUFOs = 10;
             score = 0;
             level = 1;
+            emitRate = 1000;
             lblLevel.Text = string.Format("Level: {0}", level.ToString());
             lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
             lblTime.Text = string.Format("Tid: {0}", timeLeft);
@@ -223,6 +225,9 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle1);
             obstacleList.Add(obstackle2);
             obstacleList.Add(obstackle3);
+
+
+            
             
             //Setter opp ufoene
             //ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
@@ -240,10 +245,10 @@ namespace awsmSeeSharpGame.Classes
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             //meteorList = emitter.EmitMovingObject(meteorList);
             movableShapeList = MakeShapeList(numberOfAlienHead, numberOfUFOs, numberOfMeteors);
-            drawShapes = new DrawShapes(this, obstacleList, movableShapeList, rocket);
+            drawShapes = new DrawShapes(this, emitRate, obstacleList, movableShapeList, rocket);
                         
            //Starter en ny timer
-            timeLeft = new TimeSpan(0, 0, 10); //Setter spilltiden til 5 minutter
+            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 1 minutt
             gameTimer = new GameTimer(timeLeft); //starter en ny timer
             gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
             //Starter opptegningen av objektene
@@ -261,7 +266,10 @@ namespace awsmSeeSharpGame.Classes
                 emptyObjects();
                 numberOfUFOs += 10;
                 numberOfMeteors += 5;
+                numberOfAlienHead++;
                 level++;
+                if (emitRate > 100) //Øker emitteren av objekter, så de kommer oftere
+                    emitRate -= 100;
                 InitializeAndStartGame();
             }
         }
