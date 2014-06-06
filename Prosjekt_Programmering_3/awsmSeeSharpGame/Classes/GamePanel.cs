@@ -37,6 +37,7 @@ namespace awsmSeeSharpGame.Classes
 
         private Rocket rocket;
         private Label lblNavn;
+        private Label lblLevel;
         private Label lblLives;
         private Label lblTime;
         private Label lblScore;
@@ -49,12 +50,14 @@ namespace awsmSeeSharpGame.Classes
 
         public int numberOfAlienHead { get; set; }
         public int numberOfMeteors { get; set; }
+        public int numberOfUFOs { get; set; }
         public int numberOfPlanets { get; set; }
+        public int numberOfLivesLeft { get; set; }
+        public int level { get; set; }
 
         private MainForm parentMainForm;
         private Random random;
         public int score { get; set; }
-        public int numberOfLivesLeft { get; set; }
 
         public Label lblFps; // Label for FPS
         Point lblFpsLocation = new Point(10, 200); //Setter posisjonen til FPS labelen!
@@ -104,6 +107,14 @@ namespace awsmSeeSharpGame.Classes
             lblNavn.BackColor = Color.Transparent;
             lblNavn.Font = fontDavid;
             this.Controls.Add(lblNavn);
+
+            // Setter opp labelen som viser level
+            lblLevel = new Label();
+            lblLevel.Location = new Point(350, 30);
+            lblLevel.ForeColor = Color.White;
+            lblLevel.BackColor = Color.Transparent;
+            lblLevel.Font = fontDavid;
+            this.Controls.Add(lblLevel);
 
             // Setter opp labelen som viser antall liv
             lblLives = new Label();
@@ -166,7 +177,6 @@ namespace awsmSeeSharpGame.Classes
         private void NewGame()
         {
             numberOfLivesLeft = 3;
-            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 1 Minutt
             
             if (MainForm.currentUser != null)
             {
@@ -178,7 +188,12 @@ namespace awsmSeeSharpGame.Classes
                 lblNavn.Text = "Testbruker";
                 
             }
+            numberOfAlienHead = 40;
+            numberOfMeteors = 10;
+            numberOfUFOs = 10;
             score = 0;
+            level = 1;
+            lblLevel.Text = string.Format("Level: {0}", level.ToString());
             lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
             lblTime.Text = string.Format("Tid: {0}", timeLeft);
             lblScore.Text = string.Format("Poeng: {0}", score.ToString());
@@ -224,15 +239,13 @@ namespace awsmSeeSharpGame.Classes
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
             //meteorList = emitter.EmitMovingObject(meteorList);
-
-            movableShapeList = MakeShapeList(random.Next(10, 60), random.Next(10, 60), random.Next(10, 60));
+            movableShapeList = MakeShapeList(numberOfAlienHead, numberOfUFOs, numberOfMeteors);
             drawShapes = new DrawShapes(this, obstacleList, movableShapeList, rocket);
                         
            //Starter en ny timer
-            timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
+            timeLeft = new TimeSpan(0, 0, 10); //Setter spilltiden til 5 minutter
             gameTimer = new GameTimer(timeLeft); //starter en ny timer
             gameTimer.sekundOppdatering += new GameTimer.sekundOppdateringHandler(sekundOppdateringEventHandler);
-            
             //Starter opptegningen av objektene
             
             isGameRunning = true;
@@ -246,6 +259,9 @@ namespace awsmSeeSharpGame.Classes
             if (MessageBox.Show(string.Format("Gratulerer, du klarte nivået!")) == DialogResult.OK)
             {
                 emptyObjects();
+                numberOfUFOs += 10;
+                numberOfMeteors += 5;
+                level++;
                 InitializeAndStartGame();
             }
         }
@@ -470,6 +486,7 @@ namespace awsmSeeSharpGame.Classes
                 lblTime.Text = string.Format("Tid: {0}", timeLeft); //Oppdaterer tiden som er igjen.
                 lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
                 lblScore.Text = string.Format("Poeng: {0}", score);
+                lblLevel.Text = string.Format("Level: {0}", level);
                 drawShapes.Draw(e); //Kaller Draw metoden som tegner opp alle objektene i Gamepanelet
             }
         }
