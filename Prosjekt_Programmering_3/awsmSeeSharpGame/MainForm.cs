@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using NAudio;
 using NAudio.Wave;
 using System.Diagnostics;
+using System.Net.Sockets;
 
 namespace awsmSeeSharpGame
 {
@@ -61,6 +62,26 @@ namespace awsmSeeSharpGame
 			InitializeComponent();
 
             //startSpill();
+
+            //Sjekker om spillet får kontakt med databasen
+            TcpClient tcpClient = new TcpClient();
+            try
+            {
+                tcpClient.Connect("ljauk6mone.database.windows.net", 1433);
+                using (Context context = new Context())
+                {
+                    if (!context.Database.Exists())
+                    {
+                        MessageBox.Show("Får ikke kontakt med databasen. Spill som anonym bruker");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Får ikke kontakt med databasen. Sjekk at brannmuren din ikke stenger for port 1433");
+            }
+
+
 
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
