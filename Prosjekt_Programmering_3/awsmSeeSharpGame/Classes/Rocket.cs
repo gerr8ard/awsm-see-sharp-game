@@ -21,6 +21,11 @@ namespace awsmSeeSharpGame.Classes
     {
         private Acceleration gravityForRocket = new Acceleration();
         public float Thrust;
+        public new float calcXPosition {get; set; }
+        public new float calcYPosition {get; set; }
+        public float xThrust;
+        public float yThrust;
+        private float gravity;
 
         public Rocket(int _XPosition, int _YPosition, float _Rotation, Point [] _rocketMap)
         {
@@ -47,6 +52,10 @@ namespace awsmSeeSharpGame.Classes
 
             XAccelleration = 0;
             YAccelleration = 0;
+
+            xThrust = 0;
+            yThrust = 0;
+            speed = 0.1F;
         }
 
         ////Gjør Xposition public, mulighet for å hent ut posisjonene til Rocket
@@ -90,26 +99,42 @@ namespace awsmSeeSharpGame.Classes
          //   Accelerate(_thrust, _rotation);
          //   Accelerate();
          //   Rotation += 1;
-            calcXPosition += DxPosition;
-            calcYPosition += DyPosition;
+    //        calcXPosition += DxPosition;
+    //        calcYPosition += DyPosition;
 
-            YPosition = (int)calcYPosition;
-            XPosition = (int)calcXPosition;
-     
+            //YPosition = (int)calcYPosition;
+            //XPosition = (int)calcXPosition;
 
-       /*     rectangle.Y -= Thrust;
-            if (Thrust > 1) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
+            //speed += 0.001F - yThrust * _elapsedTime;
+            XPosition += (int)(xThrust*_elapsedTime);
+            YPosition += (int)(yThrust* _elapsedTime);
+
+            //(yThrust * _elapsedTime)
+            if (xThrust > 1) // Prøv med 1 eller høyere for null gravitasjon effekt :-)
             {
-                Thrust--;
-            }*/
+                xThrust -= xThrust * _elapsedTime*2;
+            }
+            else if (xThrust < 1)
+            {
+                xThrust -= xThrust * _elapsedTime*2;
+                
+            }
+            if (yThrust > 1)
+            {
+                yThrust -= yThrust * _elapsedTime * 2;
+                speed -= 0.0019F;
+            }
+            else if (yThrust < 1 )
+            {
+                yThrust -= yThrust * _elapsedTime*2;
+                speed += 0.001F;
+            }
   //          Accelerate();
             updateShapePosition();
         }       
 
         public void Accelerate()
         {
-        //    double elapsedTime = DrawShapes.GetDeltaTime;
-
             gravityForRocket.SetAccelleration(Thrust, Rotation);
             YAccelleration = gravityForRocket.accelerationY;
             XAccelleration = gravityForRocket.thrustX;
@@ -135,7 +160,6 @@ namespace awsmSeeSharpGame.Classes
             }
             else if (DyPosition < -0.03)
                DyPosition += 0.03f; 
-
         }
 
         public override void Draw(PaintEventArgs e)

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using awsmSeeSharpGame.Classes;
+using System.Runtime.InteropServices;
 
 namespace awsmSeeSharpGame.Classes
 {
@@ -64,6 +65,7 @@ namespace awsmSeeSharpGame.Classes
 
         private string resourceUrl = System.Windows.Forms.Application.StartupPath + "\\Resources\\";
         Font fontDavid = new Font("Arial", 11.0F); //Font som blir brukt til informasjonen om spillet øverst på skjermen.
+        private const float MOVEMENT_PER_KEY_PRESS = 100.0F;
 
         Emitter emitter;
 
@@ -208,32 +210,24 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle3);
             
             //Setter opp ufoene
-
             //ufoList = MakeObjectList(ufoList, 90, timeLeft, false, 100, ShapeMaps.UFO(), ShapeMaps.BitmapUFO());
 
             //Setter opp meteorene
             //meteorList = MakeObjectList(meteorList, 30, timeLeft, false, 250, ShapeMaps.Meteor(), ShapeMaps.BitmapMeteor());
 
             //Setter opp alienhead
-
             //alienHeadList = MakeObjectList(alienHeadList, 100, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
-
             //alienHeadList = MakeObjectList(alienHeadList, 60, timeLeft, false, 100, ShapeMaps.AlienHead(), ShapeMaps.BitmapAlienHead());
-
 
             //Setter opp bullets
             //bulletList = MakeObjectList(bulletList, 20, timeLeft, false, 80, ShapeMaps.alienBullet(), ShapeMaps.BitmapBullet3());
 
             // Lager et nytt DrawShapes objekt som skal ta seg av oppdatering og opptegning av objektene
-
-
             //meteorList = emitter.EmitMovingObject(meteorList);
 
             movableShapeList = MakeShapeList(random.Next(10, 60), random.Next(10, 60), random.Next(10, 60));
-
             drawShapes = new DrawShapes(this, obstacleList, movableShapeList, rocket);
-            
-            
+                        
            //Starter en ny timer
             timeLeft = new TimeSpan(0, 1, 0); //Setter spilltiden til 5 minutter
             gameTimer = new GameTimer(timeLeft); //starter en ny timer
@@ -344,6 +338,7 @@ namespace awsmSeeSharpGame.Classes
 
         }
         
+        // Laget av Dag
         // Generisk liste metode som lager lister for alle type moveable shape objekter
         private List<T> MakeObjectList<T>(List<T> shapeListe, int _numberOfObjects, TimeSpan _time, bool _useRotation, int speed, Point [] shapeMap, Bitmap bitmap)
         {
@@ -366,10 +361,57 @@ namespace awsmSeeSharpGame.Classes
             GameTimer time = sender as GameTimer;
             timeLeft = time.GetTid();
         }
-        
+
+        public static bool IsKeyDown(Keys key)
+        {
+            return (GetKeyState(Convert.ToInt16(key)) & 0X80) == 0X80;
+        }
+
+        [DllImport("user32.dll")]
+        public extern static Int16 GetKeyState(Int16 nVirtKey);
+
 
         private void previewKeyEventHandler(object sender, PreviewKeyDownEventArgs e)
         {
+            if (IsKeyDown(Keys.Left) && IsKeyDown(Keys.Up))
+            {
+                rocket.xThrust -= MOVEMENT_PER_KEY_PRESS;
+                rocket.yThrust -= MOVEMENT_PER_KEY_PRESS;
+            }
+
+            if (IsKeyDown(Keys.Left) && IsKeyDown(Keys.Down))
+            {
+                rocket.xThrust -= MOVEMENT_PER_KEY_PRESS;
+                rocket.yThrust += MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Right) && IsKeyDown(Keys.Up))
+            {
+                rocket.xThrust += MOVEMENT_PER_KEY_PRESS;
+                rocket.yThrust -= MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Right) && IsKeyDown(Keys.Down))
+            {
+                rocket.xThrust += MOVEMENT_PER_KEY_PRESS;
+                rocket.yThrust += MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Left))
+            {
+                rocket.xThrust -= MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Up))
+            {
+                rocket.yThrust -= MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Right))
+            {
+                rocket.xThrust += MOVEMENT_PER_KEY_PRESS;
+            }
+            if (IsKeyDown(Keys.Down))
+            {
+                rocket.yThrust += MOVEMENT_PER_KEY_PRESS;
+            }
+
+            /*
             if (e.KeyCode == Keys.Left)
             {
                 rocket.Rotation -= 5;
@@ -395,7 +437,11 @@ namespace awsmSeeSharpGame.Classes
             {
                 drawShapes.Emit();
             }
+             * */
         }
+
+
+       
         
         /// <summary>
         /// Kaller On Paint metoden ca 60 ganger i sekundet

@@ -110,7 +110,7 @@ namespace awsmSeeSharpGame.Classes
                 bullet.Move(GetElapsedTime);
             }
 
-            rocket.Accelerate();
+            //rocket.Accelerate();
             rocket.Move(GetElapsedTime);
         }
 
