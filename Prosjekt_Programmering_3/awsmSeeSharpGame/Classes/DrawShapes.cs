@@ -29,6 +29,7 @@ namespace awsmSeeSharpGame.Classes
         private System.Timers.Timer timer = new System.Timers.Timer();
         private List<Bullet> bulletList;
         private int emitRate; //Hvor ofte moveable shapes skal sendes ut på skjermen
+        private const int ENERGY_LOSS = 2;
 
         private DrawShapes thisPanel;
 
@@ -123,6 +124,8 @@ namespace awsmSeeSharpGame.Classes
         /// </summary>
         public void CollisonCheck(PaintEventArgs e)
         {
+            collision = false; //Resetter collisions testen
+
             if (rocket.X < 0 - rocket.WidthOfRocket || rocket.X > parentGamePanel.panelWidth)
             {
                 parentGamePanel.LossOfLife();
@@ -195,8 +198,12 @@ namespace awsmSeeSharpGame.Classes
             if (collision)
             {
                 rocket.pen.Color = Color.Red;
-                collision = false; //Resetter collisions testen
                 parentGamePanel.score -= 1;
+                // Sjekker om energi nivået er null eller mindre og mister liv om det er tilfelle.
+                if (parentGamePanel.energy <= 0)
+                    parentGamePanel.LossOfLife();
+                else
+                    parentGamePanel.energy -= ENERGY_LOSS;
             }
             else
             {

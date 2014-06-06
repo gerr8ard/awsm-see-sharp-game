@@ -61,7 +61,7 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-            //startSpill();
+            startSpill();
 
             //Sjekker om spillet får kontakt med databasen
             TcpClient tcpClient = new TcpClient();
@@ -105,9 +105,9 @@ namespace awsmSeeSharpGame
 			startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
             howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(tsMenuItemHowToPlay_Click);
 
-			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			login.Show();//viser LoginControl form
+			//pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			//login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			//login.Show();//viser LoginControl form
 			
 
 		}

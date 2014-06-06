@@ -42,11 +42,14 @@ namespace awsmSeeSharpGame.Classes
         private Label lblTime;
         private Label lblScore;
         private Label lblRecord;
+        private Label lblEnergy;
+        private Panel pnlEnergy;
         private TimeSpan timeLeft;
         private GameTimer gameTimer;
         private int emitRate; // Hvor ofte objektene skal sendes ut på skjermen 
         public int panelHeight = 638;
         public int panelWidth = 1184;
+        public int energy;
         public bool isGameRunning;
 
         public int numberOfAlienHead { get; set; }
@@ -72,6 +75,8 @@ namespace awsmSeeSharpGame.Classes
         private const float MOVEMENT_PER_KEY_PRESS = 100.0F;
 
         Emitter emitter;
+
+        private const int MAX_ENERGY = 1500;
 
         #endregion
 
@@ -103,7 +108,7 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser Navn
             lblNavn = new Label();
-            lblNavn.Location = new Point(250, 30);
+            lblNavn.Location = new Point(150, 30);
             lblNavn.ForeColor = Color.White;
             lblNavn.BackColor = Color.Transparent;
             lblNavn.Font = fontDavid;
@@ -111,7 +116,7 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser level
             lblLevel = new Label();
-            lblLevel.Location = new Point(350, 30);
+            lblLevel.Location = new Point(250, 30);
             lblLevel.ForeColor = Color.White;
             lblLevel.BackColor = Color.Transparent;
             lblLevel.Font = fontDavid;
@@ -119,15 +124,32 @@ namespace awsmSeeSharpGame.Classes
 
             // Setter opp labelen som viser antall liv
             lblLives = new Label();
-            lblLives.Location = new Point(450, 30);
+            lblLives.Location = new Point(350, 30);
             lblLives.ForeColor = Color.White;
             lblLives.BackColor = Color.Transparent;
             lblLives.Font = fontDavid;
             this.Controls.Add(lblLives);
 
+            // Setter opp labelen som Energi
+            lblEnergy = new Label();
+            lblEnergy.Width = 50;
+            lblEnergy.Location = new Point(450, 30);
+            lblEnergy.ForeColor = Color.White;
+            lblEnergy.BackColor = Color.Transparent;
+            lblEnergy.Font = fontDavid;
+            this.Controls.Add(lblEnergy);
+
+            // Setter opp panel som viser energy
+            pnlEnergy = new Panel();
+            pnlEnergy.Location = new Point(500, 33);
+            pnlEnergy.Width = 150;
+            pnlEnergy.Height = 13;
+            pnlEnergy.BackColor = Color.White;
+            this.Controls.Add(pnlEnergy);          
+
             // Setter opp labelen som viser gjenstående tid
             lblTime = new Label();
-            lblTime.Location = new Point(650, 30);
+            lblTime.Location = new Point(700, 30);
             lblTime.Size = new Size(150, 15);
             lblTime.ForeColor = Color.White;
             lblTime.BackColor = Color.Transparent;
@@ -195,8 +217,9 @@ namespace awsmSeeSharpGame.Classes
             score = 0;
             level = 1;
             emitRate = 1000;
-            lblLevel.Text = string.Format("Level: {0}", level.ToString());
+            lblLevel.Text = string.Format("Nivå: {0}", level.ToString());
             lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
+            lblEnergy.Text = string.Format("Energi:");
             lblTime.Text = string.Format("Tid: {0}", timeLeft);
             lblScore.Text = string.Format("Poeng: {0}", score.ToString());
             lblRecord.Text = string.Format("Rekord: {0}",Queries.getHighestScore().Score.ToString());
@@ -226,7 +249,9 @@ namespace awsmSeeSharpGame.Classes
             obstacleList.Add(obstackle2);
             obstacleList.Add(obstackle3);
 
-
+            //Fyller opp energibaren
+            pnlEnergy.Width = 150;
+            energy = MAX_ENERGY;
             
             
             //Setter opp ufoene
@@ -494,7 +519,9 @@ namespace awsmSeeSharpGame.Classes
                 lblTime.Text = string.Format("Tid: {0}", timeLeft); //Oppdaterer tiden som er igjen.
                 lblLives.Text = string.Format("Liv: {0}", numberOfLivesLeft);
                 lblScore.Text = string.Format("Poeng: {0}", score);
-                lblLevel.Text = string.Format("Level: {0}", level);
+                lblLevel.Text = string.Format("Nivå: {0}", level);
+                pnlEnergy.Width = energy / 10;
+
                 drawShapes.Draw(e); //Kaller Draw metoden som tegner opp alle objektene i Gamepanelet
             }
         }
