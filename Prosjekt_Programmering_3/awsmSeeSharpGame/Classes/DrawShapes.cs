@@ -126,13 +126,21 @@ namespace awsmSeeSharpGame.Classes
         {
             collision = false; //Resetter collisions testen
 
-            if (rocket.X < 0 - rocket.WidthOfRocket || rocket.X > parentGamePanel.panelWidth)
+            if (rocket.X < 0)
             {
-                parentGamePanel.LossOfLife();
+                rocket.xThrust += 10;
             }
-            if (rocket.Y < 0 || rocket.Y > parentGamePanel.panelHeight)
+            else if (rocket.X + rocket.WidthOfRocket > parentGamePanel.panelWidth)
             {
-                parentGamePanel.LossOfLife();
+                rocket.xThrust -= 10;
+            }
+            if (rocket.Y < 0 )
+            {
+                rocket.yThrust += 10;
+            }
+            else if (rocket.Y > parentGamePanel.panelHeight)
+            {
+                rocket.yThrust -= 10;
             }
            
             foreach (MovableShape shape in activeMovableShapeList)
