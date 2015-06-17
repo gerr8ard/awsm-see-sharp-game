@@ -1,3 +1,3 @@
 awsm-see-sharp-game
 ===================
-[Screenshot](Screenshot.png)
+![Screenshot](Screenshot.png)
