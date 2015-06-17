@@ -61,9 +61,10 @@ namespace awsmSeeSharpGame
 		{
 			InitializeComponent();
 
-            startSpill();
+        //    startSpill();
 
             //Sjekker om spillet får kontakt med databasen
+    /*
             TcpClient tcpClient = new TcpClient();
             try
             {
@@ -81,7 +82,7 @@ namespace awsmSeeSharpGame
                 MessageBox.Show("Får ikke kontakt med databasen. Sjekk at brannmuren din ikke stenger for port 1433");
             }
 
-
+*/
 
 			//Instansierer de forskjellige panelene
 			login = new LoginControl();
@@ -105,9 +106,9 @@ namespace awsmSeeSharpGame
 			startPage.settingsEvent += new StartPageControl.startPageDelegate(btn_Settings_Click);//Abonnerer på settingsEvent i StartPageControl
             howToPlay.howToPlayEvent += new HowToPlayControl.howToPlayDelegate(tsMenuItemHowToPlay_Click);
 
-			//pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
-			//login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
-			//login.Show();//viser LoginControl form
+			pnlMainForm.Controls.Add(login);//Legger LoginControl form på panelet
+			login.Dock = DockStyle.Bottom;//Legger LoginControl form nederst på mainform
+			login.Show();//viser LoginControl form
 			
 
 		}
@@ -212,6 +213,23 @@ namespace awsmSeeSharpGame
 
         private void tsMenuItemMainMenu_Click(object sender, EventArgs e)
         {
+            using (var db = new Context())
+            {
+                var user = new awsm_Users {
+                    UserName = "Dag",
+                    SureName = "Ivarsøy",
+                    FirstName = "Dag",
+                    Password = "test",
+                    Salt = "test",
+                    Created = DateTime.Now
+                };
+
+                db.Users.Add(user);
+                db.SaveChanges();
+            } 
+
+
+
             if (isLoggedIn == true)
             {
 

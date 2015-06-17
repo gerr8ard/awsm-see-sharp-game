@@ -1,4 +1,4 @@
-namespace awsmSeeSharpGame.Migrations
+ï»¿namespace awsmSeeSharpGame.Migrations
 {
     using System;
     using System.Data.Entity;
@@ -15,7 +15,7 @@ namespace awsmSeeSharpGame.Migrations
     {
 
         /// <summary>
-        /// Skrevet av Pål Skogsrud og Dag Ivarsøy
+        /// Skrevet av Pï¿½l Skogsrud og Dag Ivarsï¿½y
         /// Klasse som genererer litt innhold i databasen
         /// </summary>
         public Configuration()

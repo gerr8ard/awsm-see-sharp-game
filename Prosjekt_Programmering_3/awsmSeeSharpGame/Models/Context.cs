@@ -22,11 +22,12 @@ namespace awsmSeeSharpGame.Models
         public DbSet<awsm_Privilege> Privilege { get; set; }
         public DbSet<awsm_Score> Score { get; set; }
 
+        /*
         public Context()
-            : base("awsmSeeSharpGame.Properties.Settings.awsmSeeSharpGame_Models_ContextConnectionString")
+            : base("name=awsmSeeSharpGame.Properties.Settings.awsmSeeSharpGame_Models_ContextConnectionString")
         {
 
-        }
-
+        }        
+        */
     }
 }
